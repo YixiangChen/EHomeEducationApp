@@ -10,6 +10,7 @@
 #import "EHEStdSearchingTableViewController.h" 
 #import "EHEStdSettingViewController.h"
 #import "EHEStdBookingManagerViewController.h"
+#import "EHECommunicationManager.h"
 
 @interface AppDelegate ()
 
@@ -37,6 +38,7 @@
     self.window.rootViewController = tab;
     [self.window makeKeyAndVisible];
     
+    //[[EHECommunicationManager getInstance]loadTeachersInfo] ;
     
     return YES;
 }

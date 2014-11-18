@@ -7,6 +7,8 @@
 //
 
 #import "EHEStdSearchingTableViewController.h"
+#import "EHETeacher.h"
+#import "EHECommunicationManager.h"
 
 @interface EHEStdSearchingTableViewController ()
 
@@ -22,6 +24,17 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [[EHECommunicationManager getInstance]loadTeachersInfo];
+    
+    [NSThread sleepForTimeInterval:8];
+    self.coreDataManager = [EHECoreDataManager getInstance];
+    NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"EHETeacher"];
+    NSSortDescriptor * sd1 = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+    request.sortDescriptors = @[sd1];
+    self.fetchedResultController = [[NSFetchedResultsController alloc]initWithFetchRequest:request managedObjectContext:self.coreDataManager.context sectionNameKeyPath:@"name" cacheName:@"Teacher"];
+    self.fetchedResultController.delegate = self;
+    //执行这个请求
+    [self.fetchedResultController performFetch:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,12 +46,15 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 1;
+    NSLog(@"%d==================",self.fetchedResultController.sections.count);
+    return self.fetchedResultController.sections.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 10;
+    id<NSFetchedResultsSectionInfo> sectionInfo = self.fetchedResultController.sections[section];
+    NSLog(@"%d........................................",[sectionInfo numberOfObjects]);
+    return [sectionInfo numberOfObjects];
 }
 
 
@@ -49,6 +65,9 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
     // Configure the cell...
+    
+    EHETeacher * teacher = [self.fetchedResultController objectAtIndexPath:indexPath];
+    cell.textLabel.text = teacher.name;
     
     return cell;
 }
@@ -113,5 +132,69 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - NSFetchedResultsControllerDelegate协议方法
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+    [self.tableView beginUpdates];
+}
+
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
+           atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
+    
+    switch(type) {
+        case NSFetchedResultsChangeInsert:
+            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]
+                          withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex]
+                          withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        default:
+            break;
+    }
+}
+
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
+       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
+      newIndexPath:(NSIndexPath *)newIndexPath {
+    
+    UITableView *tableView = self.tableView;
+    
+    switch(type) {
+            
+        case NSFetchedResultsChangeInsert:
+            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]
+                             withRowAnimation:UITableViewRowAnimationFade];
+            //刷新一下所在的section
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                             withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeUpdate:
+            [tableView reloadRowsAtIndexPaths:@[indexPath] //一旦使用了section，这里需要使用indexPath，如果不使用，section分区（1）,这里需要使用newIndexPath
+                             withRowAnimation:UITableViewRowAnimationAutomatic];
+            break;
+            
+        case NSFetchedResultsChangeMove:
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                             withRowAnimation:UITableViewRowAnimationFade];
+            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]
+                             withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
+}
+
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    [self.tableView endUpdates];
+}
 
 @end

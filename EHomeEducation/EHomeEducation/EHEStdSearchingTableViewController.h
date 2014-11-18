@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
+#import "EHECoreDataManager.h"
 
-@interface EHEStdSearchingTableViewController : UITableViewController
+@interface EHEStdSearchingTableViewController : UITableViewController<NSFetchedResultsControllerDelegate>
+@property(strong, nonatomic) EHECoreDataManager *coreDataManager;
+@property(strong, nonatomic) NSFetchedResultsController *fetchedResultController;
 
 @end

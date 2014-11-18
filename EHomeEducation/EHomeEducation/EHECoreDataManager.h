@@ -12,7 +12,7 @@
 @interface EHECoreDataManager : NSObject
 @property(strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property(strong, nonatomic) NSManagedObjectContext *context;
-
--(void) updateTeachersInfos;
++ (EHECoreDataManager *) getInstance;
+-(void) updateTeachersInfos:(NSDictionary *) dict;
 
 @end
