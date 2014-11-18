@@ -24,10 +24,16 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    [[EHECommunicationManager getInstance]loadTeachersInfo];
     
-    [NSThread sleepForTimeInterval:8];
     self.coreDataManager = [EHECoreDataManager getInstance];
+    if ([[self.coreDataManager fetchAllTeachersInfos] count] > 0){
+        NSLog(@"core data already exist");
+    }else {
+    [[EHECommunicationManager getInstance]loadTeachersInfo];
+    [NSThread sleepForTimeInterval:3];
+    }
+    
+    
     NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"EHETeacher"];
     NSSortDescriptor * sd1 = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
     request.sortDescriptors = @[sd1];
@@ -46,14 +52,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    NSLog(@"%d==================",self.fetchedResultController.sections.count);
     return self.fetchedResultController.sections.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     id<NSFetchedResultsSectionInfo> sectionInfo = self.fetchedResultController.sections[section];
-    NSLog(@"%d........................................",[sectionInfo numberOfObjects]);
     return [sectionInfo numberOfObjects];
 }
 

@@ -14,5 +14,6 @@
 @property(strong, nonatomic) NSManagedObjectContext *context;
 + (EHECoreDataManager *) getInstance;
 -(void) updateTeachersInfos:(NSDictionary *) dict;
+-(NSArray *) fetchAllTeachersInfos;
 
 @end
