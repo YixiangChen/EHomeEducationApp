@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "EHEStdLoginViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -17,6 +17,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor whiteColor];
+    // Override point for customization after application launch.
+    self.window.rootViewController=[[EHEStdLoginViewController alloc]initWithNibName:nil bundle:nil];
+    
+    
+    // Override point for customization after application launch.
+    
+    
+    [self.window makeKeyAndVisible];
     return YES;
 }
 
