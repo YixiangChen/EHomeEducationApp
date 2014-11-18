@@ -7,6 +7,7 @@
 //
 
 #import "EHEStdSearchingTableViewController.h"
+#import "AFNetworking.h"
 
 @interface EHEStdSearchingTableViewController ()
 
@@ -22,6 +23,65 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    UIBarButtonItem *refreshBarBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refresh)];
+    self.navigationItem.rightBarButtonItem = refreshBarBtn;
+}
+
+-(void) refresh{
+    NSLog(@"refreshing.........");
+//    NSURLRequest * request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://music.baidu.com/data/music/file?link=http://yinyueshiting.baidu.com/data2/music/123297915/12012502946800128.mp3?xcode=333287cb95b06768f993b49e577e9bf4a6a03c85c06f4409&song_id=120125029"]];
+//        AFHTTPRequestOperation * operation = [[AFHTTPRequestOperation alloc]initWithRequest:request];
+//        
+//        [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+//            //将设置给player
+//            self.player = [[AVAudioPlayer alloc]initWithData:responseObject error:nil];
+//            [self.player play];//播放
+//            
+//        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//            //请求失败之后的执行的方法
+//            NSLog(@"error:%@",error);
+//        }];
+//        
+//        [operation setDownloadProgressBlock:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
+//            //主线程中执行，将进度条改变
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                self.progressView.progress = totalBytesRead * 1.0 / totalBytesExpectedToRead;
+//            });
+//        }];
+//        //让操作启动
+//        [operation start];
+    
+    NSString * postData = [NSString stringWithFormat:@"{\"customerid\":\"%d\",\"latitude\":\"%f\",\"longitude\":\"%f\",\"distancefilter\":\"%f\",\"keyword\":\"%s\"}",0,39.0000000,119.0000000,1000.0,""];
+    
+    NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://218.249.130.194:8080/ehomeedu/api/customer/findteacherlist.action"]];
+    NSString * data = [NSString stringWithFormat:@"info=%@",postData];
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBody:[data dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    NSError *error = nil;
+    
+    NSData * responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
+    NSString *string = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+    NSLog(@"%@",string);
+    if(responseData != nil){
+        //使用系统自带JSON解析方法
+        NSError *error = nil;
+        NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:&error];
+        NSLog(@"%@",dict);
+        NSLog(@"%@",dict[@"code"]);
+        if([dict[@"code"] intValue] == 0){
+            //注册成功，
+            //int uid = [dict[@"id"] intValue]; //得到服务器端生成的用户编号。
+           // NSLog(@"%@,id:%d",dict[@"message"],uid);
+            NSLog(@"正在打印教师信息");
+            NSLog(@"%@",dict);
+        }else{
+            NSLog(@"%@",dict[@"message"]);
+        }
+    }
+
+    
+
 }
 
 - (void)didReceiveMemoryWarning {
