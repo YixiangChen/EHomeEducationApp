@@ -38,6 +38,14 @@
     [[tab.viewControllers objectAtIndex:2] setTitle:@"设置"];
     tab.tabBar.backgroundColor = [UIColor grayColor];
     
+    _mapManager = [[BMKMapManager alloc]init];
+    // 如果要关注网络及授权验证事件，请设定     generalDelegate参数
+    BOOL ret = [_mapManager start:@"XfRTzKUzfDjbBIKC55iY2Wa1"  generalDelegate:nil];
+    if (!ret) {
+        NSLog(@"manager start failed!");
+    }
+    
+    
     self.window.rootViewController = tab;
     [self.window makeKeyAndVisible];
     

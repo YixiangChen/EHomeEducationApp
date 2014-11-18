@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
-
+#import "BMKMapManager.h"
 //这是一个测试的注释
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
-
+{
+  BMKMapManager * _mapManager;
+}
 @property (strong, nonatomic) UIWindow *window;
 
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
