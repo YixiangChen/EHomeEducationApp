@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EHEStdSettingViewController : UIViewController
-
+@interface EHEStdSettingViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@property(strong,nonatomic)UITableView * tableView;
+@property(strong,nonatomic)NSArray * array1;
+@property(strong,nonatomic)NSArray * array2;
+@property(strong,nonatomic)NSArray * array3;
 @end

@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "EHEStdLoginViewController.h"
+#import "EHEStdSettingViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -20,8 +21,8 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     // Override point for customization after application launch.
-    self.window.rootViewController=[[EHEStdLoginViewController alloc]initWithNibName:nil bundle:nil];
-    
+    //self.window.rootViewController=[[EHEStdLoginViewController alloc]initWithNibName:nil bundle:nil];
+    self.window.rootViewController=[[EHEStdSettingViewController alloc]initWithNibName:nil bundle:nil];
     
     // Override point for customization after application launch.
     

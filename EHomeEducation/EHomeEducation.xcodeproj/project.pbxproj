@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0F5793641A1AF78700862914 /* MF_Base64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5793631A1AF78700862914 /* MF_Base64Additions.m */; };
+		0F5793661A1B4BE500862914 /* 11.0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0F5793651A1B4BE500862914 /* 11.0.jpg */; };
 		797C306D1A19D32900DB84E4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 797C306C1A19D32900DB84E4 /* main.m */; };
 		797C30701A19D32900DB84E4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 797C306F1A19D32900DB84E4 /* AppDelegate.m */; };
 		797C30731A19D32900DB84E4 /* EHomeEducation.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 797C30711A19D32900DB84E4 /* EHomeEducation.xcdatamodeld */; };
@@ -45,6 +46,7 @@
 /* Begin PBXFileReference section */
 		0F5793621A1AF78700862914 /* MF_Base64Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MF_Base64Additions.h; sourceTree = "<group>"; };
 		0F5793631A1AF78700862914 /* MF_Base64Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MF_Base64Additions.m; sourceTree = "<group>"; };
+		0F5793651A1B4BE500862914 /* 11.0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 11.0.jpg; sourceTree = "<group>"; };
 		797C30671A19D32900DB84E4 /* EHomeEducation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EHomeEducation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		797C306B1A19D32900DB84E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		797C306C1A19D32900DB84E4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 		0F5793611A1AF78700862914 /* Base64 */ = {
 			isa = PBXGroup;
 			children = (
+				0F5793651A1B4BE500862914 /* 11.0.jpg */,
 				0F5793621A1AF78700862914 /* MF_Base64Additions.h */,
 				0F5793631A1AF78700862914 /* MF_Base64Additions.m */,
 			);
@@ -322,6 +325,7 @@
 				797C30E61A19DC6800DB84E4 /* EHETchSettingViewController.xib in Resources */,
 				797C307E1A19D32900DB84E4 /* LaunchScreen.xib in Resources */,
 				797C30C21A19DA5000DB84E4 /* EHEStdSearchingTableViewController.xib in Resources */,
+				0F5793661A1B4BE500862914 /* 11.0.jpg in Resources */,
 				797C30CC1A19DA9900DB84E4 /* EHEStdMapSearchingViewController.xib in Resources */,
 				797C307B1A19D32900DB84E4 /* Images.xcassets in Resources */,
 				797C30C71A19DA6E00DB84E4 /* EHETchSearchingTableViewController.xib in Resources */,
