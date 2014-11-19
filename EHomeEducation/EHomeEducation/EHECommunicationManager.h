@@ -12,5 +12,6 @@
 
 + (EHECommunicationManager *) getInstance;
 -(void)loadTeachersInfo;
+-(void)loadDataWithTeacherID:(int) teacherId;
 
 @end

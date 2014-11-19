@@ -26,12 +26,17 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     self.coreDataManager = [EHECoreDataManager getInstance];
+
+    //[self.coreDataManager fetchAllTeachersInfos];
     if ([[self.coreDataManager fetchAllTeachersInfos] count] > 0){
         NSLog(@"core data already exist");
     }else {
     [[EHECommunicationManager getInstance]loadTeachersInfo];
+    [[EHECommunicationManager getInstance] loadDataWithTeacherID:1];
     [NSThread sleepForTimeInterval:3];
     }
+    
+    [self.coreDataManager fetchDetailInfosWithTeacherId:1];
     
     
     NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"EHETeacher"];

@@ -42,16 +42,37 @@
         //使用系统自带JSON解析方法
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:&error];
         if([dict[@"code"] intValue] == 0){
-            //注册成功，
+            //注册成功
             [[EHECoreDataManager getInstance] updateTeachersInfos:dict];
-            NSLog(@"正在打印教师信息");
-            NSLog(@"%@",dict);
+        }else{
+            NSLog(@"%@",dict[@"message"]);
+        }
+    }
+
+}
+
+-(void)loadDataWithTeacherID:(int) teacherId {
+    NSLog(@"now is loading teacher data with teacher id .........");
+    
+    NSString * postData = [NSString stringWithFormat:@"{\"teacherid\":\"%d\"}",teacherId];
+    NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://218.249.130.194:8080/ehomeedu/api/customer/findteacherdetail.action"]];
+    NSString * data = [NSString stringWithFormat:@"info=%@",postData];
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBody:[data dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    NSError *error = nil;
+    NSData * responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
+    if(responseData != nil && error == nil){
+        //使用系统自带JSON解析方法
+        NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
+        NSDictionary *dictTeacherInfo = dict[@"teacherinfo"];
+        if([dict[@"code"] intValue] == 0){
+            //注册成功
+            [[EHECoreDataManager getInstance] updateTeachersDetailedInfos:dictTeacherInfo withTeacherId:teacherId];
         }else{
             NSLog(@"%@",dict[@"message"]);
         }
     }
     
-
-
 }
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		793796871A1C4FBF0013FD21 /* EHETeacher.m in Sources */ = {isa = PBXBuildFile; fileRef = 793796861A1C4FBF0013FD21 /* EHETeacher.m */; };
 		797C306D1A19D32900DB84E4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 797C306C1A19D32900DB84E4 /* main.m */; };
 		797C30701A19D32900DB84E4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 797C306F1A19D32900DB84E4 /* AppDelegate.m */; };
 		797C30731A19D32900DB84E4 /* EHomeEducation.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 797C30711A19D32900DB84E4 /* EHomeEducation.xcdatamodeld */; };
@@ -32,7 +33,6 @@
 		79D931C61A1B1F3000B709A1 /* EHEStdBookingManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79D931C41A1B1F3000B709A1 /* EHEStdBookingManagerViewController.m */; };
 		79D931C71A1B1F3000B709A1 /* EHEStdBookingManagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79D931C51A1B1F3000B709A1 /* EHEStdBookingManagerViewController.xib */; };
 		79D931CA1A1B1F9400B709A1 /* EHECoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 79D931C91A1B1F9400B709A1 /* EHECoreDataManager.m */; };
-		79D931CD1A1B22A300B709A1 /* EHETeacher.m in Sources */ = {isa = PBXBuildFile; fileRef = 79D931CC1A1B22A300B709A1 /* EHETeacher.m */; };
 		79D931D11A1B22DF00B709A1 /* EHECommunicationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 79D931D01A1B22DF00B709A1 /* EHECommunicationManager.m */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +47,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		793796851A1C4FBF0013FD21 /* EHETeacher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHETeacher.h; sourceTree = "<group>"; };
+		793796861A1C4FBF0013FD21 /* EHETeacher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHETeacher.m; sourceTree = "<group>"; };
 		797C30671A19D32900DB84E4 /* EHomeEducation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EHomeEducation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		797C306B1A19D32900DB84E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		797C306C1A19D32900DB84E4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -87,8 +89,6 @@
 		79D931C51A1B1F3000B709A1 /* EHEStdBookingManagerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHEStdBookingManagerViewController.xib; sourceTree = "<group>"; };
 		79D931C81A1B1F9400B709A1 /* EHECoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHECoreDataManager.h; sourceTree = "<group>"; };
 		79D931C91A1B1F9400B709A1 /* EHECoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHECoreDataManager.m; sourceTree = "<group>"; };
-		79D931CB1A1B22A300B709A1 /* EHETeacher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHETeacher.h; sourceTree = "<group>"; };
-		79D931CC1A1B22A300B709A1 /* EHETeacher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHETeacher.m; sourceTree = "<group>"; };
 		79D931CF1A1B22DF00B709A1 /* EHECommunicationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHECommunicationManager.h; sourceTree = "<group>"; };
 		79D931D01A1B22DF00B709A1 /* EHECommunicationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHECommunicationManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -190,8 +190,8 @@
 			isa = PBXGroup;
 			children = (
 				797C30711A19D32900DB84E4 /* EHomeEducation.xcdatamodeld */,
-				79D931CB1A1B22A300B709A1 /* EHETeacher.h */,
-				79D931CC1A1B22A300B709A1 /* EHETeacher.m */,
+				793796851A1C4FBF0013FD21 /* EHETeacher.h */,
+				793796861A1C4FBF0013FD21 /* EHETeacher.m */,
 				79D931C81A1B1F9400B709A1 /* EHECoreDataManager.h */,
 				79D931C91A1B1F9400B709A1 /* EHECoreDataManager.m */,
 			);
@@ -366,10 +366,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				797C30D11A19DAD400DB84E4 /* EHETchSearchingMapViewController.m in Sources */,
-				79D931CD1A1B22A300B709A1 /* EHETeacher.m in Sources */,
 				797C30701A19D32900DB84E4 /* AppDelegate.m in Sources */,
 				797C30731A19D32900DB84E4 /* EHomeEducation.xcdatamodeld in Sources */,
 				797C30D61A19DB5000DB84E4 /* EHEStdLoginViewController.m in Sources */,
+				793796871A1C4FBF0013FD21 /* EHETeacher.m in Sources */,
 				79D931CA1A1B1F9400B709A1 /* EHECoreDataManager.m in Sources */,
 				797C30E01A19DC0D00DB84E4 /* EHEStdSettingViewController.m in Sources */,
 				797C306D1A19D32900DB84E4 /* main.m in Sources */,
