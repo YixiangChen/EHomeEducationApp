@@ -7,7 +7,6 @@
 //
 
 #import "EHECoreDataManager.h"
-#import "EHETeacher.h"
 #import "AppDelegate.h"
 
 @implementation EHECoreDataManager
@@ -36,7 +35,7 @@
     return self;
 }
 
--(void)updateTeachersInfos:(NSDictionary *) dict{
+-(void)updateBasicInfosOfTeachers:(NSDictionary *) dict{
     
     NSArray *dictsForTeacherInfo = dict[@"teachersinfo"];
     
@@ -55,7 +54,7 @@
     }
 }
 
--(void)updateTeachersDetailedInfos:(NSDictionary *) dict withTeacherId:(int) teacherId {
+-(void)updateDetailInfos:(NSDictionary *) dict withTeacherId:(int) teacherId {
     
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"EHETeacher"];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"teacherId = %d", teacherId];
@@ -79,7 +78,7 @@
     
 }
 
--(NSArray *)fetchAllTeachersInfos {
+-(NSArray *)fetchBasicInfosOfTeachers {
     
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"EHETeacher"];
     NSPredicate * predicate = nil;
@@ -103,8 +102,7 @@
 }
 
 -(EHETeacher *)fetchDetailInfosWithTeacherId:(int)teacherId {
-    NSLog(@"Now I am fetching teacher detail info with teacher id oye");
-
+    
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"EHETeacher"];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"teacherId = %d", teacherId];
     fetchRequest.predicate = predicate;

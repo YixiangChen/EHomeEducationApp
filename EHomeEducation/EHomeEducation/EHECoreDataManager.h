@@ -8,14 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "EHETeacher.h"
 
 @interface EHECoreDataManager : NSObject
 @property(strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property(strong, nonatomic) NSManagedObjectContext *context;
 + (EHECoreDataManager *) getInstance;
--(void) updateTeachersInfos:(NSDictionary *) dict;
--(void)updateTeachersDetailedInfos:(NSDictionary *) dict withTeacherId:(int) teacherId;
--(NSArray *) fetchAllTeachersInfos;
--(NSArray *) fetchDetailInfosWithTeacherId:(int) teacherId;
+-(void) updateBasicInfosOfTeachers:(NSDictionary *) dict;
+-(void)updateDetailInfos:(NSDictionary *) dict withTeacherId:(int) teacherId;
+-(NSArray *) fetchBasicInfosOfTeachers;
+-(EHETeacher *) fetchDetailInfosWithTeacherId:(int) teacherId;
 
 @end

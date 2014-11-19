@@ -9,6 +9,7 @@
 #import "EHEStdSearchingTableViewController.h"
 #import "EHETeacher.h"
 #import "EHECommunicationManager.h"
+#import "EHEStdDetailInfoViewController.h"
 
 @interface EHEStdSearchingTableViewController ()
 
@@ -28,7 +29,7 @@
     self.coreDataManager = [EHECoreDataManager getInstance];
 
     //[self.coreDataManager fetchAllTeachersInfos];
-    if ([[self.coreDataManager fetchAllTeachersInfos] count] > 0){
+    if ([[self.coreDataManager fetchBasicInfosOfTeachers] count] > 0){
         NSLog(@"core data already exist");
     }else {
     [[EHECommunicationManager getInstance]loadTeachersInfo];
@@ -44,7 +45,6 @@
     request.sortDescriptors = @[sd1];
     self.fetchedResultController = [[NSFetchedResultsController alloc]initWithFetchRequest:request managedObjectContext:self.coreDataManager.context sectionNameKeyPath:@"name" cacheName:@"Teacher"];
     self.fetchedResultController.delegate = self;
-    //执行这个请求
     [self.fetchedResultController performFetch:nil];
 }
 
@@ -74,7 +74,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
     // Configure the cell...
-    
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     EHETeacher * teacher = [self.fetchedResultController objectAtIndexPath:indexPath];
     cell.textLabel.text = teacher.name;
     
@@ -116,21 +116,21 @@
 }
 */
 
-/*
+
 #pragma mark - Table view delegate
 
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Navigation logic may go here, for example:
     // Create the next view controller.
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
+    EHEStdDetailInfoViewController *detailViewController = [[EHEStdDetailInfoViewController alloc] initWithNibName:nil bundle:nil];
     
     // Pass the selected object to the new view controller.
     
     // Push the view controller.
     [self.navigationController pushViewController:detailViewController animated:YES];
 }
-*/
+
 
 /*
 #pragma mark - Navigation

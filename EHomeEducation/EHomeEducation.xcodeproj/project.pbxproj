@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		793796871A1C4FBF0013FD21 /* EHETeacher.m in Sources */ = {isa = PBXBuildFile; fileRef = 793796861A1C4FBF0013FD21 /* EHETeacher.m */; };
+		7937968B1A1C72630013FD21 /* EHEStdDetailInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 793796891A1C72630013FD21 /* EHEStdDetailInfoViewController.m */; };
+		7937968C1A1C72630013FD21 /* EHEStdDetailInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7937968A1A1C72630013FD21 /* EHEStdDetailInfoViewController.xib */; };
 		797C306D1A19D32900DB84E4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 797C306C1A19D32900DB84E4 /* main.m */; };
 		797C30701A19D32900DB84E4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 797C306F1A19D32900DB84E4 /* AppDelegate.m */; };
 		797C30731A19D32900DB84E4 /* EHomeEducation.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 797C30711A19D32900DB84E4 /* EHomeEducation.xcdatamodeld */; };
@@ -49,6 +51,9 @@
 /* Begin PBXFileReference section */
 		793796851A1C4FBF0013FD21 /* EHETeacher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHETeacher.h; sourceTree = "<group>"; };
 		793796861A1C4FBF0013FD21 /* EHETeacher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHETeacher.m; sourceTree = "<group>"; };
+		793796881A1C72630013FD21 /* EHEStdDetailInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHEStdDetailInfoViewController.h; sourceTree = "<group>"; };
+		793796891A1C72630013FD21 /* EHEStdDetailInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHEStdDetailInfoViewController.m; sourceTree = "<group>"; };
+		7937968A1A1C72630013FD21 /* EHEStdDetailInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHEStdDetailInfoViewController.xib; sourceTree = "<group>"; };
 		797C30671A19D32900DB84E4 /* EHomeEducation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EHomeEducation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		797C306B1A19D32900DB84E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		797C306C1A19D32900DB84E4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -244,6 +249,9 @@
 				79D931C31A1B1F3000B709A1 /* EHEStdBookingManagerViewController.h */,
 				79D931C41A1B1F3000B709A1 /* EHEStdBookingManagerViewController.m */,
 				79D931C51A1B1F3000B709A1 /* EHEStdBookingManagerViewController.xib */,
+				793796881A1C72630013FD21 /* EHEStdDetailInfoViewController.h */,
+				793796891A1C72630013FD21 /* EHEStdDetailInfoViewController.m */,
+				7937968A1A1C72630013FD21 /* EHEStdDetailInfoViewController.xib */,
 			);
 			name = Student;
 			sourceTree = "<group>";
@@ -343,6 +351,7 @@
 				797C30CC1A19DA9900DB84E4 /* EHEStdMapSearchingViewController.xib in Resources */,
 				797C307B1A19D32900DB84E4 /* Images.xcassets in Resources */,
 				797C30C71A19DA6E00DB84E4 /* EHETchSearchingTableViewController.xib in Resources */,
+				7937968C1A1C72630013FD21 /* EHEStdDetailInfoViewController.xib in Resources */,
 				797C30D21A19DAD400DB84E4 /* EHETchSearchingMapViewController.xib in Resources */,
 				797C30D71A19DB5000DB84E4 /* EHEStdLoginViewController.xib in Resources */,
 				797C30DC1A19DB6F00DB84E4 /* EHETchLoginViewController.xib in Resources */,
@@ -377,6 +386,7 @@
 				797C30CB1A19DA9900DB84E4 /* EHEStdMapSearchingViewController.m in Sources */,
 				797C30C61A19DA6E00DB84E4 /* EHETchSearchingTableViewController.m in Sources */,
 				79D931D11A1B22DF00B709A1 /* EHECommunicationManager.m in Sources */,
+				7937968B1A1C72630013FD21 /* EHEStdDetailInfoViewController.m in Sources */,
 				797C30C11A19DA5000DB84E4 /* EHEStdSearchingTableViewController.m in Sources */,
 				797C30E51A19DC6800DB84E4 /* EHETchSettingViewController.m in Sources */,
 				79D931C61A1B1F3000B709A1 /* EHEStdBookingManagerViewController.m in Sources */,

@@ -26,10 +26,11 @@
     self.window.backgroundColor = [UIColor whiteColor];
     
     EHEStdSearchingTableViewController *searchingTable = [[EHEStdSearchingTableViewController alloc] initWithNibName:nil bundle:nil];
+    UINavigationController *navi_searching = [[UINavigationController alloc] initWithRootViewController:searchingTable];
     EHEStdBookingManagerViewController *bookingManager = [[EHEStdBookingManagerViewController alloc] initWithNibName:nil bundle:nil];
     EHEStdSettingViewController *setting = [[EHEStdSettingViewController alloc] initWithNibName:nil bundle:nil];
     UITabBarController *tab = [[UITabBarController alloc] initWithNibName:nil bundle:nil];
-    tab.viewControllers = @[searchingTable,bookingManager, setting];
+    tab.viewControllers = @[navi_searching,bookingManager, setting];
     [[tab.viewControllers objectAtIndex:0] setTitle:@"首页"];
     [[tab.viewControllers objectAtIndex:1] setTitle:@"我的"];
     [[tab.viewControllers objectAtIndex:2] setTitle:@"设置"];
