@@ -7,7 +7,7 @@
 //
 
 #import "EHEStdSettingViewController.h"
-
+#import "EHEStdSettingDetailViewController.h"
 @interface EHEStdSettingViewController ()
 
 @end
@@ -76,6 +76,7 @@
     }
     return  cell;
 }
+#pragma mark - TableView Delegate Meythod
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
    if([indexPath section]==0)
@@ -86,5 +87,18 @@
      }
    }
     return 44.0f;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if([indexPath section]==0)
+    {
+        if([indexPath row]==0)
+        {
+            EHEStdSettingDetailViewController * detailViewController=[[EHEStdSettingDetailViewController alloc]initWithNibName:@"EHEStdSettingDetailViewController" bundle:nil];//create a new class
+    
+            [self presentViewController:detailViewController animated:YES completion:nil];//translate to the distination view controller
+        }
+    }
 }
 @end

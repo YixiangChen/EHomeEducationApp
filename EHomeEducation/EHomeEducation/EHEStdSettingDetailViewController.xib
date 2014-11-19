@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EHEStdSettingDetailViewController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="姓名：" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zUZ-jh-kpf">
+                    <rect key="frame" x="41" y="42" width="264" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="ruK-9z-VOQ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="所在地区：" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DtQ-CQ-fjY">
+                    <rect key="frame" x="41" y="208" width="264" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="出生日期：" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Go3-hQ-4aE">
+                    <rect key="frame" x="41" y="276" width="264" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="说明：" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nyr-Yi-RLw">
+                    <rect key="frame" x="41" y="345" width="264" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="性别：" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1np-FS-Kkv">
+                    <rect key="frame" x="41" y="95" width="264" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="年龄：" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8ON-g4-caP">
+                    <rect key="frame" x="41" y="148" width="264" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Go3-hQ-4aE" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="41" id="53s-sE-PRx"/>
+                <constraint firstItem="DtQ-CQ-fjY" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="41" id="7Ey-W6-NoQ"/>
+                <constraint firstAttribute="trailing" secondItem="Go3-hQ-4aE" secondAttribute="trailing" constant="70" id="7l6-k3-fKh"/>
+                <constraint firstAttribute="trailing" secondItem="Nyr-Yi-RLw" secondAttribute="trailing" constant="70" id="Ah5-02-NKt"/>
+                <constraint firstItem="Nyr-Yi-RLw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="41" id="HYW-V4-IWq"/>
+                <constraint firstAttribute="trailing" secondItem="1np-FS-Kkv" secondAttribute="trailing" constant="70" id="Lz8-jY-5CJ"/>
+                <constraint firstItem="zUZ-jh-kpf" firstAttribute="height" secondItem="1np-FS-Kkv" secondAttribute="height" id="QA3-6f-3IJ"/>
+                <constraint firstAttribute="trailing" secondItem="8ON-g4-caP" secondAttribute="trailing" constant="70" id="Qpx-6P-Mej"/>
+                <constraint firstItem="Go3-hQ-4aE" firstAttribute="top" secondItem="DtQ-CQ-fjY" secondAttribute="bottom" constant="35" id="X4W-Y9-51c"/>
+                <constraint firstAttribute="trailing" secondItem="DtQ-CQ-fjY" secondAttribute="trailing" constant="70" id="aCW-0U-cLs"/>
+                <constraint firstItem="1np-FS-Kkv" firstAttribute="height" secondItem="8ON-g4-caP" secondAttribute="height" id="cyF-AZ-uG1"/>
+                <constraint firstItem="zUZ-jh-kpf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="42" id="iiX-XL-Zp4"/>
+                <constraint firstAttribute="trailing" secondItem="zUZ-jh-kpf" secondAttribute="trailing" constant="70" id="jPq-Ey-krd"/>
+                <constraint firstItem="zUZ-jh-kpf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="41" id="mOs-97-9uR"/>
+                <constraint firstItem="DtQ-CQ-fjY" firstAttribute="top" secondItem="8ON-g4-caP" secondAttribute="bottom" constant="31" id="pK3-VU-0rA"/>
+                <constraint firstItem="Nyr-Yi-RLw" firstAttribute="height" secondItem="Go3-hQ-4aE" secondAttribute="height" id="saz-Qh-KzZ"/>
+                <constraint firstItem="Nyr-Yi-RLw" firstAttribute="height" secondItem="Go3-hQ-4aE" secondAttribute="height" id="zfZ-bR-yZR"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <point key="canvasLocation" x="359.5" y="267.5"/>
+        </view>
+    </objects>
+</document>

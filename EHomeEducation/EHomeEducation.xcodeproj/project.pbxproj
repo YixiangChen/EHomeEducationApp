@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F186EDB1A1C914C001D1BB5 /* EHEStdSettingDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F186ED91A1C914C001D1BB5 /* EHEStdSettingDetailViewController.m */; };
+		0F186EDC1A1C914C001D1BB5 /* EHEStdSettingDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F186EDA1A1C914C001D1BB5 /* EHEStdSettingDetailViewController.xib */; };
 		0F5793641A1AF78700862914 /* MF_Base64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5793631A1AF78700862914 /* MF_Base64Additions.m */; };
 		0F5793661A1B4BE500862914 /* 11.0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0F5793651A1B4BE500862914 /* 11.0.jpg */; };
 		797C306D1A19D32900DB84E4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 797C306C1A19D32900DB84E4 /* main.m */; };
@@ -44,6 +46,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F186ED81A1C914C001D1BB5 /* EHEStdSettingDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHEStdSettingDetailViewController.h; sourceTree = "<group>"; };
+		0F186ED91A1C914C001D1BB5 /* EHEStdSettingDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHEStdSettingDetailViewController.m; sourceTree = "<group>"; };
+		0F186EDA1A1C914C001D1BB5 /* EHEStdSettingDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHEStdSettingDetailViewController.xib; sourceTree = "<group>"; };
 		0F5793621A1AF78700862914 /* MF_Base64Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MF_Base64Additions.h; sourceTree = "<group>"; };
 		0F5793631A1AF78700862914 /* MF_Base64Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MF_Base64Additions.m; sourceTree = "<group>"; };
 		0F5793651A1B4BE500862914 /* 11.0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 11.0.jpg; sourceTree = "<group>"; };
@@ -238,6 +243,9 @@
 				797C30DD1A19DC0D00DB84E4 /* EHEStdSettingViewController.h */,
 				797C30DE1A19DC0D00DB84E4 /* EHEStdSettingViewController.m */,
 				797C30DF1A19DC0D00DB84E4 /* EHEStdSettingViewController.xib */,
+				0F186ED81A1C914C001D1BB5 /* EHEStdSettingDetailViewController.h */,
+				0F186ED91A1C914C001D1BB5 /* EHEStdSettingDetailViewController.m */,
+				0F186EDA1A1C914C001D1BB5 /* EHEStdSettingDetailViewController.xib */,
 			);
 			name = Student;
 			sourceTree = "<group>";
@@ -325,6 +333,7 @@
 				797C30E61A19DC6800DB84E4 /* EHETchSettingViewController.xib in Resources */,
 				797C307E1A19D32900DB84E4 /* LaunchScreen.xib in Resources */,
 				797C30C21A19DA5000DB84E4 /* EHEStdSearchingTableViewController.xib in Resources */,
+				0F186EDC1A1C914C001D1BB5 /* EHEStdSettingDetailViewController.xib in Resources */,
 				0F5793661A1B4BE500862914 /* 11.0.jpg in Resources */,
 				797C30CC1A19DA9900DB84E4 /* EHEStdMapSearchingViewController.xib in Resources */,
 				797C307B1A19D32900DB84E4 /* Images.xcassets in Resources */,
@@ -362,6 +371,7 @@
 				797C30C61A19DA6E00DB84E4 /* EHETchSearchingTableViewController.m in Sources */,
 				797C30C11A19DA5000DB84E4 /* EHEStdSearchingTableViewController.m in Sources */,
 				797C30E51A19DC6800DB84E4 /* EHETchSettingViewController.m in Sources */,
+				0F186EDB1A1C914C001D1BB5 /* EHEStdSettingDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

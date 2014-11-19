@@ -16,13 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="用户名称：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yK0-Yi-mdg">
-                    <rect key="frame" x="42" y="89" width="85" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="用户密码：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S0e-xE-kXa">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="用户密码：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S0e-xE-kXa">
                     <rect key="frame" x="42" y="152" width="85" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -34,12 +28,15 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="用户名" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1yg-Kh-KVH">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="用户名" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1yg-Kh-KVH">
                     <rect key="frame" x="121" y="86" width="208" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="SaJ-3W-WUv"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VJV-v5-Idu">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VJV-v5-Idu">
                     <rect key="frame" x="121" y="149" width="208" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
@@ -59,10 +56,27 @@
                         <action selector="registerButtonPressed:" destination="-1" eventType="touchUpInside" id="pnz-cV-S87"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="用户名称：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yK0-Yi-mdg">
+                    <rect key="frame" x="42" y="89" width="85" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="yK0-Yi-mdg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="89" id="8hJ-4Y-P6i"/>
+                <constraint firstAttribute="trailing" secondItem="VJV-v5-Idu" secondAttribute="trailing" constant="46" id="AXh-bM-PXy"/>
+                <constraint firstItem="1yg-Kh-KVH" firstAttribute="leading" secondItem="yK0-Yi-mdg" secondAttribute="trailing" constant="-6" id="Dk1-dL-iDf"/>
+                <constraint firstItem="VJV-v5-Idu" firstAttribute="height" secondItem="1yg-Kh-KVH" secondAttribute="height" id="doX-F5-Q51"/>
+                <constraint firstAttribute="trailing" secondItem="1yg-Kh-KVH" secondAttribute="trailing" constant="46" id="goe-O4-Yn1"/>
+                <constraint firstItem="1yg-Kh-KVH" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="86" id="jyH-is-wIP"/>
+                <constraint firstItem="yK0-Yi-mdg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="42" id="khA-IM-RWQ"/>
+                <constraint firstItem="VJV-v5-Idu" firstAttribute="leading" secondItem="S0e-xE-kXa" secondAttribute="trailing" constant="-6" id="wzA-5k-Le7"/>
+                <constraint firstItem="S0e-xE-kXa" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="42" id="zIS-Th-Ips"/>
+            </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-            <point key="canvasLocation" x="226.5" y="225.5"/>
+            <point key="canvasLocation" x="312.5" y="210.5"/>
         </view>
     </objects>
 </document>
