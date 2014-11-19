@@ -11,7 +11,7 @@
 #import "EHETeacher.h"
 
 @interface EHECoreDataManager : NSObject
-@property(strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+//@property(strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property(strong, nonatomic) NSManagedObjectContext *context;
 + (EHECoreDataManager *) getInstance;
 -(void) updateBasicInfosOfTeachers:(NSDictionary *) dict;

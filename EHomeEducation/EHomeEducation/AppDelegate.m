@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "EHEStdSearchingTableViewController.h" 
+#import "EHEStdSearchingTableViewController.h"
 #import "EHEStdSettingViewController.h"
 #import "EHEStdBookingManagerViewController.h"
 #import "EHECommunicationManager.h"
