@@ -11,6 +11,7 @@
 #import "EHECommunicationManager.h"
 #import "EHEStdDetailInfoViewController.h"
 
+
 @interface EHEStdSearchingTableViewController ()
 
 @end
@@ -26,9 +27,24 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    self.coreDataManager = [EHECoreDataManager getInstance];
+    self.mapSearching = [[EHEStdMapSearchingViewController alloc] initWithNibName:nil bundle:nil];
+    
+    self.segmentedControl = [[UISegmentedControl alloc]initWithItems:[[NSArray alloc]initWithObjects:@"列表",@"地图",nil]];
+    self.segmentedControl.frame = CGRectMake(40.0, 20.0,240.0, 30.0);
+    self.segmentedControl.tintColor = [UIColor colorWithRed:192.0 / 256.0 green:233 / 256.0 blue:189 / 256.0 alpha:0.8];
+    self.segmentedControl.selectedSegmentIndex = 0;//默认选中的按钮索引
+    
+    NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont boldSystemFontOfSize:12],NSFontAttributeName,[UIColor redColor], NSForegroundColorAttributeName, nil];
+    [self.segmentedControl setTitleTextAttributes:attributes forState:UIControlStateNormal];
+    NSDictionary *highlightedAttributes = [NSDictionary dictionaryWithObject:[UIColor redColor] forKey:NSForegroundColorAttributeName];
+    
+    [self.segmentedControl setTitleTextAttributes:highlightedAttributes forState:UIControlStateHighlighted];
+    
+    [self.segmentedControl addTarget:self action:@selector(selectedSegmentChanged:)forControlEvents:UIControlEventValueChanged];
+    self.navigationItem.titleView = self.segmentedControl;
 
-    //[self.coreDataManager fetchAllTeachersInfos];
+    
+    self.coreDataManager = [EHECoreDataManager getInstance];
     if ([[self.coreDataManager fetchBasicInfosOfTeachers] count] > 0){
         NSLog(@"core data already exist");
     }else {
@@ -36,8 +52,6 @@
     [[EHECommunicationManager getInstance] loadDataWithTeacherID:1];
     [NSThread sleepForTimeInterval:3];
     }
-    
-    [self.coreDataManager fetchDetailInfosWithTeacherId:1];
     
     
     NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"EHETeacher"];
@@ -51,6 +65,20 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void) selectedSegmentChanged:(UISegmentedControl *) seg {
+        if(seg.selectedSegmentIndex==0)
+        {
+            
+            [self.mapSearching.view removeFromSuperview];
+        }
+        else
+        {
+            NSLog(@"这是地图");
+            [self.view addSubview: self.mapSearching.view];
+        }
+    
 }
 
 #pragma mark - Table view data source

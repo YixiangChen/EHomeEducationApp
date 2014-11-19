@@ -7,12 +7,12 @@
 //
 
 #import "AppDelegate.h"
-#import "EHEStdSearchingTableViewController.h"
-#import "EHEStdSettingViewController.h"
-#import "EHEStdBookingManagerViewController.h"
 #import "EHECommunicationManager.h"
-
+#import "EHEStdSearchingTableViewController.h"
 #import "EHEStdMapSearchingViewController.h"
+#import "EHEStdBookingManagerViewController.h"
+#import "EHEStdSettingViewController.h"
+
 @interface AppDelegate ()
 
 @end
@@ -26,18 +26,23 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     
-    EHEStdSearchingTableViewController *searchingTable = [[EHEStdSearchingTableViewController alloc] initWithNibName:nil bundle:nil];
+    EHEStdSearchingTableViewController *searchingTable =[[EHEStdSearchingTableViewController alloc] initWithNibName:nil bundle:nil];
     UINavigationController *navi_searching = [[UINavigationController alloc] initWithRootViewController:searchingTable];
-    //EHEStdSearchingTableViewController * searchingTable = [[EHEStdSearchingTableViewController alloc] initWithNibName:nil bundle:nil];
+    //navi_searching.navigationBarHidden=YES;
+    
+    EHEStdMapSearchingViewController * mapViewController=[[EHEStdMapSearchingViewController alloc]initWithNibName:nil bundle:nil];
+    UINavigationController * navi_mapSearching=[[UINavigationController alloc]initWithRootViewController:mapViewController];
+    navi_mapSearching.navigationBarHidden=YES;
+
+
     EHEStdBookingManagerViewController *bookingManager = [[EHEStdBookingManagerViewController alloc] initWithNibName:nil bundle:nil];
     EHEStdSettingViewController *setting = [[EHEStdSettingViewController alloc] initWithNibName:nil bundle:nil];
-    EHEStdMapSearchingViewController * mapViewController=[[EHEStdMapSearchingViewController alloc]initWithNibName:nil bundle:nil];
-    UINavigationController * navigationController=[[UINavigationController alloc]initWithRootViewController:mapViewController];
-    navigationController.navigationBarHidden=YES;
+
+
     
     UITabBarController *tab = [[UITabBarController alloc] initWithNibName:nil bundle:nil];
+    //tab.viewControllers = @[navi_searching,bookingManager, setting];
     tab.viewControllers = @[navi_searching,bookingManager, setting];
-    tab.viewControllers = @[navigationController,bookingManager, setting];
     [[tab.viewControllers objectAtIndex:0] setTitle:@"首页"];
     [[tab.viewControllers objectAtIndex:1] setTitle:@"我的"];
     [[tab.viewControllers objectAtIndex:2] setTitle:@"设置"];
@@ -50,11 +55,8 @@
         NSLog(@"manager start failed!");
     }
     
-    
     self.window.rootViewController = tab;
     [self.window makeKeyAndVisible];
-    
-    //[[EHECommunicationManager getInstance]loadTeachersInfo] ;
     
     return YES;
 }

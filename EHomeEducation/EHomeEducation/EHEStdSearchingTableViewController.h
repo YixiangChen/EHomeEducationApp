@@ -9,9 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 #import "EHECoreDataManager.h"
+#import "EHEStdMapSearchingViewController.h"
 
 @interface EHEStdSearchingTableViewController : UITableViewController<NSFetchedResultsControllerDelegate>
 @property(strong, nonatomic) EHECoreDataManager *coreDataManager;
 @property(strong, nonatomic) NSFetchedResultsController *fetchedResultController;
+@property(strong,nonatomic)UISegmentedControl * segmentedControl;
+@property(strong, nonatomic) EHEStdMapSearchingViewController *mapSearching;
 
 @end
