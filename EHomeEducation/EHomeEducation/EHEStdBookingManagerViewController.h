@@ -2,8 +2,8 @@
 //  EHEStdBookingManagerViewController.h
 //  EHomeEducation
 //
-//  Created by Yixiang Chen on 11/18/14.
-//  Copyright (c) 2014 AppChen. All rights reserved.
+//  Created by MacBook Pro on 14-11-18.
+//  Copyright (c) 2014年 AppChen. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

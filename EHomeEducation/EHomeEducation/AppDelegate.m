@@ -12,6 +12,7 @@
 #import "EHEStdBookingManagerViewController.h"
 #import "EHECommunicationManager.h"
 
+#import "EHEStdMapSearchingViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -27,14 +28,28 @@
     
     EHEStdSearchingTableViewController *searchingTable = [[EHEStdSearchingTableViewController alloc] initWithNibName:nil bundle:nil];
     UINavigationController *navi_searching = [[UINavigationController alloc] initWithRootViewController:searchingTable];
+    //EHEStdSearchingTableViewController * searchingTable = [[EHEStdSearchingTableViewController alloc] initWithNibName:nil bundle:nil];
     EHEStdBookingManagerViewController *bookingManager = [[EHEStdBookingManagerViewController alloc] initWithNibName:nil bundle:nil];
     EHEStdSettingViewController *setting = [[EHEStdSettingViewController alloc] initWithNibName:nil bundle:nil];
+    EHEStdMapSearchingViewController * mapViewController=[[EHEStdMapSearchingViewController alloc]initWithNibName:nil bundle:nil];
+    UINavigationController * navigationController=[[UINavigationController alloc]initWithRootViewController:mapViewController];
+    navigationController.navigationBarHidden=YES;
+    
     UITabBarController *tab = [[UITabBarController alloc] initWithNibName:nil bundle:nil];
     tab.viewControllers = @[navi_searching,bookingManager, setting];
+    tab.viewControllers = @[navigationController,bookingManager, setting];
     [[tab.viewControllers objectAtIndex:0] setTitle:@"首页"];
     [[tab.viewControllers objectAtIndex:1] setTitle:@"我的"];
     [[tab.viewControllers objectAtIndex:2] setTitle:@"设置"];
     tab.tabBar.backgroundColor = [UIColor grayColor];
+    
+    _mapManager = [[BMKMapManager alloc]init];
+    // 如果要关注网络及授权验证事件，请设定     generalDelegate参数
+    BOOL ret = [_mapManager start:@"XfRTzKUzfDjbBIKC55iY2Wa1"  generalDelegate:nil];
+    if (!ret) {
+        NSLog(@"manager start failed!");
+    }
+    
     
     self.window.rootViewController = tab;
     [self.window makeKeyAndVisible];

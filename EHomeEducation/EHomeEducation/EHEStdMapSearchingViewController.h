@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BMapKit.h"
+#import "BMKMapView.h"
+@interface EHEStdMapSearchingViewController : UIViewController<BMKLocationServiceDelegate,BMKMapViewDelegate>
 
-@interface EHEStdMapSearchingViewController : UIViewController
+@property(strong,nonatomic)CLLocationManager * locationManager;
+@property(strong,nonatomic)BMKLocationService * locationService;
+@property(nonatomic)CLLocationCoordinate2D userLocation;
+@property(strong,nonatomic)UIView * backgroundView;
+@property(strong,nonatomic)BMKMapView * mapView;
+@property(strong,nonatomic)NSArray * segmentedData;
+@property(strong,nonatomic)UISegmentedControl * segmentedControl;
 
 @end
