@@ -26,7 +26,9 @@
     
     // Override point for customization after application launch.
     
-    
+//    EHEStdSettingViewController * settingViewController =[[EHEStdSettingViewController alloc]init];
+//    [self.window addSubview:settingViewController.view];
+   
     [self.window makeKeyAndVisible];
     return YES;
 }
