@@ -9,7 +9,9 @@
 #import "EHEStdSearchingTableViewController.h"
 #import "EHETeacher.h"
 #import "EHECommunicationManager.h"
-#import "EHEStdDetailInfoViewController.h"
+#import "EHECoreDataManager.h"
+#import "EHETeacherDetailViewController.h"
+#import "EHETeacherTableViewCell.h"
 
 
 @interface EHEStdSearchingTableViewController ()
@@ -50,7 +52,6 @@
     }else {
     [[EHECommunicationManager getInstance]loadTeachersInfo];
     [[EHECommunicationManager getInstance] loadDataWithTeacherID:1];
-    [NSThread sleepForTimeInterval:3];
     }
     
     
@@ -75,7 +76,6 @@
         }
         else
         {
-            NSLog(@"这是地图");
             [self.view addSubview: self.mapSearching.view];
         }
     
@@ -96,15 +96,17 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+    static NSString *cellID = @"Cell";
+    EHETeacherTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    if (cell == nil)
+    {
+        cell = (EHETeacherTableViewCell *)[[NSBundle mainBundle] loadNibNamed:@"EHETeacherTableViewCell" owner:self options:nil][0];
     }
     // Configure the cell...
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     EHETeacher * teacher = [self.fetchedResultController objectAtIndexPath:indexPath];
-    cell.textLabel.text = teacher.name;
+    [cell setContent:teacher];
     
     return cell;
 }
@@ -151,14 +153,21 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Navigation logic may go here, for example:
     // Create the next view controller.
-    EHEStdDetailInfoViewController *detailViewController = [[EHEStdDetailInfoViewController alloc] initWithNibName:nil bundle:nil];
-    
+    EHETeacherDetailViewController *detailViewController = [[EHETeacherDetailViewController alloc] initWithNibName:nil bundle:nil];
+    EHETeacher * teacher = [self.fetchedResultController objectAtIndexPath:indexPath];
+    [[EHECommunicationManager getInstance] loadDataWithTeacherID:[teacher.teacherId integerValue]];
+    [NSThread sleepForTimeInterval:1];
+    EHETeacher * teacherWithDetailInfos = [[EHECoreDataManager getInstance] fetchDetailInfosWithTeacherId:[teacher.teacherId integerValue]];
+    detailViewController.teacher = teacherWithDetailInfos;
     // Pass the selected object to the new view controller.
     
     // Push the view controller.
     [self.navigationController pushViewController:detailViewController animated:YES];
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 88;
+}
 
 /*
 #pragma mark - Navigation
