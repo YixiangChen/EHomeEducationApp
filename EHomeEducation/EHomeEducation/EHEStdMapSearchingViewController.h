@@ -19,8 +19,5 @@
 @property(nonatomic)CLLocationCoordinate2D userLocation;
 @property(strong,nonatomic)BMKMapView * mapView;
 @property(strong,nonatomic)NSArray * teacherInfoArray;
-@property(strong,nonatomic)NSMutableDictionary * teacherSubjectDictionary;
-@property(strong,nonatomic)UILabel * labelSubject;
-@property(strong,nonatomic)UILabel * labelEveluation;
 @property(strong,nonatomic)EHEBaiduMapView * mapViewPop;
 @end

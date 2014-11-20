@@ -9,6 +9,7 @@
 #import "EHEBaiduMapView.h"
 
 @implementation EHEBaiduMapView
+//实例化一个百度气泡类，让气泡中的图片和文字说明添加到气泡中
 -(id)init
 {
     if(self=[super init])
