@@ -40,6 +40,10 @@
         //启动LocationService
         [_locationService startUserLocationService];
         [self.view addSubview:self.mapView];
+        
+        self.count=1;
+        
+        self.bubbleDictionary =[[NSMutableDictionary alloc]initWithCapacity:[self.teacherInfoArray count]];
     }
     
 }
@@ -92,11 +96,20 @@
         self.mapViewPop.labelTeacherRank.text=[NSString stringWithFormat:@"评价星级:%@",teacher.rank];
         self.mapViewPop.labelTeacherSubject.text=[NSString stringWithFormat:@"科目:%@",teacher.subjectInfo];
         self.mapViewPop.teacherImageView.image=[UIImage imageNamed:@"png-0010"];
+        self.mapViewPop.teacherID=teacher.teacherId;
+        
         //添加大头针
+        [self.bubbleDictionary setObject:self.mapViewPop forKey:@(self.count)];
+        
         [_mapView addAnnotation:annotation];
+        self.count++;
     }
     //在定位后要停止定位，不然系统一直轮询设备造成内存泄露
     [self.locationService stopUserLocationService];
+}
+-(void)mapPopTouchUp:(UITapGestureRecognizer *)sender
+{
+    NSLog(@"Jump to another view!");
 }
 -(BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id<BMKAnnotation>)annotation
 {
@@ -118,22 +131,30 @@
            CGSize titleSize = [self.mapViewPop.labelTeacherSubject.text sizeWithFont:[UIFont systemFontOfSize:12.0f] constrainedToSize:CGSizeMake(MAXFLOAT, 30)];
            self.mapViewPop.frame=CGRectMake(80, 0,titleSize.width+75, 70);
            self.mapViewPop.backgroundColor=[UIColor grayColor];
-           self.mapViewPop.alpha=0.8;
+           self.mapViewPop.alpha=1.0;
            [self.mapViewPop.layer setCornerRadius:10];
+           
            //自定义气泡的创建
            BMKActionPaopaoView *paopao=[[BMKActionPaopaoView alloc] initWithCustomView:self.mapViewPop];
            //自定义气泡的赋值和加载
+           paopao.tag=self.count;
            newAnnotationView.paopaoView=paopao;
-           
        }
        newAnnotationView.animatesDrop = YES;// 设置该标注点动画显示
        return newAnnotationView;
    }
     return nil;
 }
+-(void)mapView:(BMKMapView *)mapView annotationViewForBubble:(BMKAnnotationView *)view
+{
+    EHEBaiduMapView * mapViewBubble= [self.bubbleDictionary objectForKey:@(view.paopaoView.tag)];
+    NSLog(@"teacherid=%@,teacherName=%@",mapViewBubble.teacherID,mapViewBubble.labelTeacherName.text);
+}
+-(void)mapView:(BMKMapView *)mapView didSelectAnnotationView:(BMKAnnotationView *)view
+{
+}
 -(void)viewDidDisappear:(BOOL)animated
 {
     self.mapView=nil;
 }
-
 @end

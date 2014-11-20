@@ -13,5 +13,6 @@
 @property(strong,nonatomic)UILabel * labelTeacherName;
 @property(strong,nonatomic)UILabel * labelTeacherSubject;
 @property(strong,nonatomic)UILabel * labelTeacherRank;
+@property(strong,nonatomic)NSNumber * teacherID;
 -(id)init;
 @end

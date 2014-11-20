@@ -34,6 +34,13 @@
         self.labelTeacherRank.backgroundColor=[UIColor clearColor];
         self.labelTeacherRank.font=[UIFont systemFontOfSize:12.0f];
         self.labelTeacherRank.alpha=1.0f;
+        
+        self.userInteractionEnabled = YES;
+        //UITapGestureRecognizer *singleTapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleSingleTap:)];
+        //singleTapGesture.numberOfTapsRequired = 1;
+        //singleTapGesture.numberOfTouchesRequired  = 1;
+        //[singleTapGesture requireGestureRecognizerToFail:singleTapGesture];
+        //[self addGestureRecognizer:singleTapGesture];
 
     }
     [self addSubview:self->_teacherImageView];
@@ -41,7 +48,12 @@
     [self addSubview:self->_labelTeacherSubject];
     [self addSubview:self->_labelTeacherRank];
     
+    
     return self;
+}
+-(void)handleSingleTap:(UIGestureRecognizer *)sender
+{
+    NSLog(@"123");
 }
 
 @end
