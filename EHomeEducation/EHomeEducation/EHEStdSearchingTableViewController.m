@@ -47,12 +47,11 @@
 
     
     self.coreDataManager = [EHECoreDataManager getInstance];
-    if ([[self.coreDataManager fetchBasicInfosOfTeachers] count] > 0){
-        NSLog(@"core data already exist");
-    }else {
-    [[EHECommunicationManager getInstance]loadTeachersInfo];
-    [[EHECommunicationManager getInstance] loadDataWithTeacherID:1];
+    self.allTeachersNearby = [[NSArray alloc] initWithArray:[self.coreDataManager fetchBasicInfosOfTeachers]];
+    for (EHETeacher * teacher in self.allTeachersNearby) {
+        [[EHECommunicationManager getInstance] loadDataWithTeacherID:[teacher.teacherId integerValue]];
     }
+
     
     
     NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"EHETeacher"];
@@ -60,6 +59,7 @@
     request.sortDescriptors = @[sd1];
     self.fetchedResultController = [[NSFetchedResultsController alloc]initWithFetchRequest:request managedObjectContext:self.coreDataManager.context sectionNameKeyPath:@"name" cacheName:@"Teacher"];
     self.fetchedResultController.delegate = self;
+    [NSFetchedResultsController deleteCacheWithName:nil];
     [self.fetchedResultController performFetch:nil];
 }
 
@@ -155,9 +155,8 @@
     // Create the next view controller.
     EHETeacherDetailViewController *detailViewController = [[EHETeacherDetailViewController alloc] initWithNibName:nil bundle:nil];
     EHETeacher * teacher = [self.fetchedResultController objectAtIndexPath:indexPath];
-    [[EHECommunicationManager getInstance] loadDataWithTeacherID:[teacher.teacherId integerValue]];
-    [NSThread sleepForTimeInterval:1];
     EHETeacher * teacherWithDetailInfos = [[EHECoreDataManager getInstance] fetchDetailInfosWithTeacherId:[teacher.teacherId integerValue]];
+    
     detailViewController.teacher = teacherWithDetailInfos;
     // Pass the selected object to the new view controller.
     

@@ -2,7 +2,7 @@
 //  EHETeacher.m
 //  EHomeEducation
 //
-//  Created by Yixiang Chen on 11/19/14.
+//  Created by Yixiang Chen on 11/20/14.
 //  Copyright (c) 2014 AppChen. All rights reserved.
 //
 
@@ -11,22 +11,22 @@
 
 @implementation EHETeacher
 
-@dynamic latitude;
-@dynamic longitude;
-@dynamic majorAdress;
-@dynamic name;
-@dynamic rank;
-@dynamic subjectInfo;
-@dynamic teacherIcon;
-@dynamic teacherId;
 @dynamic birthday;
 @dynamic degree;
 @dynamic gender;
 @dynamic identity;
+@dynamic latitude;
+@dynamic longitude;
+@dynamic majorAdress;
 @dynamic memo;
+@dynamic name;
 @dynamic objectInfo;
 @dynamic qq;
+@dynamic rank;
 @dynamic sinaweibo;
+@dynamic subjectInfo;
+@dynamic teacherIcon;
+@dynamic teacherId;
 @dynamic telephone;
 @dynamic timePeriod;
 

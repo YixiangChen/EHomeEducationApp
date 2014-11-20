@@ -2,7 +2,7 @@
 //  EHETeacher.h
 //  EHomeEducation
 //
-//  Created by Yixiang Chen on 11/19/14.
+//  Created by Yixiang Chen on 11/20/14.
 //  Copyright (c) 2014 AppChen. All rights reserved.
 //
 
@@ -12,22 +12,22 @@
 
 @interface EHETeacher : NSManagedObject
 
-@property (nonatomic, retain) NSNumber * latitude;
-@property (nonatomic, retain) NSNumber * longitude;
-@property (nonatomic, retain) NSString * majorAdress;
-@property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSNumber * rank;
-@property (nonatomic, retain) NSString * subjectInfo;
-@property (nonatomic, retain) NSData * teacherIcon;
-@property (nonatomic, retain) NSNumber * teacherId;
-@property (nonatomic, retain) NSString * birthday;
+@property (nonatomic, retain) NSDate * birthday;
 @property (nonatomic, retain) NSString * degree;
 @property (nonatomic, retain) NSString * gender;
 @property (nonatomic, retain) NSString * identity;
+@property (nonatomic, retain) NSNumber * latitude;
+@property (nonatomic, retain) NSNumber * longitude;
+@property (nonatomic, retain) NSString * majorAdress;
 @property (nonatomic, retain) NSString * memo;
+@property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * objectInfo;
 @property (nonatomic, retain) NSString * qq;
+@property (nonatomic, retain) NSNumber * rank;
 @property (nonatomic, retain) NSString * sinaweibo;
+@property (nonatomic, retain) NSString * subjectInfo;
+@property (nonatomic, retain) NSData * teacherIcon;
+@property (nonatomic, retain) NSNumber * teacherId;
 @property (nonatomic, retain) NSString * telephone;
 @property (nonatomic, retain) NSString * timePeriod;
 

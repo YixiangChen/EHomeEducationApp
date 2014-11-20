@@ -26,6 +26,13 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     
+    [[EHECoreDataManager getInstance] deleteData];
+    [[EHECommunicationManager getInstance]loadTeachersInfo];
+    [NSThread sleepForTimeInterval:2];
+    
+    UIBarButtonItem *appearance = [UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil];
+    [appearance setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIColor yellowColor] forKey:NSForegroundColorAttributeName] forState:1];
+    
     EHEStdSearchingTableViewController *searchingTable =[[EHEStdSearchingTableViewController alloc] initWithNibName:nil bundle:nil];
     UINavigationController *navi_searching = [[UINavigationController alloc] initWithRootViewController:searchingTable];
     //navi_searching.navigationBarHidden=YES;

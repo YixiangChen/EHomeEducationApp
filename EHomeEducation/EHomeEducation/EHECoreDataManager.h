@@ -18,5 +18,6 @@
 -(void)updateDetailInfos:(NSDictionary *) dict withTeacherId:(int) teacherId;
 -(NSArray *) fetchBasicInfosOfTeachers;
 -(EHETeacher *) fetchDetailInfosWithTeacherId:(int) teacherId;
+-(void) deleteData;
 
 @end

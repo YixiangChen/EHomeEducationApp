@@ -16,5 +16,6 @@
 @property(strong, nonatomic) NSFetchedResultsController *fetchedResultController;
 @property(strong,nonatomic)UISegmentedControl * segmentedControl;
 @property(strong, nonatomic) EHEStdMapSearchingViewController *mapSearching;
+@property(strong, nonatomic) NSArray *allTeachersNearby;
 
 @end

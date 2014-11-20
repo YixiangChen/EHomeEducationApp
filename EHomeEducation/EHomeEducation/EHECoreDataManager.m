@@ -62,7 +62,7 @@
     NSArray *teachers = [self.context executeFetchRequest:fetchRequest error:nil];
     EHETeacher *teacher = [teachers objectAtIndex:0];
     //EHETeacher * teacher = [NSEntityDescription insertNewObjectForEntityForName:@"EHETeacher" inManagedObjectContext:self.context];
-    
+    NSLog(@"ooooooooooo %@",dict);
     teacher.teacherId = [NSNumber numberWithInt:teacherId];
     teacher.birthday = dict[@"birthday"];
     teacher.degree = dict[@"degree"];
@@ -103,6 +103,7 @@
 
 -(EHETeacher *)fetchDetailInfosWithTeacherId:(int)teacherId {
     
+    NSLog(@"%d",teacherId);
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"EHETeacher"];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"teacherId = %d", teacherId];
     fetchRequest.predicate = predicate;
@@ -113,6 +114,7 @@
     
     NSError *error;
     NSArray *teachers = [self.context executeFetchRequest:fetchRequest error:&error];
+    NSLog(@"有多少个Teacher 啊      %@", teachers[0]);
     
     if (error)
     {
@@ -123,6 +125,29 @@
         return teachers[0];
     }
     return nil;
+}
+
+-(void)deleteData
+{
+ 
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"EHETeacher" inManagedObjectContext:self.context];
+    
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setIncludesPropertyValues:NO];
+    [request setEntity:entity];
+    NSError *error = nil;
+    NSArray *datas = [self.context executeFetchRequest:request error:&error];
+    if (!error && datas && [datas count])
+    {
+        for (NSManagedObject *obj in datas)
+        {
+            [self.context deleteObject:obj];
+        }
+        if (![self.context save:&error])
+        {
+            NSLog(@"error:%@",error);
+        }
+    }
 }
 
 @end
