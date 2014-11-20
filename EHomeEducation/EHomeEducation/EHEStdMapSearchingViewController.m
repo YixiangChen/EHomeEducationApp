@@ -8,7 +8,9 @@
 
 #import "EHEStdMapSearchingViewController.h"
 #import "TeacherAnnotations.h"
+
 @interface EHEStdMapSearchingViewController ()
+
 
 @end
 
@@ -18,6 +20,10 @@
     [super viewDidLoad];
     if([UIScreen mainScreen].bounds.size.width==320&&[UIScreen mainScreen].bounds.size.height==480)
     {
+        self.teacherSubjectDictionary=[[NSMutableDictionary alloc]initWithCapacity:10];
+        self.teacherInfoArray=[[NSArray alloc]init];
+         self.teacherInfoArray=[[EHECoreDataManager getInstance] fetchBasicInfosOfTeachers];
+        
         self.mapView=[[BMKMapView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-110)];
         self.mapView.delegate=self;
         
@@ -30,14 +36,17 @@
         //启动LocationService
         [_locationService startUserLocationService];
         [self.view addSubview:self.mapView];
+
+        self.labelSubject=[[UILabel alloc]init];
+        self.labelSubject.textColor=[UIColor whiteColor];
+        self.labelSubject.backgroundColor=[UIColor clearColor];
+        self.labelSubject.font=[UIFont systemFontOfSize:12.0f];
         
-        BMKPointAnnotation * annotation = [[BMKPointAnnotation alloc]init];
-        CLLocationCoordinate2D coor;
-        coor.latitude =39.912811;
-        coor.longitude =116.201575;
-        annotation.coordinate = coor;
-        annotation.title = @"郭老师";
-        [_mapView addAnnotation:annotation];
+        self.labelEveluation=[[UILabel alloc]init];
+        self.labelEveluation.textColor=[UIColor whiteColor];
+        self.labelEveluation.backgroundColor=[UIColor clearColor];
+        self.labelEveluation.font=[UIFont systemFontOfSize:12.0f];
+        
     }
     
 }
@@ -71,6 +80,20 @@
     {
         NSLog(@"。。。。");
     }
+    
+    for(EHETeacher * teacher in self.teacherInfoArray)
+    {
+        BMKPointAnnotation * annotation = [[BMKPointAnnotation alloc]init];
+        CLLocationCoordinate2D coor;
+        coor.latitude =teacher.latitude.doubleValue;
+        coor.longitude=teacher.longitude.doubleValue;
+        annotation.coordinate=coor;
+        annotation.title=teacher.name;
+        self.labelEveluation.text=[NSString stringWithFormat:@"评价星级:%@",teacher.rank];
+        self.labelSubject.text=[NSString stringWithFormat:@"科目:%@",teacher.subjectInfo];
+        [_mapView addAnnotation:annotation];
+    }
+    
     [self.locationService stopUserLocationService];
 }
 -(BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id<BMKAnnotation>)annotation
@@ -98,27 +121,19 @@
            teacherImage.alpha=1.0f;
            [popView addSubview:teacherImage];
            
-           UILabel * teacherName=[[UILabel alloc]initWithFrame:CGRectMake(55,0, 50, 25)];
-           teacherName.text=@"姓名：";
+           UILabel * teacherName=[[UILabel alloc]initWithFrame:CGRectMake(55,0, 150, 25)];
+           teacherName.text=[NSString stringWithFormat:@"姓名:%@",pa.title];
            teacherName.textColor=[UIColor whiteColor];
            teacherName.backgroundColor=[UIColor clearColor];
            teacherName.font=[UIFont systemFontOfSize:12.0f];
            teacherImage.alpha=1.0f;
            [popView addSubview:teacherName];
            
-           UILabel * teacherSubject=[[UILabel alloc]initWithFrame:CGRectMake(55, 22, 50, 25)];
-           teacherSubject.text=@"科目：";
-           teacherSubject.textColor=[UIColor whiteColor];
-           teacherSubject.backgroundColor=[UIColor clearColor];
-           teacherSubject.font=[UIFont systemFontOfSize:12.0f];
-           [popView addSubview:teacherSubject];
+           self.labelSubject.frame=CGRectMake(55, 22, 150, 25);
+           [popView addSubview:self.labelSubject];
            
-           UILabel * teacherEveluation=[[UILabel alloc]initWithFrame:CGRectMake(55, 45, 63, 25)];
-           teacherEveluation.text=@"评价星级：";
-           teacherEveluation.textColor=[UIColor whiteColor];
-           teacherEveluation.backgroundColor=[UIColor clearColor];
-           teacherEveluation.font=[UIFont systemFontOfSize:12.0f];
-           [popView addSubview:teacherEveluation];
+           self.labelEveluation.frame=CGRectMake(55, 45, 183, 25);
+           [popView addSubview:self.labelEveluation];
        }
        newAnnotationView.animatesDrop = YES;// 设置该标注点动画显示
        //自定义气泡
