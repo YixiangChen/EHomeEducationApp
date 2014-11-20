@@ -11,6 +11,7 @@
 #import "BMKMapView.h"
 #import <CoreData/CoreData.h>
 #import "EHECoreDataManager.h"
+#import "EHEBaiduMapView.h"
 @interface EHEStdMapSearchingViewController : UIViewController<BMKLocationServiceDelegate,BMKMapViewDelegate>
 
 @property(strong,nonatomic)CLLocationManager * locationManager;
@@ -21,4 +22,5 @@
 @property(strong,nonatomic)NSMutableDictionary * teacherSubjectDictionary;
 @property(strong,nonatomic)UILabel * labelSubject;
 @property(strong,nonatomic)UILabel * labelEveluation;
+@property(strong,nonatomic)EHEBaiduMapView * mapViewPop;
 @end

@@ -36,17 +36,6 @@
         //启动LocationService
         [_locationService startUserLocationService];
         [self.view addSubview:self.mapView];
-
-        self.labelSubject=[[UILabel alloc]init];
-        self.labelSubject.textColor=[UIColor whiteColor];
-        self.labelSubject.backgroundColor=[UIColor clearColor];
-        self.labelSubject.font=[UIFont systemFontOfSize:12.0f];
-        
-        self.labelEveluation=[[UILabel alloc]init];
-        self.labelEveluation.textColor=[UIColor whiteColor];
-        self.labelEveluation.backgroundColor=[UIColor clearColor];
-        self.labelEveluation.font=[UIFont systemFontOfSize:12.0f];
-        
     }
     
 }
@@ -89,11 +78,13 @@
         coor.longitude=teacher.longitude.doubleValue;
         annotation.coordinate=coor;
         annotation.title=teacher.name;
-        self.labelEveluation.text=[NSString stringWithFormat:@"评价星级:%@",teacher.rank];
-        self.labelSubject.text=[NSString stringWithFormat:@"科目:%@",teacher.subjectInfo];
+        self.mapViewPop=[[EHEBaiduMapView alloc]init];
+        self.mapViewPop.labelTeacherName.text=teacher.name;
+        self.mapViewPop.labelTeacherRank.text=[NSString stringWithFormat:@"评价星级:%@",teacher.rank];
+        self.mapViewPop.labelTeacherSubject.text=[NSString stringWithFormat:@"科目:%@",teacher.subjectInfo];
+        self.mapViewPop.teacherImageView.image=[UIImage imageNamed:@"png-0010"];
         [_mapView addAnnotation:annotation];
     }
-    
     [self.locationService stopUserLocationService];
 }
 -(BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id<BMKAnnotation>)annotation
@@ -108,32 +99,14 @@
        else
        {
            newAnnotationView.image = [UIImage imageNamed:@"png-0099"];
-           
-           UIView * popView =[[UIView alloc] initWithFrame:CGRectMake(80, 0,self.view.frame.size.width-150, 70)] ;
-           popView.backgroundColor=[UIColor grayColor];
-           popView.alpha=0.8;
-           [popView.layer setCornerRadius:10];
-           BMKActionPaopaoView *paopao=[[BMKActionPaopaoView alloc] initWithCustomView:popView];
+           CGSize titleSize = [self.mapViewPop.labelTeacherSubject.text sizeWithFont:[UIFont systemFontOfSize:12.0f] constrainedToSize:CGSizeMake(MAXFLOAT, 30)];
+           self.mapViewPop.frame=CGRectMake(80, 0,titleSize.width+75, 70);
+           self.mapViewPop.backgroundColor=[UIColor grayColor];
+           self.mapViewPop.alpha=0.8;
+           [self.mapViewPop.layer setCornerRadius:10];
+           BMKActionPaopaoView *paopao=[[BMKActionPaopaoView alloc] initWithCustomView:self.mapViewPop];
            newAnnotationView.paopaoView=paopao;
            
-           UIImageView * teacherImage=[[UIImageView alloc]initWithFrame:CGRectMake(5, 10, 50, 50)];
-           teacherImage.image=[UIImage imageNamed:@"png-0010"];
-           teacherImage.alpha=1.0f;
-           [popView addSubview:teacherImage];
-           
-           UILabel * teacherName=[[UILabel alloc]initWithFrame:CGRectMake(55,0, 150, 25)];
-           teacherName.text=[NSString stringWithFormat:@"姓名:%@",pa.title];
-           teacherName.textColor=[UIColor whiteColor];
-           teacherName.backgroundColor=[UIColor clearColor];
-           teacherName.font=[UIFont systemFontOfSize:12.0f];
-           teacherImage.alpha=1.0f;
-           [popView addSubview:teacherName];
-           
-           self.labelSubject.frame=CGRectMake(55, 22, 150, 25);
-           [popView addSubview:self.labelSubject];
-           
-           self.labelEveluation.frame=CGRectMake(55, 45, 183, 25);
-           [popView addSubview:self.labelEveluation];
        }
        newAnnotationView.animatesDrop = YES;// 设置该标注点动画显示
        //自定义气泡
