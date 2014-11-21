@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface EHEStdBookingManagerViewController : UIViewController
+#import "EHEStdBookingTableViewCell.h"
+#import "EHESegmentedControlManager.h"
+@interface EHEStdBookingManagerViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@property(strong,nonatomic)EHESegmentedControlManager * segmentedControl;
+@property(strong,nonatomic)UITableView * homeTeacherTableView;
+@property(strong,nonatomic)EHEStdBookingTableViewCell * bookingTableViewCell;
+@property(strong,nonatomic)NSArray * arrayTeacherInfo;//暂时性的数据源，不可这样写，请求到真实数据应立刻删掉
+@property(strong,nonatomic)NSArray * arrayDate;
 
 @end

@@ -69,6 +69,7 @@
     //设置大头针的本地经纬度
     coor.latitude = userLocation.location.coordinate.latitude;
     coor.longitude = userLocation.location.coordinate.longitude;
+        NSLog(@"latitude=%lf,longtitude=%lf",coor.latitude,coor.longitude);
     annotation.coordinate = coor;
     annotation.title = @"当前位置";
     [_mapView addAnnotation:annotation];
