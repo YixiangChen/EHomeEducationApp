@@ -12,6 +12,7 @@
 #import "EHEStdMapSearchingViewController.h"
 #import "EHEStdBookingManagerViewController.h"
 #import "EHEStdSettingViewController.h"
+#import "EHEStdLoginViewController.h"
 
 @interface AppDelegate ()
 
@@ -62,7 +63,9 @@
         NSLog(@"manager start failed!");
     }
     
-    self.window.rootViewController = tab;
+    //self.window.rootViewController = tab;
+    EHEStdLoginViewController *loginViewController = [[EHEStdLoginViewController alloc] initWithNibName:nil bundle:nil];
+    self.window.rootViewController = loginViewController;
     [self.window makeKeyAndVisible];
     
     return YES;

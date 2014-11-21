@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EHEStdLoginViewController : UIViewController
+@interface EHEStdLoginViewController : UIViewController<UITextFieldDelegate>
+@property (strong, nonatomic) IBOutlet UITextField *txtUserName;
+@property (strong, nonatomic) IBOutlet UITextField *txtPassWord;
+- (IBAction)loginButtonPressed:(id)sender;
+- (IBAction)cancelButtonPressed:(id)sender;
+- (IBAction)forgetPasswordButtonPressed:(id)sender;
+- (IBAction)goToRegisterButtonPressed:(id)sender;
 
 @end
