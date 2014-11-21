@@ -34,38 +34,43 @@
     UIBarButtonItem *appearance = [UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil];
     [appearance setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIColor yellowColor] forKey:NSForegroundColorAttributeName] forState:1];
     
-    EHEStdSearchingTableViewController *searchingTable =[[EHEStdSearchingTableViewController alloc] initWithNibName:nil bundle:nil];
-    UINavigationController *navi_searching = [[UINavigationController alloc] initWithRootViewController:searchingTable];
-    //navi_searching.navigationBarHidden=YES;
-    
-    EHEStdMapSearchingViewController * mapViewController=[[EHEStdMapSearchingViewController alloc]initWithNibName:nil bundle:nil];
-    UINavigationController * navi_mapSearching=[[UINavigationController alloc]initWithRootViewController:mapViewController];
-    navi_mapSearching.navigationBarHidden=YES;
-
-
-    EHEStdBookingManagerViewController *bookingManager = [[EHEStdBookingManagerViewController alloc] initWithNibName:nil bundle:nil];
-    EHEStdSettingViewController *setting = [[EHEStdSettingViewController alloc] initWithNibName:nil bundle:nil];
-
-
-    
-    UITabBarController *tab = [[UITabBarController alloc] initWithNibName:nil bundle:nil];
-    //tab.viewControllers = @[navi_searching,bookingManager, setting];
-    tab.viewControllers = @[navi_searching,bookingManager, setting];
-    [[tab.viewControllers objectAtIndex:0] setTitle:@"首页"];
-    [[tab.viewControllers objectAtIndex:1] setTitle:@"我的"];
-    [[tab.viewControllers objectAtIndex:2] setTitle:@"设置"];
-    tab.tabBar.backgroundColor = [UIColor grayColor];
-    
     _mapManager = [[BMKMapManager alloc]init];
     // 如果要关注网络及授权验证事件，请设定     generalDelegate参数
     BOOL ret = [_mapManager start:@"XfRTzKUzfDjbBIKC55iY2Wa1"  generalDelegate:nil];
     if (!ret) {
         NSLog(@"manager start failed!");
     }
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults objectForKey:@"userName"] != nil && [defaults objectForKey:@"passWord"] != nil) {
+        EHEStdSearchingTableViewController *searchingTable =[[EHEStdSearchingTableViewController alloc] initWithNibName:nil bundle:nil];
+        UINavigationController *navi_searching = [[UINavigationController alloc] initWithRootViewController:searchingTable];
+        
+        EHEStdMapSearchingViewController * mapViewController=[[EHEStdMapSearchingViewController alloc]initWithNibName:nil bundle:nil];
+        UINavigationController * navi_mapSearching=[[UINavigationController alloc]initWithRootViewController:mapViewController];
+        navi_mapSearching.navigationBarHidden=YES;
+        
+        
+        EHEStdBookingManagerViewController *bookingManager = [[EHEStdBookingManagerViewController alloc] initWithNibName:nil bundle:nil];
+        EHEStdSettingViewController *setting = [[EHEStdSettingViewController alloc] initWithNibName:nil bundle:nil];
+        
+        UITabBarController *tab = [[UITabBarController alloc] initWithNibName:nil bundle:nil];
+        //tab.viewControllers = @[navi_searching,bookingManager, setting];
+        tab.viewControllers = @[navi_searching,bookingManager, setting];
+        [[tab.viewControllers objectAtIndex:0] setTitle:@"首页"];
+        [[tab.viewControllers objectAtIndex:1] setTitle:@"我的"];
+        [[tab.viewControllers objectAtIndex:2] setTitle:@"设置"];
+        tab.tabBar.backgroundColor = [UIColor grayColor];
+        
+        self.window.rootViewController = tab;
+        
+        EHEStdLoginViewController *loginViewController = [[EHEStdLoginViewController alloc] initWithNibName:nil bundle:nil];
+        self.window..rootViewController.
+    } else {
     
-    //self.window.rootViewController = tab;
-    EHEStdLoginViewController *loginViewController = [[EHEStdLoginViewController alloc] initWithNibName:nil bundle:nil];
-    self.window.rootViewController = loginViewController;
+        EHEStdLoginViewController *loginViewController = [[EHEStdLoginViewController alloc] initWithNibName:nil bundle:nil];
+        self.window.rootViewController = loginViewController;
+    }
+    
     [self.window makeKeyAndVisible];
     
     return YES;

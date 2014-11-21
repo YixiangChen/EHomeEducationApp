@@ -27,6 +27,7 @@
 		794756131A1D9FE600E39012 /* EHETeacherDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 794756111A1D9FE600E39012 /* EHETeacherDetailViewController.xib */; };
 		794756151A1DBF7300E39012 /* authentificated.png in Resources */ = {isa = PBXBuildFile; fileRef = 794756141A1DBF7300E39012 /* authentificated.png */; };
 		794756181A1DFE9F00E39012 /* EHETeacher.m in Sources */ = {isa = PBXBuildFile; fileRef = 794756171A1DFE9F00E39012 /* EHETeacher.m */; };
+		7947561C1A1ED1AA00E39012 /* MF_Base64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7947561A1A1ED1AA00E39012 /* MF_Base64Additions.m */; };
 		7960F11A1A1C834000DCEA45 /* EHEStdSearchingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7960F1181A1C834000DCEA45 /* EHEStdSearchingTableViewController.m */; };
 		7960F11B1A1C834000DCEA45 /* EHEStdSearchingTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7960F1191A1C834000DCEA45 /* EHEStdSearchingTableViewController.xib */; };
 		7960F11F1A1C838300DCEA45 /* EHETchBookingManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7960F11D1A1C838300DCEA45 /* EHETchBookingManagerViewController.m */; };
@@ -156,6 +157,8 @@
 		794756141A1DBF7300E39012 /* authentificated.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = authentificated.png; sourceTree = "<group>"; };
 		794756161A1DFE9F00E39012 /* EHETeacher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHETeacher.h; sourceTree = "<group>"; };
 		794756171A1DFE9F00E39012 /* EHETeacher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHETeacher.m; sourceTree = "<group>"; };
+		7947561A1A1ED1AA00E39012 /* MF_Base64Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MF_Base64Additions.m; sourceTree = "<group>"; };
+		7947561B1A1ED1AA00E39012 /* MF_Base64Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MF_Base64Additions.h; sourceTree = "<group>"; };
 		7960F1171A1C834000DCEA45 /* EHEStdSearchingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHEStdSearchingTableViewController.h; sourceTree = "<group>"; };
 		7960F1181A1C834000DCEA45 /* EHEStdSearchingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHEStdSearchingTableViewController.m; sourceTree = "<group>"; };
 		7960F1191A1C834000DCEA45 /* EHEStdSearchingTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHEStdSearchingTableViewController.xib; sourceTree = "<group>"; };
@@ -337,6 +340,15 @@
 			name = "项目图片";
 			sourceTree = "<group>";
 		};
+		794756191A1ED17D00E39012 /* Base64 */ = {
+			isa = PBXGroup;
+			children = (
+				7947561A1A1ED1AA00E39012 /* MF_Base64Additions.m */,
+				7947561B1A1ED1AA00E39012 /* MF_Base64Additions.h */,
+			);
+			name = Base64;
+			sourceTree = "<group>";
+		};
 		797C305E1A19D32900DB84E4 = {
 			isa = PBXGroup;
 			children = (
@@ -365,7 +377,6 @@
 		797C30691A19D32900DB84E4 /* EHomeEducation */ = {
 			isa = PBXGroup;
 			children = (
-				52D398021A1B4248008B08FE /* 项目图片 */,
 				797C306E1A19D32900DB84E4 /* AppDelegate.h */,
 				797C306F1A19D32900DB84E4 /* AppDelegate.m */,
 				797C30951A19D38000DB84E4 /* CoreData */,
@@ -381,6 +392,8 @@
 		797C306A1A19D32900DB84E4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				794756191A1ED17D00E39012 /* Base64 */,
+				52D398021A1B4248008B08FE /* 项目图片 */,
 				797C306B1A19D32900DB84E4 /* Info.plist */,
 				797C306C1A19D32900DB84E4 /* main.mm */,
 			);
@@ -624,6 +637,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7960F11F1A1C838300DCEA45 /* EHETchBookingManagerViewController.m in Sources */,
+				7947561C1A1ED1AA00E39012 /* MF_Base64Additions.m in Sources */,
 				797C30D11A19DAD400DB84E4 /* EHETchSearchingMapViewController.m in Sources */,
 				797C30701A19D32900DB84E4 /* AppDelegate.m in Sources */,
 				797C30731A19D32900DB84E4 /* EHomeEducation.xcdatamodeld in Sources */,
