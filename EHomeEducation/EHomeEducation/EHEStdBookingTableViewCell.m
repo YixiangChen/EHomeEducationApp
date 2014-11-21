@@ -26,7 +26,7 @@
         self.labelTeacherInfomation=[[UILabel alloc]initWithFrame:CGRectMake(20, 8, 150, 30)];
         self.labelTeacherInfomation.textColor=[UIColor blackColor];
         self.labelTeacherInfomation.backgroundColor=[UIColor clearColor];
-        self.labelTeacherInfomation.font=[UIFont fontWithName:@"Helvetica-Bold" size:17.0f];
+        self.labelTeacherInfomation.font=[UIFont fontWithName:@"Helvetica-Bold" size:17.0f];//字体设置为加粗
         [self addSubview:self.labelTeacherInfomation];
         
         self.labelDate=[[UILabel alloc]initWithFrame:CGRectMake(200, 8, 150, 30)];

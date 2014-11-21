@@ -17,10 +17,12 @@
         self.tintColor = [UIColor colorWithRed:192.0 / 256.0 green:233 / 256.0 blue:189 / 256.0 alpha:0.8];
         self.selectedSegmentIndex = 0;//默认选中的按钮索引
         
-        NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont boldSystemFontOfSize:12],NSFontAttributeName,[UIColor redColor], NSForegroundColorAttributeName, nil];
-        [self setTitleTextAttributes:attributes forState:UIControlStateNormal];
-        NSDictionary *highlightedAttributes = [NSDictionary dictionaryWithObject:[UIColor redColor] forKey:NSForegroundColorAttributeName];
+        NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont boldSystemFontOfSize:12],NSFontAttributeName,[UIColor redColor], NSForegroundColorAttributeName, nil];//添加字体样式(普通状态下)
         
+        [self setTitleTextAttributes:attributes forState:UIControlStateNormal];
+        NSDictionary *highlightedAttributes = [NSDictionary dictionaryWithObject:[UIColor redColor] forKey:NSForegroundColorAttributeName];//在高亮显示中添加样式
+        
+        //绑定样式属性
         [self setTitleTextAttributes:highlightedAttributes forState:UIControlStateHighlighted];
     }
     return self;
