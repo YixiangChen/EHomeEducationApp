@@ -40,8 +40,7 @@
     if (!ret) {
         NSLog(@"manager start failed!");
     }
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if ([defaults objectForKey:@"userName"] != nil && [defaults objectForKey:@"passWord"] != nil) {
+
         EHEStdSearchingTableViewController *searchingTable =[[EHEStdSearchingTableViewController alloc] initWithNibName:nil bundle:nil];
         UINavigationController *navi_searching = [[UINavigationController alloc] initWithRootViewController:searchingTable];
         
@@ -62,16 +61,6 @@
         tab.tabBar.backgroundColor = [UIColor grayColor];
         
         self.window.rootViewController = tab;
-        
-        EHEStdLoginViewController *loginViewController = [[EHEStdLoginViewController alloc] initWithNibName:nil bundle:nil];
-        [self.window.rootViewController.view addSubview:loginViewController.view];
-        [NSThread sleepForTimeInterval:3];
-        [loginViewController.view di]
-    } else {
-    
-        EHEStdLoginViewController *loginViewController = [[EHEStdLoginViewController alloc] initWithNibName:nil bundle:nil];
-        self.window.rootViewController = loginViewController;
-    }
     
     [self.window makeKeyAndVisible];
     

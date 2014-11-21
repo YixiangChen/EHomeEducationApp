@@ -12,6 +12,7 @@
 #import "EHECoreDataManager.h"
 #import "EHETeacherDetailViewController.h"
 #import "EHETeacherTableViewCell.h"
+#import "EHEStdLoginViewController.h"
 
 
 
@@ -68,6 +69,16 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults objectForKey:@"userName"] == nil || [defaults objectForKey:@"passWord"] == nil) {
+    EHEStdLoginViewController *loginViewController = [[EHEStdLoginViewController alloc] initWithNibName:nil bundle:nil];
+    [self presentViewController:loginViewController animated:NO completion:nil];
+    }
+}
+
 
 -(void) selectedSegmentChanged:(UISegmentedControl *) seg {
         if(seg.selectedSegmentIndex==0)

@@ -61,40 +61,22 @@
             [defaults setObject:self.txtUserName.text forKey:@"userName"];
             [defaults setObject:self.txtPassWord.text forKey:@"passWord"];
             [defaults synchronize];
+            [self dismissViewControllerAnimated:YES completion:nil];
         }else{
             NSLog(@"%@",dict[@"message"]);
         }
     }
 }
 
-//-(void) pushToSearchingViewController {
-//    EHEStdSearchingTableViewController *searchingTable =[[EHEStdSearchingTableViewController alloc] initWithNibName:nil bundle:nil];
-//    UINavigationController *navi_searching = [[UINavigationController alloc] initWithRootViewController:searchingTable];
-//    
-//    EHEStdMapSearchingViewController * mapViewController=[[EHEStdMapSearchingViewController alloc]initWithNibName:nil bundle:nil];
-//    UINavigationController * navi_mapSearching=[[UINavigationController alloc]initWithRootViewController:mapViewController];
-//    navi_mapSearching.navigationBarHidden=YES;
-//    
-//    
-//    EHEStdBookingManagerViewController *bookingManager = [[EHEStdBookingManagerViewController alloc] initWithNibName:nil bundle:nil];
-//    EHEStdSettingViewController *setting = [[EHEStdSettingViewController alloc] initWithNibName:nil bundle:nil];
-//    
-//    UITabBarController *tab = [[UITabBarController alloc] initWithNibName:nil bundle:nil];
-//    //tab.viewControllers = @[navi_searching,bookingManager, setting];
-//    tab.viewControllers = @[navi_searching,bookingManager, setting];
-//    [[tab.viewControllers objectAtIndex:0] setTitle:@"首页"];
-//    [[tab.viewControllers objectAtIndex:1] setTitle:@"我的"];
-//    [[tab.viewControllers objectAtIndex:2] setTitle:@"设置"];
-//    tab.tabBar.backgroundColor = [UIColor grayColor];
-//    
-//    self.window.rootViewController = tab;
-//}
+
 - (IBAction)cancelButtonPressed:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)forgetPasswordButtonPressed:(id)sender {
 }
 
 - (IBAction)goToRegisterButtonPressed:(id)sender {
+    
 }
 @end
