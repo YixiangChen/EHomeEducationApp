@@ -12,6 +12,8 @@
 		525C20911A1EEF6200C3119A /* EHESegmentedControlManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 525C20901A1EEF6200C3119A /* EHESegmentedControlManager.m */; };
 		525C20981A1F256B00C3119A /* EHEStdBookingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 525C20961A1F256B00C3119A /* EHEStdBookingTableViewCell.m */; };
 		525C20991A1F256B00C3119A /* EHEStdBookingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 525C20971A1F256B00C3119A /* EHEStdBookingTableViewCell.xib */; };
+		525C209F1A1F481600C3119A /* EHEStdSettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 525C209D1A1F481600C3119A /* EHEStdSettingTableViewCell.m */; };
+		525C20A01A1F481600C3119A /* EHEStdSettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 525C209E1A1F481600C3119A /* EHEStdSettingTableViewCell.xib */; };
 		525E36CD1A1C29B1004F0475 /* TeacherAnnotations.m in Sources */ = {isa = PBXBuildFile; fileRef = 525E36CC1A1C29B1004F0475 /* TeacherAnnotations.m */; };
 		525E36CF1A1C2B4E004F0475 /* iconmarka.png in Resources */ = {isa = PBXBuildFile; fileRef = 525E36CE1A1C2B4E004F0475 /* iconmarka.png */; };
 		525E36D31A1C3052004F0475 /* png-0099.png in Resources */ = {isa = PBXBuildFile; fileRef = 525E36D21A1C3052004F0475 /* png-0099.png */; };
@@ -81,6 +83,9 @@
 		525C20951A1F256B00C3119A /* EHEStdBookingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHEStdBookingTableViewCell.h; sourceTree = "<group>"; };
 		525C20961A1F256B00C3119A /* EHEStdBookingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHEStdBookingTableViewCell.m; sourceTree = "<group>"; };
 		525C20971A1F256B00C3119A /* EHEStdBookingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHEStdBookingTableViewCell.xib; sourceTree = "<group>"; };
+		525C209C1A1F481500C3119A /* EHEStdSettingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHEStdSettingTableViewCell.h; sourceTree = "<group>"; };
+		525C209D1A1F481600C3119A /* EHEStdSettingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHEStdSettingTableViewCell.m; sourceTree = "<group>"; };
+		525C209E1A1F481600C3119A /* EHEStdSettingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHEStdSettingTableViewCell.xib; sourceTree = "<group>"; };
 		525E36CB1A1C29B1004F0475 /* TeacherAnnotations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeacherAnnotations.h; sourceTree = "<group>"; };
 		525E36CC1A1C29B1004F0475 /* TeacherAnnotations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeacherAnnotations.m; sourceTree = "<group>"; };
 		525E36CE1A1C2B4E004F0475 /* iconmarka.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconmarka.png; sourceTree = "<group>"; };
@@ -257,6 +262,16 @@
 				525C20971A1F256B00C3119A /* EHEStdBookingTableViewCell.xib */,
 			);
 			name = "预约教师表格";
+			sourceTree = "<group>";
+		};
+		525C209B1A1F47CF00C3119A /* 设置表单元格 */ = {
+			isa = PBXGroup;
+			children = (
+				525C209C1A1F481500C3119A /* EHEStdSettingTableViewCell.h */,
+				525C209D1A1F481600C3119A /* EHEStdSettingTableViewCell.m */,
+				525C209E1A1F481600C3119A /* EHEStdSettingTableViewCell.xib */,
+			);
+			name = "设置表单元格";
 			sourceTree = "<group>";
 		};
 		525E36CA1A1C2992004F0475 /* 大头针 */ = {
@@ -513,6 +528,7 @@
 		797C30AE1A19D92E00DB84E4 /* Student */ = {
 			isa = PBXGroup;
 			children = (
+				525C209B1A1F47CF00C3119A /* 设置表单元格 */,
 				525C209A1A1F26AE00C3119A /* 预约教师表格 */,
 				525C208E1A1EEF1500C3119A /* EHESegmentedControlManager */,
 				52974AD11A1D8E4500C05FFC /* 百度地图类 */,
@@ -638,6 +654,7 @@
 				797C30C71A19DA6E00DB84E4 /* EHETchSearchingTableViewController.xib in Resources */,
 				7937968C1A1C72630013FD21 /* EHEStdDetailInfoViewController.xib in Resources */,
 				797C30D21A19DAD400DB84E4 /* EHETchSearchingMapViewController.xib in Resources */,
+				525C20A01A1F481600C3119A /* EHEStdSettingTableViewCell.xib in Resources */,
 				797C30D71A19DB5000DB84E4 /* EHEStdLoginViewController.xib in Resources */,
 				797C30DC1A19DB6F00DB84E4 /* EHETchLoginViewController.xib in Resources */,
 				79D931C71A1B1F3000B709A1 /* EHEStdBookingManagerViewController.xib in Resources */,
@@ -680,6 +697,7 @@
 				52974AD01A1D8E3700C05FFC /* EHEBaiduMapView.m in Sources */,
 				797C306D1A19D32900DB84E4 /* main.mm in Sources */,
 				797C30DB1A19DB6F00DB84E4 /* EHETchLoginViewController.m in Sources */,
+				525C209F1A1F481600C3119A /* EHEStdSettingTableViewCell.m in Sources */,
 				797C30CB1A19DA9900DB84E4 /* EHEStdMapSearchingViewController.m in Sources */,
 				525C20911A1EEF6200C3119A /* EHESegmentedControlManager.m in Sources */,
 				797C30C61A19DA6E00DB84E4 /* EHETchSearchingTableViewController.m in Sources */,

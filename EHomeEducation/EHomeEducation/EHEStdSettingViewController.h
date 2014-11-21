@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface EHEStdSettingViewController : UIViewController
-
+#import "EHEStdSettingTableViewCell.h"
+@interface EHEStdSettingViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@property(strong,nonatomic)UITableView * tableViewSetting;
+@property(strong,nonatomic)NSArray * personalInfomationArray;
+@property(strong,nonatomic)NSArray * systemSettingArray;
+@property(strong,nonatomic)NSArray * connectAndShareArray;
 @end
