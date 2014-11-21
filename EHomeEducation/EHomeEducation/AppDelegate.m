@@ -64,7 +64,9 @@
         self.window.rootViewController = tab;
         
         EHEStdLoginViewController *loginViewController = [[EHEStdLoginViewController alloc] initWithNibName:nil bundle:nil];
-        self.window..rootViewController.
+        [self.window.rootViewController.view addSubview:loginViewController.view];
+        [NSThread sleepForTimeInterval:3];
+        [loginViewController.view di]
     } else {
     
         EHEStdLoginViewController *loginViewController = [[EHEStdLoginViewController alloc] initWithNibName:nil bundle:nil];
