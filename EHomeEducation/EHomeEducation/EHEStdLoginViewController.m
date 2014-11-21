@@ -56,6 +56,7 @@
     if(responseData != nil){
         //使用系统自带JSON解析方法
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:nil];
+        NSLog(@"%@",dict);
         if([dict[@"code"] intValue] == 0){
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
             [defaults setObject:self.txtUserName.text forKey:@"userName"];

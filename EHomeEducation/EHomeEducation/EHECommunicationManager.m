@@ -48,7 +48,6 @@
 }
 
 -(void)loadDataWithTeacherID:(int) teacherId {
-    NSLog(@"now is loading teacher data with teacher id .........");
     
     NSString * postData = [NSString stringWithFormat:@"{\"teacherid\":\"%d\"}",teacherId];
     NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://218.249.130.194:8080/ehomeedu/api/customer/findteacherdetail.action"]];
@@ -58,18 +57,9 @@
     
     NSError *error = nil;
     NSData * responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
-    NSMutableString *responseString = [NSMutableString stringWithString:[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding]];
-//    NSString *character = nil;
-//    for (int i = 0; i < responseString.length; i ++) {
-//        character = [responseString substringWithRange:NSMakeRange(i, 1)];
-//        if ([character isEqualToString:@"/"])
-//            [responseString deleteCharactersInRange:NSMakeRange(i, 1)];
-//        }
-    NSLog(@"%@",responseString);
     
     if(responseData != nil && error == nil){
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
-        NSLog(@"产生的错误是 %@", error);
         NSDictionary *dictTeacherInfo = dict[@"teacherinfo"];
         if([dict[@"code"] intValue] == 0){
             [[EHECoreDataManager getInstance] updateDetailInfos:dictTeacherInfo withTeacherId:teacherId];
