@@ -97,7 +97,7 @@
         self.mapViewPop.labelTeacherSubject.text=[NSString stringWithFormat:@"科目:%@",teacher.subjectInfo];
         self.mapViewPop.teacherImageView.image=[UIImage imageNamed:@"png-0010"];
         self.mapViewPop.teacherID=teacher.teacherId;
-        
+        self.mapViewPop.teacherGender=teacher.gender;
         //添加大头针
         [self.bubbleDictionary setObject:self.mapViewPop forKey:@(self.count)];
         
@@ -126,7 +126,16 @@
        //加载老师信息的标注
        else
        {
-           newAnnotationView.image = [UIImage imageNamed:@"png-0099"];
+           NSLog(@"teacherName=%@,teacherGender=%@",self.mapViewPop.labelTeacherName.text,self.mapViewPop.teacherGender);
+           if([self.mapViewPop.teacherGender isEqualToString:@"女"])
+           {
+               newAnnotationView.image = [UIImage imageNamed:@"female"];
+           }
+           else
+           {
+             newAnnotationView.image = [UIImage imageNamed:@"male"];
+           }
+           
            //根据教师所教科目这个label的长度自动调节整个气泡的宽度
            CGSize titleSize = [self.mapViewPop.labelTeacherSubject.text sizeWithFont:[UIFont systemFontOfSize:12.0f] constrainedToSize:CGSizeMake(MAXFLOAT, 30)];
            self.mapViewPop.frame=CGRectMake(80, 0,titleSize.width+75, 70);

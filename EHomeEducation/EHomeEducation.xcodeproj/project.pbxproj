@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		525C208C1A1ED8D200C3119A /* male.png in Resources */ = {isa = PBXBuildFile; fileRef = 525C208A1A1ED8D200C3119A /* male.png */; };
+		525C208D1A1ED8D200C3119A /* female.png in Resources */ = {isa = PBXBuildFile; fileRef = 525C208B1A1ED8D200C3119A /* female.png */; };
 		525E36CD1A1C29B1004F0475 /* TeacherAnnotations.m in Sources */ = {isa = PBXBuildFile; fileRef = 525E36CC1A1C29B1004F0475 /* TeacherAnnotations.m */; };
 		525E36CF1A1C2B4E004F0475 /* iconmarka.png in Resources */ = {isa = PBXBuildFile; fileRef = 525E36CE1A1C2B4E004F0475 /* iconmarka.png */; };
 		525E36D31A1C3052004F0475 /* png-0099.png in Resources */ = {isa = PBXBuildFile; fileRef = 525E36D21A1C3052004F0475 /* png-0099.png */; };
@@ -68,6 +70,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		525C208A1A1ED8D200C3119A /* male.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = male.png; sourceTree = "<group>"; };
+		525C208B1A1ED8D200C3119A /* female.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = female.png; sourceTree = "<group>"; };
 		525E36CB1A1C29B1004F0475 /* TeacherAnnotations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeacherAnnotations.h; sourceTree = "<group>"; };
 		525E36CC1A1C29B1004F0475 /* TeacherAnnotations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeacherAnnotations.m; sourceTree = "<group>"; };
 		525E36CE1A1C2B4E004F0475 /* iconmarka.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconmarka.png; sourceTree = "<group>"; };
@@ -341,6 +345,8 @@
 				525E36D21A1C3052004F0475 /* png-0099.png */,
 				525E36CE1A1C2B4E004F0475 /* iconmarka.png */,
 				52D398001A1B422E008B08FE /* pin.png */,
+				525C208A1A1ED8D200C3119A /* male.png */,
+				525C208B1A1ED8D200C3119A /* female.png */,
 			);
 			name = "项目图片";
 			sourceTree = "<group>";
@@ -592,7 +598,9 @@
 				797C30CC1A19DA9900DB84E4 /* EHEStdMapSearchingViewController.xib in Resources */,
 				7960F1251A1C83C300DCEA45 /* EHETchSettingViewController.xib in Resources */,
 				525E36E91A1C5008004F0475 /* png-0762.png in Resources */,
+				525C208D1A1ED8D200C3119A /* female.png in Resources */,
 				797C307B1A19D32900DB84E4 /* Images.xcassets in Resources */,
+				525C208C1A1ED8D200C3119A /* male.png in Resources */,
 				797C30C71A19DA6E00DB84E4 /* EHETchSearchingTableViewController.xib in Resources */,
 				7937968C1A1C72630013FD21 /* EHEStdDetailInfoViewController.xib in Resources */,
 				797C30D21A19DAD400DB84E4 /* EHETchSearchingMapViewController.xib in Resources */,
