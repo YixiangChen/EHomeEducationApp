@@ -2,7 +2,7 @@
 //  EHETeacher.h
 //  EHomeEducation
 //
-//  Created by Yixiang Chen on 11/20/14.
+//  Created by Yixiang Chen on 11/21/14.
 //  Copyright (c) 2014 AppChen. All rights reserved.
 //
 
@@ -12,7 +12,7 @@
 
 @interface EHETeacher : NSManagedObject
 
-@property (nonatomic, retain) NSDate * birthday;
+@property (nonatomic, retain) NSString * birthday;
 @property (nonatomic, retain) NSString * degree;
 @property (nonatomic, retain) NSString * gender;
 @property (nonatomic, retain) NSString * identity;
