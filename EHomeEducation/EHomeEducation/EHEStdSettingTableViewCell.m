@@ -27,9 +27,17 @@
         self.settingLabel.font=[UIFont fontWithName:@"Helvetica-Bold" size:17.0f];//字体设置为加粗
         [self addSubview:self.settingLabel];
         
-        self.settingImageView=[[UIImageView alloc]initWithFrame:CGRectMake(230, 8, 30, 30)];
+        self.settingImageView=[[UIImageView alloc]initWithFrame:CGRectMake(230, 10, 50, 50)];
         self.settingImageView.layer.cornerRadius=20;
         [self addSubview:self.settingImageView];
+        
+        self.contentLabel=[[UILabel alloc]initWithFrame:CGRectMake(130, 8, 150, 30)];
+        self.contentLabel.textAlignment=UITextAlignmentRight;
+        self.contentLabel.textColor=[UIColor blackColor];
+        self.contentLabel.backgroundColor=[UIColor clearColor];
+        self.contentLabel.font=[UIFont systemFontOfSize:17.0f];
+        [self addSubview:self.contentLabel];
+        
     }
     return self;
 }

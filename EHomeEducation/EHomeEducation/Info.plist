@@ -38,5 +38,20 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string></string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>wb2279784657</string>
+				<string>fb107704292745179</string>
+				<string>tencent100371282</string>
+				<string>rm226427cn.appgo.sharebyone</string>
+				<string>wb801307650</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>

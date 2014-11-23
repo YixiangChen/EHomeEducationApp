@@ -11,4 +11,5 @@
 @interface EHEStdSettingTableViewCell : UITableViewCell
 @property(strong,nonatomic)UILabel * settingLabel;
 @property(strong,nonatomic)UIImageView *settingImageView;
+@property(strong,nonatomic)UILabel * contentLabel;
 @end
