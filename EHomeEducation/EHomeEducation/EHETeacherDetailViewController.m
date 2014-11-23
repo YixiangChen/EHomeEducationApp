@@ -7,6 +7,8 @@
 //
 
 #import "EHETeacherDetailViewController.h"
+#import "EHEStdOrderViewController.h"
+#import "EHECoreDataManager.h"
 
 @interface EHETeacherDetailViewController ()
 @property (strong, nonatomic) NSMutableArray *infoArray;
@@ -97,9 +99,13 @@
 }
 - (IBAction)callButtonPressed:(id)sender {
     NSLog(@"call button is pressed");
+    [[EHECoreDataManager getInstance] fetchAllOrders];
 }
 
 - (IBAction)bookButtonPressed:(id)sender {
-    NSLog(@"book button is pressed");
+    EHEStdOrderViewController *orderViewController = [[EHEStdOrderViewController alloc] init];
+    //[self presentViewController:orderViewController animated:YES completion:nil];
+    [self.navigationController pushViewController:orderViewController animated:YES];
+    orderViewController.teacher = self.teacher;
 }
 @end

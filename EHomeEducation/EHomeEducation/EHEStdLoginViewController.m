@@ -8,6 +8,7 @@
 
 #import "EHEStdLoginViewController.h"
 #import "MF_Base64Additions.h"
+#import "EHEStdRegisterViewController.h"
 
 @interface EHEStdLoginViewController ()
 
@@ -79,5 +80,7 @@
 
 - (IBAction)goToRegisterButtonPressed:(id)sender {
     
+    EHEStdRegisterViewController *registerViewController = [[EHEStdRegisterViewController alloc] initWithNibName:nil bundle:nil];
+    [self presentViewController:registerViewController animated:YES completion:nil];
 }
 @end

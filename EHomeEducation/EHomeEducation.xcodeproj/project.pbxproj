@@ -28,6 +28,14 @@
 		794756151A1DBF7300E39012 /* authentificated.png in Resources */ = {isa = PBXBuildFile; fileRef = 794756141A1DBF7300E39012 /* authentificated.png */; };
 		7947561C1A1ED1AA00E39012 /* MF_Base64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7947561A1A1ED1AA00E39012 /* MF_Base64Additions.m */; };
 		7947561F1A1EF97600E39012 /* EHETeacher.m in Sources */ = {isa = PBXBuildFile; fileRef = 7947561E1A1EF97600E39012 /* EHETeacher.m */; };
+		794756231A1F123200E39012 /* EHEStdRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 794756211A1F123200E39012 /* EHEStdRegisterViewController.m */; };
+		794756241A1F123200E39012 /* EHEStdRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 794756221A1F123200E39012 /* EHEStdRegisterViewController.xib */; };
+		794756281A1F388A00E39012 /* EHEStdOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 794756261A1F388A00E39012 /* EHEStdOrderViewController.m */; };
+		794756291A1F388A00E39012 /* EHEStdOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 794756271A1F388A00E39012 /* EHEStdOrderViewController.xib */; };
+		7947562D1A20FB1700E39012 /* EHEStdSubjectTableTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7947562B1A20FB1700E39012 /* EHEStdSubjectTableTableViewController.m */; };
+		7947562E1A20FB1700E39012 /* EHEStdSubjectTableTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7947562C1A20FB1700E39012 /* EHEStdSubjectTableTableViewController.xib */; };
+		794756311A21E20700E39012 /* EHEOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 794756301A21E20700E39012 /* EHEOrder.m */; };
+		794756341A21E76E00E39012 /* EHECoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 794756331A21E76E00E39012 /* EHECoreDataManager.m */; };
 		7960F11A1A1C834000DCEA45 /* EHEStdSearchingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7960F1181A1C834000DCEA45 /* EHEStdSearchingTableViewController.m */; };
 		7960F11B1A1C834000DCEA45 /* EHEStdSearchingTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7960F1191A1C834000DCEA45 /* EHEStdSearchingTableViewController.xib */; };
 		7960F11F1A1C838300DCEA45 /* EHETchBookingManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7960F11D1A1C838300DCEA45 /* EHETchBookingManagerViewController.m */; };
@@ -58,7 +66,6 @@
 		798B1A4C1A1D86DF00F0031F /* female_tablecell.png in Resources */ = {isa = PBXBuildFile; fileRef = 798B1A4B1A1D86DF00F0031F /* female_tablecell.png */; };
 		79D931C61A1B1F3000B709A1 /* EHEStdBookingManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79D931C41A1B1F3000B709A1 /* EHEStdBookingManagerViewController.m */; };
 		79D931C71A1B1F3000B709A1 /* EHEStdBookingManagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79D931C51A1B1F3000B709A1 /* EHEStdBookingManagerViewController.xib */; };
-		79D931CA1A1B1F9400B709A1 /* EHECoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 79D931C91A1B1F9400B709A1 /* EHECoreDataManager.m */; };
 		79D931D11A1B22DF00B709A1 /* EHECommunicationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 79D931D01A1B22DF00B709A1 /* EHECommunicationManager.m */; };
 /* End PBXBuildFile section */
 
@@ -159,6 +166,19 @@
 		7947561B1A1ED1AA00E39012 /* MF_Base64Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MF_Base64Additions.h; sourceTree = "<group>"; };
 		7947561D1A1EF97600E39012 /* EHETeacher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EHETeacher.h; path = ../EHETeacher.h; sourceTree = "<group>"; };
 		7947561E1A1EF97600E39012 /* EHETeacher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EHETeacher.m; path = ../EHETeacher.m; sourceTree = "<group>"; };
+		794756201A1F123200E39012 /* EHEStdRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHEStdRegisterViewController.h; sourceTree = "<group>"; };
+		794756211A1F123200E39012 /* EHEStdRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHEStdRegisterViewController.m; sourceTree = "<group>"; };
+		794756221A1F123200E39012 /* EHEStdRegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHEStdRegisterViewController.xib; sourceTree = "<group>"; };
+		794756251A1F388A00E39012 /* EHEStdOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHEStdOrderViewController.h; sourceTree = "<group>"; };
+		794756261A1F388A00E39012 /* EHEStdOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHEStdOrderViewController.m; sourceTree = "<group>"; };
+		794756271A1F388A00E39012 /* EHEStdOrderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHEStdOrderViewController.xib; sourceTree = "<group>"; };
+		7947562A1A20FB1700E39012 /* EHEStdSubjectTableTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHEStdSubjectTableTableViewController.h; sourceTree = "<group>"; };
+		7947562B1A20FB1700E39012 /* EHEStdSubjectTableTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHEStdSubjectTableTableViewController.m; sourceTree = "<group>"; };
+		7947562C1A20FB1700E39012 /* EHEStdSubjectTableTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHEStdSubjectTableTableViewController.xib; sourceTree = "<group>"; };
+		7947562F1A21E20700E39012 /* EHEOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHEOrder.h; sourceTree = "<group>"; };
+		794756301A21E20700E39012 /* EHEOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHEOrder.m; sourceTree = "<group>"; };
+		794756321A21E76E00E39012 /* EHECoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHECoreDataManager.h; sourceTree = "<group>"; };
+		794756331A21E76E00E39012 /* EHECoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHECoreDataManager.m; sourceTree = "<group>"; };
 		7960F1171A1C834000DCEA45 /* EHEStdSearchingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHEStdSearchingTableViewController.h; sourceTree = "<group>"; };
 		7960F1181A1C834000DCEA45 /* EHEStdSearchingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHEStdSearchingTableViewController.m; sourceTree = "<group>"; };
 		7960F1191A1C834000DCEA45 /* EHEStdSearchingTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHEStdSearchingTableViewController.xib; sourceTree = "<group>"; };
@@ -205,8 +225,6 @@
 		79D931C31A1B1F3000B709A1 /* EHEStdBookingManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHEStdBookingManagerViewController.h; sourceTree = "<group>"; };
 		79D931C41A1B1F3000B709A1 /* EHEStdBookingManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHEStdBookingManagerViewController.m; sourceTree = "<group>"; };
 		79D931C51A1B1F3000B709A1 /* EHEStdBookingManagerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHEStdBookingManagerViewController.xib; sourceTree = "<group>"; };
-		79D931C81A1B1F9400B709A1 /* EHECoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHECoreDataManager.h; sourceTree = "<group>"; };
-		79D931C91A1B1F9400B709A1 /* EHECoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHECoreDataManager.m; sourceTree = "<group>"; };
 		79D931CF1A1B22DF00B709A1 /* EHECommunicationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHECommunicationManager.h; sourceTree = "<group>"; };
 		79D931D01A1B22DF00B709A1 /* EHECommunicationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHECommunicationManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -437,11 +455,13 @@
 		797C30951A19D38000DB84E4 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				794756321A21E76E00E39012 /* EHECoreDataManager.h */,
+				794756331A21E76E00E39012 /* EHECoreDataManager.m */,
 				797C30711A19D32900DB84E4 /* EHomeEducation.xcdatamodeld */,
+				7947562F1A21E20700E39012 /* EHEOrder.h */,
+				794756301A21E20700E39012 /* EHEOrder.m */,
 				7947561D1A1EF97600E39012 /* EHETeacher.h */,
 				7947561E1A1EF97600E39012 /* EHETeacher.m */,
-				79D931C81A1B1F9400B709A1 /* EHECoreDataManager.h */,
-				79D931C91A1B1F9400B709A1 /* EHECoreDataManager.m */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -501,6 +521,15 @@
 				7947560F1A1D9FE600E39012 /* EHETeacherDetailViewController.h */,
 				794756101A1D9FE600E39012 /* EHETeacherDetailViewController.m */,
 				794756111A1D9FE600E39012 /* EHETeacherDetailViewController.xib */,
+				794756201A1F123200E39012 /* EHEStdRegisterViewController.h */,
+				794756211A1F123200E39012 /* EHEStdRegisterViewController.m */,
+				794756221A1F123200E39012 /* EHEStdRegisterViewController.xib */,
+				794756251A1F388A00E39012 /* EHEStdOrderViewController.h */,
+				794756261A1F388A00E39012 /* EHEStdOrderViewController.m */,
+				794756271A1F388A00E39012 /* EHEStdOrderViewController.xib */,
+				7947562A1A20FB1700E39012 /* EHEStdSubjectTableTableViewController.h */,
+				7947562B1A20FB1700E39012 /* EHEStdSubjectTableTableViewController.m */,
+				7947562C1A20FB1700E39012 /* EHEStdSubjectTableTableViewController.xib */,
 			);
 			name = Student;
 			sourceTree = "<group>";
@@ -600,9 +629,11 @@
 				525E36EB1A1C7563004F0475 /* png-0010.png in Resources */,
 				7960F11B1A1C834000DCEA45 /* EHEStdSearchingTableViewController.xib in Resources */,
 				797C30CC1A19DA9900DB84E4 /* EHEStdMapSearchingViewController.xib in Resources */,
+				794756241A1F123200E39012 /* EHEStdRegisterViewController.xib in Resources */,
 				7960F1251A1C83C300DCEA45 /* EHETchSettingViewController.xib in Resources */,
 				794756131A1D9FE600E39012 /* EHETeacherDetailViewController.xib in Resources */,
 				525E36E91A1C5008004F0475 /* png-0762.png in Resources */,
+				7947562E1A20FB1700E39012 /* EHEStdSubjectTableTableViewController.xib in Resources */,
 				798B1A4C1A1D86DF00F0031F /* female_tablecell.png in Resources */,
 				798B1A481A1D866800F0031F /* EHETeacherTableViewCell.xib in Resources */,
 				797C307B1A19D32900DB84E4 /* Images.xcassets in Resources */,
@@ -612,6 +643,7 @@
 				797C30DC1A19DB6F00DB84E4 /* EHETchLoginViewController.xib in Resources */,
 				794756151A1DBF7300E39012 /* authentificated.png in Resources */,
 				79D931C71A1B1F3000B709A1 /* EHEStdBookingManagerViewController.xib in Resources */,
+				794756291A1F388A00E39012 /* EHEStdOrderViewController.xib in Resources */,
 				7937968E1A1C76FC0013FD21 /* Default-568h@2x.png in Resources */,
 				52D397F31A1B38B7008B08FE /* mapapi.bundle in Resources */,
 				7960F1201A1C838300DCEA45 /* EHETchBookingManagerViewController.xib in Resources */,
@@ -642,19 +674,23 @@
 				797C30701A19D32900DB84E4 /* AppDelegate.m in Sources */,
 				797C30731A19D32900DB84E4 /* EHomeEducation.xcdatamodeld in Sources */,
 				797C30D61A19DB5000DB84E4 /* EHEStdLoginViewController.m in Sources */,
-				79D931CA1A1B1F9400B709A1 /* EHECoreDataManager.m in Sources */,
+				7947562D1A20FB1700E39012 /* EHEStdSubjectTableTableViewController.m in Sources */,
+				794756341A21E76E00E39012 /* EHECoreDataManager.m in Sources */,
 				798B1A471A1D866800F0031F /* EHETeacherTableViewCell.m in Sources */,
 				797C30E01A19DC0D00DB84E4 /* EHEStdSettingViewController.m in Sources */,
 				7947561F1A1EF97600E39012 /* EHETeacher.m in Sources */,
 				7960F11A1A1C834000DCEA45 /* EHEStdSearchingTableViewController.m in Sources */,
+				794756231A1F123200E39012 /* EHEStdRegisterViewController.m in Sources */,
 				797C306D1A19D32900DB84E4 /* main.mm in Sources */,
 				797C30DB1A19DB6F00DB84E4 /* EHETchLoginViewController.m in Sources */,
 				797C30CB1A19DA9900DB84E4 /* EHEStdMapSearchingViewController.m in Sources */,
 				797C30C61A19DA6E00DB84E4 /* EHETchSearchingTableViewController.m in Sources */,
 				794756121A1D9FE600E39012 /* EHETeacherDetailViewController.m in Sources */,
 				79D931D11A1B22DF00B709A1 /* EHECommunicationManager.m in Sources */,
+				794756311A21E20700E39012 /* EHEOrder.m in Sources */,
 				7960F1241A1C83C300DCEA45 /* EHETchSettingViewController.m in Sources */,
 				79D931C61A1B1F3000B709A1 /* EHEStdBookingManagerViewController.m in Sources */,
+				794756281A1F388A00E39012 /* EHEStdOrderViewController.m in Sources */,
 				525E36CD1A1C29B1004F0475 /* TeacherAnnotations.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

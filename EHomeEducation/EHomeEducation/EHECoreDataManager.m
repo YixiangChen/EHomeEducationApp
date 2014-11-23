@@ -76,6 +76,25 @@
     
 }
 
+-(void)saveOrderInfos:(NSDictionary *)dictOrder {
+    EHEOrder *order = [NSEntityDescription insertNewObjectForEntityForName:@"EHEOrder" inManagedObjectContext:self.context];
+    NSLog(@"I am savin data yeah");
+    order.customerid = [NSString stringWithFormat:@"%@",[dictOrder objectForKey:@"customerid"]];
+    NSLog(@"i am saving customerid");
+    order.latitude = [NSString stringWithFormat:@"%@",[dictOrder objectForKey:@"latitude"]];
+    order.longitude = [NSString stringWithFormat:@"%@",[dictOrder objectForKey:@"longitude"]];
+    order.serviceaddress = [dictOrder objectForKey:@"serviceaddress"];
+    order.teacherid = [NSString stringWithFormat:@"%@",[dictOrder objectForKey:@"teacherid"]];
+    order.orderdate = [dictOrder objectForKey:@"orderdate"];
+    order.timeperiod = [dictOrder objectForKey:@"timeperiod"];
+    order.objectinfo = [dictOrder objectForKey:@"objectinfo"];
+    order.subjectinfo = [dictOrder objectForKey:@"subjectinfo"];
+    order.memo =[dictOrder objectForKey:@"memo"];
+    order.orderstatus = [NSString stringWithFormat:@"%@",[dictOrder objectForKey:@"orderstatus"]];
+    [self.context save:nil];
+    
+}
+
 -(NSArray *)fetchBasicInfosOfTeachers {
     
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"EHETeacher"];
@@ -119,6 +138,32 @@
     else if (teachers.count > 0)
     {
         return teachers[0];
+    }
+    return nil;
+}
+
+-(NSArray *)fetchAllOrders {
+    
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"EHEOrder"];
+//    NSPredicate * predicate = nil;
+//    fetchRequest.predicate = predicate;
+//    NSSortDescriptor *sortByName = [NSSortDescriptor sortDescriptorWithKey:@"customerid" ascending:NO];
+//    NSArray *sorts = [[NSArray alloc] initWithObjects:sortByName, nil];
+//    fetchRequest.sortDescriptors = sorts;
+    
+    NSError *error;
+    NSArray *orders = [self.context executeFetchRequest:fetchRequest error:&error];
+    
+    NSLog(@"%d++++++++++++", orders.count);
+    NSLog(@"%@++++++++++++",orders[0]);
+    
+    if (error)
+    {
+        return nil;
+    }
+    else if (orders.count > 0)
+    {
+        return orders;
     }
     return nil;
 }

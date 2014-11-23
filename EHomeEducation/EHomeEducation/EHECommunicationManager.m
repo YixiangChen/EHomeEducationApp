@@ -69,4 +69,26 @@
     }
     
 }
+
+-(void)sendOrder:(NSDictionary *)dictOrder {
+    NSLog(@"%@",dictOrder);
+    
+    NSString * postData = [NSString stringWithFormat:@"{\"customerid\":\"%@\",\"latitude\":\"%@\",\"longitude\":\"%@\",\"serviceaddress\":\"%@\",\"teacherid\":\"%@\",\"orderdate\":\"%@\",\"timeperiod\":\"%@\",\"objectinfo\":\"%@\",\"subjectinfo\":\"%@\",\"memo\":\"%@\",\"orderstatus\":\"%@\"}",[dictOrder objectForKey:@"customerid"],[dictOrder objectForKey:@"latitude"],[dictOrder objectForKey:@"longitude"],[dictOrder objectForKey:@"serviceaddress"],[dictOrder objectForKey:@"teacherid"],[dictOrder objectForKey:@"orderdate"],[dictOrder objectForKey:@"timeperiod"],[dictOrder objectForKey:@"objectinfo"],[dictOrder objectForKey:@"subjectinfo"],[dictOrder objectForKey:@"memo"], [dictOrder objectForKey:@"orderstatus"]];
+    
+    NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://218.249.130.194:8080/ehomeedu/api/customer/reserveteacher.action"]];
+    NSString * data = [NSString stringWithFormat:@"info=%@",postData];
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBody:[data dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    NSError *error = nil;
+    NSData * responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
+    if(responseData != nil && error == nil){
+        NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:&error];
+        if([dict[@"code"] intValue] == 0){
+            [[EHECoreDataManager getInstance] saveOrderInfos:dictOrder];
+        }else{
+            NSLog(@"%@",dict[@"message"]);
+        }
+    }
+}
 @end
