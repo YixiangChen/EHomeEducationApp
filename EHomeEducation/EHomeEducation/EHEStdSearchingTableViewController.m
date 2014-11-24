@@ -83,11 +83,14 @@
 -(void) selectedSegmentChanged:(UISegmentedControl *) seg {
         if(seg.selectedSegmentIndex==0)
         {
-            
+            self.mapSearching.mapView=nil;//在父视图中删除地图的时候，要给百度地图赋值为nil以免内存泄露
             [self.mapSearching.view removeFromSuperview];
+            self.tableView.scrollEnabled=YES;
         }
         else
         {
+            NSLog(@"这是地图");
+            self.tableView.scrollEnabled=NO;
             [self.view addSubview: self.mapSearching.view];
         }
     
