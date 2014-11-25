@@ -9,13 +9,13 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 #import "EHECoreDataManager.h"
-#import "EHEStdMapSearchingViewController.h"
-
+//#import "EHEStdMapSearchingViewController.h"
+@class EHEStdMapSearchingViewController;
 @interface EHEStdSearchingTableViewController : UITableViewController<NSFetchedResultsControllerDelegate>
 @property(strong, nonatomic) EHECoreDataManager *coreDataManager;
 @property(strong, nonatomic) NSFetchedResultsController *fetchedResultController;
 @property(strong,nonatomic)UISegmentedControl * segmentedControl;
 @property(strong, nonatomic) EHEStdMapSearchingViewController *mapSearching;
 @property(strong, nonatomic) NSArray *allTeachersNearby;
-
+@property(strong,nonatomic)EHEStdMapSearchingViewController * mapViewController;
 @end

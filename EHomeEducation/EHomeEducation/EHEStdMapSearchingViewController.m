@@ -8,7 +8,9 @@
 
 #import "EHEStdMapSearchingViewController.h"
 #import "TeacherAnnotations.h"
-
+#import "EHETeacherDetailViewController.h"
+#import "EHETeacher.h"
+#import "EHECoreDataManager.h"
 @interface EHEStdMapSearchingViewController ()
 
 
@@ -159,6 +161,12 @@
 {
     EHEBaiduMapView * mapViewBubble= [self.bubbleDictionary objectForKey:@(view.paopaoView.tag)];
     NSLog(@"teacherid=%@,teacherName=%@",mapViewBubble.teacherID,mapViewBubble.labelTeacherName.text);
+    EHETeacherDetailViewController * detailViewController = [[EHETeacherDetailViewController alloc] initWithNibName:nil bundle:nil];
+    EHECoreDataManager * coreDataManager=[EHECoreDataManager getInstance];
+    EHETeacher * teacher=[coreDataManager fetchDetailInfosWithTeacherId:mapViewBubble.teacherID.intValue];
+    detailViewController.teacher=teacher;
+    [self.searchTableViewController.navigationController pushViewController:detailViewController animated:YES];
+    
 }
 -(void)mapView:(BMKMapView *)mapView didSelectAnnotationView:(BMKAnnotationView *)view
 {

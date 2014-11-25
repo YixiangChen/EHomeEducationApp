@@ -39,7 +39,7 @@
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"passWord"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-    [[EHECoreDataManager getInstance] deleteData];
+    //[[EHECoreDataManager getInstance] deleteData];
     [[EHECommunicationManager getInstance]loadTeachersInfo];
     [NSThread sleepForTimeInterval:2];
     

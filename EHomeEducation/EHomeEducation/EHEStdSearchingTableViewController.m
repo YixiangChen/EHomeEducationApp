@@ -13,9 +13,7 @@
 #import "EHETeacherDetailViewController.h"
 #import "EHETeacherTableViewCell.h"
 #import "EHEStdLoginViewController.h"
-
-
-
+#import "EHEStdMapSearchingViewController.h"
 @interface EHEStdSearchingTableViewController ()
 
 @end
@@ -91,6 +89,7 @@
         {
             NSLog(@"这是地图");
             self.tableView.scrollEnabled=NO;
+            self.mapSearching.searchTableViewController=self;
             [self.view addSubview: self.mapSearching.view];
         }
     

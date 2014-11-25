@@ -12,6 +12,7 @@
 #import <CoreData/CoreData.h>
 #import "EHECoreDataManager.h"
 #import "EHEBaiduMapView.h"
+#import "EHEStdSearchingTableViewController.h"
 @interface EHEStdMapSearchingViewController : UIViewController<BMKLocationServiceDelegate,BMKMapViewDelegate>
 @property(strong,nonatomic)CLLocationManager * locationManager;
 @property(strong,nonatomic)BMKLocationService * locationService;
@@ -20,6 +21,6 @@
 @property(strong,nonatomic)NSArray * teacherInfoArray;
 @property(strong,nonatomic)EHEBaiduMapView * mapViewPop;
 @property(strong,nonatomic)NSMutableDictionary * bubbleDictionary;
-
+@property(strong,nonatomic)EHEStdSearchingTableViewController * searchTableViewController;
 @property(nonatomic)int count;
 @end

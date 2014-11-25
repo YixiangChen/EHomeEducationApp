@@ -14,6 +14,8 @@
 		525C20991A1F256B00C3119A /* EHEStdBookingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 525C20971A1F256B00C3119A /* EHEStdBookingTableViewCell.xib */; };
 		525C209F1A1F481600C3119A /* EHEStdSettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 525C209D1A1F481600C3119A /* EHEStdSettingTableViewCell.m */; };
 		525C20A01A1F481600C3119A /* EHEStdSettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 525C209E1A1F481600C3119A /* EHEStdSettingTableViewCell.xib */; };
+		525DEB4A1A2430ED00A539FE /* 订单-历史评论星星.png in Resources */ = {isa = PBXBuildFile; fileRef = 525DEB481A2430ED00A539FE /* 订单-历史评论星星.png */; };
+		525DEB4B1A2430EE00A539FE /* 订单-历史评论星星2.png in Resources */ = {isa = PBXBuildFile; fileRef = 525DEB491A2430ED00A539FE /* 订单-历史评论星星2.png */; };
 		525E36CD1A1C29B1004F0475 /* TeacherAnnotations.m in Sources */ = {isa = PBXBuildFile; fileRef = 525E36CC1A1C29B1004F0475 /* TeacherAnnotations.m */; };
 		525E36CF1A1C2B4E004F0475 /* iconmarka.png in Resources */ = {isa = PBXBuildFile; fileRef = 525E36CE1A1C2B4E004F0475 /* iconmarka.png */; };
 		525E36D31A1C3052004F0475 /* png-0099.png in Resources */ = {isa = PBXBuildFile; fileRef = 525E36D21A1C3052004F0475 /* png-0099.png */; };
@@ -104,6 +106,8 @@
 		5299AE441A209F2C000A5960 /* EHEStdSettingDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5299AE421A209F2C000A5960 /* EHEStdSettingDetailViewController.m */; };
 		5299AE451A209F2C000A5960 /* EHEStdSettingDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5299AE431A209F2C000A5960 /* EHEStdSettingDetailViewController.xib */; };
 		52D0FAF31A22DCB1001AAF6B /* authentificated.png in Resources */ = {isa = PBXBuildFile; fileRef = 52D0FAF21A22DCB1001AAF6B /* authentificated.png */; };
+		52D0FB371A231C6B001AAF6B /* EHEStdBookingDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D0FB351A231C6B001AAF6B /* EHEStdBookingDetailViewController.m */; };
+		52D0FB381A231C6B001AAF6B /* EHEStdBookingDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52D0FB361A231C6B001AAF6B /* EHEStdBookingDetailViewController.xib */; };
 		52D397F21A1B38B7008B08FE /* libbaidumapapi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D397F01A1B38B6008B08FE /* libbaidumapapi.a */; };
 		52D397F31A1B38B7008B08FE /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 52D397F11A1B38B6008B08FE /* mapapi.bundle */; };
 		52D397F51A1B38FD008B08FE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D397F41A1B38FD008B08FE /* Security.framework */; };
@@ -114,6 +118,10 @@
 		52D397FF1A1B391C008B08FE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D397FE1A1B391B008B08FE /* CoreLocation.framework */; };
 		52D398011A1B422E008B08FE /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 52D398001A1B422E008B08FE /* pin.png */; };
 		52D5E8411A1F291900342E06 /* sdsdTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D5E8401A1F291900342E06 /* sdsdTableViewCell.m */; };
+		52DEE8531A24841700CD0D22 /* 订单-已完成 - 继续预约取消按钮2.png in Resources */ = {isa = PBXBuildFile; fileRef = 52DEE8511A24841700CD0D22 /* 订单-已完成 - 继续预约取消按钮2.png */; };
+		52DEE8541A24841700CD0D22 /* 订单-已完成 - 继续预约预约按钮2.png in Resources */ = {isa = PBXBuildFile; fileRef = 52DEE8521A24841700CD0D22 /* 订单-已完成 - 继续预约预约按钮2.png */; };
+		52DEE8571A2485E600CD0D22 /* 订单-已完成 - 继续预约取消按钮.png in Resources */ = {isa = PBXBuildFile; fileRef = 52DEE8551A2485E600CD0D22 /* 订单-已完成 - 继续预约取消按钮.png */; };
+		52DEE8581A2485E600CD0D22 /* 订单-已完成 - 继续预约预约按钮.png in Resources */ = {isa = PBXBuildFile; fileRef = 52DEE8561A2485E600CD0D22 /* 订单-已完成 - 继续预约预约按钮.png */; };
 		7937968E1A1C76FC0013FD21 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7937968D1A1C76FC0013FD21 /* Default-568h@2x.png */; };
 		794756121A1D9FE600E39012 /* EHETeacherDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 794756101A1D9FE600E39012 /* EHETeacherDetailViewController.m */; };
 		794756131A1D9FE600E39012 /* EHETeacherDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 794756111A1D9FE600E39012 /* EHETeacherDetailViewController.xib */; };
@@ -181,6 +189,8 @@
 		525C209C1A1F481500C3119A /* EHEStdSettingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHEStdSettingTableViewCell.h; sourceTree = "<group>"; };
 		525C209D1A1F481600C3119A /* EHEStdSettingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHEStdSettingTableViewCell.m; sourceTree = "<group>"; };
 		525C209E1A1F481600C3119A /* EHEStdSettingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHEStdSettingTableViewCell.xib; sourceTree = "<group>"; };
+		525DEB481A2430ED00A539FE /* 订单-历史评论星星.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "订单-历史评论星星.png"; sourceTree = "<group>"; };
+		525DEB491A2430ED00A539FE /* 订单-历史评论星星2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "订单-历史评论星星2.png"; sourceTree = "<group>"; };
 		525E36CB1A1C29B1004F0475 /* TeacherAnnotations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeacherAnnotations.h; sourceTree = "<group>"; };
 		525E36CC1A1C29B1004F0475 /* TeacherAnnotations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeacherAnnotations.m; sourceTree = "<group>"; };
 		525E36CE1A1C2B4E004F0475 /* iconmarka.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconmarka.png; sourceTree = "<group>"; };
@@ -282,6 +292,9 @@
 		5299AE421A209F2C000A5960 /* EHEStdSettingDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHEStdSettingDetailViewController.m; sourceTree = "<group>"; };
 		5299AE431A209F2C000A5960 /* EHEStdSettingDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHEStdSettingDetailViewController.xib; sourceTree = "<group>"; };
 		52D0FAF21A22DCB1001AAF6B /* authentificated.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = authentificated.png; sourceTree = "<group>"; };
+		52D0FB341A231C6B001AAF6B /* EHEStdBookingDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHEStdBookingDetailViewController.h; sourceTree = "<group>"; };
+		52D0FB351A231C6B001AAF6B /* EHEStdBookingDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHEStdBookingDetailViewController.m; sourceTree = "<group>"; };
+		52D0FB361A231C6B001AAF6B /* EHEStdBookingDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHEStdBookingDetailViewController.xib; sourceTree = "<group>"; };
 		52D397B31A1B38B6008B08FE /* BMapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMapKit.h; sourceTree = "<group>"; };
 		52D397B41A1B38B6008B08FE /* BMKActionPaopaoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKActionPaopaoView.h; sourceTree = "<group>"; };
 		52D397B51A1B38B6008B08FE /* BMKAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKAnnotation.h; sourceTree = "<group>"; };
@@ -354,6 +367,10 @@
 		52D398001A1B422E008B08FE /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pin.png; path = ../pin.png; sourceTree = "<group>"; };
 		52D5E83F1A1F291900342E06 /* sdsdTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdsdTableViewCell.h; sourceTree = "<group>"; };
 		52D5E8401A1F291900342E06 /* sdsdTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = sdsdTableViewCell.m; sourceTree = "<group>"; };
+		52DEE8511A24841700CD0D22 /* 订单-已完成 - 继续预约取消按钮2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "订单-已完成 - 继续预约取消按钮2.png"; sourceTree = "<group>"; };
+		52DEE8521A24841700CD0D22 /* 订单-已完成 - 继续预约预约按钮2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "订单-已完成 - 继续预约预约按钮2.png"; sourceTree = "<group>"; };
+		52DEE8551A2485E600CD0D22 /* 订单-已完成 - 继续预约取消按钮.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "订单-已完成 - 继续预约取消按钮.png"; sourceTree = "<group>"; };
+		52DEE8561A2485E600CD0D22 /* 订单-已完成 - 继续预约预约按钮.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "订单-已完成 - 继续预约预约按钮.png"; sourceTree = "<group>"; };
 		7937968D1A1C76FC0013FD21 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		7947560F1A1D9FE600E39012 /* EHETeacherDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHETeacherDetailViewController.h; sourceTree = "<group>"; };
 		794756101A1D9FE600E39012 /* EHETeacherDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHETeacherDetailViewController.m; sourceTree = "<group>"; };
@@ -875,6 +892,8 @@
 		52D398021A1B4248008B08FE /* 项目图片 */ = {
 			isa = PBXGroup;
 			children = (
+				525DEB481A2430ED00A539FE /* 订单-历史评论星星.png */,
+				525DEB491A2430ED00A539FE /* 订单-历史评论星星2.png */,
 				52D0FAF21A22DCB1001AAF6B /* authentificated.png */,
 				5299AE3A1A20964C000A5960 /* settingTest.jpeg */,
 				525E36EA1A1C7563004F0475 /* png-0010.png */,
@@ -887,6 +906,10 @@
 				52D398001A1B422E008B08FE /* pin.png */,
 				525C208A1A1ED8D200C3119A /* male.png */,
 				525C208B1A1ED8D200C3119A /* female.png */,
+				52DEE8511A24841700CD0D22 /* 订单-已完成 - 继续预约取消按钮2.png */,
+				52DEE8521A24841700CD0D22 /* 订单-已完成 - 继续预约预约按钮2.png */,
+				52DEE8551A2485E600CD0D22 /* 订单-已完成 - 继续预约取消按钮.png */,
+				52DEE8561A2485E600CD0D22 /* 订单-已完成 - 继续预约预约按钮.png */,
 			);
 			name = "项目图片";
 			sourceTree = "<group>";
@@ -1046,6 +1069,9 @@
 				79D931C31A1B1F3000B709A1 /* EHEStdBookingManagerViewController.h */,
 				79D931C41A1B1F3000B709A1 /* EHEStdBookingManagerViewController.m */,
 				79D931C51A1B1F3000B709A1 /* EHEStdBookingManagerViewController.xib */,
+				52D0FB341A231C6B001AAF6B /* EHEStdBookingDetailViewController.h */,
+				52D0FB351A231C6B001AAF6B /* EHEStdBookingDetailViewController.m */,
+				52D0FB361A231C6B001AAF6B /* EHEStdBookingDetailViewController.xib */,
 				798B1A441A1D866800F0031F /* EHETeacherTableViewCell.h */,
 				798B1A451A1D866800F0031F /* EHETeacherTableViewCell.m */,
 				798B1A461A1D866800F0031F /* EHETeacherTableViewCell.xib */,
@@ -1173,15 +1199,18 @@
 				7960F1251A1C83C300DCEA45 /* EHETchSettingViewController.xib in Resources */,
 				794756131A1D9FE600E39012 /* EHETeacherDetailViewController.xib in Resources */,
 				525E36E91A1C5008004F0475 /* png-0762.png in Resources */,
+				525DEB4B1A2430EE00A539FE /* 订单-历史评论星星2.png in Resources */,
 				7947562E1A20FB1700E39012 /* EHEStdSubjectTableTableViewController.xib in Resources */,
 				52D0FAF31A22DCB1001AAF6B /* authentificated.png in Resources */,
 				798B1A4C1A1D86DF00F0031F /* female_tablecell.png in Resources */,
 				798B1A481A1D866800F0031F /* EHETeacherTableViewCell.xib in Resources */,
 				5299AE3B1A20964C000A5960 /* settingTest.jpeg in Resources */,
+				525DEB4A1A2430ED00A539FE /* 订单-历史评论星星.png in Resources */,
 				525E36E91A1C5008004F0475 /* png-0762.png in Resources */,
 				525C208D1A1ED8D200C3119A /* female.png in Resources */,
 				797C307B1A19D32900DB84E4 /* Images.xcassets in Resources */,
 				525C208C1A1ED8D200C3119A /* male.png in Resources */,
+				52DEE8581A2485E600CD0D22 /* 订单-已完成 - 继续预约预约按钮.png in Resources */,
 				52905A1C1A21A80100DDC6FB /* ShareSDKLocalizable.strings in Resources */,
 				797C30C71A19DA6E00DB84E4 /* EHETchSearchingTableViewController.xib in Resources */,
 				52905A371A21A80100DDC6FB /* ShareSDKiPhoneSimpleShareViewUI.bundle in Resources */,
@@ -1190,16 +1219,20 @@
 				52905A301A21A80100DDC6FB /* ShareSDKiPadDefaultShareViewUI.bundle in Resources */,
 				5299AE451A209F2C000A5960 /* EHEStdSettingDetailViewController.xib in Resources */,
 				797C30D71A19DB5000DB84E4 /* EHEStdLoginViewController.xib in Resources */,
+				52DEE8571A2485E600CD0D22 /* 订单-已完成 - 继续预约取消按钮.png in Resources */,
 				52905A231A21A80100DDC6FB /* PinterestSDKResources.bundle in Resources */,
 				797C30DC1A19DB6F00DB84E4 /* EHETchLoginViewController.xib in Resources */,
 				79D931C71A1B1F3000B709A1 /* EHEStdBookingManagerViewController.xib in Resources */,
 				794756291A1F388A00E39012 /* EHEStdOrderViewController.xib in Resources */,
 				52905A291A21A80100DDC6FB /* WeiboSDK.bundle in Resources */,
+				52D0FB381A231C6B001AAF6B /* EHEStdBookingDetailViewController.xib in Resources */,
 				79D931C71A1B1F3000B709A1 /* EHEStdBookingManagerViewController.xib in Resources */,
 				52905A2E1A21A80100DDC6FB /* ShareSDKFlatShareViewUI.bundle in Resources */,
 				525C20991A1F256B00C3119A /* EHEStdBookingTableViewCell.xib in Resources */,
+				52DEE8541A24841700CD0D22 /* 订单-已完成 - 继续预约预约按钮2.png in Resources */,
 				52905A261A21A80100DDC6FB /* RennSDK.bundle in Resources */,
 				7937968E1A1C76FC0013FD21 /* Default-568h@2x.png in Resources */,
+				52DEE8531A24841700CD0D22 /* 订单-已完成 - 继续预约取消按钮2.png in Resources */,
 				52D397F31A1B38B7008B08FE /* mapapi.bundle in Resources */,
 				5299AE401A209AC6000A5960 /* EHEStdSettingDetailCell.xib in Resources */,
 				52905A201A21A80100DDC6FB /* GooglePlus.bundle in Resources */,
@@ -1231,6 +1264,7 @@
 				797C30D11A19DAD400DB84E4 /* EHETchSearchingMapViewController.m in Sources */,
 				5299AE3F1A209AC6000A5960 /* EHEStdSettingDetailCell.m in Sources */,
 				797C30701A19D32900DB84E4 /* AppDelegate.m in Sources */,
+				52D0FB371A231C6B001AAF6B /* EHEStdBookingDetailViewController.m in Sources */,
 				52D5E8411A1F291900342E06 /* sdsdTableViewCell.m in Sources */,
 				797C30731A19D32900DB84E4 /* EHomeEducation.xcdatamodeld in Sources */,
 				797C30D61A19DB5000DB84E4 /* EHEStdLoginViewController.m in Sources */,
