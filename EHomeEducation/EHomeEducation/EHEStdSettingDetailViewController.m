@@ -7,6 +7,7 @@
 //
 
 #import "EHEStdSettingDetailViewController.h"
+#import "EHEStdSettingPersonalInformation.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 @interface EHEStdSettingDetailViewController ()
 
@@ -26,7 +27,6 @@
     {
       self.tableView=[[UITableView alloc]initWithFrame:CGRectMake(-15, 0, self.view.frame.size.width+15, 188) style:UITableViewStylePlain];
         self.sexArray=[[NSArray alloc]initWithObjects:@"男",@"女", nil];
-        self.currentIndexPath=0;
     }
     self.tableView.dataSource=self;
     self.tableView.delegate=self;
@@ -49,11 +49,35 @@
        self.tableView.bounces=NO;
        [self.view addSubview:self.tableView];
    }
-    UIBarButtonItem * doneButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"完成" style:UIBarButtonItemStyleBordered target:self action:@selector(saveButtonItemClicked:)];
-    self.navigationItem.rightBarButtonItem=doneButtonItem;
+    
+    NSLog(@"studentName=%@",self.name);
+    
     // Do any additional setup after loading the view from its nib.
 }
-
+-(void)viewWillDisappear:(BOOL)animated
+{
+    UITextField * nameText=(UITextField *)[self.tableView viewWithTag:1];
+    if([self.type isEqualToString:@"1"])
+    {
+    self.personInfomation.name=nameText.text;
+    }
+    else if([self.type isEqualToString:@"3"])
+    {
+    self.personInfomation.telephoneNumber=nameText.text;
+    }
+    else if([self.type isEqualToString:@"2"])
+    {
+    self.personInfomation.gender=[self.sexArray objectAtIndex:self.currentIndexPath];
+    }
+    else if([self.type isEqualToString:@"4"])
+    {
+        self.personInfomation.brithday=nameText.text;
+    }
+    else if([self.type isEqualToString:@"0"])
+    {
+        self.personInfomation.image=self.image;
+    }
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -89,6 +113,7 @@
     {
         cell=[[EHEStdSettingDetailCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Identifier];
     }
+    cell.detailTextField.tag=1;
     if([self.type isEqualToString:@"1"])
     {
     cell.detailTextsLabel.text=@"姓名";
@@ -123,7 +148,7 @@
     {
         cell.detailTextsLabel.text=@"日期";
         cell.detailTextField.inputView=self.datePicker;
-        cell.detailTextField.tag=1;
+        //cell.detailTextField.tag=1;
         cell.detailTextField.text=self.birthDate;
         [cell.detailTextField becomeFirstResponder];
         cell.userInteractionEnabled=NO;
@@ -221,33 +246,33 @@
     //如果是来源为照片库
     if(picker.sourceType == UIImagePickerControllerSourceTypePhotoLibrary){
         //做将选择的图片显示到imageView组件上。
-        UIImage * image = nil;
+        _image = nil;
         if(picker.allowsEditing != YES){
             //选取原始图片
-            image = info[UIImagePickerControllerOriginalImage];
+            _image = info[UIImagePickerControllerOriginalImage];
         }else{
             //选取编辑后的图片
-            image = info[UIImagePickerControllerEditedImage];
+            _image = info[UIImagePickerControllerEditedImage];
         }
         //可以根据实际图片大小来调整imageView组件的高宽比。
-        self.studentImageView.image = image;
+        self.studentImageView.image = _image;
         [self.studentImageView.layer setCornerRadius:50];
     }else if(picker.sourceType == UIImagePickerControllerSourceTypeCamera){
         if(picker.cameraCaptureMode == UIImagePickerControllerCameraCaptureModePhoto){
             //做将选择的图片显示到imageView组件上。
-            UIImage * image = nil;
+            _image = nil;
             if(picker.allowsEditing != YES){
                 //选取原始图片
-                image = info[UIImagePickerControllerOriginalImage];
+                _image = info[UIImagePickerControllerOriginalImage];
             }else{
                 //选取编辑后的图片
-                image = info[UIImagePickerControllerEditedImage];
+                _image = info[UIImagePickerControllerEditedImage];
             }
             //可以根据实际图片大小来调整imageView组件的高宽比。
             //来源为照相机，将原始的照片存入照片库
             //建立相册
             UIImageWriteToSavedPhotosAlbum(info[UIImagePickerControllerOriginalImage], nil, nil,NULL);
-            self.studentImageView.image = image;
+            self.studentImageView.image = _image;
         }
         }
     [picker dismissViewControllerAnimated:YES completion:nil];

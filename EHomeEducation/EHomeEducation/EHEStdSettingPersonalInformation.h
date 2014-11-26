@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class EHEStdSettingDetailViewController;
 @interface EHEStdSettingPersonalInformation : UIViewController<UITableViewDataSource,UITableViewDelegate>
 @property(strong,nonatomic)UITableView * tableView;
 @property(strong,nonatomic)NSString * name;
 @property(strong,nonatomic)NSString * telephoneNumber;
 @property(strong,nonatomic)NSString * gender;
 @property(strong,nonatomic)NSString * brithday;
+@property(strong,nonatomic)UIImage * image;
 @end
