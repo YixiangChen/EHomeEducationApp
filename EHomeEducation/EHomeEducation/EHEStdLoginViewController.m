@@ -59,11 +59,17 @@
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:nil];
         NSLog(@"%@",dict);
         if([dict[@"code"] intValue] == 0){
-            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            NSLog(@"message=%@",[dict objectForKey:@"message"]);
+            NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
             [defaults setObject:self.txtUserName.text forKey:@"userName"];
             [defaults setObject:self.txtPassWord.text forKey:@"passWord"];
             [defaults synchronize];
-            [self dismissViewControllerAnimated:YES completion:nil];
+            [self.navigationController popViewControllerAnimated:NO];
+            
+            NSString * path=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+            NSString * realPath=[path stringByAppendingString:@".plist"];
+            NSLog(@"%@",realPath);
+            
         }else{
             NSLog(@"%@",dict[@"message"]);
         }

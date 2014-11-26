@@ -35,9 +35,9 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userName"];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"passWord"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+//    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userName"];
+//    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"passWord"];
+//    [[NSUserDefaults standardUserDefaults] synchronize];
     
     [[EHECoreDataManager getInstance] deleteData];
     [[EHECommunicationManager getInstance]loadTeachersInfo];

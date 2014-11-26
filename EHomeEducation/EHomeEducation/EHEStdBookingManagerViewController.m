@@ -11,6 +11,7 @@
 #import "EHEOrder.h"
 #import "EHETeacher.h"
 #import "EHEStdBookingDetailViewController.h"
+#import "EHEStdLoginViewController.h"
 @interface EHEStdBookingManagerViewController ()
 
 @end
@@ -29,13 +30,30 @@
     self.navigationItem.titleView = self.segmentedControl;
     
     //创建tableView并且给之放置样式
-    self.homeTeacherTableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStylePlain];
+    self.homeTeacherTableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-120) style:UITableViewStylePlain];
     self.homeTeacherTableView.dataSource=self;
     self.homeTeacherTableView.delegate=self;
     //分割线为单线分割
     self.homeTeacherTableView.separatorStyle=UITableViewCellSeparatorStyleSingleLine;
     [self.view addSubview:self.homeTeacherTableView];
     // Do any additional setup after loading the view from its nib.
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    NSUserDefaults * userDefaults=[NSUserDefaults standardUserDefaults];
+    NSString * userName=[userDefaults objectForKey:@"userName"];
+    NSString * password=[userDefaults objectForKey:@"passWord"];
+    //[userDefaults synchronize];
+    NSLog(@"userName=%@,password=%@",userName,password);
+    EHEStdLoginViewController *loginViewController = [[EHEStdLoginViewController alloc] initWithNibName:nil bundle:nil];
+    if (userName == nil || password== nil) {
+        [[self navigationController] setNavigationBarHidden:YES animated:YES];//隐藏导航栏
+        [self.navigationController pushViewController:loginViewController animated:NO];
+    }
+    else
+    {
+        [[self navigationController] setNavigationBarHidden:NO animated:YES];
+    }
 }
 -(void)bandUnOrdered
 {
