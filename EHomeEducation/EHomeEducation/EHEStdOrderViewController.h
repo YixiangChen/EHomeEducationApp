@@ -8,13 +8,25 @@
 
 #import <UIKit/UIKit.h>
 #import "EHETeacher.h"
+#import "EHEStdOrderTableViewCell.h"
+#import "EHEStdDatePickerTableViewCell.h"
+#import "EHEStdTimePickerTableViewCell.h"
 
-@interface EHEStdOrderViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIPickerViewDelegate,UIPickerViewDataSource>
+
+@interface EHEStdOrderViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) IBOutlet UIPickerView *pickerView;
-@property (strong, nonatomic) IBOutlet UIView *viewForPicker;
 @property (strong, nonatomic) EHETeacher *teacher;
-- (IBAction)doneButtonPressed:(id)sender;
-- (IBAction)cancelButtonPressed:(id)sender;
+@property (strong, nonatomic) EHEStdOrderTableViewCell *cellForObject;
+@property (strong, nonatomic) EHEStdDatePickerTableViewCell *cellForDatePicker;
+@property (strong, nonatomic) EHEStdTimePickerTableViewCell *cellForStartTimePicker;
+@property (strong, nonatomic) EHEStdTimePickerTableViewCell *cellForEndTimePicker;
+@property (strong, nonatomic) NSString *selectedObject;
+@property (strong, nonatomic) NSString *selectedSubjects;
+@property (strong, nonatomic) NSString *selectedLocation;
+@property (strong, nonatomic) NSString *selectedMemo;
+@property (strong, nonatomic) NSString *selectedDate;
+@property (strong, nonatomic) NSString *selectedStartTime;
+@property (strong, nonatomic) NSString *selectedEndTime;
+
 
 @end

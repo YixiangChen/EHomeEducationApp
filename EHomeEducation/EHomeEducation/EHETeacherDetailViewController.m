@@ -25,6 +25,7 @@
     CGSize newSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height + 30);
     [self.scrollView setContentSize:newSize];
     [self setExtraCellLineHidden:self.tableView];
+    //[self.navigationController.navigationItem.leftBarButtonItem setTintColor:[UIColor greenColor]];
 
 }
 

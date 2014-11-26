@@ -10,8 +10,8 @@
 #import "EHEStdOrderViewController.h"
 
 @interface EHEStdSubjectTableTableViewController ()
-@property (strong, nonatomic) NSArray *subjectsArray;
-@property (strong, nonatomic) NSMutableArray *selectedSubjects;
+@property (strong, nonatomic) NSMutableArray *subjectsArray;
+@property (strong, nonatomic) NSMutableArray *dataArray;
 
 @end
 
@@ -26,9 +26,12 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
  
-    self.subjectsArray = @[@"语文",@"数学",@"英语",@"历史",@"地理",@"生物",@"政治",@"音乐",@"绘画",@"舞蹈",@"其他"];
-    self.selectedSubjects = [[NSMutableArray alloc] initWithObjects:@"",@"",@"",@"",@"",@"", @"",@"",@"", @"",@"", nil];
-
+    NSArray *subjects = @[@"语文",@"数学",@"英语",@"历史",@"地理",@"生物",@"政治",@"音乐",@"绘画",@"舞蹈",@"其他"];
+    self.subjectsArray = [[NSMutableArray alloc] initWithArray:subjects];
+    NSDictionary *dict = @{@"isSelected":@(NO)};
+    NSArray *array = @[dict,dict,dict,dict,dict,dict,dict,dict,dict,dict,dict];
+    self.dataArray = [[NSMutableArray alloc] initWithArray:array];
+    
     self.navigationItem.leftBarButtonItem.title = @"保存";
 }
 
@@ -39,12 +42,9 @@
 
 -(void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
-    EHEStdOrderViewController *orderViewController = [self.navigationController.viewControllers objectAtIndex:2];
-    UITableViewCell *cell = [orderViewController.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
-    
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@",self.subjectsArray];
-    [orderViewController.tableView reloadData];
-    
+    self.selectedSubjects = [self getSelectedSubjects];
+    self.orderTable.selectedSubjects = self.selectedSubjects;
+    [self.orderTable.tableView reloadData];
 }
 
 #pragma mark - Table view data source
@@ -113,16 +113,17 @@
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
-    cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    [self.selectedSubjects insertObject:[self.subjectsArray objectAtIndex:indexPath.row] atIndex:indexPath.row];
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    BOOL isSelected = [[self.dataArray[indexPath.row] objectForKey:@"isSelected"] boolValue];
+    if (isSelected) {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
+    NSDictionary *newDict = @{@"isSelected":@(!isSelected)};
+    [self.dataArray replaceObjectAtIndex:indexPath.row withObject:newDict];
 }
 
--(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
-    cell.accessoryType = UITableViewCellAccessoryNone;
-    [self.selectedSubjects removeObjectAtIndex:indexPath.row];
-}
 
 /*
 #pragma mark - Navigation
@@ -133,5 +134,20 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+-(NSString *)getSelectedSubjects {
+    NSMutableString *selectedSubjects = [[NSMutableString alloc] init];
+    NSDictionary *dict;
+    for (int i =0; i<self.dataArray.count; i++) {
+        dict = [self.dataArray objectAtIndex:i];
+        if ([[dict objectForKey:@"isSelected"] boolValue]) {
+            [selectedSubjects appendString:self.subjectsArray[i]];
+        }
+    }
+    return selectedSubjects;
+    
+}
+    
+
 
 @end
