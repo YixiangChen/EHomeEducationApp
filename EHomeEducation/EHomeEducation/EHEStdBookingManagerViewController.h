@@ -13,7 +13,8 @@
 @property(strong,nonatomic)EHESegmentedControlManager * segmentedControl;//自定义的一个segmentedControl
 @property(strong,nonatomic)UITableView * homeTeacherTableView;
 @property(strong,nonatomic)EHEStdBookingTableViewCell * bookingTableViewCell;
-@property(strong,nonatomic)NSArray * arrayTeacherInfo;//暂时性的数据源，不可这样写，请求到真实数据应立刻删掉
-@property(strong,nonatomic)NSArray * arrayDate;
-
+@property(strong,nonatomic)NSMutableArray * arrayTeacherInfo;//暂时性的数据源，不可这样写，请求到真实数据应立刻删掉
+@property(strong,nonatomic)NSMutableArray * arrayDate;
+@property(strong,nonatomic)NSMutableArray * arrayOrderID;
+@property(strong,nonatomic)NSMutableArray * teacherArray;
 @end
