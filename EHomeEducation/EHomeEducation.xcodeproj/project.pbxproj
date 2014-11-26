@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5214E4631A2586CB0024CCED /* EHEStdSettingPersonalInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5214E4611A2586CB0024CCED /* EHEStdSettingPersonalInformation.m */; };
+		5214E4641A2586CB0024CCED /* EHEStdSettingPersonalInformation.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5214E4621A2586CB0024CCED /* EHEStdSettingPersonalInformation.xib */; };
 		525C208C1A1ED8D200C3119A /* male.png in Resources */ = {isa = PBXBuildFile; fileRef = 525C208A1A1ED8D200C3119A /* male.png */; };
 		525C208D1A1ED8D200C3119A /* female.png in Resources */ = {isa = PBXBuildFile; fileRef = 525C208B1A1ED8D200C3119A /* female.png */; };
 		525C20911A1EEF6200C3119A /* EHESegmentedControlManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 525C20901A1EEF6200C3119A /* EHESegmentedControlManager.m */; };
@@ -183,6 +185,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5214E4601A2586CB0024CCED /* EHEStdSettingPersonalInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHEStdSettingPersonalInformation.h; sourceTree = "<group>"; };
+		5214E4611A2586CB0024CCED /* EHEStdSettingPersonalInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHEStdSettingPersonalInformation.m; sourceTree = "<group>"; };
+		5214E4621A2586CB0024CCED /* EHEStdSettingPersonalInformation.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHEStdSettingPersonalInformation.xib; sourceTree = "<group>"; };
 		525C208A1A1ED8D200C3119A /* male.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = male.png; sourceTree = "<group>"; };
 		525C208B1A1ED8D200C3119A /* female.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = female.png; sourceTree = "<group>"; };
 		525C208F1A1EEF6200C3119A /* EHESegmentedControlManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHESegmentedControlManager.h; sourceTree = "<group>"; };
@@ -816,9 +821,6 @@
 			isa = PBXGroup;
 			children = (
 				525C209B1A1F47CF00C3119A /* 设置表单元格 */,
-				5299AE411A209F2C000A5960 /* EHEStdSettingDetailViewController.h */,
-				5299AE421A209F2C000A5960 /* EHEStdSettingDetailViewController.m */,
-				5299AE431A209F2C000A5960 /* EHEStdSettingDetailViewController.xib */,
 			);
 			name = "设置";
 			sourceTree = "<group>";
@@ -1107,6 +1109,12 @@
 				797C30DD1A19DC0D00DB84E4 /* EHEStdSettingViewController.h */,
 				797C30DE1A19DC0D00DB84E4 /* EHEStdSettingViewController.m */,
 				797C30DF1A19DC0D00DB84E4 /* EHEStdSettingViewController.xib */,
+				5299AE411A209F2C000A5960 /* EHEStdSettingDetailViewController.h */,
+				5299AE421A209F2C000A5960 /* EHEStdSettingDetailViewController.m */,
+				5299AE431A209F2C000A5960 /* EHEStdSettingDetailViewController.xib */,
+				5214E4601A2586CB0024CCED /* EHEStdSettingPersonalInformation.h */,
+				5214E4611A2586CB0024CCED /* EHEStdSettingPersonalInformation.m */,
+				5214E4621A2586CB0024CCED /* EHEStdSettingPersonalInformation.xib */,
 				798B1A441A1D866800F0031F /* EHETeacherTableViewCell.h */,
 				798B1A451A1D866800F0031F /* EHETeacherTableViewCell.m */,
 				798B1A461A1D866800F0031F /* EHETeacherTableViewCell.xib */,
@@ -1264,6 +1272,7 @@
 				52D397F31A1B38B7008B08FE /* mapapi.bundle in Resources */,
 				5299AE401A209AC6000A5960 /* EHEStdSettingDetailCell.xib in Resources */,
 				52905A201A21A80100DDC6FB /* GooglePlus.bundle in Resources */,
+				5214E4641A2586CB0024CCED /* EHEStdSettingPersonalInformation.xib in Resources */,
 				7960F1201A1C838300DCEA45 /* EHETchBookingManagerViewController.xib in Resources */,
 				525E36D31A1C3052004F0475 /* png-0099.png in Resources */,
 				797C30E11A19DC0D00DB84E4 /* EHEStdSettingViewController.xib in Resources */,
@@ -1292,6 +1301,7 @@
 				7960F11F1A1C838300DCEA45 /* EHETchBookingManagerViewController.m in Sources */,
 				7947561C1A1ED1AA00E39012 /* MF_Base64Additions.m in Sources */,
 				797C30D11A19DAD400DB84E4 /* EHETchSearchingMapViewController.m in Sources */,
+				5214E4631A2586CB0024CCED /* EHEStdSettingPersonalInformation.m in Sources */,
 				5299AE3F1A209AC6000A5960 /* EHEStdSettingDetailCell.m in Sources */,
 				797C30701A19D32900DB84E4 /* AppDelegate.m in Sources */,
 				52D5E8411A1F291900342E06 /* sdsdTableViewCell.m in Sources */,

@@ -10,6 +10,9 @@
 
 @interface EHEStdSettingTableViewCell : UITableViewCell
 @property(strong,nonatomic)UILabel * settingLabel;
+@property(strong,nonatomic)UILabel * nameLabel;
 @property(strong,nonatomic)UIImageView *settingImageView;
 @property(strong,nonatomic)UILabel * contentLabel;
+@property(strong,nonatomic)UIImageView * imageIcon;
+@property(strong,nonatomic)UILabel * iconLabel;
 @end
