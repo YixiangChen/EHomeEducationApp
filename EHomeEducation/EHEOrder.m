@@ -2,7 +2,7 @@
 //  EHEOrder.m
 //  EHomeEducation
 //
-//  Created by Yixiang Chen on 11/23/14.
+//  Created by Yixiang Chen on 11/26/14.
 //  Copyright (c) 2014 AppChen. All rights reserved.
 //
 
@@ -12,15 +12,19 @@
 @implementation EHEOrder
 
 @dynamic customerid;
-@dynamic objectinfo;
-@dynamic timeperiod;
-@dynamic orderdate;
-@dynamic teacherid;
-@dynamic serviceaddress;
-@dynamic longitude;
 @dynamic latitude;
-@dynamic subjectinfo;
+@dynamic longitude;
 @dynamic memo;
+@dynamic objectinfo;
+@dynamic orderdate;
 @dynamic orderstatus;
+@dynamic serviceaddress;
+@dynamic subjectinfo;
+@dynamic teacherid;
+@dynamic timeperiod;
+@dynamic customername;
+@dynamic finishDate;
+@dynamic orderid;
+@dynamic teachername;
 
 @end

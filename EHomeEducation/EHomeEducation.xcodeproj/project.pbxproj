@@ -126,7 +126,6 @@
 		794756291A1F388A00E39012 /* EHEStdOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 794756271A1F388A00E39012 /* EHEStdOrderViewController.xib */; };
 		7947562D1A20FB1700E39012 /* EHEStdSubjectTableTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7947562B1A20FB1700E39012 /* EHEStdSubjectTableTableViewController.m */; };
 		7947562E1A20FB1700E39012 /* EHEStdSubjectTableTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7947562C1A20FB1700E39012 /* EHEStdSubjectTableTableViewController.xib */; };
-		794756311A21E20700E39012 /* EHEOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 794756301A21E20700E39012 /* EHEOrder.m */; };
 		794756341A21E76E00E39012 /* EHECoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 794756331A21E76E00E39012 /* EHECoreDataManager.m */; };
 		795F88961A24639B004D75BA /* EHEStdLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 795F88941A24639B004D75BA /* EHEStdLocationViewController.m */; };
 		795F88971A24639B004D75BA /* EHEStdLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 795F88951A24639B004D75BA /* EHEStdLocationViewController.xib */; };
@@ -166,6 +165,7 @@
 		79D5E8DC1A25807A0047C704 /* EHEStdBookingDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79D5E8D71A25807A0047C704 /* EHEStdBookingDetailViewController.xib */; };
 		79D5E8DD1A25807A0047C704 /* EHEStdBookingManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79D5E8D91A25807A0047C704 /* EHEStdBookingManagerViewController.m */; };
 		79D5E8DE1A25807A0047C704 /* EHEStdBookingManagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79D5E8DA1A25807A0047C704 /* EHEStdBookingManagerViewController.xib */; };
+		79D5E8E11A25B8700047C704 /* EHEOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 79D5E8E01A25B8700047C704 /* EHEOrder.m */; };
 		79D931D11A1B22DF00B709A1 /* EHECommunicationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 79D931D01A1B22DF00B709A1 /* EHECommunicationManager.m */; };
 		79DC58B51A22CE4300A4943C /* EHETeacher.m in Sources */ = {isa = PBXBuildFile; fileRef = 79DC58B41A22CE4300A4943C /* EHETeacher.m */; };
 		79EA22CD1A2322C80016CBD1 /* EHEStdOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79EA22CB1A2322C80016CBD1 /* EHEStdOrderTableViewCell.m */; };
@@ -384,8 +384,6 @@
 		7947562A1A20FB1700E39012 /* EHEStdSubjectTableTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHEStdSubjectTableTableViewController.h; sourceTree = "<group>"; };
 		7947562B1A20FB1700E39012 /* EHEStdSubjectTableTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHEStdSubjectTableTableViewController.m; sourceTree = "<group>"; };
 		7947562C1A20FB1700E39012 /* EHEStdSubjectTableTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHEStdSubjectTableTableViewController.xib; sourceTree = "<group>"; };
-		7947562F1A21E20700E39012 /* EHEOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHEOrder.h; sourceTree = "<group>"; };
-		794756301A21E20700E39012 /* EHEOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHEOrder.m; sourceTree = "<group>"; };
 		794756321A21E76E00E39012 /* EHECoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHECoreDataManager.h; sourceTree = "<group>"; };
 		794756331A21E76E00E39012 /* EHECoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHECoreDataManager.m; sourceTree = "<group>"; };
 		795F88931A24639B004D75BA /* EHEStdLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHEStdLocationViewController.h; sourceTree = "<group>"; };
@@ -446,6 +444,8 @@
 		79D5E8D81A25807A0047C704 /* EHEStdBookingManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHEStdBookingManagerViewController.h; sourceTree = "<group>"; };
 		79D5E8D91A25807A0047C704 /* EHEStdBookingManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHEStdBookingManagerViewController.m; sourceTree = "<group>"; };
 		79D5E8DA1A25807A0047C704 /* EHEStdBookingManagerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHEStdBookingManagerViewController.xib; sourceTree = "<group>"; };
+		79D5E8DF1A25B8700047C704 /* EHEOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EHEOrder.h; path = ../EHEOrder.h; sourceTree = "<group>"; };
+		79D5E8E01A25B8700047C704 /* EHEOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EHEOrder.m; path = ../EHEOrder.m; sourceTree = "<group>"; };
 		79D931CF1A1B22DF00B709A1 /* EHECommunicationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHECommunicationManager.h; sourceTree = "<group>"; };
 		79D931D01A1B22DF00B709A1 /* EHECommunicationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHECommunicationManager.m; sourceTree = "<group>"; };
 		79DC58B31A22CE4300A4943C /* EHETeacher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHETeacher.h; sourceTree = "<group>"; };
@@ -1044,10 +1044,10 @@
 				794756321A21E76E00E39012 /* EHECoreDataManager.h */,
 				794756331A21E76E00E39012 /* EHECoreDataManager.m */,
 				797C30711A19D32900DB84E4 /* EHomeEducation.xcdatamodeld */,
+				79D5E8DF1A25B8700047C704 /* EHEOrder.h */,
+				79D5E8E01A25B8700047C704 /* EHEOrder.m */,
 				79DC58B31A22CE4300A4943C /* EHETeacher.h */,
 				79DC58B41A22CE4300A4943C /* EHETeacher.m */,
-				7947562F1A21E20700E39012 /* EHEOrder.h */,
-				794756301A21E20700E39012 /* EHEOrder.m */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -1305,6 +1305,7 @@
 				525C20981A1F256B00C3119A /* EHEStdBookingTableViewCell.m in Sources */,
 				797C30E01A19DC0D00DB84E4 /* EHEStdSettingViewController.m in Sources */,
 				7960F11A1A1C834000DCEA45 /* EHEStdSearchingTableViewController.m in Sources */,
+				79D5E8E11A25B8700047C704 /* EHEOrder.m in Sources */,
 				794756231A1F123200E39012 /* EHEStdRegisterViewController.m in Sources */,
 				52974AD01A1D8E3700C05FFC /* EHEBaiduMapView.m in Sources */,
 				79EA22CD1A2322C80016CBD1 /* EHEStdOrderTableViewCell.m in Sources */,
@@ -1317,7 +1318,6 @@
 				797C30C61A19DA6E00DB84E4 /* EHETchSearchingTableViewController.m in Sources */,
 				794756121A1D9FE600E39012 /* EHETeacherDetailViewController.m in Sources */,
 				79D931D11A1B22DF00B709A1 /* EHECommunicationManager.m in Sources */,
-				794756311A21E20700E39012 /* EHEOrder.m in Sources */,
 				795F88A01A246C41004D75BA /* EHEStdDatePickerTableViewCell.m in Sources */,
 				5299AE441A209F2C000A5960 /* EHEStdSettingDetailViewController.m in Sources */,
 				7960F1241A1C83C300DCEA45 /* EHETchSettingViewController.m in Sources */,

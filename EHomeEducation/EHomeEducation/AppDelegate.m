@@ -35,12 +35,14 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userName"];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"passWord"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    
     [[EHECoreDataManager getInstance] deleteData];
     [[EHECommunicationManager getInstance]loadTeachersInfo];
+    //[[EHECommunicationManager getInstance] loadOrderInfosWithCustomerID:143 andOrderStatus:-1];
+    //[NSThread sleepForTimeInterval:4];
+    //[[EHECoreDataManager getInstance] fetchOrderInfosWithCustomerID:143 andOrderStatus:-1];
+    //[[EHECoreDataManager getInstance] fetchOrderDeatailWithOrderID:240];
+    [[EHECommunicationManager getInstance] loadOrderDetailWithOrderID:143];
+    
     [NSThread sleepForTimeInterval:2];
     
     [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationController class], nil]

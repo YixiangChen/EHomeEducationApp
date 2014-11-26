@@ -76,24 +76,44 @@
     
 }
 
--(void)saveOrderInfos:(NSDictionary *)dictOrder {
-    EHEOrder *order = [NSEntityDescription insertNewObjectForEntityForName:@"EHEOrder" inManagedObjectContext:self.context];
-    NSLog(@"I am savin data yeah");
-    order.customerid = [NSString stringWithFormat:@"%@",[dictOrder objectForKey:@"customerid"]];
-    NSLog(@"i am saving customerid");
-    order.latitude = [NSString stringWithFormat:@"%@",[dictOrder objectForKey:@"latitude"]];
-    order.longitude = [NSString stringWithFormat:@"%@",[dictOrder objectForKey:@"longitude"]];
-    order.serviceaddress = [dictOrder objectForKey:@"serviceaddress"];
-    order.teacherid = [NSString stringWithFormat:@"%@",[dictOrder objectForKey:@"teacherid"]];
-    order.orderdate = [dictOrder objectForKey:@"orderdate"];
-    order.timeperiod = [dictOrder objectForKey:@"timeperiod"];
-    order.objectinfo = [dictOrder objectForKey:@"objectinfo"];
-    order.subjectinfo = [dictOrder objectForKey:@"subjectinfo"];
-    order.memo =[dictOrder objectForKey:@"memo"];
-    order.orderstatus = [NSString stringWithFormat:@"%@",[dictOrder objectForKey:@"orderstatus"]];
+-(void)saveOrderInfos:(NSArray *)arrayOrders {
+    
+    for (NSDictionary *dict in arrayOrders) {
+        EHEOrder *order = [NSEntityDescription insertNewObjectForEntityForName:@"EHEOrder" inManagedObjectContext:self.context];
+        order.customername = [NSString stringWithFormat:@"%@",[dict objectForKey:@"customername"]];
+        order.finishDate = [NSString stringWithFormat:@"%@",[dict objectForKey:@"finishDate"]];
+        order.orderid = [dict objectForKey:@"orderid"];
+        order.latitude = [NSString stringWithFormat:@"%@",[dict objectForKey:@"latitude"]];
+        order.longitude = [NSString stringWithFormat:@"%@",[dict objectForKey:@"longitude"]];
+        order.orderstatus = [dict objectForKey:@"oderstatus"];
+        order.serviceaddress = [dict objectForKey:@"serviceaddress"];
+        order.orderdate = [dict objectForKey:@"orderdate"];
+        order.teachername = [dict objectForKey:@"teachername"];
+        [self.context save:nil];
+    }
+    
+}
+
+-(void)upDateOrderDetail:(NSDictionary *)dict withOrderId:(int)orderId {
+    
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"EHEOrder"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"orderid = %d", orderId];
+    fetchRequest.predicate = predicate;
+    NSArray *orders = [self.context executeFetchRequest:fetchRequest error:nil];
+    EHEOrder *order = [orders objectAtIndex:0];
+
+    order.customername = [dict objectForKey:@"customername"];
+    order.memo = [dict objectForKey:@"memo"];
+    order.objectinfo = [dict objectForKey:@"objectinfo"];
+    order.orderdate = [dict objectForKey:@"orderdate"];
+    order.subjectinfo = [dict objectForKey:@"subjectinfo"];
+    order.teacherid = [dict objectForKey:@"teacherid"];
+    order.timeperiod = [dict objectForKey:@"timeperiod"];
     [self.context save:nil];
     
 }
+    
+
 
 -(NSArray *)fetchBasicInfosOfTeachers {
     
@@ -142,20 +162,16 @@
     return nil;
 }
 
--(NSArray *)fetchAllOrders {
-    
+-(NSArray *)fetchOrderInfosWithCustomerID:(int)customerID andOrderStatus:(int)status {
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"EHEOrder"];
-//    NSPredicate * predicate = nil;
-//    fetchRequest.predicate = predicate;
-//    NSSortDescriptor *sortByName = [NSSortDescriptor sortDescriptorWithKey:@"customerid" ascending:NO];
-//    NSArray *sorts = [[NSArray alloc] initWithObjects:sortByName, nil];
-//    fetchRequest.sortDescriptors = sorts;
+    NSPredicate * predicate = nil;
+    fetchRequest.predicate = predicate;
+    NSSortDescriptor *sortByName = [NSSortDescriptor sortDescriptorWithKey:@"orderstatus" ascending:NO];
+    NSArray *sorts = [[NSArray alloc] initWithObjects:sortByName, nil];
+    fetchRequest.sortDescriptors = sorts;
     
     NSError *error;
     NSArray *orders = [self.context executeFetchRequest:fetchRequest error:&error];
-    
-    NSLog(@"%d++++++++++++", orders.count);
-    NSLog(@"%@++++++++++++",orders[0]);
     
     if (error)
     {
@@ -168,6 +184,28 @@
     return nil;
 }
 
+-(EHEOrder *)fetchOrderDeatailWithOrderID:(int)orderId {
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"EHEOrder"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"orderid = %d", orderId];
+    fetchRequest.predicate = predicate;
+    
+    NSSortDescriptor *sortByName = [NSSortDescriptor sortDescriptorWithKey:@"orderid" ascending:NO];
+    NSArray *sorts = [[NSArray alloc] initWithObjects:sortByName, nil];
+    fetchRequest.sortDescriptors = sorts;
+    
+    NSError *error;
+    NSArray *orders = [self.context executeFetchRequest:fetchRequest error:&error];
+    
+    if (error)
+    {
+        return nil;
+    }
+    else if (orders.count > 0)
+    {
+        return orders[0];
+    }
+    return nil;
+}
 -(void)deleteData
 {
  

@@ -42,33 +42,33 @@
     EHECoreDataManager * coreDataManager=[EHECoreDataManager getInstance];
     self.arrayTeacherInfo=[[NSMutableArray alloc]initWithCapacity:10];
     self.arrayDate=[[NSMutableArray alloc]initWithCapacity:10];
-    for(EHEOrder * order in [coreDataManager fetchAllOrders])
-    {
-        if([order.orderstatus isEqualToString:@"0"])
-        {
-            EHETeacher * teacher=[coreDataManager fetchDetailInfosWithTeacherId:order.teacherid.intValue];
-            NSString * teacherInfo=[NSString stringWithFormat:@"%@：%@",teacher.name,order.subjectinfo];
-            [self.arrayTeacherInfo addObject:teacherInfo];
-            [self.arrayDate addObject:order.orderdate];
-            [self.teacherArray addObject:teacher];
-        }
-    }
+//    for(EHEOrder * order in [coreDataManager fetchAllOrders])
+//    {
+//        if([order.orderstatus isEqualToString:@"0"])
+//        {
+//            EHETeacher * teacher=[coreDataManager fetchDetailInfosWithTeacherId:order.teacherid.intValue];
+//            NSString * teacherInfo=[NSString stringWithFormat:@"%@：%@",teacher.name,order.subjectinfo];
+//            [self.arrayTeacherInfo addObject:teacherInfo];
+//            [self.arrayDate addObject:order.orderdate];
+//            [self.teacherArray addObject:teacher];
+//        }
+//    }
 }
 -(void)bandOrdered
 {
     EHECoreDataManager * coreDataManager=[EHECoreDataManager getInstance];
     self.arrayTeacherInfo=[[NSMutableArray alloc]initWithCapacity:10];
     self.arrayDate=[[NSMutableArray alloc]initWithCapacity:10];
-    for(EHEOrder * order in [coreDataManager fetchAllOrders])
-    {
-        if([order.orderstatus isEqualToString:@"1"])
-        {
-            EHETeacher * teacher=[coreDataManager fetchDetailInfosWithTeacherId:order.teacherid.intValue];
-            NSString * teacherInfo=[NSString stringWithFormat:@"%@：%@",teacher.name,order.subjectinfo];
-            [self.arrayTeacherInfo addObject:teacherInfo];
-            [self.arrayDate addObject:order.orderdate];
-        }
-    }
+//    for(EHEOrder * order in [coreDataManager fetchAllOrders])
+//    {
+//        if([order.orderstatus isEqualToString:@"1"])
+//        {
+//            EHETeacher * teacher=[coreDataManager fetchDetailInfosWithTeacherId:order.teacherid.intValue];
+//            NSString * teacherInfo=[NSString stringWithFormat:@"%@：%@",teacher.name,order.subjectinfo];
+//            [self.arrayTeacherInfo addObject:teacherInfo];
+//            [self.arrayDate addObject:order.orderdate];
+//        }
+//    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

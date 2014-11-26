@@ -17,10 +17,12 @@
 + (EHECoreDataManager *) getInstance;
 -(void) updateBasicInfosOfTeachers:(NSDictionary *) dict;
 -(void)updateDetailInfos:(NSDictionary *) dict withTeacherId:(int) teacherId;
--(void)saveOrderInfos:(NSDictionary *) dictOrder;
+-(void)saveOrderInfos:(NSArray *) arrayOrders;
+-(void)upDateOrderDetail:(NSDictionary *)dict withOrderId:(int) orderId;
 -(NSArray *) fetchBasicInfosOfTeachers;
 -(EHETeacher *) fetchDetailInfosWithTeacherId:(int) teacherId;
--(NSArray *) fetchAllOrders;
+-(NSArray *) fetchOrderInfosWithCustomerID:(int)customerID andOrderStatus:(int)status;
+-(EHEOrder *) fetchOrderDeatailWithOrderID:(int) orderId;
 -(void) deleteData;
 
 @end

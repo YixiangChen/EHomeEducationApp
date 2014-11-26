@@ -14,5 +14,7 @@
 -(void)loadTeachersInfo;
 -(void)loadDataWithTeacherID:(int) teacherId;
 -(void)sendOrder:(NSDictionary *) dictOrder;
+-(void)loadOrderInfosWithCustomerID:(int) customerID andOrderStatus:(int)status ;
+-(void)loadOrderDetailWithOrderID:(int)orderID;
 
 @end

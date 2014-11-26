@@ -100,7 +100,7 @@
 }
 - (IBAction)callButtonPressed:(id)sender {
     NSLog(@"call button is pressed");
-    [[EHECoreDataManager getInstance] fetchAllOrders];
+//    [[EHECoreDataManager getInstance] fetchAllOrders];
 }
 
 - (IBAction)bookButtonPressed:(id)sender {

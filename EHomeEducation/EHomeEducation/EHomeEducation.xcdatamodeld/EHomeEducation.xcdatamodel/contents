@@ -2,15 +2,19 @@
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6252" systemVersion="14A389" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="EHEOrder" representedClassName="EHEOrder" syncable="YES">
         <attribute name="customerid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="customername" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="finishDate" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="memo" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="objectinfo" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="orderdate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="orderid" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="orderstatus" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="serviceaddress" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="subjectinfo" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="teacherid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="teachername" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timeperiod" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="EHETeacher" representedClassName="EHETeacher" syncable="YES">
@@ -34,7 +38,7 @@
         <attribute name="timePeriod" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
+        <element name="EHEOrder" positionX="-36" positionY="144" width="128" height="270"/>
         <element name="EHETeacher" positionX="-36" positionY="9" width="128" height="313"/>
-        <element name="EHEOrder" positionX="-36" positionY="144" width="128" height="208"/>
     </elements>
 </model>
