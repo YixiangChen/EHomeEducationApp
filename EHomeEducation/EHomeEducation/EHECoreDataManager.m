@@ -92,6 +92,10 @@
         [self.context save:nil];
     }
     
+    for (NSDictionary *dict in arrayOrders) {
+        NSLog(@" i have an order with id %@",[dict objectForKey:@"orderid"]);
+    }
+    
 }
 
 -(void)upDateOrderDetail:(NSDictionary *)dict withOrderId:(int)orderId {
@@ -100,14 +104,18 @@
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"orderid = %d", orderId];
     fetchRequest.predicate = predicate;
     NSArray *orders = [self.context executeFetchRequest:fetchRequest error:nil];
+    for (EHEOrder * order in orders) {
+        NSLog(@"I am getting an order with id %@",order);
+    }
     EHEOrder *order = [orders objectAtIndex:0];
+    
 
     order.customername = [dict objectForKey:@"customername"];
     order.memo = [dict objectForKey:@"memo"];
     order.objectinfo = [dict objectForKey:@"objectinfo"];
     order.orderdate = [dict objectForKey:@"orderdate"];
     order.subjectinfo = [dict objectForKey:@"subjectinfo"];
-    order.teacherid = [dict objectForKey:@"teacherid"];
+    order.teacherid = [NSString stringWithFormat:@"%@",[dict objectForKey:@"teacherid"]];
     order.timeperiod = [dict objectForKey:@"timeperiod"];
     [self.context save:nil];
     
@@ -173,6 +181,10 @@
     NSError *error;
     NSArray *orders = [self.context executeFetchRequest:fetchRequest error:&error];
     
+    for (EHEOrder *order in orders) {
+        NSLog(@"the order saved is %@ ",order);
+    }
+    
     if (error)
     {
         return nil;
@@ -195,6 +207,10 @@
     
     NSError *error;
     NSArray *orders = [self.context executeFetchRequest:fetchRequest error:&error];
+    
+    for (EHEOrder * order in orders) {
+        NSLog(@"Now I am fetching an order %@",order);
+    }
     
     if (error)
     {

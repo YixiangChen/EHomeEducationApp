@@ -37,11 +37,16 @@
     
     [[EHECoreDataManager getInstance] deleteData];
     [[EHECommunicationManager getInstance]loadTeachersInfo];
-    //[[EHECommunicationManager getInstance] loadOrderInfosWithCustomerID:143 andOrderStatus:-1];
-    //[NSThread sleepForTimeInterval:4];
-    //[[EHECoreDataManager getInstance] fetchOrderInfosWithCustomerID:143 andOrderStatus:-1];
-    //[[EHECoreDataManager getInstance] fetchOrderDeatailWithOrderID:240];
-    [[EHECommunicationManager getInstance] loadOrderDetailWithOrderID:143];
+    
+    
+    [[EHECommunicationManager getInstance] loadOrderInfosWithCustomerID:124 andOrderStatus:-1];
+
+    [NSThread sleepForTimeInterval:4];
+    [[EHECoreDataManager getInstance] fetchOrderInfosWithCustomerID:124 andOrderStatus:-1];
+    
+    [[EHECommunicationManager getInstance] loadOrderDetailWithOrderID:223];
+    [[EHECoreDataManager getInstance] fetchOrderDeatailWithOrderID:223];
+    
     
     [NSThread sleepForTimeInterval:2];
     
