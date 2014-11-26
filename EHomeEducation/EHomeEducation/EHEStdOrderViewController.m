@@ -49,12 +49,7 @@
     self.navigationItem.rightBarButtonItem = rightButtonItem;
     
     self.dictOrder = [[NSMutableDictionary alloc] init];
-    [self.dictOrder setObject:@(143) forKey:@"customerid"];
-    [self.dictOrder setObject:@(119.000000) forKey:@"latitude"];
-    [self.dictOrder setObject:@(39.000000) forKey:@"longitude"];
-    [self.dictOrder setObject:self.teacher.teacherId forKey:@"teacherid"];
-    [self.dictOrder setObject:@"2014-1-1 11:11:11" forKey:@"orderdate"];
-    [self.dictOrder setObject:@(0) forKey:@"orderstatus"];
+
 
 }
 
@@ -62,7 +57,21 @@
     [super viewDidAppear:animated];
 }
 -(void) sendOrder {
-
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    [self.dictOrder setObject:[formatter stringFromDate:[NSDate date]]forKey:@"orderdate"];
+    
+    [self.dictOrder setObject:@(143) forKey:@"customerid"];
+    [self.dictOrder setObject:@(119.000000) forKey:@"latitude"];
+    [self.dictOrder setObject:@(39.000000) forKey:@"longitude"];
+    [self.dictOrder setObject:self.teacher.teacherId forKey:@"teacherid"];    
+    [self.dictOrder setObject:@(0) forKey:@"orderstatus"];
+    [self.dictOrder setObject:self.selectedLocation forKey:@"serviceaddress"];
+    [self.dictOrder setObject:self.selectedObject forKey:@"objectinfo"];
+    [self.dictOrder setObject:self.selectedSubjects forKey:@"subjectinfo"];
+    [self.dictOrder setObject:self.selectedMemo forKey:@"memo"];
+    [self.dictOrder setObject:[NSString stringWithFormat:@"%@-%@",self.selectedStartTime,self.selectedEndTime] forKey:@"timeperiod"];
+    
     [[EHECommunicationManager getInstance] sendOrder:self.dictOrder];
 }
 
@@ -421,7 +430,6 @@
             [formatter_time setDateFormat:@"HH:mm"];
             self.selectedStartTime = [formatter_time stringFromDate:self.cellForStartTimePicker.timePicker.date];
             self.selectedEndTime = [formatter_time stringFromDate:self.cellForEndTimePicker.timePicker.date];
-            NSLog(@"%@   ---ppppppppp",self.selectedEndTime);
             
             NSDictionary * dic = @{@"Cell": @"MainCell",@"isAttached":@(NO)};
             self.dataArrayForSection2[(path.row-1)] = dic;
