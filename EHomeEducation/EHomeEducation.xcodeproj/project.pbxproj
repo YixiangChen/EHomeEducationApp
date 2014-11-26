@@ -103,6 +103,7 @@
 		5299AE401A209AC6000A5960 /* EHEStdSettingDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5299AE3E1A209AC6000A5960 /* EHEStdSettingDetailCell.xib */; };
 		5299AE441A209F2C000A5960 /* EHEStdSettingDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5299AE421A209F2C000A5960 /* EHEStdSettingDetailViewController.m */; };
 		5299AE451A209F2C000A5960 /* EHEStdSettingDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5299AE431A209F2C000A5960 /* EHEStdSettingDetailViewController.xib */; };
+		52D0FAF31A22DCB1001AAF6B /* authentificated.png in Resources */ = {isa = PBXBuildFile; fileRef = 52D0FAF21A22DCB1001AAF6B /* authentificated.png */; };
 		52D397F21A1B38B7008B08FE /* libbaidumapapi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D397F01A1B38B6008B08FE /* libbaidumapapi.a */; };
 		52D397F31A1B38B7008B08FE /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 52D397F11A1B38B6008B08FE /* mapapi.bundle */; };
 		52D397F51A1B38FD008B08FE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D397F41A1B38FD008B08FE /* Security.framework */; };
@@ -113,10 +114,11 @@
 		52D397FF1A1B391C008B08FE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D397FE1A1B391B008B08FE /* CoreLocation.framework */; };
 		52D398011A1B422E008B08FE /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 52D398001A1B422E008B08FE /* pin.png */; };
 		52D5E8411A1F291900342E06 /* sdsdTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D5E8401A1F291900342E06 /* sdsdTableViewCell.m */; };
+		79265E901A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79265E8E1A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.m */; };
+		79265E911A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79265E8F1A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.xib */; };
 		7937968E1A1C76FC0013FD21 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7937968D1A1C76FC0013FD21 /* Default-568h@2x.png */; };
 		794756121A1D9FE600E39012 /* EHETeacherDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 794756101A1D9FE600E39012 /* EHETeacherDetailViewController.m */; };
 		794756131A1D9FE600E39012 /* EHETeacherDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 794756111A1D9FE600E39012 /* EHETeacherDetailViewController.xib */; };
-		794756151A1DBF7300E39012 /* authentificated.png in Resources */ = {isa = PBXBuildFile; fileRef = 794756141A1DBF7300E39012 /* authentificated.png */; };
 		7947561C1A1ED1AA00E39012 /* MF_Base64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7947561A1A1ED1AA00E39012 /* MF_Base64Additions.m */; };
 		794756231A1F123200E39012 /* EHEStdRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 794756211A1F123200E39012 /* EHEStdRegisterViewController.m */; };
 		794756241A1F123200E39012 /* EHEStdRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 794756221A1F123200E39012 /* EHEStdRegisterViewController.xib */; };
@@ -126,6 +128,12 @@
 		7947562E1A20FB1700E39012 /* EHEStdSubjectTableTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7947562C1A20FB1700E39012 /* EHEStdSubjectTableTableViewController.xib */; };
 		794756311A21E20700E39012 /* EHEOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 794756301A21E20700E39012 /* EHEOrder.m */; };
 		794756341A21E76E00E39012 /* EHECoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 794756331A21E76E00E39012 /* EHECoreDataManager.m */; };
+		795F88961A24639B004D75BA /* EHEStdLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 795F88941A24639B004D75BA /* EHEStdLocationViewController.m */; };
+		795F88971A24639B004D75BA /* EHEStdLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 795F88951A24639B004D75BA /* EHEStdLocationViewController.xib */; };
+		795F889B1A24670D004D75BA /* EHEStdMemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 795F88991A24670D004D75BA /* EHEStdMemoViewController.m */; };
+		795F889C1A24670D004D75BA /* EHEStdMemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 795F889A1A24670D004D75BA /* EHEStdMemoViewController.xib */; };
+		795F88A01A246C41004D75BA /* EHEStdDatePickerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 795F889E1A246C41004D75BA /* EHEStdDatePickerTableViewCell.m */; };
+		795F88A11A246C41004D75BA /* EHEStdDatePickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 795F889F1A246C41004D75BA /* EHEStdDatePickerTableViewCell.xib */; };
 		7960F11A1A1C834000DCEA45 /* EHEStdSearchingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7960F1181A1C834000DCEA45 /* EHEStdSearchingTableViewController.m */; };
 		7960F11B1A1C834000DCEA45 /* EHEStdSearchingTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7960F1191A1C834000DCEA45 /* EHEStdSearchingTableViewController.xib */; };
 		7960F11F1A1C838300DCEA45 /* EHETchBookingManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7960F11D1A1C838300DCEA45 /* EHETchBookingManagerViewController.m */; };
@@ -158,6 +166,8 @@
 		79D931C71A1B1F3000B709A1 /* EHEStdBookingManagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79D931C51A1B1F3000B709A1 /* EHEStdBookingManagerViewController.xib */; };
 		79D931D11A1B22DF00B709A1 /* EHECommunicationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 79D931D01A1B22DF00B709A1 /* EHECommunicationManager.m */; };
 		79DC58B51A22CE4300A4943C /* EHETeacher.m in Sources */ = {isa = PBXBuildFile; fileRef = 79DC58B41A22CE4300A4943C /* EHETeacher.m */; };
+		79EA22CD1A2322C80016CBD1 /* EHEStdOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79EA22CB1A2322C80016CBD1 /* EHEStdOrderTableViewCell.m */; };
+		79EA22CE1A2322C80016CBD1 /* EHEStdOrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79EA22CC1A2322C80016CBD1 /* EHEStdOrderTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -281,6 +291,7 @@
 		5299AE411A209F2C000A5960 /* EHEStdSettingDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHEStdSettingDetailViewController.h; sourceTree = "<group>"; };
 		5299AE421A209F2C000A5960 /* EHEStdSettingDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHEStdSettingDetailViewController.m; sourceTree = "<group>"; };
 		5299AE431A209F2C000A5960 /* EHEStdSettingDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHEStdSettingDetailViewController.xib; sourceTree = "<group>"; };
+		52D0FAF21A22DCB1001AAF6B /* authentificated.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = authentificated.png; sourceTree = "<group>"; };
 		52D397B31A1B38B6008B08FE /* BMapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMapKit.h; sourceTree = "<group>"; };
 		52D397B41A1B38B6008B08FE /* BMKActionPaopaoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKActionPaopaoView.h; sourceTree = "<group>"; };
 		52D397B51A1B38B6008B08FE /* BMKAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKAnnotation.h; sourceTree = "<group>"; };
@@ -353,11 +364,13 @@
 		52D398001A1B422E008B08FE /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pin.png; path = ../pin.png; sourceTree = "<group>"; };
 		52D5E83F1A1F291900342E06 /* sdsdTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdsdTableViewCell.h; sourceTree = "<group>"; };
 		52D5E8401A1F291900342E06 /* sdsdTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = sdsdTableViewCell.m; sourceTree = "<group>"; };
+		79265E8D1A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHEStdTimePickerTableViewCell.h; sourceTree = "<group>"; };
+		79265E8E1A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHEStdTimePickerTableViewCell.m; sourceTree = "<group>"; };
+		79265E8F1A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHEStdTimePickerTableViewCell.xib; sourceTree = "<group>"; };
 		7937968D1A1C76FC0013FD21 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		7947560F1A1D9FE600E39012 /* EHETeacherDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHETeacherDetailViewController.h; sourceTree = "<group>"; };
 		794756101A1D9FE600E39012 /* EHETeacherDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHETeacherDetailViewController.m; sourceTree = "<group>"; };
 		794756111A1D9FE600E39012 /* EHETeacherDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHETeacherDetailViewController.xib; sourceTree = "<group>"; };
-		794756141A1DBF7300E39012 /* authentificated.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = authentificated.png; sourceTree = "<group>"; };
 		7947561A1A1ED1AA00E39012 /* MF_Base64Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MF_Base64Additions.m; sourceTree = "<group>"; };
 		7947561B1A1ED1AA00E39012 /* MF_Base64Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MF_Base64Additions.h; sourceTree = "<group>"; };
 		794756201A1F123200E39012 /* EHEStdRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHEStdRegisterViewController.h; sourceTree = "<group>"; };
@@ -373,6 +386,15 @@
 		794756301A21E20700E39012 /* EHEOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHEOrder.m; sourceTree = "<group>"; };
 		794756321A21E76E00E39012 /* EHECoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHECoreDataManager.h; sourceTree = "<group>"; };
 		794756331A21E76E00E39012 /* EHECoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHECoreDataManager.m; sourceTree = "<group>"; };
+		795F88931A24639B004D75BA /* EHEStdLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHEStdLocationViewController.h; sourceTree = "<group>"; };
+		795F88941A24639B004D75BA /* EHEStdLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHEStdLocationViewController.m; sourceTree = "<group>"; };
+		795F88951A24639B004D75BA /* EHEStdLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHEStdLocationViewController.xib; sourceTree = "<group>"; };
+		795F88981A24670D004D75BA /* EHEStdMemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHEStdMemoViewController.h; sourceTree = "<group>"; };
+		795F88991A24670D004D75BA /* EHEStdMemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHEStdMemoViewController.m; sourceTree = "<group>"; };
+		795F889A1A24670D004D75BA /* EHEStdMemoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHEStdMemoViewController.xib; sourceTree = "<group>"; };
+		795F889D1A246C41004D75BA /* EHEStdDatePickerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHEStdDatePickerTableViewCell.h; sourceTree = "<group>"; };
+		795F889E1A246C41004D75BA /* EHEStdDatePickerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHEStdDatePickerTableViewCell.m; sourceTree = "<group>"; };
+		795F889F1A246C41004D75BA /* EHEStdDatePickerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHEStdDatePickerTableViewCell.xib; sourceTree = "<group>"; };
 		7960F1171A1C834000DCEA45 /* EHEStdSearchingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHEStdSearchingTableViewController.h; sourceTree = "<group>"; };
 		7960F1181A1C834000DCEA45 /* EHEStdSearchingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHEStdSearchingTableViewController.m; sourceTree = "<group>"; };
 		7960F1191A1C834000DCEA45 /* EHEStdSearchingTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHEStdSearchingTableViewController.xib; sourceTree = "<group>"; };
@@ -423,6 +445,9 @@
 		79D931D01A1B22DF00B709A1 /* EHECommunicationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHECommunicationManager.m; sourceTree = "<group>"; };
 		79DC58B31A22CE4300A4943C /* EHETeacher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHETeacher.h; sourceTree = "<group>"; };
 		79DC58B41A22CE4300A4943C /* EHETeacher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHETeacher.m; sourceTree = "<group>"; };
+		79EA22CA1A2322C80016CBD1 /* EHEStdOrderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHEStdOrderTableViewCell.h; sourceTree = "<group>"; };
+		79EA22CB1A2322C80016CBD1 /* EHEStdOrderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHEStdOrderTableViewCell.m; sourceTree = "<group>"; };
+		79EA22CC1A2322C80016CBD1 /* EHEStdOrderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHEStdOrderTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -875,6 +900,7 @@
 		52D398021A1B4248008B08FE /* 项目图片 */ = {
 			isa = PBXGroup;
 			children = (
+				52D0FAF21A22DCB1001AAF6B /* authentificated.png */,
 				5299AE3A1A20964C000A5960 /* settingTest.jpeg */,
 				525E36EA1A1C7563004F0475 /* png-0010.png */,
 				798B1A491A1D86D900F0031F /* male_tablecell.png */,
@@ -883,7 +909,6 @@
 				798B1A4B1A1D86DF00F0031F /* female_tablecell.png */,
 				525E36D21A1C3052004F0475 /* png-0099.png */,
 				525E36CE1A1C2B4E004F0475 /* iconmarka.png */,
-				794756141A1DBF7300E39012 /* authentificated.png */,
 				52D398001A1B422E008B08FE /* pin.png */,
 				525C208A1A1ED8D200C3119A /* male.png */,
 				525C208B1A1ED8D200C3119A /* female.png */,
@@ -898,6 +923,34 @@
 				7947561B1A1ED1AA00E39012 /* MF_Base64Additions.h */,
 			);
 			name = Base64;
+			sourceTree = "<group>";
+		};
+		795F888D1A245E42004D75BA /* EHEOrderViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				79265E8D1A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.h */,
+				79265E8E1A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.m */,
+				79265E8F1A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.xib */,
+				795F889D1A246C41004D75BA /* EHEStdDatePickerTableViewCell.h */,
+				795F889E1A246C41004D75BA /* EHEStdDatePickerTableViewCell.m */,
+				795F889F1A246C41004D75BA /* EHEStdDatePickerTableViewCell.xib */,
+				79EA22CA1A2322C80016CBD1 /* EHEStdOrderTableViewCell.h */,
+				79EA22CB1A2322C80016CBD1 /* EHEStdOrderTableViewCell.m */,
+				79EA22CC1A2322C80016CBD1 /* EHEStdOrderTableViewCell.xib */,
+				794756251A1F388A00E39012 /* EHEStdOrderViewController.h */,
+				794756261A1F388A00E39012 /* EHEStdOrderViewController.m */,
+				794756271A1F388A00E39012 /* EHEStdOrderViewController.xib */,
+				7947562A1A20FB1700E39012 /* EHEStdSubjectTableTableViewController.h */,
+				7947562B1A20FB1700E39012 /* EHEStdSubjectTableTableViewController.m */,
+				7947562C1A20FB1700E39012 /* EHEStdSubjectTableTableViewController.xib */,
+				795F88931A24639B004D75BA /* EHEStdLocationViewController.h */,
+				795F88941A24639B004D75BA /* EHEStdLocationViewController.m */,
+				795F88951A24639B004D75BA /* EHEStdLocationViewController.xib */,
+				795F88981A24670D004D75BA /* EHEStdMemoViewController.h */,
+				795F88991A24670D004D75BA /* EHEStdMemoViewController.m */,
+				795F889A1A24670D004D75BA /* EHEStdMemoViewController.xib */,
+			);
+			name = EHEOrderViewControllers;
 			sourceTree = "<group>";
 		};
 		797C305E1A19D32900DB84E4 = {
@@ -1055,15 +1108,10 @@
 				794756201A1F123200E39012 /* EHEStdRegisterViewController.h */,
 				794756211A1F123200E39012 /* EHEStdRegisterViewController.m */,
 				794756221A1F123200E39012 /* EHEStdRegisterViewController.xib */,
-				794756251A1F388A00E39012 /* EHEStdOrderViewController.h */,
-				794756261A1F388A00E39012 /* EHEStdOrderViewController.m */,
-				794756271A1F388A00E39012 /* EHEStdOrderViewController.xib */,
-				7947562A1A20FB1700E39012 /* EHEStdSubjectTableTableViewController.h */,
-				7947562B1A20FB1700E39012 /* EHEStdSubjectTableTableViewController.m */,
-				7947562C1A20FB1700E39012 /* EHEStdSubjectTableTableViewController.xib */,
 				797C30D31A19DB5000DB84E4 /* EHEStdLoginViewController.h */,
 				797C30D41A19DB5000DB84E4 /* EHEStdLoginViewController.m */,
 				797C30D51A19DB5000DB84E4 /* EHEStdLoginViewController.xib */,
+				795F888D1A245E42004D75BA /* EHEOrderViewControllers */,
 			);
 			name = Student;
 			sourceTree = "<group>";
@@ -1159,9 +1207,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				52905A321A21A80100DDC6FB /* ShareSDKiPadSimpleShareViewUI.bundle in Resources */,
+				79265E911A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.xib in Resources */,
+				795F889C1A24670D004D75BA /* EHEStdMemoViewController.xib in Resources */,
 				52905A251A21A80100DDC6FB /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				525E36D51A1C332B004F0475 /* femal.png in Resources */,
 				797C307E1A19D32900DB84E4 /* LaunchScreen.xib in Resources */,
+				79EA22CE1A2322C80016CBD1 /* EHEStdOrderTableViewCell.xib in Resources */,
 				798B1A4A1A1D86D900F0031F /* male_tablecell.png in Resources */,
 				525E36EB1A1C7563004F0475 /* png-0010.png in Resources */,
 				7960F11B1A1C834000DCEA45 /* EHEStdSearchingTableViewController.xib in Resources */,
@@ -1174,6 +1225,8 @@
 				794756131A1D9FE600E39012 /* EHETeacherDetailViewController.xib in Resources */,
 				525E36E91A1C5008004F0475 /* png-0762.png in Resources */,
 				7947562E1A20FB1700E39012 /* EHEStdSubjectTableTableViewController.xib in Resources */,
+				52D0FAF31A22DCB1001AAF6B /* authentificated.png in Resources */,
+				795F88A11A246C41004D75BA /* EHEStdDatePickerTableViewCell.xib in Resources */,
 				798B1A4C1A1D86DF00F0031F /* female_tablecell.png in Resources */,
 				798B1A481A1D866800F0031F /* EHETeacherTableViewCell.xib in Resources */,
 				5299AE3B1A20964C000A5960 /* settingTest.jpeg in Resources */,
@@ -1191,9 +1244,9 @@
 				797C30D71A19DB5000DB84E4 /* EHEStdLoginViewController.xib in Resources */,
 				52905A231A21A80100DDC6FB /* PinterestSDKResources.bundle in Resources */,
 				797C30DC1A19DB6F00DB84E4 /* EHETchLoginViewController.xib in Resources */,
-				794756151A1DBF7300E39012 /* authentificated.png in Resources */,
 				79D931C71A1B1F3000B709A1 /* EHEStdBookingManagerViewController.xib in Resources */,
 				794756291A1F388A00E39012 /* EHEStdOrderViewController.xib in Resources */,
+				795F88971A24639B004D75BA /* EHEStdLocationViewController.xib in Resources */,
 				52905A291A21A80100DDC6FB /* WeiboSDK.bundle in Resources */,
 				79D931C71A1B1F3000B709A1 /* EHEStdBookingManagerViewController.xib in Resources */,
 				52905A2E1A21A80100DDC6FB /* ShareSDKFlatShareViewUI.bundle in Resources */,
@@ -1226,6 +1279,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				79DC58B51A22CE4300A4943C /* EHETeacher.m in Sources */,
+				795F889B1A24670D004D75BA /* EHEStdMemoViewController.m in Sources */,
 				7960F11F1A1C838300DCEA45 /* EHETchBookingManagerViewController.m in Sources */,
 				7947561C1A1ED1AA00E39012 /* MF_Base64Additions.m in Sources */,
 				797C30D11A19DAD400DB84E4 /* EHETchSearchingMapViewController.m in Sources */,
@@ -1237,20 +1291,24 @@
 				7947562D1A20FB1700E39012 /* EHEStdSubjectTableTableViewController.m in Sources */,
 				794756341A21E76E00E39012 /* EHECoreDataManager.m in Sources */,
 				798B1A471A1D866800F0031F /* EHETeacherTableViewCell.m in Sources */,
+				795F88961A24639B004D75BA /* EHEStdLocationViewController.m in Sources */,
 				525C20981A1F256B00C3119A /* EHEStdBookingTableViewCell.m in Sources */,
 				797C30E01A19DC0D00DB84E4 /* EHEStdSettingViewController.m in Sources */,
 				7960F11A1A1C834000DCEA45 /* EHEStdSearchingTableViewController.m in Sources */,
 				794756231A1F123200E39012 /* EHEStdRegisterViewController.m in Sources */,
 				52974AD01A1D8E3700C05FFC /* EHEBaiduMapView.m in Sources */,
+				79EA22CD1A2322C80016CBD1 /* EHEStdOrderTableViewCell.m in Sources */,
 				797C306D1A19D32900DB84E4 /* main.mm in Sources */,
 				797C30DB1A19DB6F00DB84E4 /* EHETchLoginViewController.m in Sources */,
 				525C209F1A1F481600C3119A /* EHEStdSettingTableViewCell.m in Sources */,
+				79265E901A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.m in Sources */,
 				797C30CB1A19DA9900DB84E4 /* EHEStdMapSearchingViewController.m in Sources */,
 				525C20911A1EEF6200C3119A /* EHESegmentedControlManager.m in Sources */,
 				797C30C61A19DA6E00DB84E4 /* EHETchSearchingTableViewController.m in Sources */,
 				794756121A1D9FE600E39012 /* EHETeacherDetailViewController.m in Sources */,
 				79D931D11A1B22DF00B709A1 /* EHECommunicationManager.m in Sources */,
 				794756311A21E20700E39012 /* EHEOrder.m in Sources */,
+				795F88A01A246C41004D75BA /* EHEStdDatePickerTableViewCell.m in Sources */,
 				5299AE441A209F2C000A5960 /* EHEStdSettingDetailViewController.m in Sources */,
 				7960F1241A1C83C300DCEA45 /* EHETchSettingViewController.m in Sources */,
 				79D931C61A1B1F3000B709A1 /* EHEStdBookingManagerViewController.m in Sources */,

@@ -43,8 +43,12 @@
     [[EHECommunicationManager getInstance]loadTeachersInfo];
     [NSThread sleepForTimeInterval:2];
     
-    UIBarButtonItem *appearance = [UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil];
-    [appearance setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIColor yellowColor] forKey:NSForegroundColorAttributeName] forState:1];
+    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationController class], nil]
+     setTintColor:[UIColor greenColor]];
+    [[UITabBar appearanceWhenContainedIn:[UITabBarController class], nil] setTintColor:[UIColor greenColor]];
+ 
+    
+    
     [ShareSDK registerApp:@"45c7af441ad8"]; //注册分享信息
     
     EHEStdSearchingTableViewController *searchingTable =[[EHEStdSearchingTableViewController alloc] initWithNibName:nil bundle:nil];
@@ -63,7 +67,6 @@
 
     
     UITabBarController *tab = [[UITabBarController alloc] initWithNibName:nil bundle:nil];
-    //tab.viewControllers = @[navi_searching,bookingManager, setting];
     tab.viewControllers = @[navi_searching,navi_bookingManager, navi_setting];
     [[tab.viewControllers objectAtIndex:0] setTitle:@"首页"];
     [[tab.viewControllers objectAtIndex:1] setTitle:@"我的"];

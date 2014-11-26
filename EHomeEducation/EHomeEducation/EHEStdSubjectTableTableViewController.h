@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EHEStdOrderViewController.h"
 
 @interface EHEStdSubjectTableTableViewController : UITableViewController
-
+@property (strong, nonatomic) NSString *selectedSubjects;
+@property (strong, nonatomic) EHEStdOrderViewController *orderTable;
+-(NSString *)getSelectedSubjects;
 @end

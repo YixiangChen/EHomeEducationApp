@@ -176,6 +176,11 @@
     // Pass the selected object to the new view controller.
     
     // Push the view controller.
+    UIBarButtonItem *leftBarButtonItem = [[UIBarButtonItem alloc] init];
+    [leftBarButtonItem setTitle:@"返回列表"];
+    [leftBarButtonItem setStyle:UIBarButtonItemStyleDone];
+    [leftBarButtonItem setTitleTextAttributes: @{NSForegroundColorAttributeName: [UIColor greenColor]}  forState:UIControlStateNormal];
+    self.navigationItem.backBarButtonItem = leftBarButtonItem;
     [self.navigationController pushViewController:detailViewController animated:YES];
 }
 
