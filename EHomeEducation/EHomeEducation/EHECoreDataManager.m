@@ -170,6 +170,29 @@
     return nil;
 }
 
+
+-(void)removeAllOrdersFromCoreData
+{
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"EHEOrder" inManagedObjectContext:self.context];
+    
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setIncludesPropertyValues:NO];
+    [request setEntity:entity];
+    NSError *error = nil;
+    NSArray *datas = [self.context executeFetchRequest:request error:&error];
+    if (!error && datas && [datas count])
+    {
+        for (NSManagedObject *obj in datas)
+        {
+            [self.context deleteObject:obj];
+        }
+        if (![self.context save:&error])
+        {
+            NSLog(@"error:%@",error);
+        }
+    }
+}
+
 -(NSArray *)fetchOrderInfosWithCustomerID:(int)customerID andOrderStatus:(int)status {
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"EHEOrder"];
     NSPredicate * predicate = nil;
@@ -244,5 +267,8 @@
         }
     }
 }
+
+
+
 
 @end

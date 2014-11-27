@@ -69,6 +69,8 @@
         cell.settingImageView.alpha=1.0f;
         cell.iconLabel.text=@"头像";
         cell.imageIcon.image=self.image;
+        cell.imageIcon.layer.cornerRadius=26.0f;
+        cell.imageIcon.clipsToBounds=YES;
     }
     else if(row==1)
     {

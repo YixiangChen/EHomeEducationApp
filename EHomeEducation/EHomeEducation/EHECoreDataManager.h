@@ -23,6 +23,7 @@
 -(EHETeacher *) fetchDetailInfosWithTeacherId:(int) teacherId;
 -(NSArray *) fetchOrderInfosWithCustomerID:(int)customerID andOrderStatus:(int)status;
 -(EHEOrder *) fetchOrderDeatailWithOrderID:(int) orderId;
+-(void)removeAllOrdersFromCoreData;
 -(void) deleteData;
 
 @end

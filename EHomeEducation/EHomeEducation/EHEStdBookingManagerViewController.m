@@ -41,10 +41,6 @@
     self.arrayTeacherInfo=[[NSMutableArray alloc]initWithCapacity:10];
     self.arrayDate=[[NSMutableArray alloc]initWithCapacity:10];
     
-    EHECoreDataManager * coreDataManager=[EHECoreDataManager getInstance];
-    NSUserDefaults * userDefaults=[NSUserDefaults standardUserDefaults];
-    NSString * customerid=[userDefaults objectForKey:@"myCustomerid"];
-    self.allOrdersArray=[coreDataManager fetchOrderInfosWithCustomerID:customerid.intValue andOrderStatus:-1];
     [self bandUnOrdered];
     // Do any additional setup after loading the view from its nib.
 }
@@ -67,19 +63,19 @@
 }
 -(void)bandUnOrdered
 {
-    
-    NSUserDefaults * userDefaults=[NSUserDefaults standardUserDefaults];
-    NSString * customerid=[userDefaults objectForKey:@"myCustomerid"];
-    NSLog(@"customerid=%@",customerid);
+    [self reloadData];
     for(EHEOrder * order in self.allOrdersArray)
     {
         NSString * teacherInfo=[NSString stringWithFormat:@"%@：%@",order.teachername,order.subjectinfo];
         [self.arrayTeacherInfo addObject:teacherInfo];
         [self.arrayDate addObject:order.orderdate];
+        [self.realOrdersArray addObject:order];
     }
 }
 -(void)bandOrdered
 {
+    [self reloadData];
+    
     for(EHEOrder * order in self.allOrdersArray)
     {
         if([order.orderstatus isEqualToString:@"1"])
@@ -87,8 +83,22 @@
             NSString * teacherInfo=[NSString stringWithFormat:@"%@：%@",order.teachername,order.subjectinfo];
             [self.arrayTeacherInfo addObject:teacherInfo];
             [self.arrayDate addObject:order.orderdate];
+            [self.realOrdersArray addObject:order];
         }
     }
+}
+-(void)reloadData
+{
+    self.realOrdersArray=[[NSMutableArray alloc]initWithCapacity:10];
+    self.allOrdersArray=nil;
+    EHECoreDataManager * coreDataManager=[EHECoreDataManager getInstance];
+    NSUserDefaults * userDefaults=[NSUserDefaults standardUserDefaults];
+    NSString * customerid=[userDefaults objectForKey:@"myCustomerid"];
+    //[coreDataManager removeAllOrdersFromCoreData];
+    self.allOrdersArray=[coreDataManager fetchOrderInfosWithCustomerID:customerid.intValue andOrderStatus:-1];
+    
+    [self.arrayTeacherInfo removeAllObjects];
+    [self.arrayDate removeAllObjects];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -98,13 +108,11 @@
 -(void) selectedSegmentChanged:(UISegmentedControl *) seg {
     if(seg.selectedSegmentIndex==0)//当点击未完成预约时
     {
-        self.arrayTeacherInfo=nil;
         [self bandUnOrdered];
         [self.homeTeacherTableView reloadData];
     }
     else//当点击已完成预约时
     {
-        self.arrayTeacherInfo=nil;
         [self bandOrdered];
         [self.homeTeacherTableView reloadData];
     }
@@ -113,7 +121,8 @@
 #pragma mark -TableView DataSource Method
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.arrayTeacherInfo count];
+    NSLog(@"有%d行数据",[self.realOrdersArray count]);
+    return [self.realOrdersArray count];
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -136,7 +145,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     EHEStdBookingDetailViewController * bookingDetailViewController=[[EHEStdBookingDetailViewController alloc]initWithNibName:nil bundle:nil];
-    EHEOrder * order=(EHEOrder *)[self.allOrdersArray objectAtIndex:[indexPath row]];
+    EHEOrder * order=(EHEOrder *)[self.realOrdersArray objectAtIndex:[indexPath row]];
     bookingDetailViewController.order=order;
     [self.navigationController pushViewController:bookingDetailViewController animated:YES];
 }

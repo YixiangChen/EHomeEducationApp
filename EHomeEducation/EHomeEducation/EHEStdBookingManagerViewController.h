@@ -18,4 +18,5 @@
 @property(strong,nonatomic)NSMutableArray * arrayOrderID;
 @property(strong,nonatomic)NSMutableArray * teacherArray;
 @property(strong,nonatomic)NSArray * allOrdersArray;
+@property(strong,nonatomic)NSMutableArray * realOrdersArray;
 @end

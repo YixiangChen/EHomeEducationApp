@@ -50,7 +50,7 @@
         self.iconLabel.font=[UIFont fontWithName:@"Helvetica-Bold" size:17.0f];
         [self addSubview:self.iconLabel];
         
-        self.imageIcon=[[UIImageView alloc]initWithFrame:CGRectMake(240, 10, 50, 50)];
+        self.imageIcon=[[UIImageView alloc]initWithFrame:CGRectMake(230, 10, 50, 50)];
         self.imageIcon.layer.cornerRadius=20.0f;
         [self addSubview:self.imageIcon];
         
