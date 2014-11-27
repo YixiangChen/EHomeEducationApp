@@ -62,8 +62,9 @@
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
             [defaults setObject:self.txtUserName.text forKey:@"userName"];
             [defaults setObject:self.txtPassWord.text forKey:@"passWord"];
+            [defaults setObject:[[dict objectForKey:@"userinfo"] objectForKey:@"customerid"] forKey:@"myCustomerid"];
             [defaults synchronize];
-            [self dismissViewControllerAnimated:YES completion:nil];
+            [self.navigationController popViewControllerAnimated:NO];
         }else{
             NSLog(@"%@",dict[@"message"]);
         }

@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "EHETeacher.h"
+#import "EHEOrder.h"
 @interface EHEStdBookingDetailViewController : UIViewController<UITextViewDelegate>
 //教师名字
 @property(strong,nonatomic)NSString * teacherName;
 //预约时间
 @property(strong,nonatomic)NSString * orderDate;
-@property(strong,nonatomic)EHETeacher * teacher;//一个teacher对象用于传值
+@property(strong,nonatomic)EHEOrder * order;//一个teacher对象用于传值
 //教师信息label
 @property(strong,nonatomic)UILabel * teacherInfoLabel;
 @property(strong,nonatomic)UILabel * orderLabel;

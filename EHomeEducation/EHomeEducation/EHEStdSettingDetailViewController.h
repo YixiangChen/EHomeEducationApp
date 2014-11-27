@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "EHEStdSettingDetailCell.h"
+@class EHEStdSettingPersonalInformation;
 //最后两个协议是用来选择图片的
 @interface EHEStdSettingDetailViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property(strong,nonatomic)UITableView * tableView;
@@ -26,4 +27,6 @@
 @property(strong,nonatomic) UIImagePickerController * imagePickerController;
 //日期选择器的值更改后所触发的事件
 -(IBAction)dataPickerValueChanged:(id)sender;
+@property(strong,nonatomic)EHEStdSettingPersonalInformation * personInfomation;
+@property(strong,nonatomic)UIImage * image;
 @end

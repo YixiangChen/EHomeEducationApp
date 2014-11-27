@@ -8,6 +8,7 @@
 
 #import "EHEStdSettingViewController.h"
 #import <ShareSDK/ShareSDK.h>
+#import "EHEStdSettingPersonalInformation.h"
 @interface EHEStdSettingViewController ()
 
 @end
@@ -18,7 +19,7 @@
     
     [super viewDidLoad];
     self.check=NO;
-//    UIScrollView * scrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    //    UIScrollView * scrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     
     self.title=@"设置";
     self.detailType=[[NSString alloc]init];
@@ -28,7 +29,8 @@
     self.tableViewSetting.separatorStyle=UITableViewCellSeparatorStyleSingleLine;
     [self.view addSubview:self.tableViewSetting];
     
-    self.personalInfomationArray=[NSArray arrayWithObjects:@"头像",@"姓名",@"性别",@"联系电话",@"出生日期",nil];
+    self.personalInfomationArray=[NSArray arrayWithObjects:@"头像",nil];
+    
     self.systemSettingArray=[NSArray arrayWithObjects:@"系统设置", nil];
     self.connectAndShareArray=[NSArray arrayWithObjects:@"分享",@"联系我们", nil];
     
@@ -76,43 +78,47 @@
     {
         if(row==0)//第一分组 第一行
         {
-        cell.settingLabel.text=[self.personalInfomationArray objectAtIndex:0];
+            //cell.settingLabel.text=[self.personalInfomationArray objectAtIndex:0];
             if(self.check==NO)//更改姓名 字段的高度，只改一次
             {
-            CGRect frames=cell.settingLabel.frame;
-            frames.size.height+=26;
-            cell.settingLabel.frame=frames;
+                CGRect frames=cell.settingLabel.frame;
+                frames.size.height+=26;
+                cell.settingLabel.frame=frames;
                 self.check=YES;
                 cell.contentLabel.alpha=0.0f;
+                cell.nameLabel.text=@"张三";
             }
-        cell.settingImageView.image=[UIImage imageNamed:@"png-0010"];
+            cell.settingImageView.image=[UIImage imageNamed:@"png-0010"];
         }
         else
         {
             cell.settingLabel.text=[self.personalInfomationArray objectAtIndex:row];
+            cell.nameLabel.alpha=0.0f;
         }
         cell.contentLabel.text=[self.testArray objectAtIndex:row];
     }
     else if(section==1)//第二个分组
     {
         cell.settingLabel.text=[self.systemSettingArray objectAtIndex:row];
+        cell.nameLabel.alpha=0.0f;
     }
     else//第三个分组
     {
         cell.settingLabel.text=[self.connectAndShareArray objectAtIndex:row];
+        cell.nameLabel.alpha=0.0f;
     }
     cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  if([indexPath section]==0)
-  {
-    if([indexPath row]==0)
+    if([indexPath section]==0)
     {
-        return 70.0f;
+        if([indexPath row]==0)
+        {
+            return 70.0f;
+        }
     }
-  }
     return 44.0f;
 }
 #pragma mark- TableView Delegate Method
@@ -124,61 +130,62 @@
     //点击第一个分组的时候
     if([indexPath section]==0)
     {
-    self.detailType=[NSString stringWithFormat:@"%ld",(long)[indexPath row]];
-    EHEStdSettingDetailViewController * settingDetail=[[EHEStdSettingDetailViewController alloc]initWithNibName:@"EHEStdSettingDetailViewController" bundle:nil];
-    settingDetail.name=[self.testArray objectAtIndex:1];
-    //把值传递给详细设置页面，这是假的数据，整合后使用真实数据
-    settingDetail.telephoneNumber=@"18500813409";
-    settingDetail.birthDate=@"1989-11-24";
-    settingDetail.type=self.detailType;
-    [self.navigationController pushViewController:settingDetail animated:YES];
-    
+        //    self.detailType=[NSString stringWithFormat:@"%ld",(long)[indexPath row]];
+        //    EHEStdSettingDetailViewController * settingDetail=[[EHEStdSettingDetailViewController alloc]initWithNibName:@"EHEStdSettingDetailViewController" bundle:nil];
+        //    settingDetail.name=[self.testArray objectAtIndex:1];
+        //    //把值传递给详细设置页面，这是假的数据，整合后使用真实数据
+        //    settingDetail.telephoneNumber=@"18500813409";
+        //    settingDetail.birthDate=@"1989-11-24";
+        //    settingDetail.type=self.detailType;
+        //    [self.navigationController pushViewController:settingDetail animated:YES];
+        EHEStdSettingPersonalInformation * personInfomation=[[EHEStdSettingPersonalInformation alloc]init];
+        [self.navigationController pushViewController:personInfomation animated:YES];
     }
     //点击第三个分组的时候
     if([indexPath section]==2)
     {
-      if([indexPath row]==0)//点击第三个分组的第一行，即分享cell的时候
-      {
-          NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"ShareSDK"  ofType:@"jpg"];
-          
-          //构造分享内容
-          id<ISSContent> publishContent = [ShareSDK content:@"分享内容"
-                                             defaultContent:@"默认分享内容，没内容时显示"
-                                                      image:[ShareSDK imageWithPath:imagePath]
-                                                      title:@"ShareSDK"
-                                                        url:@"http://www.sharesdk.cn"
-                                                description:@"这是一条测试信息"
-                                                  mediaType:SSPublishContentMediaTypeNews];
-          //创建分享信息后，分享成功与否的返回
-          [ShareSDK showShareActionSheet:nil
-                               shareList:nil
-                                 content:publishContent
-                           statusBarTips:YES
-                             authOptions:nil
-                            shareOptions: nil
-                                  result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
-                                      if (state == SSResponseStateSuccess)
-                                      {
-                                          NSLog(@"分享成功");
-                                      }
-                                      else if (state == SSResponseStateFail)
-                                      {
-                                          NSLog(NSLocalizedString(@"TEXT_SHARE_FAI", @"发布失败!error code == %d, error code == %@"), [error errorCode], [error errorDescription]);
-                                      }
-                                  }];
-      }
+        if([indexPath row]==0)//点击第三个分组的第一行，即分享cell的时候
+        {
+            NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"ShareSDK"  ofType:@"jpg"];
+            
+            //构造分享内容
+            id<ISSContent> publishContent = [ShareSDK content:@"分享内容"
+                                               defaultContent:@"默认分享内容，没内容时显示"
+                                                        image:[ShareSDK imageWithPath:imagePath]
+                                                        title:@"ShareSDK"
+                                                          url:@"http://www.sharesdk.cn"
+                                                  description:@"这是一条测试信息"
+                                                    mediaType:SSPublishContentMediaTypeNews];
+            //创建分享信息后，分享成功与否的返回
+            [ShareSDK showShareActionSheet:nil
+                                 shareList:nil
+                                   content:publishContent
+                             statusBarTips:YES
+                               authOptions:nil
+                              shareOptions: nil
+                                    result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                        if (state == SSResponseStateSuccess)
+                                        {
+                                            NSLog(@"分享成功");
+                                        }
+                                        else if (state == SSResponseStateFail)
+                                        {
+                                            NSLog(NSLocalizedString(@"TEXT_SHARE_FAI", @"发布失败!error code == %d, error code == %@"), [error errorCode], [error errorDescription]);
+                                        }
+                                    }];
+        }
     }
 }
 //对每个分组的说明和描述
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-  if(section==0)
-  {
-      return @"个人资料";
-  }
+    if(section==0)
+    {
+        return @"个人资料";
+    }
     else  if(section==1)
     {
-     return @"系统设置";
+        return @"系统设置";
     }
     else
     {

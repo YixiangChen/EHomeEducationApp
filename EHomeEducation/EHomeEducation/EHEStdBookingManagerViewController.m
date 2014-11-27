@@ -11,6 +11,8 @@
 #import "EHEOrder.h"
 #import "EHETeacher.h"
 #import "EHEStdBookingDetailViewController.h"
+#import "EHEStdLoginViewController.h"
+#import "EHECommunicationManager.h"
 @interface EHEStdBookingManagerViewController ()
 
 @end
@@ -29,46 +31,64 @@
     self.navigationItem.titleView = self.segmentedControl;
     
     //创建tableView并且给之放置样式
-    self.homeTeacherTableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStylePlain];
+    self.homeTeacherTableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-120) style:UITableViewStylePlain];
     self.homeTeacherTableView.dataSource=self;
     self.homeTeacherTableView.delegate=self;
     //分割线为单线分割
     self.homeTeacherTableView.separatorStyle=UITableViewCellSeparatorStyleSingleLine;
     [self.view addSubview:self.homeTeacherTableView];
+    
+    self.arrayTeacherInfo=[[NSMutableArray alloc]initWithCapacity:10];
+    self.arrayDate=[[NSMutableArray alloc]initWithCapacity:10];
+    
+    EHECoreDataManager * coreDataManager=[EHECoreDataManager getInstance];
+    NSUserDefaults * userDefaults=[NSUserDefaults standardUserDefaults];
+    NSString * customerid=[userDefaults objectForKey:@"myCustomerid"];
+    self.allOrdersArray=[coreDataManager fetchOrderInfosWithCustomerID:customerid.intValue andOrderStatus:-1];
+    [self bandUnOrdered];
     // Do any additional setup after loading the view from its nib.
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    NSUserDefaults * userDefaults=[NSUserDefaults standardUserDefaults];
+    NSString * userName=[userDefaults objectForKey:@"userName"];
+    NSString * password=[userDefaults objectForKey:@"passWord"];
+    //[userDefaults synchronize];
+    NSLog(@"userName=%@,password=%@",userName,password);
+    EHEStdLoginViewController *loginViewController = [[EHEStdLoginViewController alloc] initWithNibName:nil bundle:nil];
+    if (userName == nil || password== nil) {
+        [[self navigationController] setNavigationBarHidden:YES animated:YES];//隐藏导航栏
+        [self.navigationController pushViewController:loginViewController animated:NO];
+    }
+    else
+    {
+        [[self navigationController] setNavigationBarHidden:NO animated:YES];
+    }
 }
 -(void)bandUnOrdered
 {
-    EHECoreDataManager * coreDataManager=[EHECoreDataManager getInstance];
-    self.arrayTeacherInfo=[[NSMutableArray alloc]initWithCapacity:10];
-    self.arrayDate=[[NSMutableArray alloc]initWithCapacity:10];
-//    for(EHEOrder * order in [coreDataManager fetchAllOrders])
-//    {
-//        if([order.orderstatus isEqualToString:@"0"])
-//        {
-//            EHETeacher * teacher=[coreDataManager fetchDetailInfosWithTeacherId:order.teacherid.intValue];
-//            NSString * teacherInfo=[NSString stringWithFormat:@"%@：%@",teacher.name,order.subjectinfo];
-//            [self.arrayTeacherInfo addObject:teacherInfo];
-//            [self.arrayDate addObject:order.orderdate];
-//            [self.teacherArray addObject:teacher];
-//        }
-//    }
+    
+    NSUserDefaults * userDefaults=[NSUserDefaults standardUserDefaults];
+    NSString * customerid=[userDefaults objectForKey:@"myCustomerid"];
+    NSLog(@"customerid=%@",customerid);
+    for(EHEOrder * order in self.allOrdersArray)
+    {
+        NSString * teacherInfo=[NSString stringWithFormat:@"%@：%@",order.teachername,order.subjectinfo];
+        [self.arrayTeacherInfo addObject:teacherInfo];
+        [self.arrayDate addObject:order.orderdate];
+    }
 }
 -(void)bandOrdered
 {
-    EHECoreDataManager * coreDataManager=[EHECoreDataManager getInstance];
-    self.arrayTeacherInfo=[[NSMutableArray alloc]initWithCapacity:10];
-    self.arrayDate=[[NSMutableArray alloc]initWithCapacity:10];
-//    for(EHEOrder * order in [coreDataManager fetchAllOrders])
-//    {
-//        if([order.orderstatus isEqualToString:@"1"])
-//        {
-//            EHETeacher * teacher=[coreDataManager fetchDetailInfosWithTeacherId:order.teacherid.intValue];
-//            NSString * teacherInfo=[NSString stringWithFormat:@"%@：%@",teacher.name,order.subjectinfo];
-//            [self.arrayTeacherInfo addObject:teacherInfo];
-//            [self.arrayDate addObject:order.orderdate];
-//        }
-//    }
+    for(EHEOrder * order in self.allOrdersArray)
+    {
+        if([order.orderstatus isEqualToString:@"1"])
+        {
+            NSString * teacherInfo=[NSString stringWithFormat:@"%@：%@",order.teachername,order.subjectinfo];
+            [self.arrayTeacherInfo addObject:teacherInfo];
+            [self.arrayDate addObject:order.orderdate];
+        }
+    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -116,9 +136,8 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     EHEStdBookingDetailViewController * bookingDetailViewController=[[EHEStdBookingDetailViewController alloc]initWithNibName:nil bundle:nil];
-    bookingDetailViewController.teacherName=[self.arrayTeacherInfo objectAtIndex:[indexPath row]];
-    bookingDetailViewController.orderDate=[self.arrayDate objectAtIndex:[indexPath row]];
-    bookingDetailViewController.teacher=[self.teacherArray objectAtIndex:[indexPath row]];
+    EHEOrder * order=(EHEOrder *)[self.allOrdersArray objectAtIndex:[indexPath row]];
+    bookingDetailViewController.order=order;
     [self.navigationController pushViewController:bookingDetailViewController animated:YES];
 }
 @end

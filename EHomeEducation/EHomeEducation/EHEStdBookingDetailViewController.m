@@ -16,16 +16,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title=self.teacherName;
+    self.title=self.order.teachername;
     
     //传之后显示TextView的各种label控件 信息
     _teacherInfoLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 70, 150, 30)];
-    [self getLableAttribute:_teacherInfoLabel withText:self.teacherName];
+    [self getLableAttribute:_teacherInfoLabel withText:self.order.teachername];
     _teacherInfoLabel.font=[UIFont fontWithName:@"Helvetica-Bold" size:17.0f];
     [self.view addSubview:_teacherInfoLabel];
     
     _orderLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 100, 250, 30)];
-    NSString * orderDateString=[NSString stringWithFormat:@"预约时间：%@",self.orderDate];
+    NSString * orderDateString=[NSString stringWithFormat:@"预约时间：%@",self.order.orderdate];
     [self getLableAttribute:_orderLabel withText:orderDateString];
     _orderLabel.font=[UIFont systemFontOfSize:15.0f];
     [self.view addSubview:_orderLabel];
@@ -34,14 +34,14 @@
     [self getLableAttribute:_otherInfomationLabel withText:@"相关信息"];
     _otherInfomationLabel.font=[UIFont fontWithName:@"Helvetica-Bold" size:17.0f];
     [self.view addSubview:_otherInfomationLabel];
-     
+    
     _beginAndEndLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 160, 200, 30)];
-    [self getLableAttribute:_beginAndEndLabel withText:[NSString stringWithFormat:@"授课起止时间：%@",self.teacher.timePeriod]];
+    [self getLableAttribute:_beginAndEndLabel withText:[NSString stringWithFormat:@"授课起止时间：%@",self.order.timeperiod]];
     _beginAndEndLabel.font=[UIFont systemFontOfSize:15.0f];
     [self.view addSubview:_beginAndEndLabel];
     
     _objectLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 190, 200, 30)];
-    [self getLableAttribute:_objectLabel withText:[NSString stringWithFormat:@"所授科目：%@",self.teacher.subjectInfo]];
+    [self getLableAttribute:_objectLabel withText:[NSString stringWithFormat:@"所授科目：%@",self.order.subjectinfo]];
     _objectLabel.font=[UIFont systemFontOfSize:15.0f];
     [self.view addSubview:_objectLabel];
     
@@ -340,14 +340,14 @@
     if(_check==YES)
     {
         //先把所有的label下拉
-    [self pushAllLabels];
+        [self pushAllLabels];
         //再上提textView
-    CGRect textFrame=_descriptionTextView.frame;
-    textFrame.origin.y+=150;
+        CGRect textFrame=_descriptionTextView.frame;
+        textFrame.origin.y+=150;
         //并且让textView的height变回原始大小
-    textFrame.size.height-=20;
-    _descriptionTextView.frame=textFrame;
-    [_descriptionTextView resignFirstResponder];//键盘放弃第一响应者身份
+        textFrame.size.height-=20;
+        _descriptionTextView.frame=textFrame;
+        [_descriptionTextView resignFirstResponder];//键盘放弃第一响应者身份
         _check=NO;
         if([_descriptionTextView.text isEqualToString:@""])//如果用户没有输入任何字符
         {
@@ -364,15 +364,15 @@
     if(_check==NO)
     {
         //光标在首
-    textView.selectedRange=NSMakeRange(0, 0);
+        textView.selectedRange=NSMakeRange(0, 0);
         //上提所有label控件
-    [self pullAllLabels];
-    CGRect textFrame=textView.frame;
-    textFrame.origin.y-=150;
+        [self pullAllLabels];
+        CGRect textFrame=textView.frame;
+        textFrame.origin.y-=150;
         //加大textView的height值
-    textFrame.size.height+=20;
-    textView.frame=textFrame;
-    _check=YES;
+        textFrame.size.height+=20;
+        textView.frame=textFrame;
+        _check=YES;
     }
 }
 //上啦所有label的方法
