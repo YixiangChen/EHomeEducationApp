@@ -51,7 +51,6 @@
     NSUserDefaults * userDefaults=[NSUserDefaults standardUserDefaults];
     NSString * userName=[userDefaults objectForKey:@"userName"];
     NSString * password=[userDefaults objectForKey:@"passWord"];
-    NSString * customerid=[userDefaults objectForKey:@"customerid"];
     //[userDefaults synchronize];
     NSLog(@"userName=%@,password=%@",userName,password);
     EHEStdLoginViewController *loginViewController = [[EHEStdLoginViewController alloc] initWithNibName:nil bundle:nil];
@@ -68,9 +67,11 @@
 }
 -(void)bandUnOrdered
 {
-    [self reloadData];
+    [self loadData];
     for(EHEOrder * order in self.allOrdersArray)
     {
+        EHECommunicationManager * communication=[EHECommunicationManager getInstance];
+        [communication loadOrderDetailWithOrderID:order.orderid.intValue];
         NSString * teacherInfo=[NSString stringWithFormat:@"%@：%@",order.teachername,order.subjectinfo];
         [self.arrayTeacherInfo addObject:teacherInfo];
         [self.arrayDate addObject:order.orderdate];
@@ -79,10 +80,11 @@
 }
 -(void)bandOrdered
 {
-    [self reloadData];
-    
+    [self loadData];
     for(EHEOrder * order in self.allOrdersArray)
     {
+        EHECommunicationManager * communication=[EHECommunicationManager getInstance];
+        [communication loadOrderDetailWithOrderID:order.orderid.intValue];
         if([order.orderstatus isEqualToString:@"1"])
         {
             NSString * teacherInfo=[NSString stringWithFormat:@"%@：%@",order.teachername,order.subjectinfo];
@@ -92,7 +94,7 @@
         }
     }
 }
--(void)reloadData
+-(void)loadData
 {
     [self.realOrdersArray removeAllObjects];
     self.allOrdersArray=nil;
