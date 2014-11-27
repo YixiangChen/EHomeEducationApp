@@ -58,10 +58,21 @@
 }
 -(void) sendOrder {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     [self.dictOrder setObject:[formatter stringFromDate:[NSDate date]]forKey:@"orderdate"];
     
-    [self.dictOrder setObject:@(143) forKey:@"customerid"];
+    NSUserDefaults * userDefaults=[NSUserDefaults standardUserDefaults];
+    NSString * customerid=[userDefaults objectForKey:@"myCustomerid"];
+    NSLog(@"customerid=%@",customerid);
+    if([customerid isEqualToString:@""])
+    {
+        UIAlertView * alertView=[[UIAlertView alloc]initWithTitle:@"提示" message:@"没有登录" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alertView show];
+        return;
+        
+    }
+    
+    [self.dictOrder setObject:customerid forKey:@"customerid"];
     [self.dictOrder setObject:@(119.000000) forKey:@"latitude"];
     [self.dictOrder setObject:@(39.000000) forKey:@"longitude"];
     [self.dictOrder setObject:self.teacher.teacherId forKey:@"teacherid"];    

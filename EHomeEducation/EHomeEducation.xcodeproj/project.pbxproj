@@ -28,6 +28,11 @@
 		5286B3A91A26CF370080EC5F /* 订单-已完成 - 继续预约预约按钮2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5286B3A51A26CF370080EC5F /* 订单-已完成 - 继续预约预约按钮2.png */; };
 		5286B3AA1A26CF370080EC5F /* 订单-已完成 - 继续预约取消按钮.png in Resources */ = {isa = PBXBuildFile; fileRef = 5286B3A61A26CF370080EC5F /* 订单-已完成 - 继续预约取消按钮.png */; };
 		5286B3AB1A26CF370080EC5F /* 订单-已完成 - 继续预约预约按钮.png in Resources */ = {isa = PBXBuildFile; fileRef = 5286B3A71A26CF370080EC5F /* 订单-已完成 - 继续预约预约按钮.png */; };
+		5286B3AE1A2701350080EC5F /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 5286B3AD1A2701350080EC5F /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5286B3B01A27134D0080EC5F /* EHomeEducation.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 5286B3AF1A27134D0080EC5F /* EHomeEducation.xcdatamodel */; };
+		5286B3B61A2713BA0080EC5F /* EHEOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5286B3B51A2713BA0080EC5F /* EHEOrder.m */; };
+		5286B3B91A2713BA0080EC5F /* EHEAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 5286B3B81A2713BA0080EC5F /* EHEAccount.m */; };
+		5286B3BC1A2713FE0080EC5F /* EHETeacher.m in Sources */ = {isa = PBXBuildFile; fileRef = 5286B3BB1A2713FE0080EC5F /* EHETeacher.m */; };
 		529059F81A21A80100DDC6FB /* CopyConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 529059A21A21A80100DDC6FB /* CopyConnection.framework */; };
 		529059F91A21A80100DDC6FB /* DouBanConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 529059A31A21A80100DDC6FB /* DouBanConnection.framework */; };
 		529059FA1A21A80100DDC6FB /* DropboxConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 529059A41A21A80100DDC6FB /* DropboxConnection.framework */; };
@@ -149,7 +154,6 @@
 		7960F1251A1C83C300DCEA45 /* EHETchSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7960F1231A1C83C300DCEA45 /* EHETchSettingViewController.xib */; };
 		797C306D1A19D32900DB84E4 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 797C306C1A19D32900DB84E4 /* main.mm */; };
 		797C30701A19D32900DB84E4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 797C306F1A19D32900DB84E4 /* AppDelegate.m */; };
-		797C30731A19D32900DB84E4 /* EHomeEducation.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 797C30711A19D32900DB84E4 /* EHomeEducation.xcdatamodeld */; };
 		797C307B1A19D32900DB84E4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 797C307A1A19D32900DB84E4 /* Images.xcassets */; };
 		797C307E1A19D32900DB84E4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 797C307C1A19D32900DB84E4 /* LaunchScreen.xib */; };
 		797C308A1A19D32900DB84E4 /* EHomeEducationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 797C30891A19D32900DB84E4 /* EHomeEducationTests.m */; };
@@ -173,9 +177,7 @@
 		79D5E8DC1A25807A0047C704 /* EHEStdBookingDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79D5E8D71A25807A0047C704 /* EHEStdBookingDetailViewController.xib */; };
 		79D5E8DD1A25807A0047C704 /* EHEStdBookingManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79D5E8D91A25807A0047C704 /* EHEStdBookingManagerViewController.m */; };
 		79D5E8DE1A25807A0047C704 /* EHEStdBookingManagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79D5E8DA1A25807A0047C704 /* EHEStdBookingManagerViewController.xib */; };
-		79D5E8E11A25B8700047C704 /* EHEOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 79D5E8E01A25B8700047C704 /* EHEOrder.m */; };
 		79D931D11A1B22DF00B709A1 /* EHECommunicationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 79D931D01A1B22DF00B709A1 /* EHECommunicationManager.m */; };
-		79DC58B51A22CE4300A4943C /* EHETeacher.m in Sources */ = {isa = PBXBuildFile; fileRef = 79DC58B41A22CE4300A4943C /* EHETeacher.m */; };
 		79EA22CD1A2322C80016CBD1 /* EHEStdOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79EA22CB1A2322C80016CBD1 /* EHEStdOrderTableViewCell.m */; };
 		79EA22CE1A2322C80016CBD1 /* EHEStdOrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79EA22CC1A2322C80016CBD1 /* EHEStdOrderTableViewCell.xib */; };
 /* End PBXBuildFile section */
@@ -217,6 +219,16 @@
 		5286B3A51A26CF370080EC5F /* 订单-已完成 - 继续预约预约按钮2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "订单-已完成 - 继续预约预约按钮2.png"; sourceTree = "<group>"; };
 		5286B3A61A26CF370080EC5F /* 订单-已完成 - 继续预约取消按钮.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "订单-已完成 - 继续预约取消按钮.png"; sourceTree = "<group>"; };
 		5286B3A71A26CF370080EC5F /* 订单-已完成 - 继续预约预约按钮.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "订单-已完成 - 继续预约预约按钮.png"; sourceTree = "<group>"; };
+		5286B3AC1A2701350080EC5F /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		5286B3AD1A2701350080EC5F /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		5286B3AF1A27134D0080EC5F /* EHomeEducation.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EHomeEducation.xcdatamodel; sourceTree = "<group>"; };
+		5286B3B41A2713BA0080EC5F /* EHEOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EHEOrder.h; path = ../EHEOrder.h; sourceTree = "<group>"; };
+		5286B3B51A2713BA0080EC5F /* EHEOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EHEOrder.m; path = ../EHEOrder.m; sourceTree = "<group>"; };
+		5286B3B71A2713BA0080EC5F /* EHEAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EHEAccount.h; path = ../EHEAccount.h; sourceTree = "<group>"; };
+		5286B3B81A2713BA0080EC5F /* EHEAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EHEAccount.m; path = ../EHEAccount.m; sourceTree = "<group>"; };
+		5286B3BA1A2713FE0080EC5F /* EHETeacher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHETeacher.h; sourceTree = "<group>"; };
+		5286B3BB1A2713FE0080EC5F /* EHETeacher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHETeacher.m; sourceTree = "<group>"; };
+		5286B3BD1A27145D0080EC5F /* Defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
 		529059A21A21A80100DDC6FB /* CopyConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CopyConnection.framework; sourceTree = "<group>"; };
 		529059A31A21A80100DDC6FB /* DouBanConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DouBanConnection.framework; sourceTree = "<group>"; };
 		529059A41A21A80100DDC6FB /* DropboxConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DropboxConnection.framework; sourceTree = "<group>"; };
@@ -426,7 +438,6 @@
 		797C306C1A19D32900DB84E4 /* main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
 		797C306E1A19D32900DB84E4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		797C306F1A19D32900DB84E4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		797C30721A19D32900DB84E4 /* EHomeEducation.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EHomeEducation.xcdatamodel; sourceTree = "<group>"; };
 		797C307A1A19D32900DB84E4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		797C307D1A19D32900DB84E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		797C30831A19D32900DB84E4 /* EHomeEducationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EHomeEducationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -461,12 +472,8 @@
 		79D5E8D81A25807A0047C704 /* EHEStdBookingManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHEStdBookingManagerViewController.h; sourceTree = "<group>"; };
 		79D5E8D91A25807A0047C704 /* EHEStdBookingManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHEStdBookingManagerViewController.m; sourceTree = "<group>"; };
 		79D5E8DA1A25807A0047C704 /* EHEStdBookingManagerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHEStdBookingManagerViewController.xib; sourceTree = "<group>"; };
-		79D5E8DF1A25B8700047C704 /* EHEOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EHEOrder.h; path = ../EHEOrder.h; sourceTree = "<group>"; };
-		79D5E8E01A25B8700047C704 /* EHEOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EHEOrder.m; path = ../EHEOrder.m; sourceTree = "<group>"; };
 		79D931CF1A1B22DF00B709A1 /* EHECommunicationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHECommunicationManager.h; sourceTree = "<group>"; };
 		79D931D01A1B22DF00B709A1 /* EHECommunicationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHECommunicationManager.m; sourceTree = "<group>"; };
-		79DC58B31A22CE4300A4943C /* EHETeacher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHETeacher.h; sourceTree = "<group>"; };
-		79DC58B41A22CE4300A4943C /* EHETeacher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHETeacher.m; sourceTree = "<group>"; };
 		79EA22CA1A2322C80016CBD1 /* EHEStdOrderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHEStdOrderTableViewCell.h; sourceTree = "<group>"; };
 		79EA22CB1A2322C80016CBD1 /* EHEStdOrderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHEStdOrderTableViewCell.m; sourceTree = "<group>"; };
 		79EA22CC1A2322C80016CBD1 /* EHEStdOrderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHEStdOrderTableViewCell.xib; sourceTree = "<group>"; };
@@ -477,6 +484,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52D397F91A1B390C008B08FE /* SystemConfiguration.framework in Frameworks */,
 				52905A4F1A21A8D300DDC6FB /* MessageUI.framework in Frameworks */,
 				52905A4D1A21A8CC00DDC6FB /* AddressBook.framework in Frameworks */,
 				52905A4B1A21A8C300DDC6FB /* AssetsLibrary.framework in Frameworks */,
@@ -491,7 +499,6 @@
 				52905A3D1A21A85800DDC6FB /* libicucore.dylib in Frameworks */,
 				52905A3B1A21A84D00DDC6FB /* CoreTelephony.framework in Frameworks */,
 				52D397FD1A1B3915008B08FE /* QuartzCore.framework in Frameworks */,
-				52D397F91A1B390C008B08FE /* SystemConfiguration.framework in Frameworks */,
 				52905A0A1A21A80100DDC6FB /* PocketConnection.framework in Frameworks */,
 				52905A0D1A21A80100DDC6FB /* QZoneConnection.framework in Frameworks */,
 				52905A2F1A21A80100DDC6FB /* ShareSDKFlatShareViewUI.framework in Frameworks */,
@@ -1006,6 +1013,8 @@
 		797C30691A19D32900DB84E4 /* EHomeEducation */ = {
 			isa = PBXGroup;
 			children = (
+				5286B3AC1A2701350080EC5F /* Reachability.h */,
+				5286B3AD1A2701350080EC5F /* Reachability.m */,
 				52905A501A21A8DD00DDC6FB /* 项目类库 */,
 				52D398021A1B4248008B08FE /* 项目图片 */,
 				797C306E1A19D32900DB84E4 /* AppDelegate.h */,
@@ -1061,13 +1070,16 @@
 		797C30951A19D38000DB84E4 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				5286B3BD1A27145D0080EC5F /* Defines.h */,
+				5286B3B71A2713BA0080EC5F /* EHEAccount.h */,
+				5286B3B81A2713BA0080EC5F /* EHEAccount.m */,
+				5286B3B41A2713BA0080EC5F /* EHEOrder.h */,
+				5286B3B51A2713BA0080EC5F /* EHEOrder.m */,
+				5286B3AF1A27134D0080EC5F /* EHomeEducation.xcdatamodel */,
+				5286B3BA1A2713FE0080EC5F /* EHETeacher.h */,
+				5286B3BB1A2713FE0080EC5F /* EHETeacher.m */,
 				794756321A21E76E00E39012 /* EHECoreDataManager.h */,
 				794756331A21E76E00E39012 /* EHECoreDataManager.m */,
-				797C30711A19D32900DB84E4 /* EHomeEducation.xcdatamodeld */,
-				79D5E8DF1A25B8700047C704 /* EHEOrder.h */,
-				79D5E8E01A25B8700047C704 /* EHEOrder.m */,
-				79DC58B31A22CE4300A4943C /* EHETeacher.h */,
-				79DC58B41A22CE4300A4943C /* EHETeacher.m */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -1320,7 +1332,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				79D5E8DD1A25807A0047C704 /* EHEStdBookingManagerViewController.m in Sources */,
-				79DC58B51A22CE4300A4943C /* EHETeacher.m in Sources */,
 				795F889B1A24670D004D75BA /* EHEStdMemoViewController.m in Sources */,
 				7960F11F1A1C838300DCEA45 /* EHETchBookingManagerViewController.m in Sources */,
 				7947561C1A1ED1AA00E39012 /* MF_Base64Additions.m in Sources */,
@@ -1329,17 +1340,17 @@
 				5299AE3F1A209AC6000A5960 /* EHEStdSettingDetailCell.m in Sources */,
 				797C30701A19D32900DB84E4 /* AppDelegate.m in Sources */,
 				52D5E8411A1F291900342E06 /* sdsdTableViewCell.m in Sources */,
-				797C30731A19D32900DB84E4 /* EHomeEducation.xcdatamodeld in Sources */,
 				797C30D61A19DB5000DB84E4 /* EHEStdLoginViewController.m in Sources */,
 				7947562D1A20FB1700E39012 /* EHEStdSubjectTableTableViewController.m in Sources */,
+				5286B3AE1A2701350080EC5F /* Reachability.m in Sources */,
 				794756341A21E76E00E39012 /* EHECoreDataManager.m in Sources */,
 				798B1A471A1D866800F0031F /* EHETeacherTableViewCell.m in Sources */,
+				5286B3B01A27134D0080EC5F /* EHomeEducation.xcdatamodel in Sources */,
 				795F88961A24639B004D75BA /* EHEStdLocationViewController.m in Sources */,
 				79D5E8DB1A25807A0047C704 /* EHEStdBookingDetailViewController.m in Sources */,
 				525C20981A1F256B00C3119A /* EHEStdBookingTableViewCell.m in Sources */,
 				797C30E01A19DC0D00DB84E4 /* EHEStdSettingViewController.m in Sources */,
 				7960F11A1A1C834000DCEA45 /* EHEStdSearchingTableViewController.m in Sources */,
-				79D5E8E11A25B8700047C704 /* EHEOrder.m in Sources */,
 				794756231A1F123200E39012 /* EHEStdRegisterViewController.m in Sources */,
 				52974AD01A1D8E3700C05FFC /* EHEBaiduMapView.m in Sources */,
 				79EA22CD1A2322C80016CBD1 /* EHEStdOrderTableViewCell.m in Sources */,
@@ -1348,6 +1359,8 @@
 				525C209F1A1F481600C3119A /* EHEStdSettingTableViewCell.m in Sources */,
 				79265E901A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.m in Sources */,
 				797C30CB1A19DA9900DB84E4 /* EHEStdMapSearchingViewController.m in Sources */,
+				5286B3B91A2713BA0080EC5F /* EHEAccount.m in Sources */,
+				5286B3BC1A2713FE0080EC5F /* EHETeacher.m in Sources */,
 				525C20911A1EEF6200C3119A /* EHESegmentedControlManager.m in Sources */,
 				797C30C61A19DA6E00DB84E4 /* EHETchSearchingTableViewController.m in Sources */,
 				794756121A1D9FE600E39012 /* EHETeacherDetailViewController.m in Sources */,
@@ -1357,6 +1370,7 @@
 				7960F1241A1C83C300DCEA45 /* EHETchSettingViewController.m in Sources */,
 				794756281A1F388A00E39012 /* EHEStdOrderViewController.m in Sources */,
 				525E36CD1A1C29B1004F0475 /* TeacherAnnotations.m in Sources */,
+				5286B3B61A2713BA0080EC5F /* EHEOrder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1600,19 +1614,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		797C30711A19D32900DB84E4 /* EHomeEducation.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				797C30721A19D32900DB84E4 /* EHomeEducation.xcdatamodel */,
-			);
-			currentVersion = 797C30721A19D32900DB84E4 /* EHomeEducation.xcdatamodel */;
-			path = EHomeEducation.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 797C305F1A19D32900DB84E4 /* Project object */;
 }

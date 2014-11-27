@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6252" systemVersion="14A389" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="EHEAccount" representedClassName="EHEAccount" syncable="YES">
+        <attribute name="customerid" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="majoraddress" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="memo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="telephone" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="EHEOrder" representedClassName="EHEOrder" syncable="YES">
         <attribute name="customerid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="customername" optional="YES" attributeType="String" syncable="YES"/>
@@ -40,5 +50,6 @@
     <elements>
         <element name="EHEOrder" positionX="-36" positionY="144" width="128" height="270"/>
         <element name="EHETeacher" positionX="-36" positionY="9" width="128" height="313"/>
+        <element name="EHEAccount" positionX="-27" positionY="171" width="128" height="165"/>
     </elements>
 </model>

@@ -41,6 +41,8 @@
     self.arrayTeacherInfo=[[NSMutableArray alloc]initWithCapacity:10];
     self.arrayDate=[[NSMutableArray alloc]initWithCapacity:10];
     
+    self.realOrdersArray=[[NSMutableArray alloc]initWithCapacity:10];
+    
     [self bandUnOrdered];
     // Do any additional setup after loading the view from its nib.
 }
@@ -49,6 +51,7 @@
     NSUserDefaults * userDefaults=[NSUserDefaults standardUserDefaults];
     NSString * userName=[userDefaults objectForKey:@"userName"];
     NSString * password=[userDefaults objectForKey:@"passWord"];
+    NSString * customerid=[userDefaults objectForKey:@"customerid"];
     //[userDefaults synchronize];
     NSLog(@"userName=%@,password=%@",userName,password);
     EHEStdLoginViewController *loginViewController = [[EHEStdLoginViewController alloc] initWithNibName:nil bundle:nil];
@@ -60,6 +63,8 @@
     {
         [[self navigationController] setNavigationBarHidden:NO animated:YES];
     }
+    
+    [self bandUnOrdered];
 }
 -(void)bandUnOrdered
 {
@@ -89,14 +94,19 @@
 }
 -(void)reloadData
 {
-    self.realOrdersArray=[[NSMutableArray alloc]initWithCapacity:10];
+    [self.realOrdersArray removeAllObjects];
     self.allOrdersArray=nil;
-    EHECoreDataManager * coreDataManager=[EHECoreDataManager getInstance];
+    
     NSUserDefaults * userDefaults=[NSUserDefaults standardUserDefaults];
     NSString * customerid=[userDefaults objectForKey:@"myCustomerid"];
-    //[coreDataManager removeAllOrdersFromCoreData];
-    self.allOrdersArray=[coreDataManager fetchOrderInfosWithCustomerID:customerid.intValue andOrderStatus:-1];
     
+    EHECoreDataManager * coreDataManager=[EHECoreDataManager getInstance];
+    [coreDataManager removeAllOrdersFromCoreData];
+    EHECommunicationManager * communicationManager=[EHECommunicationManager getInstance];
+    [communicationManager loadOrderInfosWithCustomerID:customerid.intValue andOrderStatus:0];
+    
+    self.allOrdersArray=[coreDataManager fetchOrderInfosWithCustomerID:customerid.intValue andOrderStatus:-1];
+    NSLog(@"allOrdersArray 里面的个数是%d ",self.allOrdersArray.count);
     [self.arrayTeacherInfo removeAllObjects];
     [self.arrayDate removeAllObjects];
 }

@@ -22,6 +22,9 @@
 #import <RennSDK/RennSDK.h>
 #import <TencentOpenAPI/QQApiInterface.h>
 #import <TencentOpenAPI/TencentOAuth.h>
+
+#import "Reachability.h"
+
 @interface AppDelegate ()
 
 @end
@@ -35,7 +38,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     
-    [[EHECoreDataManager getInstance] deleteData];
+    [[EHECoreDataManager getInstance] removeAllTeachersFromCoreData];
     [[EHECommunicationManager getInstance]loadTeachersInfo];
     
     
@@ -49,6 +52,11 @@
     
     
     [NSThread sleepForTimeInterval:2];
+    
+    if([self checkIfNetWorking])
+    {
+     [[EHECoreDataManager getInstance]removeAllOrdersFromCoreData];
+    }
     
     [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationController class], nil]
      setTintColor:[UIColor greenColor]];
@@ -96,6 +104,25 @@
     [self.window makeKeyAndVisible];
     
     return YES;
+}
+-(BOOL)checkIfNetWorking
+{
+    self.check=YES;
+  Reachability *reach = [Reachability reachabilityWithHostName:@"www.apple.com"];
+    switch ([reach currentReachabilityStatus])
+    {
+        case NotReachable:
+           self.check  = NO;
+            NSLog(@"没有网络");
+            break;
+        case ReachableViaWiFi:
+            NSLog(@"有网络");
+            break;
+        case ReachableViaWWAN:
+            NSLog(@"有网络");
+            break;
+    }
+    return self.check;
 }
 -(void)initPlat
 {

@@ -60,19 +60,26 @@
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"teacherId = %d", teacherId];
     fetchRequest.predicate = predicate;
     NSArray *teachers = [self.context executeFetchRequest:fetchRequest error:nil];
-    EHETeacher *teacher = [teachers objectAtIndex:0];
-    teacher.teacherId = [NSNumber numberWithInt:teacherId];
-    teacher.birthday = dict[@"birthday"];
-    teacher.degree = dict[@"degree"];
-    teacher.gender = dict[@"gender"];
-    teacher.identity = dict[@"identity"];
-    teacher.memo = dict[@"memo"];
-    teacher.objectInfo = dict[@"objectinfo"];
-    teacher.qq = dict[@"qq"];
-    teacher.sinaweibo = dict[@"sinaweibo"];
-    teacher.telephone = dict[@"telephone"];
-    teacher.timePeriod = dict[@"timeperiod"];
-    [self.context save:nil];
+    
+    if (teachers.count > 0) {
+        EHETeacher *teacher = [teachers objectAtIndex:0];
+        teacher.teacherId = [NSNumber numberWithInt:teacherId];
+        teacher.birthday = dict[@"birthday"];
+        teacher.degree = dict[@"degree"];
+        teacher.gender = dict[@"gender"];
+        teacher.identity = dict[@"identity"];
+        teacher.memo = dict[@"memo"];
+        teacher.objectInfo = dict[@"objectinfo"];
+        teacher.qq = dict[@"qq"];
+        teacher.sinaweibo = dict[@"sinaweibo"];
+        teacher.telephone = dict[@"telephone"];
+        teacher.timePeriod = dict[@"timeperiod"];
+        [self.context save:nil];
+        NSLog(@"将一个Teacher对象写入CoreData %@",teacher);
+    } else {
+        NSLog(@"core data中没有找到 ID 为 %d 的教师对象",teacherId);
+    }
+    
     
 }
 
@@ -92,10 +99,6 @@
         [self.context save:nil];
     }
     
-    for (NSDictionary *dict in arrayOrders) {
-        NSLog(@" i have an order with id %@",[dict objectForKey:@"orderid"]);
-    }
-    
 }
 
 -(void)upDateOrderDetail:(NSDictionary *)dict withOrderId:(int)orderId {
@@ -104,23 +107,23 @@
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"orderid = %d", orderId];
     fetchRequest.predicate = predicate;
     NSArray *orders = [self.context executeFetchRequest:fetchRequest error:nil];
-    for (EHEOrder * order in orders) {
-        NSLog(@"I am getting an order with id %@",order);
-    }
-    EHEOrder *order = [orders objectAtIndex:0];
     
-
-    order.customername = [dict objectForKey:@"customername"];
-    order.memo = [dict objectForKey:@"memo"];
-    order.objectinfo = [dict objectForKey:@"objectinfo"];
-    order.orderdate = [dict objectForKey:@"orderdate"];
-    order.subjectinfo = [dict objectForKey:@"subjectinfo"];
-    order.teacherid = [NSString stringWithFormat:@"%@",[dict objectForKey:@"teacherid"]];
-    order.timeperiod = [dict objectForKey:@"timeperiod"];
-    [self.context save:nil];
+    if(orders.count > 0) {
+        EHEOrder *order = [orders objectAtIndex:0];
+        order.customername = [dict objectForKey:@"customername"];
+        order.memo = [dict objectForKey:@"memo"];
+        order.objectinfo = [dict objectForKey:@"objectinfo"];
+        order.orderdate = [dict objectForKey:@"orderdate"];
+        order.subjectinfo = [dict objectForKey:@"subjectinfo"];
+        order.teacherid = [NSString stringWithFormat:@"%@",[dict objectForKey:@"teacherid"]];
+        order.timeperiod = [dict objectForKey:@"timeperiod"];
+        [self.context save:nil];
+    } else {
+        NSLog(@"core data中没有找到 ID 为 %d 的订单对象",orderId);
+    }
     
 }
-    
+
 
 
 -(NSArray *)fetchBasicInfosOfTeachers {
@@ -151,7 +154,7 @@
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"EHETeacher"];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"teacherId = %d", teacherId];
     fetchRequest.predicate = predicate;
-
+    
     NSSortDescriptor *sortByName = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:NO];
     NSArray *sorts = [[NSArray alloc] initWithObjects:sortByName, nil];
     fetchRequest.sortDescriptors = sorts;
@@ -170,29 +173,6 @@
     return nil;
 }
 
-
--(void)removeAllOrdersFromCoreData
-{
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"EHEOrder" inManagedObjectContext:self.context];
-    
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    [request setIncludesPropertyValues:NO];
-    [request setEntity:entity];
-    NSError *error = nil;
-    NSArray *datas = [self.context executeFetchRequest:request error:&error];
-    if (!error && datas && [datas count])
-    {
-        for (NSManagedObject *obj in datas)
-        {
-            [self.context deleteObject:obj];
-        }
-        if (![self.context save:&error])
-        {
-            NSLog(@"error:%@",error);
-        }
-    }
-}
-
 -(NSArray *)fetchOrderInfosWithCustomerID:(int)customerID andOrderStatus:(int)status {
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"EHEOrder"];
     NSPredicate * predicate = nil;
@@ -203,10 +183,6 @@
     
     NSError *error;
     NSArray *orders = [self.context executeFetchRequest:fetchRequest error:&error];
-    
-    for (EHEOrder *order in orders) {
-        NSLog(@"the order saved is %@ ",order);
-    }
     
     if (error)
     {
@@ -231,10 +207,6 @@
     NSError *error;
     NSArray *orders = [self.context executeFetchRequest:fetchRequest error:&error];
     
-    for (EHEOrder * order in orders) {
-        NSLog(@"Now I am fetching an order %@",order);
-    }
-    
     if (error)
     {
         return nil;
@@ -245,9 +217,9 @@
     }
     return nil;
 }
--(void)deleteData
+-(void)removeAllTeachersFromCoreData
 {
- 
+    
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"EHETeacher" inManagedObjectContext:self.context];
     
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
@@ -266,6 +238,41 @@
             NSLog(@"error:%@",error);
         }
     }
+}
+
+-(void)removeAllOrdersFromCoreData {
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"EHEOrder" inManagedObjectContext:self.context];
+    
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setIncludesPropertyValues:NO];
+    [request setEntity:entity];
+    NSError *error = nil;
+    NSArray *datas = [self.context executeFetchRequest:request error:&error];
+    if (!error && datas && [datas count])
+    {
+        for (NSManagedObject *obj in datas)
+        {
+            [self.context deleteObject:obj];
+        }
+        if (![self.context save:&error])
+        {
+            NSLog(@"error:%@",error);
+        }
+    }
+}
+-(void)savePersonalData:(NSDictionary *)dictOtherInfo {
+    EHEAccount *account = [NSEntityDescription insertNewObjectForEntityForName:@"EHEAccount" inManagedObjectContext:self.context];
+    
+    account.customerid = [dictOtherInfo objectForKey:@"customerid"];
+    account.name = [dictOtherInfo objectForKey:@"name"];
+    account.gender = [dictOtherInfo objectForKey:@"gender"];
+    account.telephone = [dictOtherInfo objectForKey:@"telephone"];
+    account.latitude = [dictOtherInfo objectForKey:@"latitude"];
+    account.longitude = [dictOtherInfo objectForKey:@"longitude"];
+    account.majoraddress = [dictOtherInfo objectForKey:@"majoraddress"];
+    account.memo = [dictOtherInfo objectForKey:@"memo"];
+    
+    [self.context save:nil];
 }
 
 
