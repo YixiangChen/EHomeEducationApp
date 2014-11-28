@@ -23,15 +23,23 @@
     [super viewDidLoad];
     
     self.teacherArray=[[NSMutableArray alloc]initWithCapacity:10];
+    self.orderDictionary=[[NSMutableDictionary alloc]initWithCapacity:0];
+    self.sendOrders=[[NSMutableArray alloc]initWithCapacity:10];
+    self.centainOrders=[[NSMutableArray alloc]initWithCapacity:10];
+    self.cancledOrders=[[NSMutableArray alloc]initWithCapacity:10];
+    self.unfinishedOrders=[[NSMutableArray alloc]initWithCapacity:10];
+    self.finishedOrders=[[NSMutableArray alloc]initWithCapacity:10];
     //暂时先不用刷新表，待拿到真实数据然后进行意见统一后在用
-    [self bandUnOrdered];
+    
+    /*
     //创建一个自定义的segmentedControl，方法已经封装
     self.segmentedControl =[[EHESegmentedControlManager alloc]initWithItems:[NSArray arrayWithObjects:@"未完成预约",@"已完成预约", nil]];
     [self.segmentedControl addTarget:self action:@selector(selectedSegmentChanged:)forControlEvents:UIControlEventValueChanged];
     self.navigationItem.titleView = self.segmentedControl;
+     */
     
     //创建tableView并且给之放置样式
-    self.homeTeacherTableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-120) style:UITableViewStylePlain];
+    self.homeTeacherTableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-120) style:UITableViewStyleGrouped];
     self.homeTeacherTableView.dataSource=self;
     self.homeTeacherTableView.delegate=self;
     //分割线为单线分割
@@ -43,7 +51,7 @@
     
     self.realOrdersArray=[[NSMutableArray alloc]initWithCapacity:10];
     
-    [self bandUnOrdered];
+    //[self bandOrdered];
     // Do any additional setup after loading the view from its nib.
 }
 -(void)viewWillAppear:(BOOL)animated
@@ -63,20 +71,7 @@
         [[self navigationController] setNavigationBarHidden:NO animated:YES];
     }
     
-    [self bandUnOrdered];
-}
--(void)bandUnOrdered
-{
-    [self loadData];
-    for(EHEOrder * order in self.allOrdersArray)
-    {
-        EHECommunicationManager * communication=[EHECommunicationManager getInstance];
-        [communication loadOrderDetailWithOrderID:order.orderid.intValue];
-        NSString * teacherInfo=[NSString stringWithFormat:@"%@：%@",order.teachername,order.subjectinfo];
-        [self.arrayTeacherInfo addObject:teacherInfo];
-        [self.arrayDate addObject:order.orderdate];
-        [self.realOrdersArray addObject:order];
-    }
+    [self bandOrdered];
 }
 -(void)bandOrdered
 {
@@ -85,56 +80,94 @@
     {
         EHECommunicationManager * communication=[EHECommunicationManager getInstance];
         [communication loadOrderDetailWithOrderID:order.orderid.intValue];
+        NSLog(@"teacherName=%@,subject=%@,orderStatues=%@,orderDate=%@",order.teachername,order.subjectinfo,order.orderstatus,order.orderdate);
+        if([order.orderstatus isEqualToString:@"0"])
+        {
+            [self.sendOrders addObject:order];
+        }
         if([order.orderstatus isEqualToString:@"1"])
         {
-            NSString * teacherInfo=[NSString stringWithFormat:@"%@：%@",order.teachername,order.subjectinfo];
-            [self.arrayTeacherInfo addObject:teacherInfo];
-            [self.arrayDate addObject:order.orderdate];
-            [self.realOrdersArray addObject:order];
+            [self.centainOrders addObject:order];
+        }
+        if([order.orderstatus isEqualToString:@"2"]||[order.orderstatus isEqualToString:@"3"])
+        {
+            [self.cancledOrders addObject:order];
+        }
+        if([order.orderstatus isEqualToString:@"4"]||[order.orderstatus isEqualToString:@"5"])
+        {
+            [self.unfinishedOrders addObject:order];
+        }
+        if([order.orderstatus isEqualToString:@"6"])
+        {
+            [self.finishedOrders addObject:order];
         }
     }
+    [self.orderDictionary setObject:self.sendOrders forKey:@"刚发出的订单"];
+    [self.orderDictionary setObject:self.centainOrders forKey:@"教师确认订单"];
+    [self.orderDictionary setObject:self.cancledOrders forKey:@"已取消的订单"];
+    [self.orderDictionary setObject:self.unfinishedOrders forKey:@"未完成订单"];
+    [self.orderDictionary setObject:self.finishedOrders forKey:@"已完成的订单"];
 }
 -(void)loadData
 {
-    [self.realOrdersArray removeAllObjects];
     self.allOrdersArray=nil;
-    
+    [self.orderDictionary removeAllObjects];
+    [self.sendOrders removeAllObjects];
+    [self.cancledOrders removeAllObjects];
+    [self.centainOrders removeAllObjects];
+    [self.unfinishedOrders removeAllObjects];
+    [self.finishedOrders removeAllObjects];
     NSUserDefaults * userDefaults=[NSUserDefaults standardUserDefaults];
     NSString * customerid=[userDefaults objectForKey:@"myCustomerid"];
-    
+    NSLog(@"mycustomerid=%@",customerid);
     EHECoreDataManager * coreDataManager=[EHECoreDataManager getInstance];
     [coreDataManager removeAllOrdersFromCoreData];
     EHECommunicationManager * communicationManager=[EHECommunicationManager getInstance];
-    [communicationManager loadOrderInfosWithCustomerID:customerid.intValue andOrderStatus:0];
+    [communicationManager loadOrderInfosWithCustomerID:customerid.intValue andOrderStatus:-1];
     
     self.allOrdersArray=[coreDataManager fetchOrderInfosWithCustomerID:customerid.intValue andOrderStatus:-1];
-    NSLog(@"allOrdersArray 里面的个数是%d ",self.allOrdersArray.count);
-    [self.arrayTeacherInfo removeAllObjects];
-    [self.arrayDate removeAllObjects];
+    //NSLog(@"allOrdersArray 里面的个数是%d ",self.allOrdersArray.count);
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-//当segmentedControl方法改变时，触发该方法
--(void) selectedSegmentChanged:(UISegmentedControl *) seg {
-    if(seg.selectedSegmentIndex==0)//当点击未完成预约时
-    {
-        [self bandUnOrdered];
-        [self.homeTeacherTableView reloadData];
-    }
-    else//当点击已完成预约时
-    {
-        [self bandOrdered];
-        [self.homeTeacherTableView reloadData];
-    }
-    
-}
+
 #pragma mark -TableView DataSource Method
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"有%d行数据",[self.realOrdersArray count]);
-    return [self.realOrdersArray count];
+    
+    if(section==0)
+    {
+        NSArray *array= [self.orderDictionary objectForKey:[self.orderDictionary.allKeys objectAtIndex:0]] ;
+        return [array count];
+    }
+    else if(section==1)
+    {
+        NSArray *array= [self.orderDictionary objectForKey:[self.orderDictionary.allKeys objectAtIndex:1]] ;
+        return [array count];
+    }
+    else if(section==2)
+    {
+        NSArray *array= [self.orderDictionary objectForKey:[self.orderDictionary.allKeys objectAtIndex:2]] ;
+        return [array count];
+    }
+    else if(section==3)
+    {
+        NSArray *array= [self.orderDictionary objectForKey:[self.orderDictionary.allKeys objectAtIndex:3]] ;
+        return [array count];
+    }
+    else if(section==4)
+    {
+      NSArray *array= [self.orderDictionary objectForKey:[self.orderDictionary.allKeys objectAtIndex:4]] ;
+        return [array count];
+    }
+    
+    return 0;
+}
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return [self.orderDictionary.allKeys count];
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -144,8 +177,13 @@
     {
         cell=[[EHEStdBookingTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Identifier];
     }
-    cell.labelTeacherInfomation.text=[self.arrayTeacherInfo objectAtIndex:[indexPath row]];
-    cell.labelDate.text=[self.arrayDate objectAtIndex:[indexPath row]];
+    NSArray * allKeys=[self.orderDictionary allKeys];
+    NSArray * allOrders=[self.orderDictionary objectForKey:[allKeys objectAtIndex:[indexPath section]]];
+    NSArray * array=[self.orderDictionary objectForKey:@"刚发出的订单"];
+    NSLog(@"allOrdersCount=%d",array.count);
+    EHEOrder * order=[allOrders objectAtIndex:[indexPath row]];
+    cell.labelTeacherInfomation.text=order.teachername;
+    cell.labelDate.text=order.orderdate;
     cell.labelDate.textColor=[UIColor grayColor];
     return cell;
 }
@@ -160,5 +198,9 @@
     EHEOrder * order=(EHEOrder *)[self.realOrdersArray objectAtIndex:[indexPath row]];
     bookingDetailViewController.order=order;
     [self.navigationController pushViewController:bookingDetailViewController animated:YES];
+}
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return [self.orderDictionary.allKeys objectAtIndex:section];
 }
 @end

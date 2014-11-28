@@ -33,6 +33,7 @@
 		5286B3B61A2713BA0080EC5F /* EHEOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5286B3B51A2713BA0080EC5F /* EHEOrder.m */; };
 		5286B3B91A2713BA0080EC5F /* EHEAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 5286B3B81A2713BA0080EC5F /* EHEAccount.m */; };
 		5286B3BC1A2713FE0080EC5F /* EHETeacher.m in Sources */ = {isa = PBXBuildFile; fileRef = 5286B3BB1A2713FE0080EC5F /* EHETeacher.m */; };
+		5286B3C11A273A620080EC5F /* LXActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5286B3C01A273A620080EC5F /* LXActionSheet.m */; };
 		529059F81A21A80100DDC6FB /* CopyConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 529059A21A21A80100DDC6FB /* CopyConnection.framework */; };
 		529059F91A21A80100DDC6FB /* DouBanConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 529059A31A21A80100DDC6FB /* DouBanConnection.framework */; };
 		529059FA1A21A80100DDC6FB /* DropboxConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 529059A41A21A80100DDC6FB /* DropboxConnection.framework */; };
@@ -229,6 +230,8 @@
 		5286B3BA1A2713FE0080EC5F /* EHETeacher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHETeacher.h; sourceTree = "<group>"; };
 		5286B3BB1A2713FE0080EC5F /* EHETeacher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHETeacher.m; sourceTree = "<group>"; };
 		5286B3BD1A27145D0080EC5F /* Defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
+		5286B3BF1A273A620080EC5F /* LXActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXActionSheet.h; sourceTree = "<group>"; };
+		5286B3C01A273A620080EC5F /* LXActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXActionSheet.m; sourceTree = "<group>"; };
 		529059A21A21A80100DDC6FB /* CopyConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CopyConnection.framework; sourceTree = "<group>"; };
 		529059A31A21A80100DDC6FB /* DouBanConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DouBanConnection.framework; sourceTree = "<group>"; };
 		529059A41A21A80100DDC6FB /* DropboxConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DropboxConnection.framework; sourceTree = "<group>"; };
@@ -609,6 +612,16 @@
 				525E36CC1A1C29B1004F0475 /* TeacherAnnotations.m */,
 			);
 			name = "大头针";
+			sourceTree = "<group>";
+		};
+		5286B3BE1A273A620080EC5F /* LXActionSheet */ = {
+			isa = PBXGroup;
+			children = (
+				5286B3BF1A273A620080EC5F /* LXActionSheet.h */,
+				5286B3C01A273A620080EC5F /* LXActionSheet.m */,
+			);
+			name = LXActionSheet;
+			path = ../LXActionSheet;
 			sourceTree = "<group>";
 		};
 		529059051A21A77100DDC6FB /* 分享类库 */ = {
@@ -1118,6 +1131,7 @@
 		797C30AE1A19D92E00DB84E4 /* Student */ = {
 			isa = PBXGroup;
 			children = (
+				5286B3BE1A273A620080EC5F /* LXActionSheet */,
 				529059051A21A77100DDC6FB /* 分享类库 */,
 				5299AE2F1A208F63000A5960 /* 设置 */,
 				525C209A1A1F26AE00C3119A /* 预约教师表格 */,
@@ -1339,6 +1353,7 @@
 				5286B39E1A26B62B0080EC5F /* EHEStdSettingPersonalInformation.m in Sources */,
 				5299AE3F1A209AC6000A5960 /* EHEStdSettingDetailCell.m in Sources */,
 				797C30701A19D32900DB84E4 /* AppDelegate.m in Sources */,
+				5286B3C11A273A620080EC5F /* LXActionSheet.m in Sources */,
 				52D5E8411A1F291900342E06 /* sdsdTableViewCell.m in Sources */,
 				797C30D61A19DB5000DB84E4 /* EHEStdLoginViewController.m in Sources */,
 				7947562D1A20FB1700E39012 /* EHEStdSubjectTableTableViewController.m in Sources */,

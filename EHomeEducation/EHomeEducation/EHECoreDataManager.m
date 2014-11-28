@@ -92,7 +92,7 @@
         order.orderid = [dict objectForKey:@"orderid"];
         order.latitude = [NSString stringWithFormat:@"%@",[dict objectForKey:@"latitude"]];
         order.longitude = [NSString stringWithFormat:@"%@",[dict objectForKey:@"longitude"]];
-        order.orderstatus = [dict objectForKey:@"oderstatus"];
+        order.orderstatus = [NSString stringWithFormat:@"%@",[dict objectForKey:@"orderstatus"]];
         order.serviceaddress = [dict objectForKey:@"serviceaddress"];
         order.orderdate = [dict objectForKey:@"orderdate"];
         order.teachername = [dict objectForKey:@"teachername"];

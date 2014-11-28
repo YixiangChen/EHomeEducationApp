@@ -42,16 +42,16 @@
     [[EHECommunicationManager getInstance]loadTeachersInfo];
     
     
-    [[EHECommunicationManager getInstance] loadOrderInfosWithCustomerID:124 andOrderStatus:-1];
+    [[EHECommunicationManager getInstance] loadOrderInfosWithCustomerID:270 andOrderStatus:-1];
 
-    [NSThread sleepForTimeInterval:4];
-    [[EHECoreDataManager getInstance] fetchOrderInfosWithCustomerID:124 andOrderStatus:-1];
+    //[NSThread sleepForTimeInterval:4];
+    [[EHECoreDataManager getInstance] fetchOrderInfosWithCustomerID:270 andOrderStatus:-1];
     
     [[EHECommunicationManager getInstance] loadOrderDetailWithOrderID:223];
     [[EHECoreDataManager getInstance] fetchOrderDeatailWithOrderID:223];
     
     
-    [NSThread sleepForTimeInterval:2];
+    //[NSThread sleepForTimeInterval:2];
     
     if([self checkIfNetWorking])
     {

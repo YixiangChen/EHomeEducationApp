@@ -19,4 +19,10 @@
 @property(strong,nonatomic)NSMutableArray * teacherArray;
 @property(strong,nonatomic)NSArray * allOrdersArray;
 @property(strong,nonatomic)NSMutableArray * realOrdersArray;
+@property(strong,nonatomic)NSMutableDictionary * orderDictionary;
+@property(strong,nonatomic)NSMutableArray * sendOrders;
+@property(strong,nonatomic)NSMutableArray * centainOrders;
+@property(strong,nonatomic)NSMutableArray * cancledOrders;
+@property(strong,nonatomic)NSMutableArray * unfinishedOrders;
+@property(strong,nonatomic)NSMutableArray * finishedOrders;
 @end

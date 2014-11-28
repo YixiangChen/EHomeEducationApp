@@ -118,6 +118,7 @@
         NSArray *arrayOrders = dict[@"ordersinfo"];
         if([dict[@"code"] intValue] == 0){
             NSLog(@"获取订单信息成功");
+            NSLog(@"orderinfo=%@",arrayOrders);
             [[EHECoreDataManager getInstance] saveOrderInfos:arrayOrders];
         }else{
             NSLog(@"%@",dict[@"message"]);
@@ -143,7 +144,7 @@
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
         NSDictionary *dictOrderInfo = dict[@"orderinfo"];
         if([dict[@"code"] intValue] == 0){
-            NSLog(@"获取订单详情成功");
+            NSLog(@"-----------------获取订单详情成功----------------");
             [[EHECoreDataManager getInstance] upDateOrderDetail:dictOrderInfo withOrderId:orderID];
         }else{
             NSLog(@"%@",dict[@"message"]);

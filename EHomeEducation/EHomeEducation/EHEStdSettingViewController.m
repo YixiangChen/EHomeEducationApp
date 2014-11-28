@@ -31,11 +31,11 @@
     
     self.personalInfomationArray=[NSArray arrayWithObjects:@"头像",nil];
     
-    self.systemSettingArray=[NSArray arrayWithObjects:@"系统设置", nil];
+    self.systemSettingArray=[NSArray arrayWithObjects:@"系统设置",@"退出登录",nil];
     self.connectAndShareArray=[NSArray arrayWithObjects:@"分享",@"联系我们", nil];
     
     self.testArray=[[NSArray alloc]initWithObjects:@"",@"张三",@"男",@"18500813409",@"1989-11-24", nil];
-    
+        
 }
 
 - (void)didReceiveMemoryWarning {
@@ -101,6 +101,10 @@
     {
         cell.settingLabel.text=[self.systemSettingArray objectAtIndex:row];
         cell.nameLabel.alpha=0.0f;
+        if([indexPath row]==1)
+        {
+            cell.accessoryType=UITableViewCellAccessoryNone;
+        }
     }
     else//第三个分组
     {
@@ -141,6 +145,17 @@
         EHEStdSettingPersonalInformation * personInfomation=[[EHEStdSettingPersonalInformation alloc]init];
         [self.navigationController pushViewController:personInfomation animated:YES];
     }
+    
+    if([indexPath section]==1)
+    {
+      if([indexPath row]==1)
+      {
+          
+          LXActionSheet * actionSheet = [[LXActionSheet alloc]initWithTitle:@"确定要退出E家教吗" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"退出登录" otherButtonTitles:nil];
+          [actionSheet showInView:self.view];
+      }
+    }
+    
     //点击第三个分组的时候
     if([indexPath section]==2)
     {
@@ -191,5 +206,14 @@
     {
         return @"联系我们";
     }
+}
+#pragma mark - LXActionSheetDelegate
+
+- (void)didClickOnButtonIndex:(NSInteger *)buttonIndex
+{
+   if((int)buttonIndex==0)
+   {
+       NSLog(@"退出账号！");
+   }
 }
 @end
