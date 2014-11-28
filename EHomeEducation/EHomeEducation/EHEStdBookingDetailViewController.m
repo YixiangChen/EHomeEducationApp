@@ -108,30 +108,17 @@
     self.rankButton5.frame=CGRectMake(290, 360, 20, 20);
     [self.view addSubview:self.rankButton5];
     
-    //初始化完成按钮
+    //初始化取消按钮
     _buttonSure=[UIButton buttonWithType:UIButtonTypeSystem];
-    _buttonSure.frame=CGRectMake(20, 390, 100, 37);
+    _buttonSure.frame=CGRectMake(115, 390, 100, 37);
     [_buttonSure addTarget: self action:@selector(sureButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [_buttonSure setBackgroundImage:[UIImage imageNamed:@"订单-已完成 - 继续预约取消按钮2"] forState:UIControlStateNormal];
     [self.view addSubview:_buttonSure];
-    
-    //初始化继续预约按钮
-    _bookingButton=[UIButton buttonWithType:UIButtonTypeSystem];
-    _bookingButton.frame=CGRectMake(190, 390, 100, 37);
-    [_bookingButton addTarget:self action:@selector(bookingButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    [_bookingButton setBackgroundImage:[UIImage imageNamed:@"订单-已完成 - 继续预约预约按钮2"] forState:UIControlStateNormal];
-    [self.view addSubview:_bookingButton];
-    
 }
 //点击确定按钮所触发的事件
 -(void)sureButtonClicked:(id)sender
 {
     [_buttonSure setBackgroundImage:[UIImage imageNamed:@"订单-已完成 - 继续预约取消按钮"] forState:UIControlStateNormal];
-}
-//点击继续预约按钮所触发的事件
--(void)bookingButtonClicked:(id)sender
-{
-    [_bookingButton setBackgroundImage:[UIImage imageNamed:@"订单-已完成 - 继续预约预约按钮"] forState:UIControlStateNormal];
 }
 //点击第一颗星星的时候触发事件
 -(void)rankButton1Clicked:(id)sender

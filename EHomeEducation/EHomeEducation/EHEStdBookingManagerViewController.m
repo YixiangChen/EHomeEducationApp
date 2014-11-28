@@ -22,6 +22,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.title=@"订单信息";
+    
     //实例化这些可变数组和可变字典，以便以后添加数据
     self.orderDictionary=[[NSMutableDictionary alloc]initWithCapacity:0];
     self.sendOrders=[[NSMutableArray alloc]initWithCapacity:10];
@@ -164,10 +166,13 @@
     //如果dictionary中的key对应的value有数据则返回订单数据，如果没有，则返回空
     NSArray * allKeys=[self.orderDictionary allKeys];
     NSArray * allOrders=[self.orderDictionary objectForKey:[allKeys objectAtIndex:[indexPath section]]];
+    cell.teacherIcon.image=[UIImage imageNamed:@"male_tablecell"];
     if(allOrders.count==0)
     {
         cell.labelTeacherInfomation.text=nil;
         cell.labelDate.text=nil;
+        cell.teacherIcon.image=nil;
+        cell.labelSubject.text=nil;
     }
     else
     {
@@ -175,13 +180,15 @@
     cell.labelTeacherInfomation.text=order.teachername;
     cell.labelDate.text=order.orderdate;
     cell.labelDate.textColor=[UIColor grayColor];
+    cell.labelSubject.text=[NSString stringWithFormat:@"科目:%@",order.subjectinfo];
+        cell.accessoryType=UITableViewCellAccessoryDetailDisclosureButton;
     }
     return cell;
 }
 #pragma mark - TableView Delegate Method
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 55.0f;
+    return 88.0f;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
