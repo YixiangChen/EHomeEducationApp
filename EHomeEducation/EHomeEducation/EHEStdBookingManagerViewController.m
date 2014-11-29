@@ -60,8 +60,13 @@
     {
         [[self navigationController] setNavigationBarHidden:NO animated:YES];
     }
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeLanguage:) name:@"ChangeLanguageNotificationName" object:nil];
     [self bandOrdered];
+}
+-(void) changeLanguage:(NSNotification *)noti
+{
+    [self bandOrdered];
+    [self.homeTeacherTableView reloadData];
 }
 //加载订单数组和字典
 -(void)loadData
@@ -122,11 +127,13 @@
         }
     }
     //对不同的订单数组放到字典中，对应不同的key，以便以后进行排序
-    [self.orderDictionary setObject:self.sendOrders forKey:@"刚发出的订单"];
+    
     [self.orderDictionary setObject:self.centainOrders forKey:@"教师确认订单"];
     [self.orderDictionary setObject:self.cancledOrders forKey:@"已取消的订单"];
+    [self.orderDictionary setObject:self.sendOrders forKey:@"刚发出的订单"];
     [self.orderDictionary setObject:self.unfinishedOrders forKey:@"未完成订单"];
     [self.orderDictionary setObject:self.finishedOrders forKey:@"已完成的订单"];
+    [self.homeTeacherTableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {

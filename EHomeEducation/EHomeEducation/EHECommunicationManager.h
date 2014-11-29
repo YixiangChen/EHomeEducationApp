@@ -37,12 +37,13 @@
 -(void) confirmOrderWithOrderId:(int) orderId;
 
 //用户上传个人头像
--(void)uploadUserIconWithCustomerId:(int) customerId;
+-(void)uploadUserIconWithCustomerId:(int)customerId andImage:(NSData *) myImage;
 
 //用户评价老师
 -(void)commentTeacherWithTeacherId:(int)teacherId fromCustomerWithCustomerId:(int) customerId withRank:(int)rank andContent:(NSString *)content;
 
 //通过教师ID获取教师评价
 -(void)loadRankWithTeacherId:(int) teacherId;
-
+//通过订单ID删除订单
+-(void)removeOrderFromServerWithOrderId:(int)orderId;
 @end

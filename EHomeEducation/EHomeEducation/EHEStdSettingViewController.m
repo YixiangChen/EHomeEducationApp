@@ -9,6 +9,8 @@
 #import "EHEStdSettingViewController.h"
 #import <ShareSDK/ShareSDK.h>
 #import "EHEStdSettingPersonalInformation.h"
+#import "EHEStdLoginViewController.h"
+#import "EHEStdLoginViewController.h"
 @interface EHEStdSettingViewController ()
 
 @end
@@ -42,7 +44,30 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+-(void)viewWillAppear:(BOOL)animated
+{
+    NSLog(@"xianshile");
+    //通过NSUserDefaults来对用户名进行拿取
+    NSUserDefaults * userDefaults=[NSUserDefaults standardUserDefaults];
+    NSString * userName=[userDefaults objectForKey:@"userName"];
+    NSString * password=[userDefaults objectForKey:@"passWord"];
+    NSLog(@"userName=%@,password=%@",userName,password);
+    EHEStdLoginViewController *loginViewController = [[EHEStdLoginViewController alloc] initWithNibName:nil bundle:nil];
+    if (userName == nil || password== nil) {
+        //如果没有登录的话要显示登录界面，并且隐藏导航栏
+        [[self navigationController] setNavigationBarHidden:YES animated:YES];//隐藏导航栏
+        [self.navigationController pushViewController:loginViewController animated:NO];
+    }
+    else
+    {
+        [[self navigationController] setNavigationBarHidden:NO animated:YES];
+    }
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeLanguage:) name:@"ChangeLanguageNotificationName" object:nil];
+}
+-(void) changeLanguage:(NSNotification *)noti
+{
+    [self.tableViewSetting reloadData];
+}
 #pragma mark- TableView DataSource Method
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -73,6 +98,7 @@
     }
     NSInteger section=[indexPath section];
     NSInteger row=[indexPath row];
+    NSUserDefaults * userDefaults=[NSUserDefaults standardUserDefaults];
     //第一个分组
     if(section==0)
     {
@@ -86,8 +112,9 @@
                 cell.settingLabel.frame=frames;
                 self.check=YES;
                 cell.contentLabel.alpha=0.0f;
-                cell.nameLabel.text=@"张三";
+                
             }
+            cell.nameLabel.text=[userDefaults objectForKey:@"userName"];
             cell.settingImageView.image=[UIImage imageNamed:@"png-0010"];
         }
         else
@@ -213,7 +240,14 @@
 {
    if((int)buttonIndex==0)
    {
-       NSLog(@"退出账号！");
+       NSUserDefaults * userDefaults=[NSUserDefaults standardUserDefaults];
+       [userDefaults removeObjectForKey:@"userName"];
+       [userDefaults removeObjectForKey:@"passWord"];
+       [userDefaults synchronize];
+       
+       EHEStdLoginViewController * loginViewController=[[EHEStdLoginViewController alloc]initWithNibName:nil bundle:nil];
+       [[self navigationController] setNavigationBarHidden:YES animated:YES];//隐藏导航栏
+       [self.navigationController pushViewController:loginViewController animated:NO];
    }
 }
 @end

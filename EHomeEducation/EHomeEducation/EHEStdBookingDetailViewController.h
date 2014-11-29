@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "EHEOrder.h"
-@interface EHEStdBookingDetailViewController : UIViewController<UITextViewDelegate>
+#import "LXActionSheet.h"
+@interface EHEStdBookingDetailViewController : UIViewController<UITextViewDelegate,LXActionSheetDelegate,UIAlertViewDelegate>
 //教师名字
 @property(strong,nonatomic)NSString * teacherName;
 //预约时间
