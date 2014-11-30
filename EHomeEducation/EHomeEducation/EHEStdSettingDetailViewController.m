@@ -38,8 +38,13 @@
     {
         self.view.backgroundColor=[UIColor colorWithRed:239/255.0f green:239/255.0f blue:244/255.0f alpha:1.0f];
         self.studentImageView=[[UIImageView alloc]initWithFrame:CGRectMake(85,90, 150, 150)];
-        self.studentImageView.image=[UIImage imageNamed:@"png-0010"];
-        [self.studentImageView.layer setCornerRadius:50];
+        self.studentImageView.image=self.image;
+        
+        [self.studentImageView.layer setBorderColor: [[UIColor grayColor] CGColor]];//边框灰色
+        [self.studentImageView.layer setBorderWidth: 1.0];//宽度为1
+        [self.studentImageView.layer setCornerRadius:8.0f];//圆角
+        [self.studentImageView.layer setMasksToBounds:YES];
+        
         [self.view addSubview:self.studentImageView];
         
         self.tableView=[[UITableView alloc]initWithFrame:CGRectMake(0,300, self.view.frame.size.width, 88)];

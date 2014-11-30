@@ -211,6 +211,7 @@
     if(row==0)
     {
         settingDetail.type=@"0";
+        settingDetail.image=self.image;
     }
     else if(row==1)
     {

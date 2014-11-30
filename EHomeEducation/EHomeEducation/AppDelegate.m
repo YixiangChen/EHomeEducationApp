@@ -56,6 +56,17 @@
     if([self checkIfNetWorking])
     {
      [[EHECoreDataManager getInstance]removeAllOrdersFromCoreData];
+        //定位服务locationService
+//        _locationService = [[BMKLocationService alloc]init];
+//        _locationService.delegate = self;
+//        
+//        //启动LocationService
+//        [_locationService startUserLocationService];
+    }
+    else
+    {
+        UIAlertView * alertView=[[UIAlertView alloc]initWithTitle:@"友情提示" message:@"没有检测到网络！" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alertView show];
     }
     
     [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationController class], nil]
@@ -123,6 +134,22 @@
             break;
     }
     return self.check;
+}
+- (void)didUpdateUserLocation:(BMKUserLocation *)userLocation
+{
+    if(userLocation!=nil)//如果在设备位置不为空的情况下
+    {
+        //创建一个大头针，本大头针要定位本地设备的位置
+        CLLocationCoordinate2D coor;
+        //设置大头针的本地经纬度
+        coor.latitude = userLocation.location.coordinate.latitude;
+        coor.longitude = userLocation.location.coordinate.longitude;
+        self.coor=coor;
+    
+    //在定位后要停止定位，不然系统一直轮询设备造成内存泄露
+    [self.locationService stopUserLocationService];
+    NSLog(@"有网络状态下本地经纬度是:%f,%f",coor.latitude,coor.longitude);
+    }
 }
 -(void)initPlat
 {

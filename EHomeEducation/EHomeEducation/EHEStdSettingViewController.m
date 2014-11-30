@@ -62,6 +62,7 @@
     {
         [[self navigationController] setNavigationBarHidden:NO animated:YES];
     }
+    [self.tableViewSetting reloadData];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeLanguage:) name:@"ChangeLanguageNotificationName" object:nil];
 }
 -(void) changeLanguage:(NSNotification *)noti
@@ -115,7 +116,14 @@
                 
             }
             cell.nameLabel.text=[userDefaults objectForKey:@"userName"];
-            cell.settingImageView.image=[UIImage imageNamed:@"png-0010"];
+            NSUserDefaults * userDefaults=[NSUserDefaults standardUserDefaults];
+            NSData * imageData=[userDefaults objectForKey:[self getKey:@"image" andCustomerid:[userDefaults objectForKey:@"myCustomerid"]]];
+            cell.settingImageView.image=[UIImage imageWithData:imageData];
+            
+            [cell.settingImageView.layer setBorderColor: [[UIColor grayColor] CGColor]];//边框灰色
+            [cell.settingImageView.layer setBorderWidth: 1.0];//宽度为1
+            [cell.settingImageView.layer setCornerRadius:26.0f];//圆角
+            [cell.settingImageView.layer setMasksToBounds:YES];
         }
         else
         {
@@ -140,6 +148,10 @@
     }
     cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
     return cell;
+}
+-(NSString *)getKey:(NSString *)para1 andCustomerid:(NSString *)para2
+{
+    return [NSString stringWithFormat:@"%@%@",para1,para2];
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
