@@ -322,5 +322,28 @@
     
 }
 
+-(void)removeOrderFromServerWithOrderId:(int)orderId {
+    NSString * postData = [NSString stringWithFormat:@"{\"orderid\":\"%d\"}",orderId];
+    
+    NSString *stringForURL = [NSString stringWithFormat:@"%@%@",kURLDomain,kURLDeleteOrder];
+    NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:stringForURL]];
+    NSString * data = [NSString stringWithFormat:@"info=%@",postData];
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBody:[data dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    NSError *error = nil;
+    NSData * responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
+    if(responseData != nil && error == nil){
+        NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:&error];
+        if([dict[@"code"] intValue] == 0){
+            NSLog(@"订单删除成功");
+        }else{
+            NSLog(@"订单删除失败");
+            NSLog(@"%@",dict[@"message"]);
+        }
+    }
+    
+}
+
 
 @end

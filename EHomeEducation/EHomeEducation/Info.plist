@@ -32,6 +32,13 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>MCuteHKS.otf</string>
+		<string>FZCATOONJ.ttf</string>
+		<string>MYoungHKS-Xbold.otf</string>
+		<string>MFYueYuan_Noncommercial-Regular.otf</string>
+	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

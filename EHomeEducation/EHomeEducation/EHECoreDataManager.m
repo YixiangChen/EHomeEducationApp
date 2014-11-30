@@ -275,6 +275,33 @@
     [self.context save:nil];
 }
 
+-(EHEAccount *)fetchPersonalDataWithCustomerId:(int)customerId {
+    
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"EHEAccount"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"customerid = %d", customerId];
+    fetchRequest.predicate = predicate;
+    
+    NSSortDescriptor *sortByName = [NSSortDescriptor sortDescriptorWithKey:@"customerid" ascending:NO];
+    NSArray *sorts = [[NSArray alloc] initWithObjects:sortByName, nil];
+    fetchRequest.sortDescriptors = sorts;
+    
+    NSError *error;
+    NSArray *users = [self.context executeFetchRequest:fetchRequest error:&error];
+    
+    if (error)
+    {
+        NSLog(@"从CoreData获取EHEAccount出错");
+        return nil;
+    }
+    else if (users.count > 0)
+    {
+        return users[0];
+    }
+    NSLog(@"CoreData中找不到CustomerID为 %d 的用户",customerId);
+    return nil;
+
+}
+
 
 
 

@@ -131,6 +131,19 @@
 		79265E901A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79265E8E1A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.m */; };
 		79265E911A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79265E8F1A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.xib */; };
 		7937968E1A1C76FC0013FD21 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7937968D1A1C76FC0013FD21 /* Default-568h@2x.png */; };
+		7943D1891A281F1300FA80B0 /* FPPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7943D1841A281F1300FA80B0 /* FPPopoverController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		7943D18A1A281F1300FA80B0 /* FPPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7943D1861A281F1300FA80B0 /* FPPopoverView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		7943D18B1A281F1300FA80B0 /* FPTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7943D1881A281F1300FA80B0 /* FPTouchView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		7943D1901A286CC000FA80B0 /* EHEStdFilterByGenderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7943D18E1A286CC000FA80B0 /* EHEStdFilterByGenderViewController.m */; };
+		7943D1911A286CC000FA80B0 /* EHEStdFilterByGenderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7943D18F1A286CC000FA80B0 /* EHEStdFilterByGenderViewController.xib */; };
+		7943D1951A2873C000FA80B0 /* checkMark.png in Resources */ = {isa = PBXBuildFile; fileRef = 7943D1941A2873C000FA80B0 /* checkMark.png */; };
+		7943D1991A28864100FA80B0 /* EHEStdFilterByDistanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7943D1971A28864100FA80B0 /* EHEStdFilterByDistanceViewController.m */; };
+		7943D19A1A28864100FA80B0 /* EHEStdFilterByDistanceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7943D1981A28864100FA80B0 /* EHEStdFilterByDistanceViewController.xib */; };
+		7943D19E1A288B8700FA80B0 /* EHEStdFilterByAgeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7943D19C1A288B8700FA80B0 /* EHEStdFilterByAgeViewController.m */; };
+		7943D19F1A288B8700FA80B0 /* EHEStdFilterByAgeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7943D19D1A288B8700FA80B0 /* EHEStdFilterByAgeViewController.xib */; };
+		7943D1A31A2A21AB00FA80B0 /* EHEStdFilterBySubjectsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7943D1A11A2A21AB00FA80B0 /* EHEStdFilterBySubjectsViewController.m */; };
+		7943D1A41A2A21AB00FA80B0 /* EHEStdFilterBySubjectsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7943D1A21A2A21AB00FA80B0 /* EHEStdFilterBySubjectsViewController.xib */; };
+		7943D1A71A2B08EB00FA80B0 /* MFYueYuan_Noncommercial-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7943D1A61A2B023400FA80B0 /* MFYueYuan_Noncommercial-Regular.otf */; };
 		794756121A1D9FE600E39012 /* EHETeacherDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 794756101A1D9FE600E39012 /* EHETeacherDetailViewController.m */; };
 		794756131A1D9FE600E39012 /* EHETeacherDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 794756111A1D9FE600E39012 /* EHETeacherDetailViewController.xib */; };
 		7947561C1A1ED1AA00E39012 /* MF_Base64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7947561A1A1ED1AA00E39012 /* MF_Base64Additions.m */; };
@@ -181,6 +194,11 @@
 		79D931D11A1B22DF00B709A1 /* EHECommunicationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 79D931D01A1B22DF00B709A1 /* EHECommunicationManager.m */; };
 		79EA22CD1A2322C80016CBD1 /* EHEStdOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79EA22CB1A2322C80016CBD1 /* EHEStdOrderTableViewCell.m */; };
 		79EA22CE1A2322C80016CBD1 /* EHEStdOrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79EA22CC1A2322C80016CBD1 /* EHEStdOrderTableViewCell.xib */; };
+		79ED56F11A2B173C00CDEA07 /* MYoungHKS-Xbold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 79ED56F01A2B16F300CDEA07 /* MYoungHKS-Xbold.otf */; };
+		79ED56F31A2B186200CDEA07 /* FZCATOONJ.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 79ED56F21A2B183700CDEA07 /* FZCATOONJ.ttf */; };
+		79ED56F71A2B2E6900CDEA07 /* EHEStdSearchingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79ED56F51A2B2E6900CDEA07 /* EHEStdSearchingViewController.m */; };
+		79ED56F81A2B2E6900CDEA07 /* EHEStdSearchingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79ED56F61A2B2E6900CDEA07 /* EHEStdSearchingViewController.xib */; };
+		79ED56FA1A2B55DA00CDEA07 /* MCuteHKS.otf in Resources */ = {isa = PBXBuildFile; fileRef = 79ED56F91A2B558D00CDEA07 /* MCuteHKS.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -402,6 +420,26 @@
 		79265E8E1A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHEStdTimePickerTableViewCell.m; sourceTree = "<group>"; };
 		79265E8F1A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHEStdTimePickerTableViewCell.xib; sourceTree = "<group>"; };
 		7937968D1A1C76FC0013FD21 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		7943D1831A281F1300FA80B0 /* FPPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPPopoverController.h; sourceTree = "<group>"; };
+		7943D1841A281F1300FA80B0 /* FPPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPPopoverController.m; sourceTree = "<group>"; };
+		7943D1851A281F1300FA80B0 /* FPPopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPPopoverView.h; sourceTree = "<group>"; };
+		7943D1861A281F1300FA80B0 /* FPPopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPPopoverView.m; sourceTree = "<group>"; };
+		7943D1871A281F1300FA80B0 /* FPTouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPTouchView.h; sourceTree = "<group>"; };
+		7943D1881A281F1300FA80B0 /* FPTouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPTouchView.m; sourceTree = "<group>"; };
+		7943D18D1A286CC000FA80B0 /* EHEStdFilterByGenderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHEStdFilterByGenderViewController.h; sourceTree = "<group>"; };
+		7943D18E1A286CC000FA80B0 /* EHEStdFilterByGenderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHEStdFilterByGenderViewController.m; sourceTree = "<group>"; };
+		7943D18F1A286CC000FA80B0 /* EHEStdFilterByGenderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHEStdFilterByGenderViewController.xib; sourceTree = "<group>"; };
+		7943D1941A2873C000FA80B0 /* checkMark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkMark.png; sourceTree = "<group>"; };
+		7943D1961A28864100FA80B0 /* EHEStdFilterByDistanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHEStdFilterByDistanceViewController.h; sourceTree = "<group>"; };
+		7943D1971A28864100FA80B0 /* EHEStdFilterByDistanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHEStdFilterByDistanceViewController.m; sourceTree = "<group>"; };
+		7943D1981A28864100FA80B0 /* EHEStdFilterByDistanceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHEStdFilterByDistanceViewController.xib; sourceTree = "<group>"; };
+		7943D19B1A288B8700FA80B0 /* EHEStdFilterByAgeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHEStdFilterByAgeViewController.h; sourceTree = "<group>"; };
+		7943D19C1A288B8700FA80B0 /* EHEStdFilterByAgeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHEStdFilterByAgeViewController.m; sourceTree = "<group>"; };
+		7943D19D1A288B8700FA80B0 /* EHEStdFilterByAgeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHEStdFilterByAgeViewController.xib; sourceTree = "<group>"; };
+		7943D1A01A2A21AB00FA80B0 /* EHEStdFilterBySubjectsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHEStdFilterBySubjectsViewController.h; sourceTree = "<group>"; };
+		7943D1A11A2A21AB00FA80B0 /* EHEStdFilterBySubjectsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHEStdFilterBySubjectsViewController.m; sourceTree = "<group>"; };
+		7943D1A21A2A21AB00FA80B0 /* EHEStdFilterBySubjectsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHEStdFilterBySubjectsViewController.xib; sourceTree = "<group>"; };
+		7943D1A61A2B023400FA80B0 /* MFYueYuan_Noncommercial-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MFYueYuan_Noncommercial-Regular.otf"; sourceTree = "<group>"; };
 		7947560F1A1D9FE600E39012 /* EHETeacherDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHETeacherDetailViewController.h; sourceTree = "<group>"; };
 		794756101A1D9FE600E39012 /* EHETeacherDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHETeacherDetailViewController.m; sourceTree = "<group>"; };
 		794756111A1D9FE600E39012 /* EHETeacherDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHETeacherDetailViewController.xib; sourceTree = "<group>"; };
@@ -480,6 +518,12 @@
 		79EA22CA1A2322C80016CBD1 /* EHEStdOrderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHEStdOrderTableViewCell.h; sourceTree = "<group>"; };
 		79EA22CB1A2322C80016CBD1 /* EHEStdOrderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHEStdOrderTableViewCell.m; sourceTree = "<group>"; };
 		79EA22CC1A2322C80016CBD1 /* EHEStdOrderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHEStdOrderTableViewCell.xib; sourceTree = "<group>"; };
+		79ED56F01A2B16F300CDEA07 /* MYoungHKS-Xbold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MYoungHKS-Xbold.otf"; sourceTree = "<group>"; };
+		79ED56F21A2B183700CDEA07 /* FZCATOONJ.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FZCATOONJ.ttf; sourceTree = "<group>"; };
+		79ED56F41A2B2E6900CDEA07 /* EHEStdSearchingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHEStdSearchingViewController.h; sourceTree = "<group>"; };
+		79ED56F51A2B2E6900CDEA07 /* EHEStdSearchingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHEStdSearchingViewController.m; sourceTree = "<group>"; };
+		79ED56F61A2B2E6900CDEA07 /* EHEStdSearchingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHEStdSearchingViewController.xib; sourceTree = "<group>"; };
+		79ED56F91A2B558D00CDEA07 /* MCuteHKS.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MCuteHKS.otf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -939,6 +983,7 @@
 		52D398021A1B4248008B08FE /* 项目图片 */ = {
 			isa = PBXGroup;
 			children = (
+				7943D1941A2873C000FA80B0 /* checkMark.png */,
 				5286B3A41A26CF370080EC5F /* 订单-已完成 - 继续预约取消按钮2.png */,
 				5286B3A51A26CF370080EC5F /* 订单-已完成 - 继续预约预约按钮2.png */,
 				5286B3A61A26CF370080EC5F /* 订单-已完成 - 继续预约取消按钮.png */,
@@ -959,6 +1004,49 @@
 				525C208B1A1ED8D200C3119A /* female.png */,
 			);
 			name = "项目图片";
+			sourceTree = "<group>";
+		};
+		7943D1821A281EF500FA80B0 /* FPPopover */ = {
+			isa = PBXGroup;
+			children = (
+				7943D1831A281F1300FA80B0 /* FPPopoverController.h */,
+				7943D1841A281F1300FA80B0 /* FPPopoverController.m */,
+				7943D1851A281F1300FA80B0 /* FPPopoverView.h */,
+				7943D1861A281F1300FA80B0 /* FPPopoverView.m */,
+				7943D1871A281F1300FA80B0 /* FPTouchView.h */,
+				7943D1881A281F1300FA80B0 /* FPTouchView.m */,
+			);
+			name = FPPopover;
+			sourceTree = "<group>";
+		};
+		7943D18C1A286C7900FA80B0 /* FilterViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				7943D18D1A286CC000FA80B0 /* EHEStdFilterByGenderViewController.h */,
+				7943D18E1A286CC000FA80B0 /* EHEStdFilterByGenderViewController.m */,
+				7943D18F1A286CC000FA80B0 /* EHEStdFilterByGenderViewController.xib */,
+				7943D1961A28864100FA80B0 /* EHEStdFilterByDistanceViewController.h */,
+				7943D1971A28864100FA80B0 /* EHEStdFilterByDistanceViewController.m */,
+				7943D1981A28864100FA80B0 /* EHEStdFilterByDistanceViewController.xib */,
+				7943D19B1A288B8700FA80B0 /* EHEStdFilterByAgeViewController.h */,
+				7943D19C1A288B8700FA80B0 /* EHEStdFilterByAgeViewController.m */,
+				7943D19D1A288B8700FA80B0 /* EHEStdFilterByAgeViewController.xib */,
+				7943D1A01A2A21AB00FA80B0 /* EHEStdFilterBySubjectsViewController.h */,
+				7943D1A11A2A21AB00FA80B0 /* EHEStdFilterBySubjectsViewController.m */,
+				7943D1A21A2A21AB00FA80B0 /* EHEStdFilterBySubjectsViewController.xib */,
+			);
+			name = FilterViewControllers;
+			sourceTree = "<group>";
+		};
+		7943D1A51A2B021100FA80B0 /* 字体库 */ = {
+			isa = PBXGroup;
+			children = (
+				79ED56F91A2B558D00CDEA07 /* MCuteHKS.otf */,
+				79ED56F21A2B183700CDEA07 /* FZCATOONJ.ttf */,
+				79ED56F01A2B16F300CDEA07 /* MYoungHKS-Xbold.otf */,
+				7943D1A61A2B023400FA80B0 /* MFYueYuan_Noncommercial-Regular.otf */,
+			);
+			name = "字体库";
 			sourceTree = "<group>";
 		};
 		794756191A1ED17D00E39012 /* Base64 */ = {
@@ -1001,6 +1089,7 @@
 		797C305E1A19D32900DB84E4 = {
 			isa = PBXGroup;
 			children = (
+				7943D1821A281EF500FA80B0 /* FPPopover */,
 				7937968D1A1C76FC0013FD21 /* Default-568h@2x.png */,
 				52D397FE1A1B391B008B08FE /* CoreLocation.framework */,
 				52D397FC1A1B3915008B08FE /* QuartzCore.framework */,
@@ -1028,6 +1117,7 @@
 			children = (
 				5286B3AC1A2701350080EC5F /* Reachability.h */,
 				5286B3AD1A2701350080EC5F /* Reachability.m */,
+				7943D1A51A2B021100FA80B0 /* 字体库 */,
 				52905A501A21A8DD00DDC6FB /* 项目类库 */,
 				52D398021A1B4248008B08FE /* 项目图片 */,
 				797C306E1A19D32900DB84E4 /* AppDelegate.h */,
@@ -1138,13 +1228,16 @@
 				525C208E1A1EEF1500C3119A /* EHESegmentedControlManager */,
 				52974AD11A1D8E4500C05FFC /* 百度地图类 */,
 				52974AD21A1D8E5500C05FFC /* 地图显示 */,
-				7960F1171A1C834000DCEA45 /* EHEStdSearchingTableViewController.h */,
+				79ED56F41A2B2E6900CDEA07 /* EHEStdSearchingViewController.h */,
+				79ED56F51A2B2E6900CDEA07 /* EHEStdSearchingViewController.m */,
+				79ED56F61A2B2E6900CDEA07 /* EHEStdSearchingViewController.xib */,
 				79D5E8D51A2580790047C704 /* EHEStdBookingDetailViewController.h */,
 				79D5E8D61A2580790047C704 /* EHEStdBookingDetailViewController.m */,
 				79D5E8D71A25807A0047C704 /* EHEStdBookingDetailViewController.xib */,
 				79D5E8D81A25807A0047C704 /* EHEStdBookingManagerViewController.h */,
 				79D5E8D91A25807A0047C704 /* EHEStdBookingManagerViewController.m */,
 				79D5E8DA1A25807A0047C704 /* EHEStdBookingManagerViewController.xib */,
+				7960F1171A1C834000DCEA45 /* EHEStdSearchingTableViewController.h */,
 				7960F1181A1C834000DCEA45 /* EHEStdSearchingTableViewController.m */,
 				7960F1191A1C834000DCEA45 /* EHEStdSearchingTableViewController.xib */,
 				5299AE411A209F2C000A5960 /* EHEStdSettingDetailViewController.h */,
@@ -1171,6 +1264,7 @@
 				5286B39B1A26B62B0080EC5F /* EHEStdSettingPersonalInformation.h */,
 				5286B39C1A26B62B0080EC5F /* EHEStdSettingPersonalInformation.m */,
 				5286B39D1A26B62B0080EC5F /* EHEStdSettingPersonalInformation.xib */,
+				7943D18C1A286C7900FA80B0 /* FilterViewControllers */,
 				795F888D1A245E42004D75BA /* EHEOrderViewControllers */,
 			);
 			name = Student;
@@ -1266,6 +1360,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79ED56FA1A2B55DA00CDEA07 /* MCuteHKS.otf in Resources */,
+				79ED56F31A2B186200CDEA07 /* FZCATOONJ.ttf in Resources */,
+				79ED56F11A2B173C00CDEA07 /* MYoungHKS-Xbold.otf in Resources */,
+				7943D1A71A2B08EB00FA80B0 /* MFYueYuan_Noncommercial-Regular.otf in Resources */,
 				52905A321A21A80100DDC6FB /* ShareSDKiPadSimpleShareViewUI.bundle in Resources */,
 				79265E911A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.xib in Resources */,
 				795F889C1A24670D004D75BA /* EHEStdMemoViewController.xib in Resources */,
@@ -1275,15 +1373,19 @@
 				79EA22CE1A2322C80016CBD1 /* EHEStdOrderTableViewCell.xib in Resources */,
 				798B1A4A1A1D86D900F0031F /* male_tablecell.png in Resources */,
 				525E36EB1A1C7563004F0475 /* png-0010.png in Resources */,
+				7943D1951A2873C000FA80B0 /* checkMark.png in Resources */,
 				7960F11B1A1C834000DCEA45 /* EHEStdSearchingTableViewController.xib in Resources */,
 				52905A011A21A80100DDC6FB /* InstapaperResource.bundle in Resources */,
+				7943D1911A286CC000FA80B0 /* EHEStdFilterByGenderViewController.xib in Resources */,
 				52905A1D1A21A80100DDC6FB /* Resource.bundle in Resources */,
 				52905A351A21A80100DDC6FB /* ShareSDKiPhoneDefaultShareViewUI.bundle in Resources */,
 				797C30CC1A19DA9900DB84E4 /* EHEStdMapSearchingViewController.xib in Resources */,
 				794756241A1F123200E39012 /* EHEStdRegisterViewController.xib in Resources */,
+				7943D19A1A28864100FA80B0 /* EHEStdFilterByDistanceViewController.xib in Resources */,
 				7960F1251A1C83C300DCEA45 /* EHETchSettingViewController.xib in Resources */,
 				794756131A1D9FE600E39012 /* EHETeacherDetailViewController.xib in Resources */,
 				525E36E91A1C5008004F0475 /* png-0762.png in Resources */,
+				79ED56F81A2B2E6900CDEA07 /* EHEStdSearchingViewController.xib in Resources */,
 				7947562E1A20FB1700E39012 /* EHEStdSubjectTableTableViewController.xib in Resources */,
 				52D0FAF31A22DCB1001AAF6B /* authentificated.png in Resources */,
 				795F88A11A246C41004D75BA /* EHEStdDatePickerTableViewCell.xib in Resources */,
@@ -1291,10 +1393,12 @@
 				798B1A481A1D866800F0031F /* EHETeacherTableViewCell.xib in Resources */,
 				5299AE3B1A20964C000A5960 /* settingTest.jpeg in Resources */,
 				525E36E91A1C5008004F0475 /* png-0762.png in Resources */,
+				7943D1A41A2A21AB00FA80B0 /* EHEStdFilterBySubjectsViewController.xib in Resources */,
 				5286B3A81A26CF370080EC5F /* 订单-已完成 - 继续预约取消按钮2.png in Resources */,
 				525C208D1A1ED8D200C3119A /* female.png in Resources */,
 				797C307B1A19D32900DB84E4 /* Images.xcassets in Resources */,
 				5286B3A31A26CF220080EC5F /* 订单-历史评论星星2.png in Resources */,
+				7943D19F1A288B8700FA80B0 /* EHEStdFilterByAgeViewController.xib in Resources */,
 				525C208C1A1ED8D200C3119A /* male.png in Resources */,
 				79D5E8DC1A25807A0047C704 /* EHEStdBookingDetailViewController.xib in Resources */,
 				52905A1C1A21A80100DDC6FB /* ShareSDKLocalizable.strings in Resources */,
@@ -1349,13 +1453,16 @@
 				795F889B1A24670D004D75BA /* EHEStdMemoViewController.m in Sources */,
 				7960F11F1A1C838300DCEA45 /* EHETchBookingManagerViewController.m in Sources */,
 				7947561C1A1ED1AA00E39012 /* MF_Base64Additions.m in Sources */,
+				7943D1901A286CC000FA80B0 /* EHEStdFilterByGenderViewController.m in Sources */,
 				797C30D11A19DAD400DB84E4 /* EHETchSearchingMapViewController.m in Sources */,
 				5286B39E1A26B62B0080EC5F /* EHEStdSettingPersonalInformation.m in Sources */,
 				5299AE3F1A209AC6000A5960 /* EHEStdSettingDetailCell.m in Sources */,
 				797C30701A19D32900DB84E4 /* AppDelegate.m in Sources */,
 				5286B3C11A273A620080EC5F /* LXActionSheet.m in Sources */,
+				7943D1891A281F1300FA80B0 /* FPPopoverController.m in Sources */,
 				52D5E8411A1F291900342E06 /* sdsdTableViewCell.m in Sources */,
 				797C30D61A19DB5000DB84E4 /* EHEStdLoginViewController.m in Sources */,
+				7943D18B1A281F1300FA80B0 /* FPTouchView.m in Sources */,
 				7947562D1A20FB1700E39012 /* EHEStdSubjectTableTableViewController.m in Sources */,
 				5286B3AE1A2701350080EC5F /* Reachability.m in Sources */,
 				794756341A21E76E00E39012 /* EHECoreDataManager.m in Sources */,
@@ -1372,11 +1479,16 @@
 				797C306D1A19D32900DB84E4 /* main.mm in Sources */,
 				797C30DB1A19DB6F00DB84E4 /* EHETchLoginViewController.m in Sources */,
 				525C209F1A1F481600C3119A /* EHEStdSettingTableViewCell.m in Sources */,
+				7943D18A1A281F1300FA80B0 /* FPPopoverView.m in Sources */,
 				79265E901A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.m in Sources */,
 				797C30CB1A19DA9900DB84E4 /* EHEStdMapSearchingViewController.m in Sources */,
+				7943D1A31A2A21AB00FA80B0 /* EHEStdFilterBySubjectsViewController.m in Sources */,
 				5286B3B91A2713BA0080EC5F /* EHEAccount.m in Sources */,
 				5286B3BC1A2713FE0080EC5F /* EHETeacher.m in Sources */,
+				79ED56F71A2B2E6900CDEA07 /* EHEStdSearchingViewController.m in Sources */,
+				7943D1991A28864100FA80B0 /* EHEStdFilterByDistanceViewController.m in Sources */,
 				525C20911A1EEF6200C3119A /* EHESegmentedControlManager.m in Sources */,
+				7943D19E1A288B8700FA80B0 /* EHEStdFilterByAgeViewController.m in Sources */,
 				797C30C61A19DA6E00DB84E4 /* EHETchSearchingTableViewController.m in Sources */,
 				794756121A1D9FE600E39012 /* EHETeacherDetailViewController.m in Sources */,
 				79D931D11A1B22DF00B709A1 /* EHECommunicationManager.m in Sources */,

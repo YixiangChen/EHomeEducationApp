@@ -45,4 +45,7 @@
 //通过教师ID获取教师评价
 -(void)loadRankWithTeacherId:(int) teacherId;
 
+//从服务器删除订单
+-(void) removeOrderFromServerWithOrderId:(int) orderId;
+
 @end

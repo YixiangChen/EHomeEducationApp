@@ -25,6 +25,8 @@
 
 #import "Reachability.h"
 
+#import "EHEStdSearchingViewController.h"
+
 @interface AppDelegate ()
 
 @end
@@ -66,8 +68,11 @@
     
     [ShareSDK registerApp:@"45c7af441ad8"]; //注册分享信息
     
-    EHEStdSearchingTableViewController *searchingTable =[[EHEStdSearchingTableViewController alloc] initWithNibName:nil bundle:nil];
-    UINavigationController *navi_searching = [[UINavigationController alloc] initWithRootViewController:searchingTable];
+    //EHEStdSearchingTableViewController *searchingTable =[[EHEStdSearchingTableViewController alloc] initWithNibName:nil bundle:nil];
+
+    EHEStdSearchingViewController *searchingViewController = [[EHEStdSearchingViewController alloc] initWithNibName:nil bundle:nil];
+    
+    UINavigationController *navi_searching = [[UINavigationController alloc] initWithRootViewController:searchingViewController];
     //navi_searching.navigationBarHidden=YES;
     
     EHEStdMapSearchingViewController * mapViewController=[[EHEStdMapSearchingViewController alloc]initWithNibName:nil bundle:nil];
@@ -102,6 +107,25 @@
     [self initPlat];
     
     [self.window makeKeyAndVisible];
+    
+    NSArray *familyNames =[[NSArray alloc]initWithArray:[UIFont familyNames]];
+    NSArray *fontNames;
+    NSInteger indFamily, indFont;
+    NSLog(@"[familyNames count]===%d",[familyNames count]);
+    for(indFamily=0;indFamily<[familyNames count];++indFamily)
+        
+    {
+        NSLog(@"Family name: %@", [familyNames objectAtIndex:indFamily]);
+        fontNames =[[NSArray alloc]initWithArray:[UIFont fontNamesForFamilyName:[familyNames objectAtIndex:indFamily]]];
+        
+        for(indFont=0; indFont<[fontNames count]; ++indFont)
+            
+        {
+            NSLog(@"Font name: %@",[fontNames objectAtIndex:indFont]);
+            
+        }
+        
+    }
     
     return YES;
 }
@@ -288,7 +312,7 @@
     if (_managedObjectModel != nil) {
         return _managedObjectModel;
     }
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"EHomeEducation" withExtension:@"momd"];
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"EHomeEducation" withExtension:@"mom"];
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return _managedObjectModel;
 }

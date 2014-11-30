@@ -14,9 +14,18 @@
 #import "EHETeacherTableViewCell.h"
 #import "EHEStdLoginViewController.h"
 
+#import "FPPopoverView.h"
+#import "FPPopoverController.h"
+#import "FPTouchView.h"
+
+#import "Defines.h"
+
+#import "EHEStdFilterByGenderViewController.h"
+
 
 
 @interface EHEStdSearchingTableViewController ()
+@property (strong, nonatomic) UIView *filterView;
 
 @end
 
@@ -63,6 +72,108 @@
     self.fetchedResultController.delegate = self;
     [NSFetchedResultsController deleteCacheWithName:nil];
     [self.fetchedResultController performFetch:nil];
+    
+    [self setupFilterView];
+}
+
+-(void) setupFilterView {
+    UIButton *filterDistanceBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 51, 20)];
+    [filterDistanceBtn setTitle:@"距离" forState:UIControlStateNormal];
+    [filterDistanceBtn.titleLabel setFont:[UIFont fontWithName:@"MF YueYuan (Noncommercial)" size:15.0]];
+    [filterDistanceBtn setBackgroundColor:kLightGreenForMainColor];
+    [filterDistanceBtn addTarget:self action:@selector(popFilterView:) forControlEvents:UIControlEventTouchUpInside];
+    [filterDistanceBtn setTag:0];
+    
+    UIButton *filterGenderBtn = [[UIButton alloc] initWithFrame:CGRectMake(52, 0, 51, 20)];
+    [filterGenderBtn setTitle:@"性别" forState:UIControlStateNormal];
+    [filterGenderBtn setBackgroundColor:kLightGreenForMainColor];
+    [filterGenderBtn addTarget:self action:@selector(popFilterView:) forControlEvents:UIControlEventTouchUpInside];
+    [filterGenderBtn setTag:1];
+    
+    UIButton *filterSubjectBtn = [[UIButton alloc] initWithFrame:CGRectMake(103, 0, 51, 20)];
+    [filterSubjectBtn setTitle:@"科目" forState:UIControlStateNormal];
+    [filterSubjectBtn setBackgroundColor:kLightGreenForMainColor];
+    [filterSubjectBtn addTarget:self action:@selector(popFilterView:) forControlEvents:UIControlEventTouchUpInside];
+    [filterSubjectBtn setTag:2];
+    
+    UIButton *filterAgeBtn = [[UIButton alloc] initWithFrame:CGRectMake(154, 0, 51, 20)];
+    [filterAgeBtn setTitle:@"年龄" forState:UIControlStateNormal];
+    [filterAgeBtn setBackgroundColor:kLightGreenForMainColor];
+    [filterAgeBtn addTarget:self action:@selector(popFilterView:) forControlEvents:UIControlEventTouchUpInside];
+    [filterAgeBtn setTag:3];
+    
+    UIButton *filterDegreeBtn = [[UIButton alloc] initWithFrame:CGRectMake(205, 0, 51, 20)];
+    [filterDegreeBtn setTitle:@"学历" forState:UIControlStateNormal];
+    [filterDegreeBtn setBackgroundColor:kLightGreenForMainColor];
+    [filterDegreeBtn addTarget:self action:@selector(popFilterView:) forControlEvents:UIControlEventTouchUpInside];
+    [filterDegreeBtn setTag:4];
+    
+    UIButton *filterRankBtn = [[UIButton alloc] initWithFrame:CGRectMake(256, 0, 51, 20)];
+    [filterRankBtn setTitle:@"评价" forState:UIControlStateNormal];
+    [filterRankBtn setBackgroundColor:kLightGreenForMainColor];
+    [filterRankBtn addTarget:self action:@selector(popFilterView:) forControlEvents:UIControlEventTouchUpInside];
+    [filterRankBtn setTag:5];
+    
+    self.filterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 255, 20)];
+    [self.filterView addSubview:filterDistanceBtn];
+    [self.filterView addSubview:filterGenderBtn];
+    [self.filterView addSubview:filterSubjectBtn];
+    [self.filterView addSubview:filterAgeBtn];
+    [self.filterView addSubview:filterDegreeBtn];
+    [self.filterView addSubview:filterRankBtn];
+    
+    self.navigationItem.titleView = self.filterView;
+}
+
+-(void) popFilterView:(id) sender {
+    NSLog(@"Tapping filter");
+    
+    UIButton *btn = (UIButton *)sender;
+    
+    if (btn.tag == 0) {
+        if (self.filterByDistanceController == nil) {
+            self.filterByDistanceController= [[EHEStdFilterByDistanceViewController alloc] initWithNibName:nil bundle:nil];
+        }
+        FPPopoverController *popover = [[FPPopoverController alloc] initWithViewController:self.filterByDistanceController];
+        popover.contentSize = CGSizeMake(180, 95);
+        self.filterByDistanceController.popController = popover;
+        [popover presentPopoverFromView:btn];
+        
+    }
+    if (btn.tag == 1) {
+        if (self.filterByGenderController == nil) {
+            self.filterByGenderController= [[EHEStdFilterByGenderViewController alloc] initWithNibName:nil bundle:nil];
+        }
+       FPPopoverController *popover = [[FPPopoverController alloc] initWithViewController:self.filterByGenderController];
+       popover.contentSize = CGSizeMake(200, 200);
+       self.filterByGenderController.popController = popover;
+        [popover presentPopoverFromView:btn];
+
+    }
+    
+    if (btn.tag == 2) {
+        if (self.filterBySubjectsController == nil) {
+            self.filterBySubjectsController= [[EHEStdFilterBySubjectsViewController alloc] initWithNibName:nil bundle:nil];
+        }
+        FPPopoverController *popover = [[FPPopoverController alloc] initWithViewController:self.filterBySubjectsController];
+        popover.contentSize = CGSizeMake(260, 350);
+        self.filterBySubjectsController.popController = popover;
+        [popover presentPopoverFromView:btn];
+        
+    }
+    
+    if (btn.tag == 3) {
+        if (self.filterByAgeController == nil) {
+            self.filterByAgeController= [[EHEStdFilterByAgeViewController alloc] initWithNibName:nil bundle:nil];
+        }
+        FPPopoverController *popover = [[FPPopoverController alloc] initWithViewController:self.filterByAgeController];
+        popover.contentSize = CGSizeMake(230, 100);
+        self.filterByAgeController.popController = popover;
+        [popover presentPopoverFromView:btn];
+        
+    }
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -126,6 +237,15 @@
     return cell;
 }
 
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+//    if (section == 0) {
+//        return self.filterView;
+//    }
+    
+    return nil;
+    
+}
 
 /*
 // Override to support conditional editing of the table view.

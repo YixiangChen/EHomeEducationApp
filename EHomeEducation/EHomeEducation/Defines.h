@@ -22,6 +22,7 @@
 #define kURLUploadIcon              @"usericonupload.action"
 #define kURLCommentTeacher          @"commentteacher.action"
 #define kURLFindTeacherComments     @"findteachercomments.action"
+#define kURLDeleteOrder             @"deleteorder.action"
 
 // storyboard identifier
 
@@ -33,10 +34,7 @@
 
 
 // colors
-#define kEMNavBarTitleRed           [UIColor colorWithRed:163.0f/255.0f green:1.0f/255.0f blue:1.0f/255.0f alpha:1.0f]
-#define kEMTextColorIsRead          [UIColor colorWithRed:102.0f/255.0f green:102.0f/255.0f blue:102.0f/255.0f alpha:1.0f]
-#define kBackgroundColorGrey        [UIColor colorWithRed:236.0f/255.0f green:236.0f/255.0f blue:236.0f/255.0f alpha:1.0f]
-#define kRefreshControlRed          [UIColor colorWithRed:232.0f/255.0f green:0.0f/255.0f blue:0.0f/255.0f alpha:1.0f]
+#define kLightGreenForMainColor    [UIColor colorWithRed:192.0 / 256.0 green:233 / 256.0 blue:189 / 256.0 alpha:0.8]
 
 // Notifications
 #define kRefreshHomeScreenNotification       @"net.plazz.exklusiv_muenchen.notification.refresh_home_screen"
