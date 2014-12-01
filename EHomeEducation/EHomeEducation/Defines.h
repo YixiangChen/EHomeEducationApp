@@ -10,6 +10,7 @@
 #define EHomeEducation_Defines_h
 
 // url
+
 #define kURLDomain                  @"http://218.249.130.194:8080/ehomeedu/api/customer/"
 #define kURLFindTeacherList         @"findteacherlist.action"
 #define kURLFindTeacherDetail       @"findteacherdetail.action"
@@ -22,7 +23,7 @@
 #define kURLUploadIcon              @"usericonupload.action"
 #define kURLCommentTeacher          @"commentteacher.action"
 #define kURLFindTeacherComments     @"findteachercomments.action"
-#define kURLDeleteOrder             @"deleteorder.action"
+#define kURLDeleteOrder             @"http://218.249.130.194:8080/ehomeedu/api/common/deleteorder.action"
 
 // storyboard identifier
 

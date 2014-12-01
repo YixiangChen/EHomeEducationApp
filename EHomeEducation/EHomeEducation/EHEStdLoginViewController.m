@@ -37,7 +37,18 @@
     // Pass the selected object to the new view controller.
 }
 */
-
+-(void)viewWillAppear:(BOOL)animated
+{
+    NSUserDefaults * userDefaults=[NSUserDefaults standardUserDefaults];
+    NSString * userName=[userDefaults objectForKey:@"userName"];
+    NSString * password=[userDefaults objectForKey:@"passWord"];
+    NSLog(@"userName=%@,password=%@",userName,password);
+    if (userName != nil && password!= nil)
+    {
+        [self.navigationController popViewControllerAnimated:NO];
+    }
+    
+}
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
@@ -64,7 +75,11 @@
             [defaults setObject:self.txtPassWord.text forKey:@"passWord"];
             [defaults setObject:[[dict objectForKey:@"userinfo"] objectForKey:@"customerid"] forKey:@"myCustomerid"];
             [defaults synchronize];
+            
+            NSNotification * noti = [NSNotification notificationWithName:@"ChangeLanguageNotificationName" object:self userInfo:nil];
+            [[NSNotificationCenter defaultCenter] postNotification:noti];
             [self.navigationController popViewControllerAnimated:NO];
+            
         }else{
             NSLog(@"%@",dict[@"message"]);
         }

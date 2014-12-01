@@ -15,4 +15,5 @@
 @property(strong,nonatomic)NSString * gender;
 @property(strong,nonatomic)NSString * brithday;
 @property(strong,nonatomic)UIImage * image;
+@property(strong,nonatomic)NSData * imageData;
 @end

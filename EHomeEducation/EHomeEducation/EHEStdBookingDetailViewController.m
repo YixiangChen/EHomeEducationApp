@@ -7,6 +7,8 @@
 //
 
 #import "EHEStdBookingDetailViewController.h"
+#import "EHECoreDataManager.h"
+#import "EHECommunicationManager.h"
 @interface EHEStdBookingDetailViewController ()
 
 @end
@@ -108,31 +110,81 @@
     self.rankButton5.frame=CGRectMake(290, 360, 20, 20);
     [self.view addSubview:self.rankButton5];
     
-    //初始化完成按钮
+    //初始化取消按钮
     _buttonSure=[UIButton buttonWithType:UIButtonTypeSystem];
-    _buttonSure.frame=CGRectMake(20, 390, 100, 37);
+    _buttonSure.frame=CGRectMake(115, 390, 100, 37);
     [_buttonSure addTarget: self action:@selector(sureButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    if(self.order.orderstatus.intValue==0)
+    {
     [_buttonSure setBackgroundImage:[UIImage imageNamed:@"订单-已完成 - 继续预约取消按钮2"] forState:UIControlStateNormal];
+    }
+    else if(self.order.orderstatus.intValue==3)
+    {
+        [self.buttonSure setTitle:@"删除订单" forState:UIControlStateNormal];
+    }
     [self.view addSubview:_buttonSure];
-    
-    //初始化继续预约按钮
-    _bookingButton=[UIButton buttonWithType:UIButtonTypeSystem];
-    _bookingButton.frame=CGRectMake(190, 390, 100, 37);
-    [_bookingButton addTarget:self action:@selector(bookingButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    [_bookingButton setBackgroundImage:[UIImage imageNamed:@"订单-已完成 - 继续预约预约按钮2"] forState:UIControlStateNormal];
-    [self.view addSubview:_bookingButton];
-    
 }
 //点击确定按钮所触发的事件
 -(void)sureButtonClicked:(id)sender
 {
-    [_buttonSure setBackgroundImage:[UIImage imageNamed:@"订单-已完成 - 继续预约取消按钮"] forState:UIControlStateNormal];
+//    [_buttonSure setBackgroundImage:[UIImage imageNamed:@"订单-已完成 - 继续预约取消按钮"] forState:UIControlStateNormal];
+//    EHECommunicationManager * communicationManager=[EHECommunicationManager getInstance];
+//    [communicationManager cancelOrderWithOrderId:self.order.orderid.intValue withReason:nil];
+    LXActionSheet * actionSheet=nil;
+    if(self.order.orderstatus.intValue==0)
+    {
+     actionSheet= [[LXActionSheet alloc]initWithTitle:@"确定要取消订单吗" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"不要这单了" otherButtonTitles:nil];
+    }
+    else if(self.order.orderstatus.intValue==3)
+    {
+     actionSheet = [[LXActionSheet alloc]initWithTitle:@"确定要删除订单吗" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"删除订单" otherButtonTitles:nil];
+    }
+    [actionSheet showInView:self.view];
 }
-//点击继续预约按钮所触发的事件
--(void)bookingButtonClicked:(id)sender
+- (void)didClickOnButtonIndex:(NSInteger *)buttonIndex
 {
-    [_bookingButton setBackgroundImage:[UIImage imageNamed:@"订单-已完成 - 继续预约预约按钮"] forState:UIControlStateNormal];
+    if((int)buttonIndex==0)
+    {
+        if(self.order.orderstatus.intValue==0)
+        {
+        UIAlertController * alertController=[UIAlertController alertControllerWithTitle:@"友情提示" message:@"您为什么要取消订单呢" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction * actionCentain=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            
+            EHECommunicationManager * communicationManager=[EHECommunicationManager getInstance];
+            NSString * reasonString=[NSString stringWithFormat:@"取消订单原因是：%@",alertController.textFields.firstObject];
+            NSLog(@"取消订单原因:%@",reasonString);
+            [communicationManager cancelOrderWithOrderId:self.order.orderid.intValue withReason:reasonString];
+            [_buttonSure setBackgroundImage:[UIImage imageNamed:@"订单-已完成 - 继续预约取消按钮"] forState:UIControlStateNormal];
+            self.buttonSure.enabled=NO;
+        }];
+        UIAlertAction * actionCancle=[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        }];
+        [alertController addAction:actionCancle];
+        [alertController addAction:actionCentain];
+        
+        [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField){
+            textField.placeholder = @"请输入原因.....";
+        }];
+            [self presentViewController:alertController animated:YES completion:nil];
+        }
+        else if(self.order.orderstatus.intValue==3)
+        {
+            UIAlertView * alertView=[[UIAlertView alloc]initWithTitle:@"友情提示" message:@"确定要删除吗" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消",nil];
+            [alertView show];
+        }
+        
+    }
 }
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+  if(buttonIndex==0)
+  {
+      EHECommunicationManager * commucationManager=[EHECommunicationManager getInstance];
+      [commucationManager removeOrderFromServerWithOrderId:self.order.orderid.intValue];
+      self.buttonSure.enabled=NO;
+  }
+}
+
 //点击第一颗星星的时候触发事件
 -(void)rankButton1Clicked:(id)sender
 {

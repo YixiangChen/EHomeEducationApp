@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 #import "BMKMapManager.h"
+#import "BMapKit.h"
+#import "BMKMapView.h"
 //这是一个测试的注释
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate,UITabBarControllerDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate,UITabBarControllerDelegate,BMKLocationServiceDelegate>
 {
   BMKMapManager * _mapManager;
 }
@@ -21,6 +23,8 @@
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (strong, nonatomic) UITabBarController *tab;
+@property(strong,nonatomic)BMKLocationService * locationService;
+@property(nonatomic)CLLocationCoordinate2D coor;
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;

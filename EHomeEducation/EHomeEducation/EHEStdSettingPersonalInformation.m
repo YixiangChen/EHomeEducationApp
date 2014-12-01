@@ -9,6 +9,10 @@
 #import "EHEStdSettingPersonalInformation.h"
 #import "EHEStdSettingTableViewCell.h"
 #import "EHEStdSettingDetailViewController.h"
+#import "EHECoreDataManager.h"
+#import "EHECommunicationManager.h"
+#import "EHEStdLoginViewController.h"
+#import "AFHTTPRequestOperation.h"
 @interface EHEStdSettingPersonalInformation ()
 
 @end
@@ -27,20 +31,106 @@
     UIBarButtonItem * sendButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:self action:@selector(sendInfomation)];
     self.navigationItem.rightBarButtonItem=sendButtonItem;
     self.image=nil;
+    
+    NSUserDefaults * userDefault=[NSUserDefaults standardUserDefaults];
+    NSString * customerid=[userDefault objectForKey:@"myCustomerid"];
+
+    NSString * keyString=[self getKey:@"name" andPara:customerid];
+    NSLog(@"keyString=%@",keyString);
+    self.name=[userDefault objectForKey:[self getKey:@"name" andPara:customerid]];
+    self.gender=[userDefault objectForKey:[self getKey:@"gender" andPara:customerid]];
+    self.telephoneNumber=[userDefault objectForKey:[self getKey:@"telephone" andPara:customerid]];
+    self.brithday=[userDefault objectForKey:[self getKey:@"memo" andPara:customerid]];
+    NSData * imageData =[userDefault objectForKey:[self getKey:@"image" andPara:customerid]];
+    UIImage * myImage=[UIImage imageWithData:imageData];
+    self.image=myImage;
+    
 }
 -(void)sendInfomation
 {
+    NSUserDefaults * userDefaults=[NSUserDefaults standardUserDefaults];
+    EHECommunicationManager * communicationManager=[EHECommunicationManager getInstance];
+    NSLog(@"name=%@",self.telephoneNumber);
     
+    NSDictionary * informationDictionary=@{@"customerid":[userDefaults objectForKey:@"myCustomerid"],@"name":self.name,@"gender":self.gender,@"telephone":self.telephoneNumber,@"latitude":@(39),@"longitude":@(116),@"majoraddress":@"北京石景山",@"memo":self.brithday};
+
+    NSString * customerid=[userDefaults objectForKey:@"myCustomerid"];
+    [communicationManager sendOtherInfo:informationDictionary];
+    
+    
+    [self uploadUserIconWithCustomerId:customerid.intValue andImage:self.image];
+    
+    [userDefaults setObject:self.name forKey:[self getKey:@"name" andPara:customerid]];
+    [userDefaults setObject:self.telephoneNumber forKey:[self getKey:@"telephone" andPara:customerid]];
+    [userDefaults setObject:@(39) forKey:[self getKey:@"latitude" andPara:customerid]];
+    [userDefaults setObject:@(116) forKey:[self getKey:@"longitude" andPara:customerid]];
+    [userDefaults setObject:self.gender forKey:[self getKey:@"gender" andPara:customerid]];
+    [userDefaults setObject:@"北京石景山" forKey:[self getKey:@"majoraddress" andPara:customerid]];
+    [userDefaults setObject:self.brithday forKey:[self getKey:@"memo" andPara:customerid]];
+    [userDefaults synchronize];
+    
+}
+
+-(NSString*)getKey:(NSString *)para1 andPara:(NSString *)para2
+{
+    return [NSString stringWithFormat:@"%@%@",para1,para2];
 }
 -(void)viewWillAppear:(BOOL)animated
 {
+//    NSUserDefaults * userDefaults=[NSUserDefaults standardUserDefaults];
+//    NSLog(@"customerid=%@",[userDefaults objectForKey:@"myCustomerid"]);
+//    
+//    NSData * imageData =[userDefaults objectForKey:[self getKey:@"image" andPara:[userDefaults objectForKey:@"myCustomerid"]]];
+//    UIImage * myImage=[UIImage imageWithData:imageData];
+    //self.image=myImage;
+    if(self.image==nil)
+    {
+        NSUserDefaults * userDefaults=[NSUserDefaults standardUserDefaults];
+        NSLog(@"customerid=%@",[userDefaults objectForKey:@"myCustomerid"]);
+        NSData * imageData =[userDefaults objectForKey:[self getKey:@"image" andPara:[userDefaults objectForKey:@"myCustomerid"]]];
+            UIImage * myImage=[UIImage imageWithData:imageData];
+        self.image=myImage;
+    }
     [self.tableView reloadData];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+-(void)uploadUserIconWithCustomerId:(int)customerId andImage:(UIImage *)myImage {
+    
+    
+    NSString * path = @"http://developer.bjbkws.com:8080/ehomeedu/api/customer/usericonupload.action";
+    NSLog(@"%@",path);
+    AFHTTPRequestSerializer * serializer = [[AFHTTPRequestSerializer alloc]init];
+    NSMutableURLRequest * request = [serializer multipartFormRequestWithMethod:@"POST" URLString:path parameters:@{@"customerid":@(customerId)} constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        [formData appendPartWithFileData:UIImagePNGRepresentation(self.image) name:@"usericon" fileName:@"png-0001.jpg" mimeType:@"image/png"];
+        
+    } error:nil];
+    AFHTTPRequestOperation * operation = [[AFHTTPRequestOperation alloc]initWithRequest:request];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        //上传成功，
+        NSLog(@"%@",[[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding]);
+        self.imageData=nil;;
+        if (UIImagePNGRepresentation(self.image) == nil) {
+            
+            self.imageData = UIImageJPEGRepresentation(self.image, 1);
+            
+        } else {
+            
+            self.imageData = UIImagePNGRepresentation(self.image);;
+        }
+        NSUserDefaults * userdefaults=[NSUserDefaults standardUserDefaults];
+        NSString * customerid=[userdefaults objectForKey:@"myCustomerid"];
+        [userdefaults setObject:self.imageData forKey:[self getKey:@"image" andPara:customerid]];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        //上传失败，
+        NSLog(@"%@",error);
+        
+    }];
+    [operation start];//开始上传
+    
+}
 #pragma mark - TableView DataSouce Method
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -121,11 +211,12 @@
     if(row==0)
     {
         settingDetail.type=@"0";
+        settingDetail.image=self.image;
     }
     else if(row==1)
     {
         settingDetail.type=@"1";
-        settingDetail.name=@"张三";
+        settingDetail.name=self.name;
     }
     else if(row==2)
     {

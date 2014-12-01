@@ -10,5 +10,7 @@
 
 @interface EHEStdBookingTableViewCell : UITableViewCell
 @property(strong,nonatomic)UILabel * labelTeacherInfomation;
+@property(strong,nonatomic)UILabel * labelSubject;
 @property(strong,nonatomic)UILabel * labelDate;
+@property(strong,nonatomic)UIImageView * teacherIcon;
 @end

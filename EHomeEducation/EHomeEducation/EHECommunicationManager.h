@@ -37,7 +37,7 @@
 -(void) confirmOrderWithOrderId:(int) orderId;
 
 //用户上传个人头像
--(void)uploadUserIconWithCustomerId:(int) customerId;
+-(void)uploadUserIconWithCustomerId:(int)customerId andImage:(NSData *) myImage;
 
 //用户评价老师
 -(void)commentTeacherWithTeacherId:(int)teacherId fromCustomerWithCustomerId:(int) customerId withRank:(int)rank andContent:(NSString *)content;

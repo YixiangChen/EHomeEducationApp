@@ -9,7 +9,7 @@
 #import "Defines.h"
 #import "EHECommunicationManager.h"
 #import "EHECoreDataManager.h"
-//#import "AFNetworking.h"
+#import "AFNetworking.h"
 
 @implementation EHECommunicationManager
 
@@ -157,7 +157,7 @@
 -(void)sendOrder:(NSDictionary *)dictOrder {
     
     NSLog(@"以下是发送的订单详情 %@",dictOrder);
-    NSString * postData = [NSString stringWithFormat:@"{\"customerid\":%@,\"latitude\":119.00000,\"longitude\":39.00000,\"serviceaddress\":\"%@\",\"teacherid\":%@,\"orderdate\":\"%@\",\"timeperiod\":\"%@\",\"objectinfo\":\"%@\",\"subjectinfo\":\"%@\",\"memo\":\"%@\",\"orderstatus\":%@,\"apptype\":%d}",[dictOrder objectForKey:@"customerid"],[dictOrder objectForKey:@"serviceaddress"],[dictOrder objectForKey:@"teacherid"],[dictOrder objectForKey:@"orderdate"],[dictOrder objectForKey:@"timeperiod"],[dictOrder objectForKey:@"objectinfo"],[dictOrder objectForKey:@"subjectinfo"],[dictOrder objectForKey:@"memo"], [dictOrder objectForKey:@"orderstatus"],3];
+    NSString * postData = [NSString stringWithFormat:@"{\"customerid\":%@,\"latitude\":39.000000,\"longitude\":116.998877,\"serviceaddress\":\"%@\",\"teacherid\":%@,\"orderdate\":\"%@\",\"timeperiod\":\"%@\",\"objectinfo\":\"%@\",\"subjectinfo\":\"%@\",\"memo\":\"%@\",\"orderstatus\":%@,\"apptype\":%d}",[dictOrder objectForKey:@"customerid"],[dictOrder objectForKey:@"serviceaddress"],[dictOrder objectForKey:@"teacherid"],[dictOrder objectForKey:@"orderdate"],[dictOrder objectForKey:@"timeperiod"],[dictOrder objectForKey:@"objectinfo"],[dictOrder objectForKey:@"subjectinfo"],[dictOrder objectForKey:@"memo"], [dictOrder objectForKey:@"orderstatus"],3];
     
     NSLog(@"postData=%@",postData);
     
@@ -179,7 +179,6 @@
         }
     }
 }
-
 -(void)sendOtherInfo:(NSDictionary *)dictOtherInfo {
     
     NSString * postData = [NSString stringWithFormat:@"{\"customerid\":\"%@\",\"name\":\"%@\",\"gender\":\"%@\",\"telephone\":\"%@\",\"latitude\":\"%@\",\"longitude\":\"%@\",\"majoraddress\":\"%@\",\"memo\":\"%@\"}",[dictOtherInfo objectForKey:@"customerid"],[dictOtherInfo objectForKey:@"name"],[dictOtherInfo objectForKey:@"gender"],[dictOtherInfo objectForKey:@"telephone"],[dictOtherInfo objectForKey:@"latitude"],[dictOtherInfo objectForKey:@"longitude"],[dictOtherInfo objectForKey:@"majoraddress"],[dictOtherInfo objectForKey:@"memo"]];
@@ -195,8 +194,9 @@
     if(responseData != nil && error == nil){
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:&error];
         if([dict[@"code"] intValue] == 0){
+            NSLog(@"dict=%@",dict);
             NSLog(@"发送补充个人信息成功");
-            [[EHECoreDataManager getInstance] savePersonalData:dictOtherInfo];
+            //[[EHECoreDataManager getInstance] savePersonalData:dictOtherInfo];
         }else{
             NSLog(@"%@",dict[@"message"]);
         }
@@ -204,8 +204,8 @@
 }
 
 -(void)cancelOrderWithOrderId:(int)orderId withReason:(NSString *)memo {
-    NSString * postData = [NSString stringWithFormat:@"{\"orderid\":\"%d\",\"orderstatus\":\"3\",\"memo\":\"%@\"}",orderId,memo];
-    
+    NSString * postData = [NSString stringWithFormat:@"{\"orderid\":\"%d\",\"orderstatus\":\"3\",\"memo\":\"%@\",\"apptype\":3}",orderId,memo];
+    NSLog(@"postData:%@",postData);
     NSString *stringForURL = [NSString stringWithFormat:@"%@%@",kURLDomain,kURLCancelOrder];
     NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:stringForURL]];
     NSString * data = [NSString stringWithFormat:@"info=%@",postData];
@@ -214,8 +214,11 @@
     
     NSError *error = nil;
     NSData * responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
+    NSMutableString * stringResponse=[[NSMutableString alloc]initWithData:responseData encoding:NSUTF8StringEncoding];
+    NSLog(@"responseData=%@",stringResponse);
     if(responseData != nil && error == nil){
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:&error];
+        NSLog(@"返回的dict:%@",dict);
         if([dict[@"code"] intValue] == 0){
             NSLog(@"订单状态改为%@",dict[@"orderstatus"]);
             NSLog(@"orderstatus:如果返回3，证明取消成功，如果返回的是4，5，6则表明订单处于不可取消状态，-1为重复取消订单，不允许取消已经取消的订单");
@@ -247,34 +250,36 @@
     }
 }
 
-//-(void)uploadUserIconWithCustomerId:(int)customerId {
-//    
-//    
-//    NSString * path = [NSString stringWithFormat:@"%@%@",kURLDomain,kURLUploadIcon];
-//    AFHTTPRequestSerializer * serializer = [[AFHTTPRequestSerializer alloc]init];
-//    
-//    
-//    NSMutableURLRequest * request = [serializer multipartFormRequestWithMethod:@"POST" URLString:path parameters:@{@"customerid":@(customerId)} constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-//        UIImage * image = [UIImage imageNamed:@"female_tablecell.png"];//这里可以使用照相机照一张，或者从图片库中选一张。具体代码自己参考之前讲的内容。
-//        
-//        //第一个参数：将要上传的图片变为NSData
-//        //第二个参数：name必须为@"usericond",
-//        //第三个参数fileName：@"任意的名字，例如下面的例子"。
-//        //第四个参数：mimeType：如果是png:@"image/png",如果是jpg：@"image/jpeg".服务器接收好像两种png和jpg格式的图片
-//        [formData appendPartWithFileData:UIImagePNGRepresentation(image) name:@"usericon" fileName:@"female_tablecell.png" mimeType:@"image/png"];
-//        
-//    } error:nil];
-//    AFHTTPRequestOperation * operation = [[AFHTTPRequestOperation alloc]initWithRequest:request];
-//    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        //上传成功
-//        NSLog(@"头像上传失败");
-//        NSLog(@"%@",[[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding]);
-//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        NSLog(@"头像上传失败");
-//    }];
-//    [operation start];//开始上传
-//    
-//}
+-(void)uploadUserIconWithCustomerId:(int)customerId andImage:(NSData *)myImage {
+    
+    
+    NSString * path = [NSString stringWithFormat:@"%@%@",kURLDomain,kURLUploadIcon];
+    AFHTTPRequestSerializer * serializer = [[AFHTTPRequestSerializer alloc]init];
+    
+    
+    NSMutableURLRequest * request = [serializer multipartFormRequestWithMethod:@"POST" URLString:path parameters:@{@"customerid":@(customerId)} constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        //UIImage * image = [UIImage imageNamed:@"female_tablecell.png"];//这里可以使用照相机照一张，或者从图片库中选一张。具体代码自己参考之前讲的内容。
+        
+        //第一个参数：将要上传的图片变为NSData
+        //第二个参数：name必须为@"usericond",
+        //第三个参数fileName：@"任意的名字，例如下面的例子"。
+        //第四个参数：mimeType：如果是png:@"image/png",如果是jpg：@"image/jpeg".服务器接收好像两种png和jpg格式的图片
+        UIImage * image=[UIImage imageWithData:myImage];
+        NSLog(@"要传送的image=%@",image);
+        [formData appendPartWithFileData:UIImagePNGRepresentation(image) name:@"usericon" fileName:[NSString stringWithFormat:@"image_customerid_%d",customerId] mimeType:@"image/png"];
+        
+    } error:nil];
+    AFHTTPRequestOperation * operation = [[AFHTTPRequestOperation alloc]initWithRequest:request];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        //上传成功
+        NSLog(@"头像上传成功！");
+        NSLog(@"%@",[[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding]);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"头像上传失败");
+    }];
+    [operation start];//开始上传
+    
+}
 
 -(void)commentTeacherWithTeacherId:(int)teacherId fromCustomerWithCustomerId:(int) customerId withRank:(int)rank andContent:(NSString *)content {
     NSString * postData = [NSString stringWithFormat:@"{\"teacherid\":\"%d\",\"customerid\":\"%d\",\"rank\":\"%d\",\"commenttype\":\"1\",\"content\":\"%@\"}",teacherId,customerId,rank,content];
@@ -325,7 +330,7 @@
 -(void)removeOrderFromServerWithOrderId:(int)orderId {
     NSString * postData = [NSString stringWithFormat:@"{\"orderid\":\"%d\"}",orderId];
     
-    NSString *stringForURL = [NSString stringWithFormat:@"%@%@",kURLDomain,kURLDeleteOrder];
+    NSString *stringForURL = [NSString stringWithFormat:@"%@",kURLDeleteOrder];
     NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:stringForURL]];
     NSString * data = [NSString stringWithFormat:@"info=%@",postData];
     [request setHTTPMethod:@"POST"];
@@ -333,8 +338,12 @@
     
     NSError *error = nil;
     NSData * responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
+
+    NSMutableString * stringData=[[NSMutableString alloc]initWithData:responseData encoding:NSUTF8StringEncoding];
+    NSLog(@"ResponseString=%@",stringData);
     if(responseData != nil && error == nil){
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:&error];
+        NSLog(@"获取到的dict=%@",dict);
         if([dict[@"code"] intValue] == 0){
             NSLog(@"订单删除成功");
         }else{
@@ -344,6 +353,5 @@
     }
     
 }
-
 
 @end

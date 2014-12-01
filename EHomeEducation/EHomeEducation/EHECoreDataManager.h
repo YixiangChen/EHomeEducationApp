@@ -50,7 +50,7 @@
 //保存个人信息
 -(void) savePersonalData:(NSDictionary *) dictOtherInfo;
 
-//从CoreData获取个人信息
+//通过customerid获取个人信息
 -(EHEAccount *) fetchPersonalDataWithCustomerId:(int) customerId;
 
 @end

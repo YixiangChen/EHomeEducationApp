@@ -299,10 +299,7 @@
     }
     NSLog(@"CoreData中找不到CustomerID为 %d 的用户",customerId);
     return nil;
-
+    
 }
-
-
-
 
 @end
