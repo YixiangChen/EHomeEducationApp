@@ -31,10 +31,13 @@
 
 
 // Fonts
-
+#define kYueYuanFont                @"MF YueYuan (Noncommercial)"
+#define kFangZhengKaTongFont        @"FZKATJW--GB1-0"
+#define kMengNaFont                 @"MYoungHKS"
 
 // colors
 #define kLightGreenForMainColor    [UIColor colorWithRed:192.0 / 256.0 green:233 / 256.0 blue:189 / 256.0 alpha:0.8]
+#define kGreenForTabbaritem        [UIColor colorWithRed:160.0 / 256.0 green:233 / 256.0 blue:150 / 256.0 alpha:1]
 
 // Notifications
 #define kRefreshHomeScreenNotification       @"net.plazz.exklusiv_muenchen.notification.refresh_home_screen"

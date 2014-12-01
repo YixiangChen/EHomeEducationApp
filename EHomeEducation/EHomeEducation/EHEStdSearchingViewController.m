@@ -78,39 +78,44 @@
 }
 
 -(void) setupFilterView {
-    UIButton *filterDistanceBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 51, 20)];
+    UIButton *filterDistanceBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 52, 20)];
     [filterDistanceBtn setTitle:@"距离" forState:UIControlStateNormal];
     [filterDistanceBtn.titleLabel setFont:[UIFont fontWithName:@"MF YueYuan (Noncommercial)" size:15.0]];
     [filterDistanceBtn setBackgroundColor:kLightGreenForMainColor];
     [filterDistanceBtn addTarget:self action:@selector(popFilterView:) forControlEvents:UIControlEventTouchUpInside];
     [filterDistanceBtn setTag:0];
     
-    UIButton *filterGenderBtn = [[UIButton alloc] initWithFrame:CGRectMake(52, 0, 51, 20)];
+    UIButton *filterGenderBtn = [[UIButton alloc] initWithFrame:CGRectMake(53, 0, 52, 20)];
     [filterGenderBtn setTitle:@"性别" forState:UIControlStateNormal];
+    [filterGenderBtn.titleLabel setFont:[UIFont fontWithName:@"MF YueYuan (Noncommercial)" size:15.0]];
     [filterGenderBtn setBackgroundColor:kLightGreenForMainColor];
     [filterGenderBtn addTarget:self action:@selector(popFilterView:) forControlEvents:UIControlEventTouchUpInside];
     [filterGenderBtn setTag:1];
     
-    UIButton *filterSubjectBtn = [[UIButton alloc] initWithFrame:CGRectMake(103, 0, 51, 20)];
+    UIButton *filterSubjectBtn = [[UIButton alloc] initWithFrame:CGRectMake(106, 0, 52, 20)];
     [filterSubjectBtn setTitle:@"科目" forState:UIControlStateNormal];
+    [filterSubjectBtn.titleLabel setFont:[UIFont fontWithName:@"MF YueYuan (Noncommercial)" size:15.0]];
     [filterSubjectBtn setBackgroundColor:kLightGreenForMainColor];
     [filterSubjectBtn addTarget:self action:@selector(popFilterView:) forControlEvents:UIControlEventTouchUpInside];
     [filterSubjectBtn setTag:2];
     
-    UIButton *filterAgeBtn = [[UIButton alloc] initWithFrame:CGRectMake(154, 0, 51, 20)];
+    UIButton *filterAgeBtn = [[UIButton alloc] initWithFrame:CGRectMake(159, 0, 52, 20)];
     [filterAgeBtn setTitle:@"年龄" forState:UIControlStateNormal];
+    [filterAgeBtn.titleLabel setFont:[UIFont fontWithName:@"MF YueYuan (Noncommercial)" size:15.0]];
     [filterAgeBtn setBackgroundColor:kLightGreenForMainColor];
     [filterAgeBtn addTarget:self action:@selector(popFilterView:) forControlEvents:UIControlEventTouchUpInside];
     [filterAgeBtn setTag:3];
     
-    UIButton *filterDegreeBtn = [[UIButton alloc] initWithFrame:CGRectMake(205, 0, 51, 20)];
+    UIButton *filterDegreeBtn = [[UIButton alloc] initWithFrame:CGRectMake(212, 0, 52, 20)];
     [filterDegreeBtn setTitle:@"学历" forState:UIControlStateNormal];
+    [filterDegreeBtn.titleLabel setFont:[UIFont fontWithName:@"MF YueYuan (Noncommercial)" size:15.0]];
     [filterDegreeBtn setBackgroundColor:kLightGreenForMainColor];
     [filterDegreeBtn addTarget:self action:@selector(popFilterView:) forControlEvents:UIControlEventTouchUpInside];
     [filterDegreeBtn setTag:4];
     
-    UIButton *filterRankBtn = [[UIButton alloc] initWithFrame:CGRectMake(256, 0, 51, 20)];
+    UIButton *filterRankBtn = [[UIButton alloc] initWithFrame:CGRectMake(265, 0, 52, 20)];
     [filterRankBtn setTitle:@"评价" forState:UIControlStateNormal];
+    [filterRankBtn.titleLabel setFont:[UIFont fontWithName:@"MF YueYuan (Noncommercial)" size:15.0]];
     [filterRankBtn setBackgroundColor:kLightGreenForMainColor];
     [filterRankBtn addTarget:self action:@selector(popFilterView:) forControlEvents:UIControlEventTouchUpInside];
     [filterRankBtn setTag:5];

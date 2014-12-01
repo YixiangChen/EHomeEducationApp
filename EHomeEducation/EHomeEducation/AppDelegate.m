@@ -5,7 +5,7 @@
 //  Created by Yixiang Chen on 11/17/14.
 //  Copyright (c) 2014 AppChen. All rights reserved.
 //
-
+#import "Defines.h"
 #import "AppDelegate.h"
 #import "EHECommunicationManager.h"
 #import "EHEStdSearchingTableViewController.h"
@@ -85,13 +85,22 @@
     EHEStdSettingViewController *setting = [[EHEStdSettingViewController alloc] initWithNibName:nil bundle:nil];
     UINavigationController * navi_setting=[[UINavigationController alloc]initWithRootViewController:setting];
 
+
     
-    UITabBarController *tab = [[UITabBarController alloc] initWithNibName:nil bundle:nil];
-    tab.viewControllers = @[navi_searching,navi_bookingManager, navi_setting];
-    [[tab.viewControllers objectAtIndex:0] setTitle:@"首页"];
-    [[tab.viewControllers objectAtIndex:1] setTitle:@"我的"];
-    [[tab.viewControllers objectAtIndex:2] setTitle:@"设置"];
-    tab.tabBar.backgroundColor = [UIColor grayColor];
+    self.tab = [[UITabBarController alloc] initWithNibName:nil bundle:nil];
+    self.tab.delegate = self;
+    self.tab.viewControllers = @[navi_searching,navi_bookingManager, navi_setting];
+    [[self.tab.viewControllers objectAtIndex:0] setTitle:@"首页"];
+    [[[self.tab.viewControllers objectAtIndex:0] tabBarItem] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:kGreenForTabbaritem, NSForegroundColorAttributeName, [UIFont fontWithName:@"FZKATJW--GB1-0" size:15], NSFontAttributeName, nil]  forState:UIControlStateNormal];
+    
+    [[self.tab.viewControllers objectAtIndex:1] setTitle:@"我的"];
+        [[[self.tab.viewControllers objectAtIndex:1] tabBarItem] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor lightGrayColor], NSForegroundColorAttributeName, [UIFont fontWithName:@"FZKATJW--GB1-0" size:15], NSFontAttributeName, nil]  forState:UIControlStateNormal];
+
+    [[self.tab.viewControllers objectAtIndex:2] setTitle:@"设置"];
+    [[[self.tab.viewControllers objectAtIndex:2] tabBarItem] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor lightGrayColor], NSForegroundColorAttributeName, [UIFont fontWithName:@"FZKATJW--GB1-0" size:15], NSFontAttributeName, nil]  forState:UIControlStateNormal];
+    
+
+    self.tab.tabBar.backgroundColor = [UIColor grayColor];
     
     _mapManager = [[BMKMapManager alloc]init];
     // 如果要关注网络及授权验证事件，请设定     generalDelegate参数
@@ -101,7 +110,7 @@
     }
 
     
-    self.window.rootViewController = tab;
+    self.window.rootViewController = self.tab;
     
     //初始化分享平台
     [self initPlat];
@@ -375,5 +384,17 @@
         }
     }
 }
+
+-(void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
+    [[viewController tabBarItem] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:kGreenForTabbaritem, NSForegroundColorAttributeName, [UIFont fontWithName:@"FZKATJW--GB1-0" size:15], NSFontAttributeName, nil]  forState:UIControlStateNormal];
+    
+    for (int i = 0; i < 3; i++) {
+        if (i != self.tab.selectedIndex ) {
+            [[[self.tab.viewControllers objectAtIndex:i] tabBarItem] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor lightGrayColor], NSForegroundColorAttributeName, [UIFont fontWithName:@"FZKATJW--GB1-0" size:15], NSFontAttributeName, nil]  forState:UIControlStateNormal];
+        }
+    }
+}
+
+
 
 @end
