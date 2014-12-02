@@ -118,12 +118,17 @@
     {
     [_buttonSure setBackgroundImage:[UIImage imageNamed:@"订单-已完成 - 继续预约取消按钮2"] forState:UIControlStateNormal];
     }
-    else if(self.order.orderstatus.intValue==3)
+    else if(self.order.orderstatus.intValue==2||self.order.orderstatus.intValue==3||self.order.orderstatus.intValue==6)
     {
         [self.buttonSure setTitle:@"删除订单" forState:UIControlStateNormal];
     }
+    else if(self.order.orderstatus.intValue==1||self.order.orderstatus.intValue==4||self.order.orderstatus.intValue==5)
+    {
+        [self.buttonSure setBackgroundImage:[UIImage imageNamed:@"提交按钮"] forState:UIControlStateNormal];
+    }
     [self.view addSubview:_buttonSure];
 }
+
 //点击确定按钮所触发的事件
 -(void)sureButtonClicked:(id)sender
 {

@@ -147,6 +147,12 @@
 		52D397FF1A1B391C008B08FE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D397FE1A1B391B008B08FE /* CoreLocation.framework */; };
 		52D398011A1B422E008B08FE /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 52D398001A1B422E008B08FE /* pin.png */; };
 		52D5E8411A1F291900342E06 /* sdsdTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D5E8401A1F291900342E06 /* sdsdTableViewCell.m */; };
+		52FDA7DD1A2D63BF00221229 /* 提交按钮.png in Resources */ = {isa = PBXBuildFile; fileRef = 52FDA7DB1A2D63BF00221229 /* 提交按钮.png */; };
+		52FDA7DE1A2D63BF00221229 /* 提交按钮2.png in Resources */ = {isa = PBXBuildFile; fileRef = 52FDA7DC1A2D63BF00221229 /* 提交按钮2.png */; };
+		52FDA7E21A2D744000221229 /* EHEStdEveluationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52FDA7E01A2D744000221229 /* EHEStdEveluationViewController.m */; };
+		52FDA7E31A2D744000221229 /* EHEStdEveluationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52FDA7E11A2D744000221229 /* EHEStdEveluationViewController.xib */; };
+		52FDA7E81A2D76EC00221229 /* EHEStdCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52FDA7E61A2D76EC00221229 /* EHEStdCommentCell.m */; };
+		52FDA7E91A2D76EC00221229 /* EHEStdCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52FDA7E71A2D76EC00221229 /* EHEStdCommentCell.xib */; };
 		79265E901A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79265E8E1A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.m */; };
 		79265E911A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79265E8F1A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.xib */; };
 		7937968E1A1C76FC0013FD21 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7937968D1A1C76FC0013FD21 /* Default-568h@2x.png */; };
@@ -473,6 +479,14 @@
 		52D398001A1B422E008B08FE /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pin.png; path = ../pin.png; sourceTree = "<group>"; };
 		52D5E83F1A1F291900342E06 /* sdsdTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdsdTableViewCell.h; sourceTree = "<group>"; };
 		52D5E8401A1F291900342E06 /* sdsdTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = sdsdTableViewCell.m; sourceTree = "<group>"; };
+		52FDA7DB1A2D63BF00221229 /* 提交按钮.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "提交按钮.png"; sourceTree = "<group>"; };
+		52FDA7DC1A2D63BF00221229 /* 提交按钮2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "提交按钮2.png"; sourceTree = "<group>"; };
+		52FDA7DF1A2D744000221229 /* EHEStdEveluationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHEStdEveluationViewController.h; sourceTree = "<group>"; };
+		52FDA7E01A2D744000221229 /* EHEStdEveluationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHEStdEveluationViewController.m; sourceTree = "<group>"; };
+		52FDA7E11A2D744000221229 /* EHEStdEveluationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHEStdEveluationViewController.xib; sourceTree = "<group>"; };
+		52FDA7E51A2D76EC00221229 /* EHEStdCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHEStdCommentCell.h; sourceTree = "<group>"; };
+		52FDA7E61A2D76EC00221229 /* EHEStdCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHEStdCommentCell.m; sourceTree = "<group>"; };
+		52FDA7E71A2D76EC00221229 /* EHEStdCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHEStdCommentCell.xib; sourceTree = "<group>"; };
 		79265E8D1A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHEStdTimePickerTableViewCell.h; sourceTree = "<group>"; };
 		79265E8E1A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHEStdTimePickerTableViewCell.m; sourceTree = "<group>"; };
 		79265E8F1A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHEStdTimePickerTableViewCell.xib; sourceTree = "<group>"; };
@@ -1101,6 +1115,8 @@
 		52D398021A1B4248008B08FE /* 项目图片 */ = {
 			isa = PBXGroup;
 			children = (
+				52FDA7DB1A2D63BF00221229 /* 提交按钮.png */,
+				52FDA7DC1A2D63BF00221229 /* 提交按钮2.png */,
 				7943D1941A2873C000FA80B0 /* checkMark.png */,
 				5286B3A41A26CF370080EC5F /* 订单-已完成 - 继续预约取消按钮2.png */,
 				5286B3A51A26CF370080EC5F /* 订单-已完成 - 继续预约预约按钮2.png */,
@@ -1122,6 +1138,16 @@
 				525C208B1A1ED8D200C3119A /* female.png */,
 			);
 			name = "项目图片";
+			sourceTree = "<group>";
+		};
+		52FDA7E41A2D76C100221229 /* 评价表单元格 */ = {
+			isa = PBXGroup;
+			children = (
+				52FDA7E51A2D76EC00221229 /* EHEStdCommentCell.h */,
+				52FDA7E61A2D76EC00221229 /* EHEStdCommentCell.m */,
+				52FDA7E71A2D76EC00221229 /* EHEStdCommentCell.xib */,
+			);
+			name = "评价表单元格";
 			sourceTree = "<group>";
 		};
 		7943D1821A281EF500FA80B0 /* FPPopover */ = {
@@ -1339,6 +1365,7 @@
 		797C30AE1A19D92E00DB84E4 /* Student */ = {
 			isa = PBXGroup;
 			children = (
+				52FDA7E41A2D76C100221229 /* 评价表单元格 */,
 				5286B3BE1A273A620080EC5F /* LXActionSheet */,
 				529059051A21A77100DDC6FB /* 分享类库 */,
 				5299AE2F1A208F63000A5960 /* 设置 */,
@@ -1382,6 +1409,9 @@
 				5286B39B1A26B62B0080EC5F /* EHEStdSettingPersonalInformation.h */,
 				5286B39C1A26B62B0080EC5F /* EHEStdSettingPersonalInformation.m */,
 				5286B39D1A26B62B0080EC5F /* EHEStdSettingPersonalInformation.xib */,
+				52FDA7DF1A2D744000221229 /* EHEStdEveluationViewController.h */,
+				52FDA7E01A2D744000221229 /* EHEStdEveluationViewController.m */,
+				52FDA7E11A2D744000221229 /* EHEStdEveluationViewController.xib */,
 				7943D18C1A286C7900FA80B0 /* FilterViewControllers */,
 				795F888D1A245E42004D75BA /* EHEOrderViewControllers */,
 			);
@@ -1508,9 +1538,12 @@
 				7947562E1A20FB1700E39012 /* EHEStdSubjectTableTableViewController.xib in Resources */,
 				52D0FAF31A22DCB1001AAF6B /* authentificated.png in Resources */,
 				795F88A11A246C41004D75BA /* EHEStdDatePickerTableViewCell.xib in Resources */,
+				52FDA7E91A2D76EC00221229 /* EHEStdCommentCell.xib in Resources */,
 				798B1A4C1A1D86DF00F0031F /* female_tablecell.png in Resources */,
+				52FDA7DE1A2D63BF00221229 /* 提交按钮2.png in Resources */,
 				798B1A481A1D866800F0031F /* EHETeacherTableViewCell.xib in Resources */,
 				5299AE3B1A20964C000A5960 /* settingTest.jpeg in Resources */,
+				52FDA7DD1A2D63BF00221229 /* 提交按钮.png in Resources */,
 				52AD25BD1A288DB700CA150F /* LICENSE in Resources */,
 				525E36E91A1C5008004F0475 /* png-0762.png in Resources */,
 				7943D1A41A2A21AB00FA80B0 /* EHEStdFilterBySubjectsViewController.xib in Resources */,
@@ -1536,6 +1569,7 @@
 				52905A231A21A80100DDC6FB /* PinterestSDKResources.bundle in Resources */,
 				797C30DC1A19DB6F00DB84E4 /* EHETchLoginViewController.xib in Resources */,
 				794756291A1F388A00E39012 /* EHEStdOrderViewController.xib in Resources */,
+				52FDA7E31A2D744000221229 /* EHEStdEveluationViewController.xib in Resources */,
 				795F88971A24639B004D75BA /* EHEStdLocationViewController.xib in Resources */,
 				52905A291A21A80100DDC6FB /* WeiboSDK.bundle in Resources */,
 				5286B3AB1A26CF370080EC5F /* 订单-已完成 - 继续预约预约按钮.png in Resources */,
@@ -1594,11 +1628,13 @@
 				52AD25C41A288DB700CA150F /* UIProgressView+AFNetworking.m in Sources */,
 				52AD25C31A288DB700CA150F /* UIImageView+AFNetworking.m in Sources */,
 				794756341A21E76E00E39012 /* EHECoreDataManager.m in Sources */,
+				52FDA7E81A2D76EC00221229 /* EHEStdCommentCell.m in Sources */,
 				798B1A471A1D866800F0031F /* EHETeacherTableViewCell.m in Sources */,
 				5286B3B01A27134D0080EC5F /* EHomeEducation.xcdatamodel in Sources */,
 				795F88961A24639B004D75BA /* EHEStdLocationViewController.m in Sources */,
 				79D5E8DB1A25807A0047C704 /* EHEStdBookingDetailViewController.m in Sources */,
 				525C20981A1F256B00C3119A /* EHEStdBookingTableViewCell.m in Sources */,
+				52FDA7E21A2D744000221229 /* EHEStdEveluationViewController.m in Sources */,
 				797C30E01A19DC0D00DB84E4 /* EHEStdSettingViewController.m in Sources */,
 				7960F11A1A1C834000DCEA45 /* EHEStdSearchingTableViewController.m in Sources */,
 				52AD25C61A288DB700CA150F /* UIWebView+AFNetworking.m in Sources */,

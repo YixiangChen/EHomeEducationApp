@@ -7,6 +7,7 @@
 //
 
 #import "EHEStdBookingTableViewCell.h"
+#import "Defines.h"
 
 @implementation EHEStdBookingTableViewCell
 
@@ -25,6 +26,10 @@
         
         self.teacherIcon=[[UIImageView alloc]initWithFrame:CGRectMake(15, 12, 60, 60)];
         [self addSubview:self.teacherIcon];
+        self.teacherIcon.layer.cornerRadius = 30;
+        self.teacherIcon.layer.masksToBounds = YES;
+        [self.teacherIcon.layer setBorderWidth:5];
+        [self.teacherIcon.layer setBorderColor:kLightGreenForMainColor.CGColor];
         
         self.labelTeacherInfomation=[[UILabel alloc]initWithFrame:CGRectMake(85, 17, 150, 30)];
         self.labelTeacherInfomation.textColor=[UIColor blackColor];
@@ -39,9 +44,9 @@
         [self addSubview:self.labelDate];
         
         self.labelSubject=[[UILabel alloc]initWithFrame:CGRectMake(220, 35, 150, 30)];
-        self.labelSubject. textColor=[UIColor blackColor];
+        //self.labelSubject. textColor=[UIColor blackColor];
         self.labelSubject.backgroundColor=[UIColor clearColor];
-        self.labelSubject.font=[UIFont systemFontOfSize:13.0f];
+        //self.labelSubject.font=[UIFont systemFontOfSize:13.0f];
         [self addSubview:self.labelSubject];
     }
     return self;

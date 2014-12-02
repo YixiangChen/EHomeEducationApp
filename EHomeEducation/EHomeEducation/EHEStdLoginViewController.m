@@ -76,8 +76,12 @@
             [defaults setObject:[[dict objectForKey:@"userinfo"] objectForKey:@"customerid"] forKey:@"myCustomerid"];
             [defaults synchronize];
             
-            NSNotification * noti = [NSNotification notificationWithName:@"ChangeLanguageNotificationName" object:self userInfo:nil];
+            NSLog(@"dict=%@",dict);
+            
+            NSNotification * noti = [NSNotification notificationWithName:@"ChangeLanguageNotificationName" object:self userInfo:@{@"userIcon":[[dict objectForKey:@"userinfo"] objectForKey:@"usericon"]}];
+            
             [[NSNotificationCenter defaultCenter] postNotification:noti];
+            
             [self.navigationController popViewControllerAnimated:NO];
             
         }else{

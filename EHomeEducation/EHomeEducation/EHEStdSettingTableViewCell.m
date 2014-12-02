@@ -53,7 +53,6 @@
         self.imageIcon=[[UIImageView alloc]initWithFrame:CGRectMake(230, 10, 50, 50)];
         self.imageIcon.layer.cornerRadius=20.0f;
         [self addSubview:self.imageIcon];
-        
     }
     return self;
 }

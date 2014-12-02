@@ -24,7 +24,8 @@
 #define kURLCommentTeacher          @"commentteacher.action"
 #define kURLFindTeacherComments     @"findteachercomments.action"
 #define kURLDeleteOrder             @"http://218.249.130.194:8080/ehomeedu/api/common/deleteorder.action"
-
+#define kURLLoadUserIcon            @"http://218.249.130.194:8080/ehomeedu"
+#define kURLFindCustomerComments    @"http://218.249.130.194:8080/ehomeedu/api/teacher/findcustomercomments.action"
 // storyboard identifier
 
 

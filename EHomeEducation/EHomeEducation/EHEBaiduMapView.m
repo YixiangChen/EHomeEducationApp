@@ -14,7 +14,7 @@
 {
     if(self=[super init])
     {
-        self->_teacherImageView=[[UIImageView alloc]initWithFrame:CGRectMake(5, 10, 50, 50)];
+        self->_teacherImageView=[[UIImageView alloc]initWithFrame:CGRectMake(5, 10, 30, 30)];
         self->_teacherImageView.alpha=1.0f;
         
         self.labelTeacherName=[[UILabel alloc]initWithFrame:CGRectMake(55,0, 150, 25)];

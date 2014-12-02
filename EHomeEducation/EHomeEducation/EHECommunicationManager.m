@@ -30,7 +30,17 @@
 
 -(void)loadTeachersInfo {
     
-    NSString * postData = [NSString stringWithFormat:@"{\"customerid\":\"%d\",\"latitude\":\"%f\",\"longitude\":\"%f\",\"distancefilter\":\"%f\",\"keyword\":\"%s\"}",0,39.0000000,119.0000000,1000.0,""];
+    NSUserDefaults * userDefault=[NSUserDefaults standardUserDefaults];
+    NSDictionary * latitudeAndLongitude= [userDefault objectForKey:@"latitudeAndLongitude"];
+    NSString * latitude=[latitudeAndLongitude objectForKey:@"latitude"];
+    NSString * longitude=[latitudeAndLongitude objectForKey:@"longitude"];
+    float latitudeFloat=latitude.floatValue;
+    float longitudeFloat=longitude.floatValue;
+    NSLog(@"%f",latitudeFloat);
+    NSLog(@"latitude=%@",latitude);
+    NSString * postData = [NSString stringWithFormat:@"{\"customerid\":\"%d\",\"latitude\":\"%f\",\"longitude\":\"%f\",\"distancefilter\":\"%f\",\"keyword\":\"%s\"}",270,latitudeFloat,longitudeFloat,1000.0,""];
+    
+    NSLog(@"%@",postData);
     
     NSString *stringForURL = [NSString stringWithFormat:@"%@%@",kURLDomain,kURLFindTeacherList];
     NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:stringForURL]];
@@ -41,13 +51,14 @@
     
     NSError *error = nil;
     NSData * responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
-    
+    NSString * string=[[NSString alloc]initWithData:responseData encoding:NSUTF8StringEncoding];
+    NSLog(@"responseString=%@",string);
     if(responseData != nil && error == nil){
         
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:&error];
         
         if([dict[@"code"] intValue] == 0){
-            
+            NSLog(@"dict=%@",dict);
             NSLog(@"成功获取教师初步信息");
             [[EHECoreDataManager getInstance] updateBasicInfosOfTeachers:dict];
         }else{
@@ -72,12 +83,14 @@
     
     NSError *error = nil;
     NSData * responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
+    NSString * resposeString=[[NSString alloc]initWithData:responseData encoding:NSUTF8StringEncoding];
+    NSLog(@"responseString=%@",resposeString);
     
     if(responseData != nil && error == nil){
         
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
         NSDictionary *dictTeacherInfo = dict[@"teacherinfo"];
-        
+        NSLog(@"dict=%@",dict);
         if([dict[@"code"] intValue] == 0){
             NSLog(@"获取教师具体信息成功");
             [[EHECoreDataManager getInstance] updateDetailInfos:dictTeacherInfo withTeacherId:teacherId];
@@ -156,8 +169,14 @@
 
 -(void)sendOrder:(NSDictionary *)dictOrder {
     
+    NSUserDefaults * userDefault=[NSUserDefaults standardUserDefaults];
+    NSDictionary * latitudeAndLongitude= [userDefault objectForKey:@"latitudeAndLongitude"];
+    NSString * latitude=[latitudeAndLongitude objectForKey:@"latitude"];
+    NSString * longitude=[latitudeAndLongitude objectForKey:@"longitude"];
+    
+    
     NSLog(@"以下是发送的订单详情 %@",dictOrder);
-    NSString * postData = [NSString stringWithFormat:@"{\"customerid\":%@,\"latitude\":39.000000,\"longitude\":116.998877,\"serviceaddress\":\"%@\",\"teacherid\":%@,\"orderdate\":\"%@\",\"timeperiod\":\"%@\",\"objectinfo\":\"%@\",\"subjectinfo\":\"%@\",\"memo\":\"%@\",\"orderstatus\":%@,\"apptype\":%d}",[dictOrder objectForKey:@"customerid"],[dictOrder objectForKey:@"serviceaddress"],[dictOrder objectForKey:@"teacherid"],[dictOrder objectForKey:@"orderdate"],[dictOrder objectForKey:@"timeperiod"],[dictOrder objectForKey:@"objectinfo"],[dictOrder objectForKey:@"subjectinfo"],[dictOrder objectForKey:@"memo"], [dictOrder objectForKey:@"orderstatus"],3];
+    NSString * postData = [NSString stringWithFormat:@"{\"customerid\":%@,\"latitude\":\"%f\",\"longitude\":\"%f\",\"serviceaddress\":\"%@\",\"teacherid\":%@,\"orderdate\":\"%@\",\"timeperiod\":\"%@\",\"objectinfo\":\"%@\",\"subjectinfo\":\"%@\",\"memo\":\"%@\",\"orderstatus\":%@,\"apptype\":%d}",[dictOrder objectForKey:@"customerid"],latitude.floatValue,longitude.floatValue,[dictOrder objectForKey:@"serviceaddress"],[dictOrder objectForKey:@"teacherid"],[dictOrder objectForKey:@"orderdate"],[dictOrder objectForKey:@"timeperiod"],[dictOrder objectForKey:@"objectinfo"],[dictOrder objectForKey:@"subjectinfo"],[dictOrder objectForKey:@"memo"], [dictOrder objectForKey:@"orderstatus"],3];
     
     NSLog(@"postData=%@",postData);
     
@@ -281,6 +300,15 @@
     
 }
 
+-(NSData*)downloadUserIcon:(NSString *)iconPath
+{
+    NSString * stringPath=[NSString stringWithFormat:@"%@%@",kURLLoadUserIcon,iconPath];
+    NSLog(@"%@",stringPath);
+    NSURL * requestUrl=[NSURL URLWithString:stringPath];
+    NSData * data=[NSData dataWithContentsOfURL:requestUrl];
+    return data;
+}
+
 -(void)commentTeacherWithTeacherId:(int)teacherId fromCustomerWithCustomerId:(int) customerId withRank:(int)rank andContent:(NSString *)content {
     NSString * postData = [NSString stringWithFormat:@"{\"teacherid\":\"%d\",\"customerid\":\"%d\",\"rank\":\"%d\",\"commenttype\":\"1\",\"content\":\"%@\"}",teacherId,customerId,rank,content];
     
@@ -353,5 +381,39 @@
     }
     
 }
-
+-(NSArray *)loadCommentsWithCustomerId:(int)customerId {
+    NSString * postData = [NSString stringWithFormat:@"{\"customerid\":%d,\"commenttype\":0,\"page\":1,\"count\":20}",customerId];
+    
+    NSString *stringForURL = [NSString stringWithFormat:@"%@",kURLFindCustomerComments];
+    NSLog(@"path=%@",stringForURL);
+    NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:stringForURL]];
+    
+    NSString * data = [NSString stringWithFormat:@"info=%@",postData];
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBody:[data dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    NSError *error = nil;
+    NSData * responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
+    NSString * responseString=[[NSString alloc]initWithData:responseData encoding:NSUTF8StringEncoding];
+    NSLog(@"responseString=%@",responseString);
+    if(responseData != nil && error == nil){
+        
+        NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:&error];
+        
+        if([dict[@"code"] intValue] == 0 && dict[@"code"] != nil){
+            
+//            NSLog(@"成功获取评价，评价详情如下");
+//            NSLog(@"%@",[[dict[@"comments"] objectAtIndex:0] objectForKey:@"content"]);
+            return [dict objectForKey:@"comments"];
+            
+        }else{
+            
+            NSLog(@"获取用户评价失败");
+            NSLog(@"%@",dict[@"message"]);
+            return NO;
+        }
+    } else {
+        return NO;
+    }
+}
 @end

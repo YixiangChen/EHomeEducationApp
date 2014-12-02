@@ -8,7 +8,8 @@
 
 #import "EHEStdMapSearchingViewController.h"
 #import "TeacherAnnotations.h"
-
+#import "EHETeacherDetailViewController.h"
+#import "EHEStdSearchingViewController.h"
 @interface EHEStdMapSearchingViewController ()
 
 
@@ -25,7 +26,7 @@
          self.teacherInfoArray=[[EHECoreDataManager getInstance] fetchBasicInfosOfTeachers];
         
         //实例化一个百度地图的类
-        self.mapView=[[BMKMapView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-110)];
+        self.mapView=[[BMKMapView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-50)];
         self.mapView.delegate=self;
         
         //利用locationManager方法添加百度地图定位功能
@@ -45,7 +46,6 @@
         
         self.bubbleDictionary =[[NSMutableDictionary alloc]initWithCapacity:[self.teacherInfoArray count]];
     }
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -159,6 +159,11 @@
 {
     EHEBaiduMapView * mapViewBubble= [self.bubbleDictionary objectForKey:@(view.paopaoView.tag)];
     NSLog(@"teacherid=%@,teacherName=%@",mapViewBubble.teacherID,mapViewBubble.labelTeacherName.text);
+    EHECoreDataManager * coreDataManager=[EHECoreDataManager getInstance];
+    EHETeacher * teacherInfo= [coreDataManager fetchDetailInfosWithTeacherId:mapViewBubble.teacherID.intValue];
+    EHETeacherDetailViewController * teacherDetailViewController=[[EHETeacherDetailViewController alloc]initWithNibName:nil bundle:nil];
+    teacherDetailViewController.teacher=teacherInfo;
+    [self.searchingViewController.navigationController pushViewController:teacherDetailViewController animated:YES];
 }
 -(void)mapView:(BMKMapView *)mapView didSelectAnnotationView:(BMKAnnotationView *)view
 {

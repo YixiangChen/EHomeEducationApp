@@ -19,4 +19,5 @@
 @property(nonatomic)BOOL check;
 @property(strong,nonatomic)NSArray * testArray;
 @property(strong,nonatomic)NSString * userNames;
+@property(strong,nonatomic)NSString * userIconString;
 @end

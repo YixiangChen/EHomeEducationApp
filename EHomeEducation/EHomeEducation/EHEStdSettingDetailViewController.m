@@ -61,6 +61,7 @@
 -(void)viewWillDisappear:(BOOL)animated
 {
     UITextField * nameText=(UITextField *)[self.tableView viewWithTag:1];
+    NSLog(@"personInfo=%@",self.personInfomation);
     if([self.type isEqualToString:@"1"])
     {
         self.personInfomation.name=nameText.text;

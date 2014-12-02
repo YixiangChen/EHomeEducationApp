@@ -11,6 +11,9 @@
 #import "EHEStdSettingPersonalInformation.h"
 #import "EHEStdLoginViewController.h"
 #import "EHEStdLoginViewController.h"
+#import "UIImageView+AFNetworking.h"
+#import "EHECommunicationManager.h"
+#import "EHEStdEveluationViewController.h"
 @interface EHEStdSettingViewController ()
 
 @end
@@ -31,13 +34,12 @@
     self.tableViewSetting.separatorStyle=UITableViewCellSeparatorStyleSingleLine;
     [self.view addSubview:self.tableViewSetting];
     
-    self.personalInfomationArray=[NSArray arrayWithObjects:@"头像",nil];
+    self.personalInfomationArray=[NSArray arrayWithObjects:@"头像",@"评论",nil];
     
     self.systemSettingArray=[NSArray arrayWithObjects:@"系统设置",@"退出登录",nil];
     self.connectAndShareArray=[NSArray arrayWithObjects:@"分享",@"联系我们", nil];
     
-    self.testArray=[[NSArray alloc]initWithObjects:@"",@"张三",@"男",@"18500813409",@"1989-11-24", nil];
-        
+    self.testArray=[[NSArray alloc]initWithObjects:@"",@"",@"男",@"18500813409",@"1989-11-24", nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,6 +54,7 @@
     NSString * userName=[userDefaults objectForKey:@"userName"];
     NSString * password=[userDefaults objectForKey:@"passWord"];
     NSLog(@"userName=%@,password=%@",userName,password);
+    
     EHEStdLoginViewController *loginViewController = [[EHEStdLoginViewController alloc] initWithNibName:nil bundle:nil];
     if (userName == nil || password== nil) {
         //如果没有登录的话要显示登录界面，并且隐藏导航栏
@@ -67,6 +70,8 @@
 }
 -(void) changeLanguage:(NSNotification *)noti
 {
+    self.userIconString=noti.userInfo[@"userIcon"];
+    NSLog(@"%@",self.userIconString);
     [self.tableViewSetting reloadData];
 }
 #pragma mark- TableView DataSource Method
@@ -113,11 +118,11 @@
                 cell.settingLabel.frame=frames;
                 self.check=YES;
                 cell.contentLabel.alpha=0.0f;
-                
             }
             cell.nameLabel.text=[userDefaults objectForKey:@"userName"];
             NSUserDefaults * userDefaults=[NSUserDefaults standardUserDefaults];
             NSData * imageData=[userDefaults objectForKey:[self getKey:@"image" andCustomerid:[userDefaults objectForKey:@"myCustomerid"]]];
+            
             cell.settingImageView.image=[UIImage imageWithData:imageData];
             
             [cell.settingImageView.layer setBorderColor: [[UIColor grayColor] CGColor]];//边框灰色
@@ -173,16 +178,16 @@
     //点击第一个分组的时候
     if([indexPath section]==0)
     {
-        //    self.detailType=[NSString stringWithFormat:@"%ld",(long)[indexPath row]];
-        //    EHEStdSettingDetailViewController * settingDetail=[[EHEStdSettingDetailViewController alloc]initWithNibName:@"EHEStdSettingDetailViewController" bundle:nil];
-        //    settingDetail.name=[self.testArray objectAtIndex:1];
-        //    //把值传递给详细设置页面，这是假的数据，整合后使用真实数据
-        //    settingDetail.telephoneNumber=@"18500813409";
-        //    settingDetail.birthDate=@"1989-11-24";
-        //    settingDetail.type=self.detailType;
-        //    [self.navigationController pushViewController:settingDetail animated:YES];
+        if([indexPath row]==0)
+        {
         EHEStdSettingPersonalInformation * personInfomation=[[EHEStdSettingPersonalInformation alloc]init];
         [self.navigationController pushViewController:personInfomation animated:YES];
+        }
+        else if([indexPath row]==1)
+        {
+            EHEStdEveluationViewController * comment=[[EHEStdEveluationViewController alloc]initWithNibName:nil bundle:nil];
+            [self.navigationController pushViewController:comment animated:YES];
+        }
     }
     
     if([indexPath section]==1)

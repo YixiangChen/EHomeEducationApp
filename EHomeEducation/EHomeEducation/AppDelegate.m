@@ -40,36 +40,31 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     
-    [[EHECoreDataManager getInstance] removeAllTeachersFromCoreData];
-    [[EHECommunicationManager getInstance]loadTeachersInfo];
-    
-    
-    [[EHECommunicationManager getInstance] loadOrderInfosWithCustomerID:270 andOrderStatus:-1];
-
-    //[NSThread sleepForTimeInterval:4];
-    [[EHECoreDataManager getInstance] fetchOrderInfosWithCustomerID:270 andOrderStatus:-1];
-    
-    [[EHECommunicationManager getInstance] loadOrderDetailWithOrderID:223];
-    [[EHECoreDataManager getInstance] fetchOrderDeatailWithOrderID:223];
-    
-    
-    //[NSThread sleepForTimeInterval:2];
-    
     if([self checkIfNetWorking])
     {
-     [[EHECoreDataManager getInstance]removeAllOrdersFromCoreData];
-        //定位服务locationService
-//        _locationService = [[BMKLocationService alloc]init];
-//        _locationService.delegate = self;
-//        
-//        //启动LocationService
-//        [_locationService startUserLocationService];
+        [[EHECoreDataManager getInstance]removeAllOrdersFromCoreData];
+        
+        
+        //实例化
+        self.locationManager = [[CLLocationManager alloc]init];
+        [self.locationManager requestWhenInUseAuthorization];
+        self.locationManager.delegate = self;
+        
+        [self.locationManager startUpdatingLocation];
     }
     else
     {
         UIAlertView * alertView=[[UIAlertView alloc]initWithTitle:@"友情提示" message:@"没有检测到网络！" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
         [alertView show];
     }
+    
+    [[EHECoreDataManager getInstance] removeAllTeachersFromCoreData];
+    
+    NSUserDefaults * userDefaults=[NSUserDefaults standardUserDefaults];
+    NSString * customerID=[userDefaults objectForKey:@"myCustomerid"];
+    [[EHECommunicationManager getInstance] loadOrderInfosWithCustomerID:customerID.intValue andOrderStatus:-1];
+
+    [[EHECoreDataManager getInstance] fetchOrderInfosWithCustomerID:customerID.intValue andOrderStatus:-1];
     
     [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationController class], nil]
      setTintColor:[UIColor greenColor]];
@@ -168,21 +163,22 @@
     }
     return self.check;
 }
-- (void)didUpdateUserLocation:(BMKUserLocation *)userLocation
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
-    if(userLocation!=nil)//如果在设备位置不为空的情况下
-    {
-        //创建一个大头针，本大头针要定位本地设备的位置
-        CLLocationCoordinate2D coor;
-        //设置大头针的本地经纬度
-        coor.latitude = userLocation.location.coordinate.latitude;
-        coor.longitude = userLocation.location.coordinate.longitude;
-        self.coor=coor;
-    
-    //在定位后要停止定位，不然系统一直轮询设备造成内存泄露
-    [self.locationService stopUserLocationService];
-    NSLog(@"有网络状态下本地经纬度是:%f,%f",coor.latitude,coor.longitude);
+    if(locations != nil){
+        CLLocation * location = [locations firstObject];
+        NSString * latitude = [NSString stringWithFormat:@"纬度：%f",location.coordinate.latitude];
+        NSString * longtitude = [NSString stringWithFormat:@"经度：%f",location.coordinate.longitude];
+        NSLog(@"维度:%@，精度:%@",latitude,longtitude);
+        [self.locationManager stopUpdatingLocation];//停止更新
+        NSUserDefaults * userDefaults=[NSUserDefaults standardUserDefaults];
+        NSMutableDictionary * mutableDic=[[NSMutableDictionary alloc]initWithCapacity:10];
+        [mutableDic setObject:@(location.coordinate.latitude) forKey:@"latitude"];
+        [mutableDic setObject:@(location.coordinate.longitude) forKey:@"longitude"];
+        [userDefaults setObject:mutableDic forKey:@"latitudeAndLongitude"];
     }
+    [self.locationManager stopUpdatingLocation];
+    
 }
 -(void)initPlat
 {

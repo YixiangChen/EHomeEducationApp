@@ -13,6 +13,7 @@
 #import "EHECommunicationManager.h"
 #import "EHEStdLoginViewController.h"
 #import "AFHTTPRequestOperation.h"
+
 @interface EHEStdSettingPersonalInformation ()
 
 @end
@@ -48,22 +49,24 @@
 }
 -(void)sendInfomation
 {
+    
     NSUserDefaults * userDefaults=[NSUserDefaults standardUserDefaults];
+
+    NSDictionary * latitudeAndLongitude= [userDefaults objectForKey:@"latitudeAndLongitude"];
+    NSString * latitude=[latitudeAndLongitude objectForKey:@"latitude"];
+    NSString * longitude=[latitudeAndLongitude objectForKey:@"longitude"];
     EHECommunicationManager * communicationManager=[EHECommunicationManager getInstance];
     NSLog(@"name=%@",self.telephoneNumber);
     
-    NSDictionary * informationDictionary=@{@"customerid":[userDefaults objectForKey:@"myCustomerid"],@"name":self.name,@"gender":self.gender,@"telephone":self.telephoneNumber,@"latitude":@(39),@"longitude":@(116),@"majoraddress":@"北京石景山",@"memo":self.brithday};
+    NSDictionary * informationDictionary=@{@"customerid":[userDefaults objectForKey:@"myCustomerid"],@"name":self.name,@"gender":self.gender,@"telephone":self.telephoneNumber,@"latitude":latitude,@"longitude":longitude,@"majoraddress":@"北京石景山",@"memo":self.brithday};
 
     NSString * customerid=[userDefaults objectForKey:@"myCustomerid"];
     [communicationManager sendOtherInfo:informationDictionary];
-    
     
     [self uploadUserIconWithCustomerId:customerid.intValue andImage:self.image];
     
     [userDefaults setObject:self.name forKey:[self getKey:@"name" andPara:customerid]];
     [userDefaults setObject:self.telephoneNumber forKey:[self getKey:@"telephone" andPara:customerid]];
-    [userDefaults setObject:@(39) forKey:[self getKey:@"latitude" andPara:customerid]];
-    [userDefaults setObject:@(116) forKey:[self getKey:@"longitude" andPara:customerid]];
     [userDefaults setObject:self.gender forKey:[self getKey:@"gender" andPara:customerid]];
     [userDefaults setObject:@"北京石景山" forKey:[self getKey:@"majoraddress" andPara:customerid]];
     [userDefaults setObject:self.brithday forKey:[self getKey:@"memo" andPara:customerid]];

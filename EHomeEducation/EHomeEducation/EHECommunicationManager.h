@@ -48,4 +48,8 @@
 //从服务器删除订单
 -(void) removeOrderFromServerWithOrderId:(int) orderId;
 
+//获取用户头像
+-(NSData*)downloadUserIcon:(NSString *)iconPath;
+//通过customerid获得老师评价
+-(NSArray *)loadCommentsWithCustomerId:(int)customerId;
 @end

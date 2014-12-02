@@ -185,10 +185,13 @@
     {
     EHEOrder * order=[allOrders objectAtIndex:[indexPath row]];
     cell.labelTeacherInfomation.text=order.teachername;
+    cell.labelTeacherInfomation.font=[UIFont fontWithName:@"FZKATJW--GB1-0" size:16.0f];
     cell.labelDate.text=order.orderdate;
     cell.labelDate.textColor=[UIColor grayColor];
     cell.labelSubject.text=[NSString stringWithFormat:@"科目:%@",order.subjectinfo];
-        cell.accessoryType=UITableViewCellAccessoryDetailDisclosureButton;
+    cell.labelSubject.font=[UIFont fontWithName:@"MYoungHKS" size:14.0f];
+    cell.labelDate.font=[UIFont fontWithName:@"FZKATJW--GB1-0" size:14.0f];
+    cell.accessoryType=UITableViewCellAccessoryDetailDisclosureButton;
     }
     return cell;
 }

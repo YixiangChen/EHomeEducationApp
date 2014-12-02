@@ -11,9 +11,10 @@
 #import "BMKMapManager.h"
 #import "BMapKit.h"
 #import "BMKMapView.h"
+#import <CoreLocation/CoreLocation.h>
 //这是一个测试的注释
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate,UITabBarControllerDelegate,BMKLocationServiceDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate,UITabBarControllerDelegate,BMKLocationServiceDelegate,CLLocationManagerDelegate>
 {
   BMKMapManager * _mapManager;
 }
@@ -25,7 +26,7 @@
 @property (strong, nonatomic) UITabBarController *tab;
 @property(strong,nonatomic)BMKLocationService * locationService;
 @property(nonatomic)CLLocationCoordinate2D coor;
-
+@property(strong,nonatomic) CLLocationManager * locationManager;
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 

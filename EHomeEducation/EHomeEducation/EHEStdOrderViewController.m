@@ -72,9 +72,14 @@
         
     }
     
+    NSUserDefaults * userDefault=[NSUserDefaults standardUserDefaults];
+    NSDictionary * latitudeAndLongitude= [userDefault objectForKey:@"latitudeAndLongitude"];
+    NSString * latitude=[latitudeAndLongitude objectForKey:@"latitude"];
+    NSString * longitude=[latitudeAndLongitude objectForKey:@"longitude"];
+    
     [self.dictOrder setObject:customerid forKey:@"customerid"];
-    [self.dictOrder setObject:@(119.000000) forKey:@"latitude"];
-    [self.dictOrder setObject:@(39.000000) forKey:@"longitude"];
+    [self.dictOrder setObject:latitude forKey:@"latitude"];
+    [self.dictOrder setObject:longitude forKey:@"longitude"];
     [self.dictOrder setObject:self.teacher.teacherId forKey:@"teacherid"];    
     [self.dictOrder setObject:@(0) forKey:@"orderstatus"];
     [self.dictOrder setObject:self.selectedLocation forKey:@"serviceaddress"];

@@ -41,6 +41,8 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
+    [[EHECommunicationManager getInstance]loadTeachersInfo];
+    
     self.mapSearching = [[EHEStdMapSearchingViewController alloc] initWithNibName:nil bundle:nil];
     
     self.segmentedControl = [[UISegmentedControl alloc]initWithItems:[[NSArray alloc]initWithObjects:@"列表",@"地图",nil]];
@@ -207,6 +209,7 @@
     {
         NSLog(@"这是地图");
         self.tableView.scrollEnabled=NO;
+        self.mapSearching.searchingViewController=self;
         [self.view addSubview: self.mapSearching.view];
     }
     
