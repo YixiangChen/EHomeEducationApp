@@ -43,7 +43,7 @@
     // Do any additional setup after loading the view from its nib.
 }
 //在界面刚显示出来的时候就要对数据进行更新
--(void)viewWillAppear:(BOOL)animated
+-(void)viewDidAppear:(BOOL)animated
 {
     //通过NSUserDefaults来对用户名进行拿取
     NSUserDefaults * userDefaults=[NSUserDefaults standardUserDefaults];
@@ -145,8 +145,28 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     //每个字典中的key 所对应的order的数量，如果key所对应的value没有值，那么返回1；
-    NSArray * dictionaryAllKeys=[self.orderDictionary allKeys];
-    NSArray * ordersInSection=[self.orderDictionary objectForKey:[dictionaryAllKeys objectAtIndex:section]];
+    NSArray * ordersInSection=nil;
+    if(section==0)
+    {
+        ordersInSection=[self.orderDictionary objectForKey:@"刚发出的订单"];
+    }
+    else if(section==1)
+    {
+        ordersInSection=[self.orderDictionary objectForKey:@"教师确认订单"];
+    }
+    else if(section==2)
+    {
+      ordersInSection=[self.orderDictionary objectForKey:@"已取消的订单"];
+    }
+    else if(section==3)
+    {
+        ordersInSection=[self.orderDictionary objectForKey:@"未完成订单"];
+    }
+    else if(section==4)
+    {
+        ordersInSection=[self.orderDictionary objectForKey:@"已完成订单"];
+    }
+    
     if([ordersInSection count]==0)
     {
         return 1;
@@ -171,8 +191,27 @@
         cell=[[EHEStdBookingTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Identifier];
     }
     //如果dictionary中的key对应的value有数据则返回订单数据，如果没有，则返回空
-    NSArray * allKeys=[self.orderDictionary allKeys];
-    NSArray * allOrders=[self.orderDictionary objectForKey:[allKeys objectAtIndex:[indexPath section]]];
+    NSArray * allOrders=nil;
+    if([indexPath section]==0)
+    {
+    allOrders=[self.orderDictionary objectForKey:@"刚发出的订单"];
+    }
+    else if([indexPath section]==1)
+    {
+    allOrders=[self.orderDictionary objectForKey:@"教师确认订单"];
+    }
+    else if([indexPath section]==2)
+    {
+    allOrders=[self.orderDictionary objectForKey:@"已取消的订单"];
+    }
+    else if([indexPath section]==3)
+    {
+    allOrders=[self.orderDictionary objectForKey:@"未完成订单"];
+    }
+    else if([indexPath section]==4)
+    {
+    allOrders=[self.orderDictionary objectForKey:@"已完成订单"];
+    }
     cell.teacherIcon.image=[UIImage imageNamed:@"male_tablecell"];
     if(allOrders.count==0)
     {
@@ -224,16 +263,38 @@
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     //给组起名字，如果该组下没有数据，则名字加上空，反之则显示订单分组名字
-    NSArray * allKeys= [self.orderDictionary allKeys];
-    NSString * key=[allKeys objectAtIndex:section];
-    NSArray * valueArray= [self.orderDictionary objectForKey:key];
-    if(valueArray.count==0)
+//    NSArray * allKeys= [self.orderDictionary allKeys];
+//    NSString * key=[allKeys objectAtIndex:section];
+//    NSArray * valueArray= [self.orderDictionary objectForKey:key];
+//    if(valueArray.count==0)
+//    {
+//        return [NSString stringWithFormat:@"%@(订单为空)",key];
+//    }
+//    else
+//    {
+//    return [self.orderDictionary.allKeys objectAtIndex:section];
+//    }
+    
+    if(section==0)
     {
-        return [NSString stringWithFormat:@"%@(订单为空)",key];
+      return @"刚发出的订单";
     }
-    else
+    else if(section==1)
     {
-    return [self.orderDictionary.allKeys objectAtIndex:section];
+     return @"已确认的订单";
     }
+    else if(section==2)
+    {
+        return @"取消的订单";
+    }
+    else if(section==3)
+    {
+        return @"未完成的订单";
+    }
+    else if(section==4)
+    {
+        return @"已完成的订单";
+    }
+    return nil;
 }
 @end

@@ -176,7 +176,7 @@
     
     
     NSLog(@"以下是发送的订单详情 %@",dictOrder);
-    NSString * postData = [NSString stringWithFormat:@"{\"customerid\":%@,\"latitude\":\"%f\",\"longitude\":\"%f\",\"serviceaddress\":\"%@\",\"teacherid\":%@,\"orderdate\":\"%@\",\"timeperiod\":\"%@\",\"objectinfo\":\"%@\",\"subjectinfo\":\"%@\",\"memo\":\"%@\",\"orderstatus\":%@,\"apptype\":%d}",[dictOrder objectForKey:@"customerid"],latitude.floatValue,longitude.floatValue,[dictOrder objectForKey:@"serviceaddress"],[dictOrder objectForKey:@"teacherid"],[dictOrder objectForKey:@"orderdate"],[dictOrder objectForKey:@"timeperiod"],[dictOrder objectForKey:@"objectinfo"],[dictOrder objectForKey:@"subjectinfo"],[dictOrder objectForKey:@"memo"], [dictOrder objectForKey:@"orderstatus"],3];
+    NSString * postData = [NSString stringWithFormat:@"{\"customerid\":%@,\"latitude\":\"%f\",\"longitude\":\"%f\",\"serviceaddress\":\"%@\",\"teacherid\":%@,\"orderdate\":\"%@\",\"timeperiod\":\"%@\",\"objectinfo\":\"%@\",\"subjectinfo\":\"%@\",\"memo\":\"%@\",\"orderstatus\":%@,\"apptype\":%d}",[dictOrder objectForKey:@"customerid"],latitude.floatValue,longitude.floatValue,[dictOrder objectForKey:@"serviceaddress"],[dictOrder objectForKey:@"teacherid"],[dictOrder objectForKey:@"orderdate"],[dictOrder objectForKey:@"timeperiod"],[dictOrder objectForKey:@"objectinfo"],[dictOrder objectForKey:@"subjectinfo"],[dictOrder objectForKey:@"memo"], [dictOrder objectForKey:@"orderstatus"],1];
     
     NSLog(@"postData=%@",postData);
     

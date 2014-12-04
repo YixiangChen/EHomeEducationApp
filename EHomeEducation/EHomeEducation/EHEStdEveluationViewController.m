@@ -9,7 +9,6 @@
 #import "EHEStdEveluationViewController.h"
 #import "EHECommunicationManager.h"
 #import "EHEStdCommentCell.h"
-#import "EHEStdCommon.h"
 #import "EHETeacher.h"
 #import "EHECoreDataManager.h"
 #import "Defines.h"

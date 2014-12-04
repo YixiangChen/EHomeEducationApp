@@ -142,8 +142,67 @@
         
     }
     
+    if (SYSTEM_VERSION >= 8.0) {
+        //ios8注册推送
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge
+                                                                                             |UIUserNotificationTypeAlert
+                                                                                             |UIUserNotificationTypeSound) categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+    }
+    else
+    {
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeSound|UIRemoteNotificationTypeAlert)];
+    }
+    
+    if(launchOptions != nil){
+        NSLog(@"这是一个从远程推送得到的信息");
+        application.applicationIconBadgeNumber = 0;
+    }
+    
     return YES;
 }
+#if __IPHONE_8_0 <= __IPHONE_OS_VERSION_MAX_ALLOWED
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
+{
+    [application registerForRemoteNotifications];
+}
+#endif
+-(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    //这里需要判断是否登录，必须使用登录后的id，如果第一次使用，那么id没有那就传一个0过去，那么ownerid就是0，然后下次有了用户了，则将对应的deviceToken更新成该用户的。
+    //NSLog(@"%@",deviceToken);
+    NSString * deviceTokenStr = deviceToken.description;
+    deviceTokenStr = [deviceTokenStr stringByReplacingOccurrencesOfString:@"<" withString:@""];
+    deviceTokenStr = [deviceTokenStr stringByReplacingOccurrencesOfString:@">" withString:@""];
+    //将deviceToken弄成一个没有<>和空格的连续64位字符串。
+    deviceTokenStr = [deviceTokenStr stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    NSLog(@"deviceTokenStr=%@",deviceTokenStr);
+    
+    //拿到token之后，发送请求，然后存入服务器。
+    NSString * urlString=[NSString stringWithFormat:@"%@api/common/devicetokenregister.action",@"http://218.249.130.194:8080/ehomeedu/"];
+    NSLog(@"urlstring=%@",urlString);
+    NSURL * url = [NSURL URLWithString:urlString];
+    NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:url];
+    [request setHTTPMethod:@"POST"];
+    NSString * postData = [NSString stringWithFormat:@"info={\"devicetoken\":\"%@\",\"tokentype\":0,\"ownerid\":270,\"multipledevice\":0}",deviceTokenStr];
+    [request setHTTPBody:[postData dataUsingEncoding:NSUTF8StringEncoding]];
+    NSError * error = nil;
+    
+    NSData * data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
+    NSLog(@"error:%@",error);
+    NSLog(@"data:%@",[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding]);
+    NSLog(@"%@",postData);
+    
+}
+-(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    //收到推送通知的方法
+    NSLog(@"2222:%@",userInfo);
+    application.applicationIconBadgeNumber = 0;
+}
+
+
 -(BOOL)checkIfNetWorking
 {
     self.check=YES;

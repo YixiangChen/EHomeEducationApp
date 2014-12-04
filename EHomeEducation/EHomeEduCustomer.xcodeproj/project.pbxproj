@@ -545,14 +545,14 @@
 		7960F1211A1C83C300DCEA45 /* EHETchSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHETchSettingViewController.h; sourceTree = "<group>"; };
 		7960F1221A1C83C300DCEA45 /* EHETchSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHETchSettingViewController.m; sourceTree = "<group>"; };
 		7960F1231A1C83C300DCEA45 /* EHETchSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHETchSettingViewController.xib; sourceTree = "<group>"; };
-		797C30671A19D32900DB84E4 /* EHomeEducation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EHomeEducation.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		797C30671A19D32900DB84E4 /* EHomeEduCustomer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EHomeEduCustomer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		797C306B1A19D32900DB84E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		797C306C1A19D32900DB84E4 /* main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
 		797C306E1A19D32900DB84E4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		797C306F1A19D32900DB84E4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		797C307A1A19D32900DB84E4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		797C307D1A19D32900DB84E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		797C30831A19D32900DB84E4 /* EHomeEducationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EHomeEducationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		797C30831A19D32900DB84E4 /* EHomeEduCustomerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EHomeEduCustomerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		797C30881A19D32900DB84E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		797C30891A19D32900DB84E4 /* EHomeEducationTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EHomeEducationTests.m; sourceTree = "<group>"; };
 		797C30C31A19DA6E00DB84E4 /* EHETchSearchingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHETchSearchingTableViewController.h; sourceTree = "<group>"; };
@@ -1250,8 +1250,8 @@
 		797C30681A19D32900DB84E4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				797C30671A19D32900DB84E4 /* EHomeEducation.app */,
-				797C30831A19D32900DB84E4 /* EHomeEducationTests.xctest */,
+				797C30671A19D32900DB84E4 /* EHomeEduCustomer.app */,
+				797C30831A19D32900DB84E4 /* EHomeEduCustomerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1431,9 +1431,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		797C30661A19D32900DB84E4 /* EHomeEducation */ = {
+		797C30661A19D32900DB84E4 /* EHomeEduCustomer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 797C308D1A19D32900DB84E4 /* Build configuration list for PBXNativeTarget "EHomeEducation" */;
+			buildConfigurationList = 797C308D1A19D32900DB84E4 /* Build configuration list for PBXNativeTarget "EHomeEduCustomer" */;
 			buildPhases = (
 				797C30631A19D32900DB84E4 /* Sources */,
 				797C30641A19D32900DB84E4 /* Frameworks */,
@@ -1443,14 +1443,14 @@
 			);
 			dependencies = (
 			);
-			name = EHomeEducation;
+			name = EHomeEduCustomer;
 			productName = EHomeEducation;
-			productReference = 797C30671A19D32900DB84E4 /* EHomeEducation.app */;
+			productReference = 797C30671A19D32900DB84E4 /* EHomeEduCustomer.app */;
 			productType = "com.apple.product-type.application";
 		};
-		797C30821A19D32900DB84E4 /* EHomeEducationTests */ = {
+		797C30821A19D32900DB84E4 /* EHomeEduCustomerTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 797C30901A19D32900DB84E4 /* Build configuration list for PBXNativeTarget "EHomeEducationTests" */;
+			buildConfigurationList = 797C30901A19D32900DB84E4 /* Build configuration list for PBXNativeTarget "EHomeEduCustomerTests" */;
 			buildPhases = (
 				797C307F1A19D32900DB84E4 /* Sources */,
 				797C30801A19D32900DB84E4 /* Frameworks */,
@@ -1461,9 +1461,9 @@
 			dependencies = (
 				797C30851A19D32900DB84E4 /* PBXTargetDependency */,
 			);
-			name = EHomeEducationTests;
+			name = EHomeEduCustomerTests;
 			productName = EHomeEducationTests;
-			productReference = 797C30831A19D32900DB84E4 /* EHomeEducationTests.xctest */;
+			productReference = 797C30831A19D32900DB84E4 /* EHomeEduCustomerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -1484,7 +1484,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 797C30621A19D32900DB84E4 /* Build configuration list for PBXProject "EHomeEducation" */;
+			buildConfigurationList = 797C30621A19D32900DB84E4 /* Build configuration list for PBXProject "EHomeEduCustomer" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1498,8 +1498,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				797C30661A19D32900DB84E4 /* EHomeEducation */,
-				797C30821A19D32900DB84E4 /* EHomeEducationTests */,
+				797C30661A19D32900DB84E4 /* EHomeEduCustomer */,
+				797C30821A19D32900DB84E4 /* EHomeEduCustomerTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1688,7 +1688,7 @@
 /* Begin PBXTargetDependency section */
 		797C30851A19D32900DB84E4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 797C30661A19D32900DB84E4 /* EHomeEducation */;
+			target = 797C30661A19D32900DB84E4 /* EHomeEduCustomer */;
 			targetProxy = 797C30841A19D32900DB84E4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1816,7 +1816,7 @@
 					"$(PROJECT_DIR)/EHomeEducation/ShareSDK/Extend/YiXinSDK",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = EHomeEduCustomer;
 			};
 			name = Debug;
 		};
@@ -1846,7 +1846,7 @@
 					"$(PROJECT_DIR)/EHomeEducation/ShareSDK/Extend/YiXinSDK",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = EHomeEduCustomer;
 			};
 			name = Release;
 		};
@@ -1864,7 +1864,7 @@
 				);
 				INFOPLIST_FILE = EHomeEducationTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = EHomeEduCustomerTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EHomeEducation.app/EHomeEducation";
 			};
 			name = Debug;
@@ -1879,7 +1879,7 @@
 				);
 				INFOPLIST_FILE = EHomeEducationTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = EHomeEduCustomerTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EHomeEducation.app/EHomeEducation";
 			};
 			name = Release;
@@ -1887,7 +1887,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		797C30621A19D32900DB84E4 /* Build configuration list for PBXProject "EHomeEducation" */ = {
+		797C30621A19D32900DB84E4 /* Build configuration list for PBXProject "EHomeEduCustomer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				797C308B1A19D32900DB84E4 /* Debug */,
@@ -1896,7 +1896,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		797C308D1A19D32900DB84E4 /* Build configuration list for PBXNativeTarget "EHomeEducation" */ = {
+		797C308D1A19D32900DB84E4 /* Build configuration list for PBXNativeTarget "EHomeEduCustomer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				797C308E1A19D32900DB84E4 /* Debug */,
@@ -1905,7 +1905,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		797C30901A19D32900DB84E4 /* Build configuration list for PBXNativeTarget "EHomeEducationTests" */ = {
+		797C30901A19D32900DB84E4 /* Build configuration list for PBXNativeTarget "EHomeEduCustomerTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				797C30911A19D32900DB84E4 /* Debug */,
