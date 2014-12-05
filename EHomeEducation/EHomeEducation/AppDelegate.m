@@ -110,7 +110,7 @@
     
     _mapManager = [[BMKMapManager alloc]init];
     // 如果要关注网络及授权验证事件，请设定     generalDelegate参数
-    BOOL ret = [_mapManager start:@"XfRTzKUzfDjbBIKC55iY2Wa1"  generalDelegate:nil];
+    BOOL ret = [_mapManager start:@"I0i8cq89va4hBInHVP3h9AGs"  generalDelegate:nil];
     if (!ret) {
         NSLog(@"manager start failed!");
     }
@@ -166,6 +166,7 @@
 {
     [application registerForRemoteNotifications];
 }
+
 #endif
 -(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
