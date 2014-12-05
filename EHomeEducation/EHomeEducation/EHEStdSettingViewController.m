@@ -14,6 +14,8 @@
 #import "UIImageView+AFNetworking.h"
 #import "EHECommunicationManager.h"
 #import "EHEStdEveluationViewController.h"
+#import "Reachability.h"
+#import "Defines.h"
 @interface EHEStdSettingViewController ()
 
 @end
@@ -35,7 +37,7 @@
     [self.view addSubview:self.tableViewSetting];
     
     self.personalInfomationArray=[NSArray arrayWithObjects:@"头像",@"评论",nil];
-    
+    self.imageData=[[NSMutableData alloc]initWithCapacity:10];
     self.systemSettingArray=[NSArray arrayWithObjects:@"系统设置",@"退出登录",nil];
     self.connectAndShareArray=[NSArray arrayWithObjects:@"分享",@"联系我们", nil];
     
@@ -46,7 +48,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
--(void)viewWillAppear:(BOOL)animated
+-(void)viewDidAppear:(BOOL)animated
 {
     NSLog(@"xianshile");
     //通过NSUserDefaults来对用户名进行拿取
@@ -65,15 +67,71 @@
     {
         [[self navigationController] setNavigationBarHidden:NO animated:YES];
     }
-    [self.tableViewSetting reloadData];
+    if([self checkIfNetWorking])
+    {
+        NSUserDefaults * userDefaults=[NSUserDefaults standardUserDefaults];
+        self.userIconString=[userDefaults objectForKey:@"userIcons"];
+        NSString * urlString=[NSString stringWithFormat:@"%@%@",kURLLoadUserIcon,self.userIconString];
+        NSURL * url=[NSURL URLWithString:urlString];
+        NSURLRequest * request=[NSURLRequest requestWithURL:url];
+        [NSURLConnection connectionWithRequest:request delegate:self];
+    }
+    else
+    {
+        NSUserDefaults * userDefaults=[NSUserDefaults standardUserDefaults];
+        NSData * imageData=[userDefaults objectForKey:[self getKey:@"image" andCustomerid:[userDefaults objectForKey:@"myCustomerid"]]];
+        self.userImage=[UIImage imageWithData:imageData];
+    }
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeLanguage:) name:@"ChangeLanguageNotificationName" object:nil];
 }
--(void) changeLanguage:(NSNotification *)noti
+-(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
-    self.userIconString=noti.userInfo[@"userIcon"];
-    NSLog(@"%@",self.userIconString);
+    [self.imageData appendData:data];
+}
+-(void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    self.userImage=[[UIImage alloc]initWithData:self.imageData];
     [self.tableViewSetting reloadData];
 }
+-(void)changeLanguage:(NSNotification *)noti
+{
+    if([self checkIfNetWorking])
+    {
+        EHECommunicationManager * commucationManager=[EHECommunicationManager getInstance];
+        self.userImage=[UIImage imageWithData:[commucationManager downloadUserIcon:self.userIconString]];
+        NSLog(@"userImage=%@",self.userIconString);
+    }
+    else
+    {
+        NSUserDefaults * userDefaults=[NSUserDefaults standardUserDefaults];
+        NSData * imageData=[userDefaults objectForKey:[self getKey:@"image" andCustomerid:[userDefaults objectForKey:@"myCustomerid"]]];
+        self.userImage=[UIImage imageWithData:imageData];
+    }
+    [self.tableViewSetting reloadData];
+}
+
+//判断有无网络
+-(BOOL)checkIfNetWorking
+{
+    self.check=YES;
+    Reachability *reach = [Reachability reachabilityWithHostName:@"www.apple.com"];
+    switch ([reach currentReachabilityStatus])
+    {
+        case NotReachable:
+            self.check  = NO;
+            NSLog(@"没有网络");
+            break;
+        case ReachableViaWiFi:
+            NSLog(@"有网络");
+            break;
+        case ReachableViaWWAN:
+            NSLog(@"有网络");
+            break;
+    }
+    return self.check;
+}
+
 #pragma mark- TableView DataSource Method
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -120,10 +178,7 @@
                 cell.contentLabel.alpha=0.0f;
             }
             cell.nameLabel.text=[userDefaults objectForKey:@"userName"];
-            NSUserDefaults * userDefaults=[NSUserDefaults standardUserDefaults];
-            NSData * imageData=[userDefaults objectForKey:[self getKey:@"image" andCustomerid:[userDefaults objectForKey:@"myCustomerid"]]];
-            
-            cell.settingImageView.image=[UIImage imageWithData:imageData];
+            cell.settingImageView.image=self.userImage;
             
             [cell.settingImageView.layer setBorderColor: [[UIColor grayColor] CGColor]];//边框灰色
             [cell.settingImageView.layer setBorderWidth: 1.0];//宽度为1
@@ -181,6 +236,8 @@
         if([indexPath row]==0)
         {
         EHEStdSettingPersonalInformation * personInfomation=[[EHEStdSettingPersonalInformation alloc]init];
+            NSLog(@"self.userImage=%@",self.userImage);
+            personInfomation.image=self.userImage;
         [self.navigationController pushViewController:personInfomation animated:YES];
         }
         else if([indexPath row]==1)

@@ -65,6 +65,7 @@
     [request setHTTPBody:[data dataUsingEncoding:NSUTF8StringEncoding]];
     
     NSData * responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    NSLog(@"%@",[[NSString alloc]initWithData:responseData encoding:NSUTF8StringEncoding]);
     if(responseData != nil){
         //使用系统自带JSON解析方法
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:nil];
@@ -73,7 +74,12 @@
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
             [defaults setObject:self.txtUserName.text forKey:@"userName"];
             [defaults setObject:self.txtPassWord.text forKey:@"passWord"];
+
             [defaults setObject:[[dict objectForKey:@"userinfo"] objectForKey:@"customerid"] forKey:@"myCustomerid"];
+            [defaults setObject:[[dict objectForKey:@"userinfo"] objectForKey:@"name"] forKey:@"name"];
+            [defaults setObject:[[dict objectForKey:@"userinfo"] objectForKey:@"telephone"] forKey:@"telephone"];
+            [defaults setObject:[[dict objectForKey:@"userinfo"] objectForKey:@"gender"] forKey:@"gender"];
+            [defaults setObject:[[dict objectForKey:@"userinfo"] objectForKey:@"memo"] forKey:@"birthday"];
             [defaults synchronize];
             
             NSLog(@"dict=%@",dict);
@@ -103,4 +109,5 @@
     EHEStdRegisterViewController *registerViewController = [[EHEStdRegisterViewController alloc] initWithNibName:nil bundle:nil];
     [self presentViewController:registerViewController animated:YES completion:nil];
 }
+
 @end

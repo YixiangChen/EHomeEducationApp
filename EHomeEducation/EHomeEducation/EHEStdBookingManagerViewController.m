@@ -13,6 +13,7 @@
 #import "EHEStdBookingDetailViewController.h"
 #import "EHEStdLoginViewController.h"
 #import "EHECommunicationManager.h"
+#import "AFHTTPRequestOperation.h"
 @interface EHEStdBookingManagerViewController ()
 
 @end
@@ -42,10 +43,9 @@
     
     // Do any additional setup after loading the view from its nib.
 }
-//在界面刚显示出来的时候就要对数据进行更新
--(void)viewDidAppear:(BOOL)animated
+-(void)viewWillAppear:(BOOL)animated
 {
-    //通过NSUserDefaults来对用户名进行拿取
+    [super viewWillAppear:animated];
     NSUserDefaults * userDefaults=[NSUserDefaults standardUserDefaults];
     NSString * userName=[userDefaults objectForKey:@"userName"];
     NSString * password=[userDefaults objectForKey:@"passWord"];
@@ -60,6 +60,10 @@
     {
         [[self navigationController] setNavigationBarHidden:NO animated:YES];
     }
+}
+//在界面刚显示出来的时候就要对数据进行更新
+-(void)viewDidAppear:(BOOL)animated
+{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeLanguage:) name:@"ChangeLanguageNotificationName" object:nil];
     [self bandOrdered];
 }
@@ -245,17 +249,36 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
     //如果对应的分组没有订单数据，则点击没有效果，反之点击向bookingDetail传值order
-    NSArray * allKeys= [self.orderDictionary allKeys];
-    NSString * key=[allKeys objectAtIndex:[indexPath section]];
-    NSArray * valueArray= [self.orderDictionary objectForKey:key];
-    if(valueArray.count==0)
+    NSInteger section=[indexPath section];
+    NSArray * ordersArray=nil;
+    if(section==0)
+    {
+     ordersArray= [self.orderDictionary objectForKey:@"刚发出的订单"];
+    }
+    else if(section==1)
+    {
+      ordersArray= [self.orderDictionary objectForKey:@"教师确认订单"];
+    }
+    else if(section==2)
+    {
+      ordersArray= [self.orderDictionary objectForKey:@"已取消的订单"];
+    }
+    else if(section==3)
+    {
+        ordersArray= [self.orderDictionary objectForKey:@"未完成订单"];
+    }
+    else if(section==4)
+    {
+        ordersArray= [self.orderDictionary objectForKey:@"已完成订单"];
+    }
+    if(ordersArray.count==0)
     {
       
     }
     else
     {
     EHEStdBookingDetailViewController * bookingDetailViewController=[[EHEStdBookingDetailViewController alloc]initWithNibName:nil bundle:nil];
-    EHEOrder * order=(EHEOrder *)[valueArray objectAtIndex:[indexPath row]];
+    EHEOrder * order=(EHEOrder *)[ordersArray objectAtIndex:[indexPath row]];
     bookingDetailViewController.order=order;
     [self.navigationController pushViewController:bookingDetailViewController animated:YES];
     }

@@ -13,7 +13,7 @@
 #import "EHECommunicationManager.h"
 #import "EHEStdLoginViewController.h"
 #import "AFHTTPRequestOperation.h"
-
+#import "Reachability.h"
 @interface EHEStdSettingPersonalInformation ()
 
 @end
@@ -23,28 +23,87 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    NSUserDefaults * userDefault=[NSUserDefaults standardUserDefaults];
+    
+    
     self.tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320,self.view.frame.size.height) style:UITableViewStyleGrouped];
     self.tableView.dataSource=self;
     self.tableView.delegate=self;
+    self.tableView.bounces=NO;
     self.tableView.separatorStyle=UITableViewCellSeparatorStyleSingleLine;
     [self.view addSubview:self.tableView];
     
     UIBarButtonItem * sendButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:self action:@selector(sendInfomation)];
     self.navigationItem.rightBarButtonItem=sendButtonItem;
-    self.image=nil;
-    
-    NSUserDefaults * userDefault=[NSUserDefaults standardUserDefaults];
-    NSString * customerid=[userDefault objectForKey:@"myCustomerid"];
 
+    NSString * customerid=[userDefault objectForKey:@"myCustomerid"];
     NSString * keyString=[self getKey:@"name" andPara:customerid];
     NSLog(@"keyString=%@",keyString);
-    self.name=[userDefault objectForKey:[self getKey:@"name" andPara:customerid]];
-    self.gender=[userDefault objectForKey:[self getKey:@"gender" andPara:customerid]];
-    self.telephoneNumber=[userDefault objectForKey:[self getKey:@"telephone" andPara:customerid]];
-    self.brithday=[userDefault objectForKey:[self getKey:@"memo" andPara:customerid]];
-    NSData * imageData =[userDefault objectForKey:[self getKey:@"image" andPara:customerid]];
-    UIImage * myImage=[UIImage imageWithData:imageData];
-    self.image=myImage;
+    self.name=[userDefault objectForKey:@"name"];
+    self.gender=[userDefault objectForKey:@"gender"];
+    self.telephoneNumber=[userDefault objectForKey:@"telephone"];
+    self.brithday=[userDefault objectForKey:@"birthday"];
+
+    if([self checkIfNetWorking])
+    {
+        [self getStudentAddress];
+        
+    }
+    else if(![self checkIfNetWorking])
+    {
+        self.address=nil;
+    }
+
+}
+-(BOOL)checkIfNetWorking
+{
+    self.check=YES;
+    Reachability *reach = [Reachability reachabilityWithHostName:@"www.apple.com"];
+    switch ([reach currentReachabilityStatus])
+    {
+        case NotReachable:
+            self.check  = NO;
+            NSLog(@"没有网络");
+            break;
+        case ReachableViaWiFi:
+            NSLog(@"有网络");
+            break;
+        case ReachableViaWWAN:
+            NSLog(@"有网络");
+            break;
+    }
+    return self.check;
+}
+
+-(void)getStudentAddress
+{
+    NSUserDefaults * userDefault=[NSUserDefaults standardUserDefaults];
+    NSDictionary * locationDic=[userDefault objectForKey:@"latitudeAndLongitude"];
+    NSString * latitude=[locationDic objectForKey:@"latitude"];
+    NSString * longitude=[locationDic objectForKey:@"longitude"];
+    NSLog(@"latutide=%@,longitude=%@",latitude,longitude);
+    
+    CLLocation *c = [[CLLocation alloc] initWithLatitude:latitude.floatValue longitude:longitude.floatValue];
+    //创建位置
+    CLGeocoder *revGeo = [[CLGeocoder alloc] init];
+    [revGeo reverseGeocodeLocation:c
+                 completionHandler:^(NSArray *placemarks, NSError *error) {
+                     if (!error && [placemarks count] > 0)
+                     {
+                         NSDictionary *dict =
+                         [[placemarks objectAtIndex:0] addressDictionary];
+                         NSString * location=[[dict objectForKey:@"FormattedAddressLines"] objectAtIndex:0];
+                         location=[location substringFromIndex:2];
+                         self.address=location;
+                         NSLog(@"self.address=%@",self.address);
+                         [self.tableView reloadData];
+                         
+                     }
+                     else
+                     {
+                         NSLog(@"ERROR: %@", error);
+                     }
+                 }];
     
 }
 -(void)sendInfomation
@@ -58,7 +117,7 @@
     EHECommunicationManager * communicationManager=[EHECommunicationManager getInstance];
     NSLog(@"name=%@",self.telephoneNumber);
     
-    NSDictionary * informationDictionary=@{@"customerid":[userDefaults objectForKey:@"myCustomerid"],@"name":self.name,@"gender":self.gender,@"telephone":self.telephoneNumber,@"latitude":latitude,@"longitude":longitude,@"majoraddress":@"北京石景山",@"memo":self.brithday};
+    NSDictionary * informationDictionary=@{@"customerid":[userDefaults objectForKey:@"myCustomerid"],@"name":self.name,@"gender":self.gender,@"telephone":self.telephoneNumber,@"latitude":latitude,@"longitude":longitude,@"majoraddress":self.address,@"memo":self.brithday};
 
     NSString * customerid=[userDefaults objectForKey:@"myCustomerid"];
     [communicationManager sendOtherInfo:informationDictionary];
@@ -71,7 +130,6 @@
     [userDefaults setObject:@"北京石景山" forKey:[self getKey:@"majoraddress" andPara:customerid]];
     [userDefaults setObject:self.brithday forKey:[self getKey:@"memo" andPara:customerid]];
     [userDefaults synchronize];
-    
 }
 
 -(NSString*)getKey:(NSString *)para1 andPara:(NSString *)para2
@@ -183,12 +241,17 @@
     }
     else if(row==4)
     {
+        CGRect labelFrame= cell.contentLabel.frame;
+        labelFrame.origin.x-=20;
+        labelFrame.size.width+=20;
+        cell.contentLabel.frame=labelFrame;
+        cell.contentLabel.font=[UIFont systemFontOfSize:12.0f];
         cell.settingLabel.text=@"地址:";
-        cell.contentLabel.text=@"北京石景山";
+        cell.contentLabel.text=self.address;
     }
     else
     {
-        cell.settingLabel.text=@"日期:";
+        cell.settingLabel.text=@"出生日期:";
         cell.contentLabel.text=self.brithday;
     }
     cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;

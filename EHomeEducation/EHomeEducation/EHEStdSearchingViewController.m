@@ -63,7 +63,7 @@
     self.coreDataManager = [EHECoreDataManager getInstance];
     self.allTeachersNearby = [[NSArray alloc] initWithArray:[self.coreDataManager fetchBasicInfosOfTeachers]];
     for (EHETeacher * teacher in self.allTeachersNearby) {
-        [[EHECommunicationManager getInstance] loadDataWithTeacherID:[teacher.teacherId integerValue]];
+        [[EHECommunicationManager getInstance] loadDataWithTeacherID:[teacher.teacherId intValue]];
     }
     
     
@@ -290,7 +290,7 @@
     // Create the next view controller.
     EHETeacherDetailViewController *detailViewController = [[EHETeacherDetailViewController alloc] initWithNibName:nil bundle:nil];
     EHETeacher * teacher = [self.fetchedResultController objectAtIndexPath:indexPath];
-    EHETeacher * teacherWithDetailInfos = [[EHECoreDataManager getInstance] fetchDetailInfosWithTeacherId:[teacher.teacherId integerValue]];
+    EHETeacher * teacherWithDetailInfos = [[EHECoreDataManager getInstance] fetchDetailInfosWithTeacherId:[teacher.teacherId intValue]];
     
     detailViewController.teacher = teacherWithDetailInfos;
     // Pass the selected object to the new view controller.

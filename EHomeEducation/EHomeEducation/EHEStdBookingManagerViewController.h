@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "EHEStdBookingTableViewCell.h"
 #import "EHESegmentedControlManager.h"
-@interface EHEStdBookingManagerViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@interface EHEStdBookingManagerViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,NSURLConnectionDataDelegate>
 @property(strong,nonatomic)EHESegmentedControlManager * segmentedControl;//自定义的一个segmentedControl
 @property(strong,nonatomic)UITableView * homeTeacherTableView;
 @property(strong,nonatomic)EHEStdBookingTableViewCell * bookingTableViewCell;
@@ -28,4 +28,5 @@
 @property(strong,nonatomic)NSMutableArray * unfinishedOrders;
 //已经完成的订单
 @property(strong,nonatomic)NSMutableArray * finishedOrders;
+@property(strong,nonatomic)NSMutableData * orderDatas;
 @end
