@@ -50,6 +50,11 @@
 
 //获取用户头像
 -(NSData*)downloadUserIcon:(NSString *)iconPath;
+
 //通过customerid获得老师评价
 -(NSArray *)loadCommentsWithCustomerId:(int)customerId;
+
+-(BOOL) loadCustomerDetailWithCustomerI:(int) customerId;
+//通过用户登陆后传回来的userIcon异步请求得到头像Data
+-(void)loadCustomerIconForCustomer:(NSString *)userIcon completionBlock:(void (^)(NSString *))completionBlock;
 @end

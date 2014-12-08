@@ -26,10 +26,13 @@
 #define kURLDeleteOrder             @"http://218.249.130.194:8080/ehomeedu/api/common/deleteorder.action"
 #define kURLLoadUserIcon            @"http://218.249.130.194:8080/ehomeedu"
 #define kURLFindCustomerComments    @"http://218.249.130.194:8080/ehomeedu/api/teacher/findcustomercomments.action"
-
+#define kURLFindCustomerDetail      @"http://218.249.130.194:8080/ehomeedu/api/teacher/findcustomerdetail.action"
 // System
 #define SYSTEM_VERSION [UIDevice currentDevice].systemVersion.floatValue
 
+//NetWorking Return
+#define kConnectionSuccess          @"Success"
+#define kConnectionFailure          @"Failure"
 
 // storyboard identifier
 

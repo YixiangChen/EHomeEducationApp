@@ -10,7 +10,7 @@
 #import "EHEStdSettingTableViewCell.h"
 #import "EHEStdSettingDetailViewController.h"
 #import "LXActionSheet.h"
-@interface EHEStdSettingViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate,LXActionSheetDelegate,NSURLConnectionDataDelegate>
+@interface EHEStdSettingViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate,LXActionSheetDelegate>
 @property(strong,nonatomic)UITableView * tableViewSetting;
 @property(strong,nonatomic)NSArray * personalInfomationArray;
 @property(strong,nonatomic)NSArray * systemSettingArray;

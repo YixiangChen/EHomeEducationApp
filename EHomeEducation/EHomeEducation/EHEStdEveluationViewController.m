@@ -34,6 +34,7 @@
     self.commonDate=[[NSMutableArray alloc]initWithCapacity:10];
     self.commonDictionary=[[NSMutableDictionary alloc]initWithCapacity:10];
     self.commonInfomation=[[NSMutableArray alloc]initWithCapacity:10];
+    self.sets=[[NSMutableSet alloc]initWithCapacity:10];
     
     NSUserDefaults * userDefaults=[NSUserDefaults standardUserDefaults];
     NSString * customerid=[userDefaults objectForKey:@"myCustomerid"];
@@ -45,40 +46,54 @@
     for(NSDictionary * dic in self.allCommentsArray)
     {
         NSNumber * teacherName=[dic objectForKey:@"teacherid"];
-        [self.teacherName addObject:teacherName];
+        [self.sets addObject:teacherName];
     }
+    NSLog(@"teacherName=%@",self.sets);
     
-    for(int i=0;i<self.teacherName.count;i++)
+    for(NSNumber * number in self.sets)
     {
-        NSDictionary * dic=[self.allCommentsArray objectAtIndex:i];
-        NSNumber * teacher1=[self.teacherName objectAtIndex:i];
-        NSNumber * teacher2=[dic objectForKey:@"teacherid"];
-        if(teacher1 ==teacher2)
+        NSMutableArray * arrayInfo=[[NSMutableArray alloc]initWithCapacity:0];
+        for(int i=0;i<[self.allCommentsArray count];i++)
         {
-            [self.commonArray addObject:[dic objectForKey:@"content"]];
-            [self.commonArray addObject:[dic objectForKey:@"commentdate"]];
-            NSArray * array=[[NSArray alloc]initWithObjects:self.commonArray,nil];
-            [self.commonDictionary setObject:array forKey:[self.teacherName objectAtIndex:i]];
+            NSDictionary * dict= [self.allCommentsArray objectAtIndex:i];
+            NSNumber * teacherid=[dict objectForKey:@"teacherid"];
+            NSLog(@"teacherid=%@,number=%@",teacherid,number);
+           if(teacherid.intValue==number.intValue)
+           {
+               NSString * content=[dict objectForKey:@"content"];
+               if([content isEqualToString:@""])
+               {
+               }
+               else
+               {
+               [arrayInfo addObject:[dict objectForKey:@"content"]];
+               }
+           }
         }
+        [self.commonDictionary setObject:arrayInfo forKey:number];
     }
-    NSLog(@"commonDic=%@",self.commonDictionary);
+    NSLog(@"self.commonDicitonary=%@",self.commonDictionary);
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+-(void)viewDidAppear:(BOOL)animated
+{
+    //[self.commonTableView reloadData];
+}
 #pragma mark- TableView DataSource Method-
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    NSLog(@"%d",[self.commonDictionary.allKeys count]);
+    NSLog(@"self.commonDic=%d",self.commonDictionary.allKeys.count);
     return [self.commonDictionary.allKeys count];
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     NSArray * allkeys=[self.commonDictionary allKeys];
     NSArray * allValues=[self.commonDictionary objectForKey:[allkeys objectAtIndex:section]];
-    NSLog(@"%d",allValues.count);
     return [allValues count];
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -91,22 +106,21 @@
     }
     NSArray * allTeacherids=[self.commonDictionary allKeys];
     NSInteger section=[indexPath section];
-    NSInteger row=[indexPath row];
     NSArray * allContents=[self.commonDictionary objectForKey:[allTeacherids objectAtIndex:section]];
-    NSArray * contentAndDate=[allContents objectAtIndex:row];
-    cell.textLabel.text=[contentAndDate objectAtIndex:0];
-    cell.detailTextLabel.text=[contentAndDate objectAtIndex:1];
+    NSString * content=[allContents objectAtIndex:[indexPath row]];
+    NSLog(@"content=%@",content);
+    cell.textLabel.text=content;
     return cell;
 }
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    NSArray * allKeys = [self.commonDictionary allKeys];
-    NSNumber * key=[allKeys objectAtIndex:section];
-    NSDictionary * teacherDic= [self loadDataWithTeacherID:key.intValue];
-    NSString * teacherName= [[teacherDic objectForKey:@"teacherinfo"] objectForKey:@"name"];
+    NSNumber * teacherid = [self.commonDictionary.allKeys objectAtIndex:section];
+    [self loadDataWithTeacherID:teacherid.intValue];
+    NSString * teacherName= [[self.teacherDic objectForKey:@"teacherinfo"] objectForKey:@"name"];
     return [NSString stringWithFormat:@"%@对你说......",teacherName];
 }
--(NSDictionary *)loadDataWithTeacherID:(int) teacherId {
+
+-(void)loadDataWithTeacherID:(int) teacherId {
     
     NSString * postData = [NSString stringWithFormat:@"{\"teacherid\":\"%d\"}",teacherId];
     
@@ -117,22 +131,8 @@
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:[data dataUsingEncoding:NSUTF8StringEncoding]];
     
-    NSError *error = nil;
-    NSData * responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
-    NSString * resposeString=[[NSString alloc]initWithData:responseData encoding:NSUTF8StringEncoding];
-    NSLog(@"responseString=%@",resposeString);
-    NSDictionary * dic=nil;
-    if(responseData != nil && error == nil){
-        
-        NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
-       // NSDictionary *dictTeacherInfo = dict[@"teacherinfo"];
-        NSLog(@"dict=%@",dict);
-        if([dict[@"code"] intValue] == 0){
-           dic=dict;
-        }else{
-            dic= nil;
-        }
-    }
-    return dic;
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        self.teacherDic=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
+    }];
 }
 @end

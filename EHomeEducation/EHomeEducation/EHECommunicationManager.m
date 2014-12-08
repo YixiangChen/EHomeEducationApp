@@ -416,4 +416,78 @@
         return NO;
     }
 }
+
+-(BOOL)loadCustomerDetailWithCustomerI:(int)customerId {
+    NSString * postData = [NSString stringWithFormat:@"{\"customerid\":\"%d\"}",customerId];
+    NSString *stringForURL = [NSString stringWithFormat:@"%@",kURLFindCustomerDetail];
+    NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:stringForURL]];
+    NSString * data = [NSString stringWithFormat:@"info=%@",postData];
+    
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBody:[data dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    NSError *error = nil;
+    NSData * responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
+    NSMutableString * string = [[NSMutableString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+    NSLog(@"%@",string);
+    
+    if(responseData != nil && error == nil){
+        NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
+        NSLog(@"dict ------ %@",dict);
+        NSDictionary *dictCustomerInfo = dict[@"customerinfo"];
+        if([dict[@"code"] intValue] == 0 && dict != nil){
+            NSLog(@"-----------------获取用户详情成功----------------");
+            NSLog(@"%@",dictCustomerInfo);
+            return YES;
+            
+        }else{
+            NSLog(@"%@",dict[@"message"]);
+            return  NO;
+        }
+    }else {
+        return NO;
+    }
+}
+
+-(void)loadCustomerIconForCustomer:(NSString *)userIcon completionBlock:(void (^)(NSString *))completionBlock {
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://218.249.130.194:8080/ehomeedu%@",userIcon]];
+    
+    if (url == nil)
+    {
+        NSLog(@"图片URL 为空");
+        return;
+    }
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+    [request setHTTPMethod:@"POST"];
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+     {
+         if (error)
+         {
+             NSLog(@"发送请求发生错误 %@",error);
+         }
+         else
+         {
+             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+             if (httpResponse.statusCode == 200)
+             {
+                 UIImage *image = [[UIImage alloc] initWithData:data];
+                 NSData * image_data = UIImagePNGRepresentation(image);
+                 // save image to cache directory
+                 [[NSUserDefaults standardUserDefaults] setObject:image_data forKey:[NSString stringWithFormat:@"image_for_customer_%@",userIcon]];
+                 [[NSUserDefaults standardUserDefaults] synchronize];
+                 
+                 completionBlock(kConnectionSuccess);
+             }
+             else
+             {
+                 NSLog(@"Communication status code not 200 --> %ld", (long)httpResponse.statusCode);
+                 completionBlock(kConnectionFailure);
+             }
+         }
+     }];
+    
+}
 @end

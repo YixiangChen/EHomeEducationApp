@@ -13,6 +13,7 @@
 #import "EHECommunicationManager.h"
 #import "EHEStdLoginViewController.h"
 #import "AFHTTPRequestOperation.h"
+#import "EHEStdSettingViewController.h"
 #import "Reachability.h"
 @interface EHEStdSettingPersonalInformation ()
 
@@ -24,7 +25,6 @@
     [super viewDidLoad];
     
     NSUserDefaults * userDefault=[NSUserDefaults standardUserDefaults];
-    
     
     self.tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320,self.view.frame.size.height) style:UITableViewStyleGrouped];
     self.tableView.dataSource=self;
@@ -54,6 +54,11 @@
         self.address=nil;
     }
 
+}
+-(void)viewWillDisappear:(BOOL)animated
+{
+    EHEStdSettingViewController * settingViewController=[[EHEStdSettingViewController alloc]initWithNibName:nil bundle:nil];
+    settingViewController.userImage=self.image;
 }
 -(BOOL)checkIfNetWorking
 {
@@ -104,8 +109,8 @@
                          NSLog(@"ERROR: %@", error);
                      }
                  }];
-    
 }
+
 -(void)sendInfomation
 {
     
@@ -138,12 +143,6 @@
 }
 -(void)viewWillAppear:(BOOL)animated
 {
-//    NSUserDefaults * userDefaults=[NSUserDefaults standardUserDefaults];
-//    NSLog(@"customerid=%@",[userDefaults objectForKey:@"myCustomerid"]);
-//    
-//    NSData * imageData =[userDefaults objectForKey:[self getKey:@"image" andPara:[userDefaults objectForKey:@"myCustomerid"]]];
-//    UIImage * myImage=[UIImage imageWithData:imageData];
-    //self.image=myImage;
     if(self.image==nil)
     {
         NSUserDefaults * userDefaults=[NSUserDefaults standardUserDefaults];

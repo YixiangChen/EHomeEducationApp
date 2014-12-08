@@ -16,6 +16,7 @@
 #import "EHEStdEveluationViewController.h"
 #import "Reachability.h"
 #import "Defines.h"
+
 @interface EHEStdSettingViewController ()
 
 @end
@@ -67,48 +68,32 @@
     {
         [[self navigationController] setNavigationBarHidden:NO animated:YES];
     }
-    if([self checkIfNetWorking])
-    {
-        NSUserDefaults * userDefaults=[NSUserDefaults standardUserDefaults];
-        self.userIconString=[userDefaults objectForKey:@"userIcons"];
-        NSString * urlString=[NSString stringWithFormat:@"%@%@",kURLLoadUserIcon,self.userIconString];
-        NSURL * url=[NSURL URLWithString:urlString];
-        NSURLRequest * request=[NSURLRequest requestWithURL:url];
-        [NSURLConnection connectionWithRequest:request delegate:self];
-    }
-    else
-    {
-        NSUserDefaults * userDefaults=[NSUserDefaults standardUserDefaults];
-        NSData * imageData=[userDefaults objectForKey:[self getKey:@"image" andCustomerid:[userDefaults objectForKey:@"myCustomerid"]]];
-        self.userImage=[UIImage imageWithData:imageData];
-    }
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeLanguage:) name:@"ChangeLanguageNotificationName" object:nil];
-}
--(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
-{
-    [self.imageData appendData:data];
-}
--(void)connectionDidFinishLoading:(NSURLConnection *)connection
-{
-    self.userImage=[[UIImage alloc]initWithData:self.imageData];
+    NSUserDefaults * userdefaults=[NSUserDefaults standardUserDefaults];
+    NSString * customerid=[userdefaults objectForKey:@"myCustomerid"];
+    NSData * imageData= [userDefaults objectForKey:[self getKey:@"image" andCustomerid:customerid]];
+    self.userImage=[UIImage imageWithData:imageData];
     [self.tableViewSetting reloadData];
+    //登陆后才会触发的事件
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeLanguage:) name:@"ChangeLanguageNotificationName" object:nil];
+    
 }
+
 -(void)changeLanguage:(NSNotification *)noti
 {
-    if([self checkIfNetWorking])
-    {
-        EHECommunicationManager * commucationManager=[EHECommunicationManager getInstance];
-        self.userImage=[UIImage imageWithData:[commucationManager downloadUserIcon:self.userIconString]];
-        NSLog(@"userImage=%@",self.userIconString);
-    }
-    else
-    {
-        NSUserDefaults * userDefaults=[NSUserDefaults standardUserDefaults];
-        NSData * imageData=[userDefaults objectForKey:[self getKey:@"image" andCustomerid:[userDefaults objectForKey:@"myCustomerid"]]];
+   NSString * userIcon= [noti.userInfo objectForKey:@"userIcon"];
+    NSLog(@"userIcon=%@",userIcon);
+    EHECommunicationManager * commucationManager=[EHECommunicationManager getInstance];
+    [commucationManager loadCustomerIconForCustomer:userIcon completionBlock:^(NSString * completion ) {
+        if([completion isEqualToString:kConnectionSuccess])
+        {
+        NSUserDefaults * userdefaults=[NSUserDefaults standardUserDefaults];
+        NSData * imageData=[userdefaults objectForKey:[NSString stringWithFormat:@"image_for_customer_%@",userIcon]];
         self.userImage=[UIImage imageWithData:imageData];
-    }
-    [self.tableViewSetting reloadData];
+            [self.tableViewSetting reloadData];
+        }
+    }];
+    
 }
 
 //判断有无网络

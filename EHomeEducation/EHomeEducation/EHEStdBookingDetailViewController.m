@@ -114,6 +114,9 @@
     _buttonSure=[UIButton buttonWithType:UIButtonTypeSystem];
     _buttonSure.frame=CGRectMake(115, 390, 100, 37);
     [_buttonSure addTarget: self action:@selector(sureButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    
+    NSLog(@"self.order.orderStatus=%d",self.order.orderstatus.intValue);
+    
     if(self.order.orderstatus.intValue==0)
     {
     [_buttonSure setBackgroundImage:[UIImage imageNamed:@"订单-已完成 - 继续预约取消按钮2"] forState:UIControlStateNormal];
@@ -132,9 +135,6 @@
 //点击确定按钮所触发的事件
 -(void)sureButtonClicked:(id)sender
 {
-//    [_buttonSure setBackgroundImage:[UIImage imageNamed:@"订单-已完成 - 继续预约取消按钮"] forState:UIControlStateNormal];
-//    EHECommunicationManager * communicationManager=[EHECommunicationManager getInstance];
-//    [communicationManager cancelOrderWithOrderId:self.order.orderid.intValue withReason:nil];
     LXActionSheet * actionSheet=nil;
     if(self.order.orderstatus.intValue==0)
     {

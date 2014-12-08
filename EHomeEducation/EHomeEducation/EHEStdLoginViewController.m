@@ -74,7 +74,8 @@
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
             [defaults setObject:self.txtUserName.text forKey:@"userName"];
             [defaults setObject:self.txtPassWord.text forKey:@"passWord"];
-
+            
+            [defaults setObject:[[dict objectForKey:@"userinfo"] objectForKey:@"usericon"] forKey:@"userIcons"];
             [defaults setObject:[[dict objectForKey:@"userinfo"] objectForKey:@"customerid"] forKey:@"myCustomerid"];
             [defaults setObject:[[dict objectForKey:@"userinfo"] objectForKey:@"name"] forKey:@"name"];
             [defaults setObject:[[dict objectForKey:@"userinfo"] objectForKey:@"telephone"] forKey:@"telephone"];

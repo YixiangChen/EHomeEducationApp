@@ -17,6 +17,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
     //对type的值进行判断，来显示设置类型
     //type=0:选择头像;type=1:选择姓名;type=2:选择性别;type=3:选择联系电话;type=4:选择出生日期
     if([self.type isEqualToString:@"1"]||[self.type isEqualToString:@"3"]||[self.type isEqualToString:@"4"])

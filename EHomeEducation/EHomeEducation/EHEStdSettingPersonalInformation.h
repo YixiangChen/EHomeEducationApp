@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+@class EHEStdSettingViewController;
 @class EHEStdSettingDetailViewController;
 @interface EHEStdSettingPersonalInformation : UIViewController<UITableViewDataSource,UITableViewDelegate>
 @property(strong,nonatomic)UITableView * tableView;
@@ -18,5 +19,6 @@
 @property(strong,nonatomic)NSString * address;
 @property(strong,nonatomic)UIImage * image;
 @property(strong,nonatomic)NSData * imageData;
+@property(strong,nonatomic)EHEStdSettingViewController * settingViewController;
 @property(nonatomic)BOOL check;
 @end

@@ -16,4 +16,7 @@
 @property(strong,nonatomic)NSMutableDictionary * commonDictionary;
 @property(strong,nonatomic)NSMutableArray * commonInfomation;
 @property(strong,nonatomic)NSArray * allCommentsArray;
+@property(strong,nonatomic)NSMutableSet * sets;
+@property(strong,nonatomic)NSDictionary * teacherDic;
+
 @end
