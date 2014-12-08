@@ -8,7 +8,6 @@
 
 #import "Defines.h"
 #import "EHEStdSearchingViewController.h"
-
 #import "EHETeacher.h"
 #import "EHECommunicationManager.h"
 #import "EHECoreDataManager.h"
@@ -46,15 +45,16 @@
     self.mapSearching = [[EHEStdMapSearchingViewController alloc] initWithNibName:nil bundle:nil];
     
     self.segmentedControl = [[UISegmentedControl alloc]initWithItems:[[NSArray alloc]initWithObjects:@"列表",@"地图",nil]];
-    self.segmentedControl.frame = CGRectMake(40.0, 20.0,240.0, 30.0);
-    self.segmentedControl.tintColor = [UIColor colorWithRed:192.0 / 256.0 green:233 / 256.0 blue:189 / 256.0 alpha:0.8];
+    
+    self.segmentedControl.frame = CGRectMake(80.0, 20.0,160.0, 30.0);
+    self.segmentedControl.tintColor = kGreenForTabbaritem;
     self.segmentedControl.selectedSegmentIndex = 0;//默认选中的按钮索引
     
-    NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont boldSystemFontOfSize:12],NSFontAttributeName,[UIColor redColor], NSForegroundColorAttributeName, nil];
+    NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kYueYuanFont size:17],NSFontAttributeName,kGreenForTabbaritem, NSForegroundColorAttributeName, nil];
     [self.segmentedControl setTitleTextAttributes:attributes forState:UIControlStateNormal];
-    NSDictionary *highlightedAttributes = [NSDictionary dictionaryWithObject:[UIColor redColor] forKey:NSForegroundColorAttributeName];
+    NSDictionary *highlightedAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
     
-    [self.segmentedControl setTitleTextAttributes:highlightedAttributes forState:UIControlStateHighlighted];
+    [self.segmentedControl setTitleTextAttributes:highlightedAttributes forState:UIControlStateSelected];
     
     [self.segmentedControl addTarget:self action:@selector(selectedSegmentChanged:)forControlEvents:UIControlEventValueChanged];
     self.navigationItem.titleView = self.segmentedControl;
@@ -133,7 +133,6 @@
 }
 
 -(void) popFilterView:(id) sender {
-    NSLog(@"Tapping filter");
     
     UIButton *btn = (UIButton *)sender;
     
@@ -207,7 +206,6 @@
     }
     else
     {
-        NSLog(@"这是地图");
         self.tableView.scrollEnabled=NO;
         self.mapSearching.searchingViewController=self;
         [self.view addSubview: self.mapSearching.view];
