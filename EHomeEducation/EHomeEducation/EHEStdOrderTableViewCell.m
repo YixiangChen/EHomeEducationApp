@@ -5,7 +5,7 @@
 //  Created by Yixiang Chen on 11/24/14.
 //  Copyright (c) 2014 AppChen. All rights reserved.
 //
-
+#import "Defines.h"
 #import "EHEStdOrderTableViewCell.h"
 
 @implementation EHEStdOrderTableViewCell
@@ -87,11 +87,12 @@
         pickerLabel = [[UILabel alloc] init];
         // Setup label properties - frame, font, colors etc
         //adjustsFontSizeToFitWidth property to YES
-        pickerLabel.minimumScaleFactor = 0.8;
+        pickerLabel.minimumScaleFactor = 3;
         pickerLabel.textAlignment = NSTextAlignmentCenter;
         pickerLabel.adjustsFontSizeToFitWidth = YES;
-        [pickerLabel setBackgroundColor:[UIColor greenColor]];
-        [pickerLabel setFont:[UIFont boldSystemFontOfSize:15]];
+        [pickerLabel setBackgroundColor:[UIColor clearColor]];
+        [pickerLabel setFont:[UIFont fontWithName:kYueYuanFont size:20]];
+        [pickerLabel setTextColor:kGreenForTabbaritem];
     }
     pickerLabel.text=[self pickerView:pickerView titleForRow:row forComponent:component];
     return pickerLabel;

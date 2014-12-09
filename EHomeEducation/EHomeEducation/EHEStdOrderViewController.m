@@ -5,7 +5,7 @@
 //  Created by Yixiang Chen on 11/21/14.
 //  Copyright (c) 2014 AppChen. All rights reserved.
 //
-
+#import "Defines.h"
 #import "EHEStdOrderViewController.h"
 #import "EHEStdSubjectTableTableViewController.h"
 #import "EHECommunicationManager.h"
@@ -23,6 +23,9 @@
 @property (strong, nonatomic) NSArray *arrayForSection2;
 @property (strong, nonatomic) NSMutableArray *dataArrayForSection2;
 
+@property (strong, nonatomic) UIButton *leftBarButton;
+@property (strong, nonatomic) UILabel *titleLabel;
+
 
 @end
 
@@ -31,7 +34,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.title = @"预约信息";
     NSDictionary *dict = @{@"Cell": @"MainCell",@"isAttached":@(NO)};
     
     //for section 1
@@ -49,13 +51,45 @@
     self.navigationItem.rightBarButtonItem = rightButtonItem;
     
     self.dictOrder = [[NSMutableDictionary alloc] init];
-
-
+    
+    self.navigationItem.hidesBackButton = YES;
+    self.navigationItem.leftBarButtonItem = nil;
+    
+    self.tableView.sectionFooterHeight = 0.0;
+    self.tableView.backgroundColor = [UIColor clearColor];
 }
 
--(void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.leftBarButton = [[UIButton alloc] initWithFrame:CGRectMake(3, 8, 90, 30)];
+    [self.leftBarButton setTitle:@"< 教师详情" forState:UIControlStateNormal];
+    [self.leftBarButton.titleLabel setFont:[UIFont fontWithName:kYueYuanFont size:18]];
+    [self.leftBarButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.leftBarButton setBackgroundColor:kGreenForTabbaritem];
+    [self.leftBarButton addTarget:self action:@selector(backButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+    
+    CALayer * leftBarButtonLayer =  [self.leftBarButton layer];
+    [leftBarButtonLayer setMasksToBounds:YES];
+    [leftBarButtonLayer setCornerRadius:5.0];
+    [leftBarButtonLayer setBorderWidth:0.5];
+    [leftBarButtonLayer setBorderColor:[[UIColor grayColor] CGColor]];
+    [self.navigationController.navigationBar addSubview:self.leftBarButton];
+    
+    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(120, 5, 100, 30)];
+    [self.titleLabel setText:@"预约详情"];
+    [self.titleLabel setTextColor:kGreenForTabbaritem];
+    [self.titleLabel setBackgroundColor:[UIColor clearColor]];
+    [self.titleLabel setFont:[UIFont fontWithName:kYueYuanFont size:22]];
+    [self.navigationController.navigationBar addSubview:self.titleLabel];
 }
+
+-(void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.leftBarButton removeFromSuperview];
+    [self.titleLabel removeFromSuperview];
+}
+
+
 -(void) sendOrder {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
@@ -88,7 +122,11 @@
     [self.dictOrder setObject:self.selectedMemo forKey:@"memo"];
     [self.dictOrder setObject:[NSString stringWithFormat:@"%@-%@",self.selectedStartTime,self.selectedEndTime] forKey:@"timeperiod"];
     
-    [[EHECommunicationManager getInstance] sendOrder:self.dictOrder];
+    bool sendSuccess = [[EHECommunicationManager getInstance] sendOrder:self.dictOrder];
+    if (sendSuccess) {
+        [self presentSendingStatus];
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -127,6 +165,16 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UILabel *textLabel  = [[UILabel alloc] initWithFrame:CGRectMake(10, 8, 80, 30)];
+    textLabel.font =[UIFont fontWithName:kYueYuanFont size:18];
+    textLabel.tag = 1;
+    
+    UILabel *detailTextLabel  = [[UILabel alloc] initWithFrame:CGRectMake(160, 8, 120, 30)];
+    detailTextLabel.font =[UIFont fontWithName:kYueYuanFont size:15];
+    detailTextLabel.textColor = [UIColor lightGrayColor];
+    detailTextLabel.textAlignment = NSTextAlignmentRight;
+    detailTextLabel.tag = 2;
 
     if (indexPath.section == 0) {
         
@@ -140,30 +188,40 @@
             
             if ([[self.dataArrayForSection1[0] objectForKey:@"isAttached"] boolValue]) {
                 if (indexPath.row == 0) {
-                    mainCell.textLabel.text = @"辅导对象";
-                    mainCell.detailTextLabel.text = self.selectedObject;
+                    textLabel.text = @"辅导对象";
                 }
                 if (indexPath.row == 2) {
-                    mainCell.textLabel.text = @"辅导科目";
-                    mainCell.detailTextLabel.text = self.selectedSubjects;
+                    textLabel.text = @"辅导科目";
+                    detailTextLabel.text = self.selectedSubjects;
                 }
                 if (indexPath.row == 3) {
-                    mainCell.textLabel.text = @"辅导地点";
-                    mainCell.detailTextLabel.text = self.selectedLocation;
+                    textLabel.text = @"辅导地点";
+                    detailTextLabel.text = self.selectedLocation;
                 }
             }else {
-            mainCell.textLabel.text = [self.arrayForSection1 objectAtIndex:indexPath.row];
+                textLabel.text = [self.arrayForSection1 objectAtIndex:indexPath.row];
+                UILabel *label = (UILabel *)[mainCell viewWithTag:1 ];
+                [label removeFromSuperview];
+                [mainCell.contentView addSubview:textLabel];
                 if (indexPath.row == 0) {
-                    mainCell.detailTextLabel.text = self.selectedObject;
+                    detailTextLabel.text = self.selectedObject;
                 }
                 if (indexPath.row == 1) {
-                    mainCell.detailTextLabel.text = self.selectedSubjects;
+                    detailTextLabel.text = self.selectedSubjects;
                 }
                 if (indexPath.row == 2) {
-                    mainCell.detailTextLabel.text = self.selectedLocation;
+                    detailTextLabel.text = self.selectedLocation;
             }
             
         }
+
+            UILabel *label = (UILabel *)[mainCell viewWithTag:1 ];
+            [label removeFromSuperview];
+            [mainCell.contentView addSubview:textLabel];
+            
+            UILabel *detailLabel = (UILabel *) [mainCell viewWithTag:2];
+            [detailLabel removeFromSuperview];
+            [mainCell.contentView addSubview:detailTextLabel];
             return mainCell;
         }else if ([[self.dataArrayForSection1[indexPath.row] objectForKey:@"Cell"] isEqualToString:@"AttachedCell"]) {
             
@@ -190,119 +248,126 @@
                 mainCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:mainCellID];
             }
             if (self.dataArrayForSection2.count == 3) {
-                mainCell.textLabel.text = [self.arrayForSection2 objectAtIndex:indexPath.row];
+                textLabel.text = [self.arrayForSection2 objectAtIndex:indexPath.row];
                 if (indexPath.row == 0) {
-                    mainCell.detailTextLabel.text = self.selectedDate;
+                    detailTextLabel.text = self.selectedDate;
                 }
                 if (indexPath.row == 1) {
-                    mainCell.textLabel.text = @"开始时间";
-                    mainCell.detailTextLabel.text = self.selectedStartTime;
+                    textLabel.text = @"开始时间";
+                    detailTextLabel.text = self.selectedStartTime;
                 }
                 if (indexPath.row == 2) {
-                    mainCell.textLabel.text = @"结束时间";
-                    mainCell.detailTextLabel.text = self.selectedEndTime;
+                    textLabel.text = @"结束时间";
+                    detailTextLabel.text = self.selectedEndTime;
                 }
             }
             if (self.dataArrayForSection2.count == 4) {
                 if ([[self.dataArrayForSection2[0] objectForKey:@"isAttached"] boolValue] ) {
                     if (indexPath.row == 0) {
-                        mainCell.textLabel.text = @"日期";
-                        mainCell.detailTextLabel.text = self.selectedDate;
+                        textLabel.text = @"日期";
+                        detailTextLabel.text = self.selectedDate;
                     }
                     if (indexPath.row == 2) {
-                        mainCell.textLabel.text = @"开始时间";
-                        mainCell.detailTextLabel.text = self.selectedStartTime;
+                        textLabel.text = @"开始时间";
+                        detailTextLabel.text = self.selectedStartTime;
                     }
                     if (indexPath.row == 3) {
-                        mainCell.textLabel.text = @"结束时间";
-                        mainCell.detailTextLabel.text = self.selectedEndTime;
+                        textLabel.text = @"结束时间";
+                        detailTextLabel.text = self.selectedEndTime;
                     }
                 }
                 if ([[self.dataArrayForSection2[1] objectForKey:@"isAttached"] boolValue]) {
                     if (indexPath.row == 0) {
-                        mainCell.textLabel.text = @"日期";
-                        mainCell.detailTextLabel.text = self.selectedDate;
+                        textLabel.text = @"日期";
+                        detailTextLabel.text = self.selectedDate;
                     }
                     if (indexPath.row == 1) {
-                        mainCell.textLabel.text = @"开始时间";
-                        mainCell.detailTextLabel.text = self.selectedStartTime;
+                        textLabel.text = @"开始时间";
+                        detailTextLabel.text = self.selectedStartTime;
                     }
                     if (indexPath.row == 3) {
-                        mainCell.textLabel.text = @"结束时间";
-                        mainCell.detailTextLabel.text = self.selectedEndTime;
+                        textLabel.text = @"结束时间";
+                        detailTextLabel.text = self.selectedEndTime;
                     }
                 }
                 
                 if ([[self.dataArrayForSection2[2] objectForKey:@"isAttached"] boolValue]) {
                     if (indexPath.row == 0) {
-                        mainCell.textLabel.text = @"日期";
-                        mainCell.detailTextLabel.text = self.selectedDate;
+                        textLabel.text = @"日期";
+                        detailTextLabel.text = self.selectedDate;
                     }
                     if (indexPath.row == 1) {
-                        mainCell.textLabel.text = @"开始时间";
-                        mainCell.detailTextLabel.text = self.selectedStartTime;
+                        textLabel.text = @"开始时间";
+                        detailTextLabel.text = self.selectedStartTime;
                     }
                     if (indexPath.row == 2) {
-                        mainCell.textLabel.text = @"结束时间";
-                        mainCell.detailTextLabel.text = self.selectedEndTime;
+                        textLabel.text = @"结束时间";
+                        detailTextLabel.text = self.selectedEndTime;
                     }
                 }
             }
             if (self.dataArrayForSection2.count == 5) {
                 if ([[self.dataArrayForSection2[0] objectForKey:@"isAttached"] boolValue] && [[self.dataArrayForSection2[2] objectForKey:@"isAttached"] boolValue]) {
                     if (indexPath.row == 0) {
-                        mainCell.detailTextLabel.text = self.selectedDate;
+                        detailTextLabel.text = self.selectedDate;
                     }
                     if (indexPath.row == 2) {
-                        mainCell.textLabel.text = @"开始时间";
-                        mainCell.detailTextLabel.text = self.selectedStartTime;
+                        textLabel.text = @"开始时间";
+                        detailTextLabel.text = self.selectedStartTime;
                     }
                     if (indexPath.row == 4) {
-                        mainCell.textLabel.text = @"结束时间";
-                        mainCell.detailTextLabel.text = self.selectedEndTime;
+                        textLabel.text = @"结束时间";
+                        detailTextLabel.text = self.selectedEndTime;
                     }
                 }
                 if ([[self.dataArrayForSection2[0] objectForKey:@"isAttached"] boolValue] && [[self.dataArrayForSection2[3] objectForKey:@"isAttached"] boolValue]) {
                     if (indexPath.row == 0) {
-                        mainCell.detailTextLabel.text = self.selectedDate;
+                        detailTextLabel.text = self.selectedDate;
                     }
                     if (indexPath.row == 2) {
-                        mainCell.textLabel.text = @"开始时间";
-                        mainCell.detailTextLabel.text = self.selectedStartTime;
+                        textLabel.text = @"开始时间";
+                        detailTextLabel.text = self.selectedStartTime;
                     }
                     if (indexPath.row == 3) {
-                        mainCell.textLabel.text = @"结束时间";
-                        mainCell.detailTextLabel.text = self.selectedEndTime;
+                        textLabel.text = @"结束时间";
+                        detailTextLabel.text = self.selectedEndTime;
                     }
                 }
                 if ([[self.dataArrayForSection2[1] objectForKey:@"isAttached"] boolValue] && [[self.dataArrayForSection2[3] objectForKey:@"isAttached"] boolValue]) {
                     if (indexPath.row == 0) {
-                        mainCell.detailTextLabel.text = self.selectedDate;
+                        detailTextLabel.text = self.selectedDate;
                     }
                     if (indexPath.row == 1) {
-                        mainCell.textLabel.text = @"开始时间";
-                        mainCell.detailTextLabel.text = self.selectedStartTime;
+                        textLabel.text = @"开始时间";
+                        detailTextLabel.text = self.selectedStartTime;
                     }
                     if (indexPath.row == 3) {
-                        mainCell.textLabel.text = @"结束时间";
-                        mainCell.detailTextLabel.text = self.selectedEndTime;
+                        textLabel.text = @"结束时间";
+                        detailTextLabel.text = self.selectedEndTime;
                     }
                 }
             }
             
             if (self.dataArrayForSection2.count == 6) {
                 if (indexPath.row == 0) {
-                    mainCell.detailTextLabel.text = self.selectedDate;
+                    detailTextLabel.text = self.selectedDate;
                 }
                 if (indexPath.row == 2) {
-                    mainCell.textLabel.text = @"开始时间";
-                    mainCell.detailTextLabel.text = self.selectedStartTime;
+                    textLabel.text = @"开始时间";
+                    detailTextLabel.text = self.selectedStartTime;
                 }
                 if (indexPath.row == 4) {
-                    mainCell.textLabel.text = @"结束时间";
-                    mainCell.detailTextLabel.text = self.selectedEndTime;
+                    textLabel.text = @"结束时间";
+                    detailTextLabel.text = self.selectedEndTime;
                 }
             }
+            UILabel *label = (UILabel *)[mainCell viewWithTag:1 ];
+            [label removeFromSuperview];
+            [mainCell.contentView addSubview:textLabel];
+            
+            UILabel *detailLabel = (UILabel *) [mainCell viewWithTag:2];
+            [detailLabel removeFromSuperview];
+            [mainCell.contentView addSubview:detailTextLabel];
             
             mainCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             return mainCell;
@@ -366,8 +431,16 @@
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellID];
         }
-        cell.textLabel.text = @"备注";
-        cell.detailTextLabel.text = self.selectedMemo;
+        textLabel.text = @"备注";
+        detailTextLabel.text = self.selectedMemo;
+        
+        UILabel *label = (UILabel *)[cell viewWithTag:1 ];
+        [label removeFromSuperview];
+        [cell.contentView addSubview:textLabel];
+        
+        UILabel *detailLabel = (UILabel *) [cell viewWithTag:2];
+        [detailLabel removeFromSuperview];
+        [cell.contentView addSubview:detailTextLabel];
         return cell;
         }
     
@@ -478,9 +551,13 @@
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 20)];
-    [view setBackgroundColor:[UIColor greenColor]];
+    [view setBackgroundColor:kLightGreenForMainColor];
     return view;
     
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 20;
 }
 
 /*
@@ -492,6 +569,34 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+-(void) backButtonPressed {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void) presentSendingStatus {
+    UIView * blackView=[[UIView alloc]init];
+    blackView.center=self.view.center;
+    blackView.backgroundColor=[UIColor blackColor];
+    blackView.alpha=0.0f;
+    blackView.frame=CGRectMake(120,180, 80, 80);
+    blackView.layer.cornerRadius=20.0f;
+    [self.view addSubview:blackView];
+    
+    UILabel * label1=[[UILabel alloc]initWithFrame:CGRectMake(11, 25, 130, 30)];
+    label1.textColor=[UIColor whiteColor];
+    label1.backgroundColor=[UIColor clearColor];
+    label1.text=@"发送成功";
+    label1.font=[UIFont fontWithName:kFangZhengKaTongFont size:15.0f];
+    [blackView addSubview:label1];
+    
+    [UIView animateWithDuration:1.0 animations:^{
+        blackView.alpha=0.8f;
+    }];
+    [UIView animateWithDuration:2.5 animations:^{
+        blackView.alpha=0.0f;
+    }];
+}
 
 
 

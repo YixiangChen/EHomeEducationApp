@@ -19,7 +19,7 @@
 -(void)loadTeacherDetailWithTeacherId:(int) teacherId;
 
 //发送订单，订单中包含所有所需信息
--(void)sendOrder:(NSDictionary *) dictOrder;
+-(BOOL)sendOrder:(NSDictionary *) dictOrder;
 
 //获取订单初步信息
 -(void)loadOrderInfosWithCustomerID:(int) customerID andOrderStatus:(int)status ;

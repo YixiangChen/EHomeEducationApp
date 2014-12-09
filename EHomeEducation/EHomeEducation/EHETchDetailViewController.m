@@ -19,6 +19,7 @@
 
 @property (strong, nonatomic) UIButton *call_btn;
 @property (strong, nonatomic) UIButton *book_btn;
+@property (strong, nonatomic) UIButton *leftBarButton;
 
 @end
 
@@ -27,23 +28,46 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    self.navigationItem.hidesBackButton = YES;
+    self.navigationItem.leftBarButtonItem = nil;
+    
     CGRect bounds = self.view.bounds;
     
     self.tableView.backgroundView = nil;
     self.tableView.frame = bounds;
-    [self.tabBarController.tabBar setHidden:YES];
-    
-    [self configureTabbar];
+
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    self.leftBarButton = [[UIButton alloc] initWithFrame:CGRectMake(3, 8, 90, 30)];
+    [self.leftBarButton setTitle:@"< 返回列表" forState:UIControlStateNormal];
+    [self.leftBarButton.titleLabel setFont:[UIFont fontWithName:kYueYuanFont size:18]];
+    [self.leftBarButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.leftBarButton setBackgroundColor:kGreenForTabbaritem];
+    [self.leftBarButton addTarget:self action:@selector(backButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+    
+    CALayer * leftBarButtonLayer =  [self.leftBarButton layer];
+    [leftBarButtonLayer setMasksToBounds:YES];
+    [leftBarButtonLayer setCornerRadius:5.0];
+    [leftBarButtonLayer setBorderWidth:0.5];
+    [leftBarButtonLayer setBorderColor:[[UIColor grayColor] CGColor]];
+    [self.navigationController.navigationBar addSubview:self.leftBarButton];
+    
+    [self.tabBarController.tabBar setHidden:YES];
+    [self configureTabbar];
+}
+
 -(void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self.tabBarController.tabBar setHidden:NO];
+    [self.leftBarButton removeFromSuperview];
 }
 
 
@@ -202,7 +226,6 @@
 -(void) makeAnAppointment {
 
     EHEStdOrderViewController *orderViewController = [[EHEStdOrderViewController alloc] init];
-    //[self presentViewController:orderViewController animated:YES completion:nil];
     [self.navigationController pushViewController:orderViewController animated:YES];
     orderViewController.teacher = self.teacher;
 }
@@ -213,6 +236,10 @@
     UIWebView * callWebview = [[UIWebView alloc] init];
     [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:str]]];
     [self.view addSubview:callWebview];
+}
+
+-(void)backButtonPressed {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 /*

@@ -5,13 +5,16 @@
 //  Created by Yixiang Chen on 11/23/14.
 //  Copyright (c) 2014 AppChen. All rights reserved.
 //
-
+#import "Defines.h"
 #import "EHEStdSubjectTableTableViewController.h"
 #import "EHEStdOrderViewController.h"
 
 @interface EHEStdSubjectTableTableViewController ()
 @property (strong, nonatomic) NSMutableArray *subjectsArray;
 @property (strong, nonatomic) NSMutableArray *dataArray;
+@property (strong, nonatomic) UIButton *leftBarButton;
+@property (strong, nonatomic) UILabel *titleLabel;
+@property (strong, nonatomic) UIImageView *imageViewCheckMark;
 
 @end
 
@@ -32,7 +35,12 @@
     NSArray *array = @[dict,dict,dict,dict,dict,dict,dict,dict,dict,dict,dict];
     self.dataArray = [[NSMutableArray alloc] initWithArray:array];
     
-    self.navigationItem.leftBarButtonItem.title = @"保存";
+    self.navigationItem.hidesBackButton = YES;
+    self.navigationItem.leftBarButtonItem = nil;
+    
+    UIImage * image = [UIImage imageNamed:@"checkMark"];
+    self.imageViewCheckMark = [[UIImageView alloc] initWithFrame:CGRectMake(220, 10, 25, 25)];
+    self.imageViewCheckMark.image = image;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -45,6 +53,36 @@
     self.selectedSubjects = [self getSelectedSubjects];
     self.orderTable.selectedSubjects = self.selectedSubjects;
     [self.orderTable.tableView reloadData];
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.leftBarButton = [[UIButton alloc] initWithFrame:CGRectMake(3, 8, 90, 30)];
+    [self.leftBarButton setTitle:@"< 预约详情" forState:UIControlStateNormal];
+    [self.leftBarButton.titleLabel setFont:[UIFont fontWithName:kYueYuanFont size:18]];
+    [self.leftBarButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.leftBarButton setBackgroundColor:kGreenForTabbaritem];
+    [self.leftBarButton addTarget:self action:@selector(backButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+    
+    CALayer * leftBarButtonLayer =  [self.leftBarButton layer];
+    [leftBarButtonLayer setMasksToBounds:YES];
+    [leftBarButtonLayer setCornerRadius:5.0];
+    [leftBarButtonLayer setBorderWidth:0.5];
+    [leftBarButtonLayer setBorderColor:[[UIColor grayColor] CGColor]];
+    [self.navigationController.navigationBar addSubview:self.leftBarButton];
+    
+    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(135, 5, 100, 30)];
+    [self.titleLabel setText:@"科目"];
+    [self.titleLabel setTextColor:kGreenForTabbaritem];
+    [self.titleLabel setBackgroundColor:[UIColor clearColor]];
+    [self.titleLabel setFont:[UIFont fontWithName:kYueYuanFont size:22]];
+    [self.navigationController.navigationBar addSubview:self.titleLabel];
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.leftBarButton removeFromSuperview];
+    [self.titleLabel removeFromSuperview];
 }
 
 #pragma mark - Table view data source
@@ -61,6 +99,11 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UILabel *textLabel  = [[UILabel alloc] initWithFrame:CGRectMake(10, 8, 80, 30)];
+    textLabel.font =[UIFont fontWithName:kYueYuanFont size:18];
+    textLabel.tag = 3;
+    
     static NSString *cellId = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
 
@@ -68,7 +111,12 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
     }
     // Configure the cell...
-    cell.textLabel.text = [self.subjectsArray objectAtIndex:indexPath.row];
+    textLabel.text = [self.subjectsArray objectAtIndex:indexPath.row];
+    
+    UILabel * label = (UILabel *)[cell viewWithTag:3];
+    [label removeFromSuperview];
+    [cell.contentView addSubview:textLabel];
+    
     return cell;
 }
 
@@ -122,6 +170,8 @@
     }
     NSDictionary *newDict = @{@"isSelected":@(!isSelected)};
     [self.dataArray replaceObjectAtIndex:indexPath.row withObject:newDict];
+    
+    [cell.contentView addSubview:self.imageViewCheckMark];
 }
 
 
@@ -146,6 +196,10 @@
     }
     return selectedSubjects;
     
+}
+
+-(void) backButtonPressed {
+    [self.navigationController popViewControllerAnimated:YES];
 }
     
 
