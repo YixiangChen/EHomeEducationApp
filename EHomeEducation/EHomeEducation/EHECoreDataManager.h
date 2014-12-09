@@ -10,24 +10,24 @@
 #import <CoreData/CoreData.h>
 #import "EHETeacher.h"
 #import "EHEOrder.h"
-#import "EHEAccount.h"
 
 @interface EHECoreDataManager : NSObject
 @property(strong, nonatomic) NSManagedObjectContext *context;
 
 + (EHECoreDataManager *) getInstance;
 
-//存储教师基本信息
--(void) updateBasicInfosOfTeachers:(NSDictionary *) dict;
 
 //通过教师ID存储教师具体信息
--(void)updateDetailInfos:(NSDictionary *) dict withTeacherId:(int) teacherId;
+-(BOOL)saveTeacherInfo:(NSDictionary *) dict withTeacherId:(int) teacherId;
 
 //从core data中获取教师基本信息
 -(NSArray *) fetchBasicInfosOfTeachers;
 
 //通过教师ID从Core Data中获取教师具体信息
 -(EHETeacher *) fetchDetailInfosWithTeacherId:(int) teacherId;
+
+//通过教师ID移除教师对象
+-(BOOL) removeTeacherWithTeacherId:(int) teacherId;
 
 //存储订单基本信息
 -(void)saveOrderInfos:(NSArray *) arrayOrders;
@@ -46,11 +46,5 @@
 
 //删除core data所有订单对象
 -(void) removeAllOrdersFromCoreData;
-
-//保存个人信息
--(void) savePersonalData:(NSDictionary *) dictOtherInfo;
-
-//通过customerid获取个人信息
--(EHEAccount *) fetchPersonalDataWithCustomerId:(int) customerId;
 
 @end

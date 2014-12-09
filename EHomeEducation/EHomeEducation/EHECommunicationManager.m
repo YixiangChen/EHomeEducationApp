@@ -28,7 +28,7 @@
     }
 }
 
--(void)loadTeachersInfo {
+-(BOOL)loadTeachersInfo {
     
     NSUserDefaults * userDefault=[NSUserDefaults standardUserDefaults];
     NSDictionary * latitudeAndLongitude= [userDefault objectForKey:@"latitudeAndLongitude"];
@@ -36,11 +36,7 @@
     NSString * longitude=[latitudeAndLongitude objectForKey:@"longitude"];
     float latitudeFloat=latitude.floatValue;
     float longitudeFloat=longitude.floatValue;
-    NSLog(@"%f",latitudeFloat);
-    NSLog(@"latitude=%@",latitude);
     NSString * postData = [NSString stringWithFormat:@"{\"customerid\":\"%d\",\"latitude\":\"%f\",\"longitude\":\"%f\",\"distancefilter\":\"%f\",\"keyword\":\"%s\"}",270,latitudeFloat,longitudeFloat,1000.0,""];
-    
-    NSLog(@"%@",postData);
     
     NSString *stringForURL = [NSString stringWithFormat:@"%@%@",kURLDomain,kURLFindTeacherList];
     NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:stringForURL]];
@@ -51,26 +47,31 @@
     
     NSError *error = nil;
     NSData * responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
-    NSString * string=[[NSString alloc]initWithData:responseData encoding:NSUTF8StringEncoding];
-    NSLog(@"responseString=%@",string);
+
     if(responseData != nil && error == nil){
         
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:&error];
         
-        if([dict[@"code"] intValue] == 0){
-            NSLog(@"dict=%@",dict);
+        if([dict[@"code"] intValue] == 0 && dict != nil && error == nil){
             NSLog(@"成功获取教师初步信息");
-            [[EHECoreDataManager getInstance] updateBasicInfosOfTeachers:dict];
+            NSArray *arrayTeachers = dict[@"teachersinfo"];
+            for (NSDictionary *teacher in arrayTeachers) {
+                [self loadTeacherDetailWithTeacherId:[[teacher objectForKey:@"teacherid"] intValue]];
+            }
+            return YES;
+            
         }else{
             
             NSLog(@"获取教师初步信息失败");
             NSLog(@"%@",dict[@"message"]);
+            return NO;
         }
     }
+    return NO;
     
 }
 
--(void)loadDataWithTeacherID:(int) teacherId {
+-(void)loadTeacherDetailWithTeacherId:(int) teacherId {
     
     NSString * postData = [NSString stringWithFormat:@"{\"teacherid\":\"%d\"}",teacherId];
     
@@ -90,10 +91,12 @@
         
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
         NSDictionary *dictTeacherInfo = dict[@"teacherinfo"];
-        NSLog(@"dict=%@",dict);
-        if([dict[@"code"] intValue] == 0){
+        
+        if([dict[@"code"] intValue] == 0 && dict != nil && error == nil){
             NSLog(@"获取教师具体信息成功");
-            [[EHECoreDataManager getInstance] updateDetailInfos:dictTeacherInfo withTeacherId:teacherId];
+            [[EHECoreDataManager getInstance] removeTeacherWithTeacherId:teacherId];
+            [[EHECoreDataManager getInstance] saveTeacherInfo:dictTeacherInfo withTeacherId:teacherId];
+
         }else{
             NSLog(@"%@",dict[@"message"]);
         }

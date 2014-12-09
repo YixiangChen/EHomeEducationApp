@@ -15,18 +15,18 @@
 #import "EHEStdFilterByAgeViewController.h"
 #import "EHEStdFilterBySubjectsViewController.h"
 
-@interface EHEStdSearchingViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,NSFetchedResultsControllerDelegate>
+@interface EHEStdSearchingViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UIView *filterView;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
-@property(strong, nonatomic) EHECoreDataManager *coreDataManager;
-@property(strong, nonatomic) NSFetchedResultsController *fetchedResultController;
 @property(strong,nonatomic)UISegmentedControl * segmentedControl;
 @property(strong, nonatomic) EHEStdMapSearchingViewController *mapSearching;
-@property(strong, nonatomic) NSArray *allTeachersNearby;
+@property(strong, nonatomic) NSMutableArray *allTeachersNearby;
 @property(strong, nonatomic) EHEStdFilterByGenderViewController *filterByGenderController;
 @property(strong, nonatomic) EHEStdFilterByDistanceViewController *filterByDistanceController;
 @property(strong, nonatomic) EHEStdFilterByAgeViewController *filterByAgeController;
 @property(strong, nonatomic) EHEStdFilterBySubjectsViewController *filterBySubjectsController;
+
++(NSString *) calculateDistanceFromOriginLatitude:(float) originLat andOriginLong:(float) originLong ToDestinationLatitude:(float)desLat andDesLong:(float) desLong;
 
 @end

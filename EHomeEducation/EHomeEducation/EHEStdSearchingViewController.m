@@ -11,7 +11,7 @@
 #import "EHETeacher.h"
 #import "EHECommunicationManager.h"
 #import "EHECoreDataManager.h"
-#import "EHETeacherDetailViewController.h"
+#import "EHETchDetailViewController.h"
 #import "EHETeacherTableViewCell.h"
 #import "EHEStdLoginViewController.h"
 
@@ -19,9 +19,7 @@
 #import "FPPopoverController.h"
 #import "FPTouchView.h"
 
-#import "Defines.h"
-
-#import "EHEStdFilterByGenderViewController.h"
+#import "MJRefresh.h"
 
 @interface EHEStdSearchingViewController ()
 
@@ -59,24 +57,29 @@
     [self.segmentedControl addTarget:self action:@selector(selectedSegmentChanged:)forControlEvents:UIControlEventValueChanged];
     self.navigationItem.titleView = self.segmentedControl;
     
+    self.allTeachersNearby = [[NSMutableArray alloc] initWithArray:[[EHECoreDataManager getInstance] fetchBasicInfosOfTeachers]];
     
-    self.coreDataManager = [EHECoreDataManager getInstance];
-    self.allTeachersNearby = [[NSArray alloc] initWithArray:[self.coreDataManager fetchBasicInfosOfTeachers]];
-    for (EHETeacher * teacher in self.allTeachersNearby) {
-        [[EHECommunicationManager getInstance] loadDataWithTeacherID:[teacher.teacherId intValue]];
+    [self.tableView addHeaderWithTarget:self action:@selector(headerRefreshing)];
+    [self setupFilterView];
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.tableView headerBeginRefreshing];
+}
+-(void) headerRefreshing {
+    bool refreshSuccess;
+    refreshSuccess = [[EHECommunicationManager getInstance] loadTeachersInfo];
+    [self.allTeachersNearby removeAllObjects];
+    self.allTeachersNearby = [[NSMutableArray alloc] initWithArray:[[EHECoreDataManager getInstance] fetchBasicInfosOfTeachers]];
+    [self.tableView reloadData];
+    [self.tableView headerEndRefreshing];
+    if (refreshSuccess) {
+        NSLog(@"更新成功");
+    }else {
+        NSLog(@"更新失败");
     }
     
-    
-    
-    NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"EHETeacher"];
-    NSSortDescriptor * sd1 = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
-    request.sortDescriptors = @[sd1];
-    self.fetchedResultController = [[NSFetchedResultsController alloc]initWithFetchRequest:request managedObjectContext:self.coreDataManager.context sectionNameKeyPath:@"name" cacheName:@"Teacher"];
-    self.fetchedResultController.delegate = self;
-    [NSFetchedResultsController deleteCacheWithName:nil];
-    [self.fetchedResultController performFetch:nil];
-    
-    [self setupFilterView];
 }
 
 -(void) setupFilterView {
@@ -217,13 +220,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return self.fetchedResultController.sections.count;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    id<NSFetchedResultsSectionInfo> sectionInfo = self.fetchedResultController.sections[section];
-    return [sectionInfo numberOfObjects];
+    return self.allTeachersNearby.count;;
 }
 
 
@@ -237,7 +239,7 @@
     }
     // Configure the cell...
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    EHETeacher * teacher = [self.fetchedResultController objectAtIndexPath:indexPath];
+    EHETeacher * teacher = [self.allTeachersNearby objectAtIndex:indexPath.row];
     [cell setContent:teacher];
     
     return cell;
@@ -286,11 +288,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Navigation logic may go here, for example:
     // Create the next view controller.
-    EHETeacherDetailViewController *detailViewController = [[EHETeacherDetailViewController alloc] initWithNibName:nil bundle:nil];
-    EHETeacher * teacher = [self.fetchedResultController objectAtIndexPath:indexPath];
-    EHETeacher * teacherWithDetailInfos = [[EHECoreDataManager getInstance] fetchDetailInfosWithTeacherId:[teacher.teacherId intValue]];
+    EHETchDetailViewController *detailViewController = [[EHETchDetailViewController alloc] initWithNibName:nil bundle:nil];
+    EHETeacher * teacher = [self.allTeachersNearby objectAtIndex:indexPath.row];
     
-    detailViewController.teacher = teacherWithDetailInfos;
+    detailViewController.teacher = teacher;
+    
+    NSDictionary *dictForLoaction = [[NSUserDefaults standardUserDefaults] objectForKey:@"latitudeAndLongitude"] ;
+    detailViewController.distance = [EHEStdSearchingViewController calculateDistanceFromOriginLatitude:[[dictForLoaction objectForKey:@"latitude"] floatValue] andOriginLong:[[dictForLoaction objectForKey:@"longitude"] floatValue] ToDestinationLatitude:teacher.latitude.floatValue andDesLong:teacher.longitude.floatValue];
     // Pass the selected object to the new view controller.
     
     // Push the view controller.
@@ -316,68 +320,14 @@
  }
  */
 
-#pragma mark - NSFetchedResultsControllerDelegate协议方法
-- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
-    [self.tableView beginUpdates];
-}
-
-
-- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
-           atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
++ (NSString *)calculateDistanceFromOriginLatitude:(float)originLat andOriginLong:(float)originLong ToDestinationLatitude:(float)desLat andDesLong:(float)desLong {
+    CLLocation * origin = [[CLLocation alloc] initWithLatitude:originLat longitude:originLong];
+    CLLocation * destination = [[CLLocation alloc] initWithLatitude:desLat longitude:desLong];
     
-    switch(type) {
-        case NSFetchedResultsChangeInsert:
-            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]
-                          withRowAnimation:UITableViewRowAnimationFade];
-            break;
-            
-        case NSFetchedResultsChangeDelete:
-            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex]
-                          withRowAnimation:UITableViewRowAnimationFade];
-            break;
-        default:
-            break;
-    }
+    CLLocationDistance distance = [origin distanceFromLocation:destination] / 1000;
+    return [NSString stringWithFormat:@"%.02f km", distance];
 }
 
 
-- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
-       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
-      newIndexPath:(NSIndexPath *)newIndexPath {
-    
-    UITableView *tableView = self.tableView;
-    
-    switch(type) {
-            
-        case NSFetchedResultsChangeInsert:
-            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]
-                             withRowAnimation:UITableViewRowAnimationFade];
-            //刷新一下所在的section
-            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
-            break;
-            
-        case NSFetchedResultsChangeDelete:
-            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
-                             withRowAnimation:UITableViewRowAnimationFade];
-            break;
-            
-        case NSFetchedResultsChangeUpdate:
-            [tableView reloadRowsAtIndexPaths:@[indexPath] //一旦使用了section，这里需要使用indexPath，如果不使用，section分区（1）,这里需要使用newIndexPath
-                             withRowAnimation:UITableViewRowAnimationAutomatic];
-            break;
-            
-        case NSFetchedResultsChangeMove:
-            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
-                             withRowAnimation:UITableViewRowAnimationFade];
-            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]
-                             withRowAnimation:UITableViewRowAnimationFade];
-            break;
-    }
-}
-
-
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    [self.tableView endUpdates];
-}
 
 @end

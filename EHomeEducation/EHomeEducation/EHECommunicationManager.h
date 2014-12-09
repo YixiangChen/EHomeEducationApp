@@ -13,10 +13,10 @@
 + (EHECommunicationManager *) getInstance;
 
 //获取教师初步信息
--(void)loadTeachersInfo;
+-(BOOL)loadTeachersInfo;
 
 //通过教师ID获取指定教师的具体信息
--(void)loadDataWithTeacherID:(int) teacherId;
+-(void)loadTeacherDetailWithTeacherId:(int) teacherId;
 
 //发送订单，订单中包含所有所需信息
 -(void)sendOrder:(NSDictionary *) dictOrder;

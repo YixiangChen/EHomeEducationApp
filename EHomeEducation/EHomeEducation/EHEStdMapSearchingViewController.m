@@ -8,7 +8,7 @@
 
 #import "EHEStdMapSearchingViewController.h"
 #import "TeacherAnnotations.h"
-#import "EHETeacherDetailViewController.h"
+#import "EHETchDetailViewController.h"
 #import "EHEStdSearchingViewController.h"
 @interface EHEStdMapSearchingViewController ()
 
@@ -127,14 +127,15 @@
        //加载老师信息的标注
        else
        {
-           NSLog(@"teacherName=%@,teacherGender=%@",self.mapViewPop.labelTeacherName.text,self.mapViewPop.teacherGender);
+        
+//           NSLog(@"teacherName=%@,teacherGender=%@",self.mapViewPop.labelTeacherName.text,self.mapViewPop.teacherGender);
            if([self.mapViewPop.teacherGender isEqualToString:@"女"])
            {
-               newAnnotationView.image = [UIImage imageNamed:@"female"];
+               newAnnotationView.image = [UIImage imageNamed:@"PinWomen"];
            }
            else
            {
-             newAnnotationView.image = [UIImage imageNamed:@"male"];
+             newAnnotationView.image = [UIImage imageNamed:@"PinMan"];
            }
            
            //根据教师所教科目这个label的长度自动调节整个气泡的宽度
@@ -161,7 +162,7 @@
     NSLog(@"teacherid=%@,teacherName=%@",mapViewBubble.teacherID,mapViewBubble.labelTeacherName.text);
     EHECoreDataManager * coreDataManager=[EHECoreDataManager getInstance];
     EHETeacher * teacherInfo= [coreDataManager fetchDetailInfosWithTeacherId:mapViewBubble.teacherID.intValue];
-    EHETeacherDetailViewController * teacherDetailViewController=[[EHETeacherDetailViewController alloc]initWithNibName:nil bundle:nil];
+    EHETchDetailViewController * teacherDetailViewController=[[EHETchDetailViewController alloc]initWithNibName:nil bundle:nil];
     teacherDetailViewController.teacher=teacherInfo;
     [self.searchingViewController.navigationController pushViewController:teacherDetailViewController animated:YES];
 }

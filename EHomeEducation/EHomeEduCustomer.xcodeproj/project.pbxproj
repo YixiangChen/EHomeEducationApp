@@ -7,17 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		525C208C1A1ED8D200C3119A /* male.png in Resources */ = {isa = PBXBuildFile; fileRef = 525C208A1A1ED8D200C3119A /* male.png */; };
-		525C208D1A1ED8D200C3119A /* female.png in Resources */ = {isa = PBXBuildFile; fileRef = 525C208B1A1ED8D200C3119A /* female.png */; };
 		525C20981A1F256B00C3119A /* EHEStdBookingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 525C20961A1F256B00C3119A /* EHEStdBookingTableViewCell.m */; };
 		525C20991A1F256B00C3119A /* EHEStdBookingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 525C20971A1F256B00C3119A /* EHEStdBookingTableViewCell.xib */; };
 		525C209F1A1F481600C3119A /* EHEStdSettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 525C209D1A1F481600C3119A /* EHEStdSettingTableViewCell.m */; };
 		525C20A01A1F481600C3119A /* EHEStdSettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 525C209E1A1F481600C3119A /* EHEStdSettingTableViewCell.xib */; };
 		525E36CD1A1C29B1004F0475 /* TeacherAnnotations.m in Sources */ = {isa = PBXBuildFile; fileRef = 525E36CC1A1C29B1004F0475 /* TeacherAnnotations.m */; };
 		525E36CF1A1C2B4E004F0475 /* iconmarka.png in Resources */ = {isa = PBXBuildFile; fileRef = 525E36CE1A1C2B4E004F0475 /* iconmarka.png */; };
-		525E36D31A1C3052004F0475 /* png-0099.png in Resources */ = {isa = PBXBuildFile; fileRef = 525E36D21A1C3052004F0475 /* png-0099.png */; };
-		525E36D51A1C332B004F0475 /* femal.png in Resources */ = {isa = PBXBuildFile; fileRef = 525E36D41A1C332B004F0475 /* femal.png */; };
-		525E36E91A1C5008004F0475 /* png-0762.png in Resources */ = {isa = PBXBuildFile; fileRef = 525E36E81A1C5008004F0475 /* png-0762.png */; };
 		525E36EB1A1C7563004F0475 /* png-0010.png in Resources */ = {isa = PBXBuildFile; fileRef = 525E36EA1A1C7563004F0475 /* png-0010.png */; };
 		5286B39E1A26B62B0080EC5F /* EHEStdSettingPersonalInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5286B39C1A26B62B0080EC5F /* EHEStdSettingPersonalInformation.m */; };
 		5286B39F1A26B62B0080EC5F /* EHEStdSettingPersonalInformation.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5286B39D1A26B62B0080EC5F /* EHEStdSettingPersonalInformation.xib */; };
@@ -30,7 +25,6 @@
 		5286B3AE1A2701350080EC5F /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 5286B3AD1A2701350080EC5F /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		5286B3B01A27134D0080EC5F /* EHomeEducation.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 5286B3AF1A27134D0080EC5F /* EHomeEducation.xcdatamodel */; };
 		5286B3B61A2713BA0080EC5F /* EHEOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5286B3B51A2713BA0080EC5F /* EHEOrder.m */; };
-		5286B3B91A2713BA0080EC5F /* EHEAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 5286B3B81A2713BA0080EC5F /* EHEAccount.m */; };
 		5286B3BC1A2713FE0080EC5F /* EHETeacher.m in Sources */ = {isa = PBXBuildFile; fileRef = 5286B3BB1A2713FE0080EC5F /* EHETeacher.m */; };
 		5286B3C11A273A620080EC5F /* LXActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5286B3C01A273A620080EC5F /* LXActionSheet.m */; };
 		529059F81A21A80100DDC6FB /* CopyConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 529059A21A21A80100DDC6FB /* CopyConnection.framework */; };
@@ -111,7 +105,6 @@
 		52905A4D1A21A8CC00DDC6FB /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52905A4C1A21A8CC00DDC6FB /* AddressBook.framework */; };
 		52905A4F1A21A8D300DDC6FB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52905A4E1A21A8D200DDC6FB /* MessageUI.framework */; };
 		52974AD01A1D8E3700C05FFC /* EHEBaiduMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52974ACF1A1D8E3700C05FFC /* EHEBaiduMapView.m */; };
-		5299AE3B1A20964C000A5960 /* settingTest.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 5299AE3A1A20964C000A5960 /* settingTest.jpeg */; };
 		5299AE3F1A209AC6000A5960 /* EHEStdSettingDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5299AE3D1A209AC6000A5960 /* EHEStdSettingDetailCell.m */; };
 		5299AE401A209AC6000A5960 /* EHEStdSettingDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5299AE3E1A209AC6000A5960 /* EHEStdSettingDetailCell.xib */; };
 		5299AE441A209F2C000A5960 /* EHEStdSettingDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5299AE421A209F2C000A5960 /* EHEStdSettingDetailViewController.m */; };
@@ -135,7 +128,6 @@
 		52AD25C41A288DB700CA150F /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 52AD25AF1A288DB600CA150F /* UIProgressView+AFNetworking.m */; };
 		52AD25C51A288DB700CA150F /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 52AD25B11A288DB600CA150F /* UIRefreshControl+AFNetworking.m */; };
 		52AD25C61A288DB700CA150F /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 52AD25B31A288DB600CA150F /* UIWebView+AFNetworking.m */; };
-		52D0FAF31A22DCB1001AAF6B /* authentificated.png in Resources */ = {isa = PBXBuildFile; fileRef = 52D0FAF21A22DCB1001AAF6B /* authentificated.png */; };
 		52D397F21A1B38B7008B08FE /* libbaidumapapi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D397F01A1B38B6008B08FE /* libbaidumapapi.a */; };
 		52D397F31A1B38B7008B08FE /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 52D397F11A1B38B6008B08FE /* mapapi.bundle */; };
 		52D397F51A1B38FD008B08FE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D397F41A1B38FD008B08FE /* Security.framework */; };
@@ -151,6 +143,24 @@
 		52FDA7E31A2D744000221229 /* EHEStdEveluationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52FDA7E11A2D744000221229 /* EHEStdEveluationViewController.xib */; };
 		52FDA7E81A2D76EC00221229 /* EHEStdCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52FDA7E61A2D76EC00221229 /* EHEStdCommentCell.m */; };
 		52FDA7E91A2D76EC00221229 /* EHEStdCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52FDA7E71A2D76EC00221229 /* EHEStdCommentCell.xib */; };
+		79070BE31A35BFC900C7F753 /* PinWomen.png in Resources */ = {isa = PBXBuildFile; fileRef = 79070BE11A35BFC900C7F753 /* PinWomen.png */; };
+		79070BE41A35BFC900C7F753 /* PinMan.png in Resources */ = {isa = PBXBuildFile; fileRef = 79070BE21A35BFC900C7F753 /* PinMan.png */; };
+		79070C0F1A36B24400C7F753 /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 79070BFF1A36B24400C7F753 /* MJRefresh.bundle */; };
+		79070C101A36B24400C7F753 /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79070C021A36B24400C7F753 /* MJRefreshBaseView.m */; };
+		79070C111A36B24400C7F753 /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 79070C041A36B24400C7F753 /* MJRefreshConst.m */; };
+		79070C121A36B24400C7F753 /* MJRefreshFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79070C061A36B24400C7F753 /* MJRefreshFooterView.m */; };
+		79070C131A36B24400C7F753 /* MJRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79070C081A36B24400C7F753 /* MJRefreshHeaderView.m */; };
+		79070C141A36B24400C7F753 /* UIScrollView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 79070C0A1A36B24400C7F753 /* UIScrollView+MJExtension.m */; };
+		79070C151A36B24400C7F753 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 79070C0C1A36B24400C7F753 /* UIScrollView+MJRefresh.m */; };
+		79070C161A36B24400C7F753 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 79070C0E1A36B24400C7F753 /* UIView+MJExtension.m */; };
+		79070C341A36C73B00C7F753 /* EHETchDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79070C321A36C73B00C7F753 /* EHETchDetailViewController.m */; };
+		79070C351A36C73B00C7F753 /* EHETchDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79070C331A36C73B00C7F753 /* EHETchDetailViewController.xib */; };
+		79070C411A36CDF300C7F753 /* lightgreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 79070C401A36CDF300C7F753 /* lightgreen.png */; };
+		79070C451A36CEA100C7F753 /* EHETchImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79070C431A36CEA100C7F753 /* EHETchImageCell.m */; };
+		79070C461A36CEA100C7F753 /* EHETchImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79070C441A36CEA100C7F753 /* EHETchImageCell.xib */; };
+		79070C481A36D52100C7F753 /* distanceIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 79070C471A36D52100C7F753 /* distanceIcon.png */; };
+		79070C511A36D9D900C7F753 /* EHETchRegularCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79070C4F1A36D9D900C7F753 /* EHETchRegularCell.m */; };
+		79070C521A36D9D900C7F753 /* EHETchRegularCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79070C501A36D9D900C7F753 /* EHETchRegularCell.xib */; };
 		79265E901A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79265E8E1A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.m */; };
 		79265E911A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79265E8F1A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.xib */; };
 		7943D1891A281F1300FA80B0 /* FPPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7943D1841A281F1300FA80B0 /* FPPopoverController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -166,8 +176,6 @@
 		7943D1A31A2A21AB00FA80B0 /* EHEStdFilterBySubjectsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7943D1A11A2A21AB00FA80B0 /* EHEStdFilterBySubjectsViewController.m */; };
 		7943D1A41A2A21AB00FA80B0 /* EHEStdFilterBySubjectsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7943D1A21A2A21AB00FA80B0 /* EHEStdFilterBySubjectsViewController.xib */; };
 		7943D1A71A2B08EB00FA80B0 /* MFYueYuan_Noncommercial-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7943D1A61A2B023400FA80B0 /* MFYueYuan_Noncommercial-Regular.otf */; };
-		794756121A1D9FE600E39012 /* EHETeacherDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 794756101A1D9FE600E39012 /* EHETeacherDetailViewController.m */; };
-		794756131A1D9FE600E39012 /* EHETeacherDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 794756111A1D9FE600E39012 /* EHETeacherDetailViewController.xib */; };
 		7947561C1A1ED1AA00E39012 /* MF_Base64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7947561A1A1ED1AA00E39012 /* MF_Base64Additions.m */; };
 		794756231A1F123200E39012 /* EHEStdRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 794756211A1F123200E39012 /* EHEStdRegisterViewController.m */; };
 		794756241A1F123200E39012 /* EHEStdRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 794756221A1F123200E39012 /* EHEStdRegisterViewController.xib */; };
@@ -197,6 +205,7 @@
 		798B1A481A1D866800F0031F /* EHETeacherTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 798B1A461A1D866800F0031F /* EHETeacherTableViewCell.xib */; };
 		798B1A4A1A1D86D900F0031F /* male_tablecell.png in Resources */ = {isa = PBXBuildFile; fileRef = 798B1A491A1D86D900F0031F /* male_tablecell.png */; };
 		798B1A4C1A1D86DF00F0031F /* female_tablecell.png in Resources */ = {isa = PBXBuildFile; fileRef = 798B1A4B1A1D86DF00F0031F /* female_tablecell.png */; };
+		79CF68211A35B8BC00CD1CF0 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79CF68201A35B8BC00CD1CF0 /* Default-568h@2x.png */; };
 		79D5E8DB1A25807A0047C704 /* EHEStdBookingDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79D5E8D61A2580790047C704 /* EHEStdBookingDetailViewController.m */; };
 		79D5E8DC1A25807A0047C704 /* EHEStdBookingDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79D5E8D71A25807A0047C704 /* EHEStdBookingDetailViewController.xib */; };
 		79D5E8DD1A25807A0047C704 /* EHEStdBookingManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79D5E8D91A25807A0047C704 /* EHEStdBookingManagerViewController.m */; };
@@ -222,8 +231,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		525C208A1A1ED8D200C3119A /* male.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = male.png; sourceTree = "<group>"; };
-		525C208B1A1ED8D200C3119A /* female.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = female.png; sourceTree = "<group>"; };
 		525C20951A1F256B00C3119A /* EHEStdBookingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHEStdBookingTableViewCell.h; sourceTree = "<group>"; };
 		525C20961A1F256B00C3119A /* EHEStdBookingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHEStdBookingTableViewCell.m; sourceTree = "<group>"; };
 		525C20971A1F256B00C3119A /* EHEStdBookingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHEStdBookingTableViewCell.xib; sourceTree = "<group>"; };
@@ -233,9 +240,6 @@
 		525E36CB1A1C29B1004F0475 /* TeacherAnnotations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeacherAnnotations.h; sourceTree = "<group>"; };
 		525E36CC1A1C29B1004F0475 /* TeacherAnnotations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeacherAnnotations.m; sourceTree = "<group>"; };
 		525E36CE1A1C2B4E004F0475 /* iconmarka.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconmarka.png; sourceTree = "<group>"; };
-		525E36D21A1C3052004F0475 /* png-0099.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "png-0099.png"; sourceTree = "<group>"; };
-		525E36D41A1C332B004F0475 /* femal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = femal.png; sourceTree = "<group>"; };
-		525E36E81A1C5008004F0475 /* png-0762.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "png-0762.png"; sourceTree = "<group>"; };
 		525E36EA1A1C7563004F0475 /* png-0010.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "png-0010.png"; sourceTree = "<group>"; };
 		5286B39B1A26B62B0080EC5F /* EHEStdSettingPersonalInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHEStdSettingPersonalInformation.h; sourceTree = "<group>"; };
 		5286B39C1A26B62B0080EC5F /* EHEStdSettingPersonalInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHEStdSettingPersonalInformation.m; sourceTree = "<group>"; };
@@ -251,8 +255,6 @@
 		5286B3AF1A27134D0080EC5F /* EHomeEducation.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EHomeEducation.xcdatamodel; sourceTree = "<group>"; };
 		5286B3B41A2713BA0080EC5F /* EHEOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EHEOrder.h; path = ../EHEOrder.h; sourceTree = "<group>"; };
 		5286B3B51A2713BA0080EC5F /* EHEOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EHEOrder.m; path = ../EHEOrder.m; sourceTree = "<group>"; };
-		5286B3B71A2713BA0080EC5F /* EHEAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EHEAccount.h; path = ../EHEAccount.h; sourceTree = "<group>"; };
-		5286B3B81A2713BA0080EC5F /* EHEAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EHEAccount.m; path = ../EHEAccount.m; sourceTree = "<group>"; };
 		5286B3BA1A2713FE0080EC5F /* EHETeacher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHETeacher.h; sourceTree = "<group>"; };
 		5286B3BB1A2713FE0080EC5F /* EHETeacher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHETeacher.m; sourceTree = "<group>"; };
 		5286B3BD1A27145D0080EC5F /* Defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
@@ -344,7 +346,6 @@
 		52905A4E1A21A8D200DDC6FB /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		52974ACE1A1D8E3700C05FFC /* EHEBaiduMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHEBaiduMapView.h; sourceTree = "<group>"; };
 		52974ACF1A1D8E3700C05FFC /* EHEBaiduMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHEBaiduMapView.m; sourceTree = "<group>"; };
-		5299AE3A1A20964C000A5960 /* settingTest.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = settingTest.jpeg; sourceTree = "<group>"; };
 		5299AE3C1A209AC6000A5960 /* EHEStdSettingDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHEStdSettingDetailCell.h; sourceTree = "<group>"; };
 		5299AE3D1A209AC6000A5960 /* EHEStdSettingDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHEStdSettingDetailCell.m; sourceTree = "<group>"; };
 		5299AE3E1A209AC6000A5960 /* EHEStdSettingDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHEStdSettingDetailCell.xib; sourceTree = "<group>"; };
@@ -389,7 +390,6 @@
 		52AD25B11A288DB600CA150F /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
 		52AD25B21A288DB600CA150F /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		52AD25B31A288DB600CA150F /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
-		52D0FAF21A22DCB1001AAF6B /* authentificated.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = authentificated.png; sourceTree = "<group>"; };
 		52D397B31A1B38B6008B08FE /* BMapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMapKit.h; sourceTree = "<group>"; };
 		52D397B41A1B38B6008B08FE /* BMKActionPaopaoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKActionPaopaoView.h; sourceTree = "<group>"; };
 		52D397B51A1B38B6008B08FE /* BMKAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKAnnotation.h; sourceTree = "<group>"; };
@@ -468,6 +468,35 @@
 		52FDA7E51A2D76EC00221229 /* EHEStdCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHEStdCommentCell.h; sourceTree = "<group>"; };
 		52FDA7E61A2D76EC00221229 /* EHEStdCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHEStdCommentCell.m; sourceTree = "<group>"; };
 		52FDA7E71A2D76EC00221229 /* EHEStdCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHEStdCommentCell.xib; sourceTree = "<group>"; };
+		79070BE11A35BFC900C7F753 /* PinWomen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PinWomen.png; sourceTree = "<group>"; };
+		79070BE21A35BFC900C7F753 /* PinMan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PinMan.png; sourceTree = "<group>"; };
+		79070BFF1A36B24400C7F753 /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
+		79070C001A36B24400C7F753 /* MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefresh.h; sourceTree = "<group>"; };
+		79070C011A36B24400C7F753 /* MJRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBaseView.h; sourceTree = "<group>"; };
+		79070C021A36B24400C7F753 /* MJRefreshBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshBaseView.m; sourceTree = "<group>"; };
+		79070C031A36B24400C7F753 /* MJRefreshConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshConst.h; sourceTree = "<group>"; };
+		79070C041A36B24400C7F753 /* MJRefreshConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshConst.m; sourceTree = "<group>"; };
+		79070C051A36B24400C7F753 /* MJRefreshFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshFooterView.h; sourceTree = "<group>"; };
+		79070C061A36B24400C7F753 /* MJRefreshFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshFooterView.m; sourceTree = "<group>"; };
+		79070C071A36B24400C7F753 /* MJRefreshHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshHeaderView.h; sourceTree = "<group>"; };
+		79070C081A36B24400C7F753 /* MJRefreshHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshHeaderView.m; sourceTree = "<group>"; };
+		79070C091A36B24400C7F753 /* UIScrollView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+MJExtension.h"; sourceTree = "<group>"; };
+		79070C0A1A36B24400C7F753 /* UIScrollView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJExtension.m"; sourceTree = "<group>"; };
+		79070C0B1A36B24400C7F753 /* UIScrollView+MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+MJRefresh.h"; sourceTree = "<group>"; };
+		79070C0C1A36B24400C7F753 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
+		79070C0D1A36B24400C7F753 /* UIView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
+		79070C0E1A36B24400C7F753 /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
+		79070C311A36C73B00C7F753 /* EHETchDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHETchDetailViewController.h; sourceTree = "<group>"; };
+		79070C321A36C73B00C7F753 /* EHETchDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHETchDetailViewController.m; sourceTree = "<group>"; };
+		79070C331A36C73B00C7F753 /* EHETchDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHETchDetailViewController.xib; sourceTree = "<group>"; };
+		79070C401A36CDF300C7F753 /* lightgreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lightgreen.png; sourceTree = "<group>"; };
+		79070C421A36CEA100C7F753 /* EHETchImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHETchImageCell.h; sourceTree = "<group>"; };
+		79070C431A36CEA100C7F753 /* EHETchImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHETchImageCell.m; sourceTree = "<group>"; };
+		79070C441A36CEA100C7F753 /* EHETchImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHETchImageCell.xib; sourceTree = "<group>"; };
+		79070C471A36D52100C7F753 /* distanceIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = distanceIcon.png; sourceTree = "<group>"; };
+		79070C4E1A36D9D900C7F753 /* EHETchRegularCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHETchRegularCell.h; sourceTree = "<group>"; };
+		79070C4F1A36D9D900C7F753 /* EHETchRegularCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHETchRegularCell.m; sourceTree = "<group>"; };
+		79070C501A36D9D900C7F753 /* EHETchRegularCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHETchRegularCell.xib; sourceTree = "<group>"; };
 		79265E8D1A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHEStdTimePickerTableViewCell.h; sourceTree = "<group>"; };
 		79265E8E1A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHEStdTimePickerTableViewCell.m; sourceTree = "<group>"; };
 		79265E8F1A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHEStdTimePickerTableViewCell.xib; sourceTree = "<group>"; };
@@ -491,9 +520,6 @@
 		7943D1A11A2A21AB00FA80B0 /* EHEStdFilterBySubjectsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHEStdFilterBySubjectsViewController.m; sourceTree = "<group>"; };
 		7943D1A21A2A21AB00FA80B0 /* EHEStdFilterBySubjectsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHEStdFilterBySubjectsViewController.xib; sourceTree = "<group>"; };
 		7943D1A61A2B023400FA80B0 /* MFYueYuan_Noncommercial-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MFYueYuan_Noncommercial-Regular.otf"; sourceTree = "<group>"; };
-		7947560F1A1D9FE600E39012 /* EHETeacherDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHETeacherDetailViewController.h; sourceTree = "<group>"; };
-		794756101A1D9FE600E39012 /* EHETeacherDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHETeacherDetailViewController.m; sourceTree = "<group>"; };
-		794756111A1D9FE600E39012 /* EHETeacherDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHETeacherDetailViewController.xib; sourceTree = "<group>"; };
 		7947561A1A1ED1AA00E39012 /* MF_Base64Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MF_Base64Additions.m; sourceTree = "<group>"; };
 		7947561B1A1ED1AA00E39012 /* MF_Base64Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MF_Base64Additions.h; sourceTree = "<group>"; };
 		794756201A1F123200E39012 /* EHEStdRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHEStdRegisterViewController.h; sourceTree = "<group>"; };
@@ -540,6 +566,7 @@
 		798B1A461A1D866800F0031F /* EHETeacherTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHETeacherTableViewCell.xib; sourceTree = "<group>"; };
 		798B1A491A1D86D900F0031F /* male_tablecell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = male_tablecell.png; sourceTree = "<group>"; };
 		798B1A4B1A1D86DF00F0031F /* female_tablecell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = female_tablecell.png; sourceTree = "<group>"; };
+		79CF68201A35B8BC00CD1CF0 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		79D5E8D51A2580790047C704 /* EHEStdBookingDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHEStdBookingDetailViewController.h; sourceTree = "<group>"; };
 		79D5E8D61A2580790047C704 /* EHEStdBookingDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHEStdBookingDetailViewController.m; sourceTree = "<group>"; };
 		79D5E8D71A25807A0047C704 /* EHEStdBookingDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHEStdBookingDetailViewController.xib; sourceTree = "<group>"; };
@@ -886,6 +913,8 @@
 		52905A501A21A8DD00DDC6FB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				79070BFE1A36B24400C7F753 /* MJRefresh */,
+				52AD258B1A288DB600CA150F /* AFNetworking */,
 				52D397B11A1B38A4008B08FE /* BaiduMap */,
 				7943D1821A281EF500FA80B0 /* FPPopover */,
 				52D397FE1A1B391B008B08FE /* CoreLocation.framework */,
@@ -1076,6 +1105,10 @@
 		52D398021A1B4248008B08FE /* Pictures */ = {
 			isa = PBXGroup;
 			children = (
+				79070C471A36D52100C7F753 /* distanceIcon.png */,
+				79070C401A36CDF300C7F753 /* lightgreen.png */,
+				79070BE11A35BFC900C7F753 /* PinWomen.png */,
+				79070BE21A35BFC900C7F753 /* PinMan.png */,
 				52FDA7DB1A2D63BF00221229 /* 提交按钮.png */,
 				52FDA7DC1A2D63BF00221229 /* 提交按钮2.png */,
 				7943D1941A2873C000FA80B0 /* checkMark.png */,
@@ -1085,18 +1118,11 @@
 				5286B3A71A26CF370080EC5F /* 订单-已完成 - 继续预约预约按钮.png */,
 				5286B3A01A26CF220080EC5F /* 订单-历史评论星星.png */,
 				5286B3A11A26CF220080EC5F /* 订单-历史评论星星2.png */,
-				52D0FAF21A22DCB1001AAF6B /* authentificated.png */,
-				5299AE3A1A20964C000A5960 /* settingTest.jpeg */,
 				525E36EA1A1C7563004F0475 /* png-0010.png */,
 				798B1A491A1D86D900F0031F /* male_tablecell.png */,
-				525E36E81A1C5008004F0475 /* png-0762.png */,
-				525E36D41A1C332B004F0475 /* femal.png */,
 				798B1A4B1A1D86DF00F0031F /* female_tablecell.png */,
-				525E36D21A1C3052004F0475 /* png-0099.png */,
 				525E36CE1A1C2B4E004F0475 /* iconmarka.png */,
 				52D398001A1B422E008B08FE /* pin.png */,
-				525C208A1A1ED8D200C3119A /* male.png */,
-				525C208B1A1ED8D200C3119A /* female.png */,
 			);
 			name = Pictures;
 			sourceTree = "<group>";
@@ -1109,6 +1135,45 @@
 				52FDA7E71A2D76EC00221229 /* EHEStdCommentCell.xib */,
 			);
 			name = "评价表单元格";
+			sourceTree = "<group>";
+		};
+		79070BFE1A36B24400C7F753 /* MJRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				79070BFF1A36B24400C7F753 /* MJRefresh.bundle */,
+				79070C001A36B24400C7F753 /* MJRefresh.h */,
+				79070C011A36B24400C7F753 /* MJRefreshBaseView.h */,
+				79070C021A36B24400C7F753 /* MJRefreshBaseView.m */,
+				79070C031A36B24400C7F753 /* MJRefreshConst.h */,
+				79070C041A36B24400C7F753 /* MJRefreshConst.m */,
+				79070C051A36B24400C7F753 /* MJRefreshFooterView.h */,
+				79070C061A36B24400C7F753 /* MJRefreshFooterView.m */,
+				79070C071A36B24400C7F753 /* MJRefreshHeaderView.h */,
+				79070C081A36B24400C7F753 /* MJRefreshHeaderView.m */,
+				79070C091A36B24400C7F753 /* UIScrollView+MJExtension.h */,
+				79070C0A1A36B24400C7F753 /* UIScrollView+MJExtension.m */,
+				79070C0B1A36B24400C7F753 /* UIScrollView+MJRefresh.h */,
+				79070C0C1A36B24400C7F753 /* UIScrollView+MJRefresh.m */,
+				79070C0D1A36B24400C7F753 /* UIView+MJExtension.h */,
+				79070C0E1A36B24400C7F753 /* UIView+MJExtension.m */,
+			);
+			path = MJRefresh;
+			sourceTree = "<group>";
+		};
+		79070C171A36C44600C7F753 /* TeacherDetailViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				79070C311A36C73B00C7F753 /* EHETchDetailViewController.h */,
+				79070C321A36C73B00C7F753 /* EHETchDetailViewController.m */,
+				79070C331A36C73B00C7F753 /* EHETchDetailViewController.xib */,
+				79070C421A36CEA100C7F753 /* EHETchImageCell.h */,
+				79070C431A36CEA100C7F753 /* EHETchImageCell.m */,
+				79070C441A36CEA100C7F753 /* EHETchImageCell.xib */,
+				79070C4E1A36D9D900C7F753 /* EHETchRegularCell.h */,
+				79070C4F1A36D9D900C7F753 /* EHETchRegularCell.m */,
+				79070C501A36D9D900C7F753 /* EHETchRegularCell.xib */,
+			);
+			name = TeacherDetailViewControllers;
 			sourceTree = "<group>";
 		};
 		7943D1821A281EF500FA80B0 /* FPPopover */ = {
@@ -1195,6 +1260,7 @@
 		797C305E1A19D32900DB84E4 = {
 			isa = PBXGroup;
 			children = (
+				79CF68201A35B8BC00CD1CF0 /* Default-568h@2x.png */,
 				797C30691A19D32900DB84E4 /* EHomeEducation */,
 				797C30861A19D32900DB84E4 /* EHomeEducationTests */,
 				797C30681A19D32900DB84E4 /* Products */,
@@ -1215,8 +1281,6 @@
 			children = (
 				797C306E1A19D32900DB84E4 /* AppDelegate.h */,
 				797C306F1A19D32900DB84E4 /* AppDelegate.m */,
-				5286B3AC1A2701350080EC5F /* Reachability.h */,
-				5286B3AD1A2701350080EC5F /* Reachability.m */,
 				52905A501A21A8DD00DDC6FB /* Frameworks */,
 				797C30951A19D38000DB84E4 /* CoreData */,
 				79D931CE1A1B22C400B709A1 /* Networking */,
@@ -1268,8 +1332,6 @@
 		797C30951A19D38000DB84E4 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				5286B3B71A2713BA0080EC5F /* EHEAccount.h */,
-				5286B3B81A2713BA0080EC5F /* EHEAccount.m */,
 				5286B3B41A2713BA0080EC5F /* EHEOrder.h */,
 				5286B3B51A2713BA0080EC5F /* EHEOrder.m */,
 				5286B3AF1A27134D0080EC5F /* EHomeEducation.xcdatamodel */,
@@ -1332,9 +1394,6 @@
 		79CF681F1A35B09400CD1CF0 /* TeacherList&Map */ = {
 			isa = PBXGroup;
 			children = (
-				7947560F1A1D9FE600E39012 /* EHETeacherDetailViewController.h */,
-				794756101A1D9FE600E39012 /* EHETeacherDetailViewController.m */,
-				794756111A1D9FE600E39012 /* EHETeacherDetailViewController.xib */,
 				798B1A441A1D866800F0031F /* EHETeacherTableViewCell.h */,
 				798B1A451A1D866800F0031F /* EHETeacherTableViewCell.m */,
 				798B1A461A1D866800F0031F /* EHETeacherTableViewCell.xib */,
@@ -1344,6 +1403,7 @@
 				79ED56F41A2B2E6900CDEA07 /* EHEStdSearchingViewController.h */,
 				79ED56F51A2B2E6900CDEA07 /* EHEStdSearchingViewController.m */,
 				79ED56F61A2B2E6900CDEA07 /* EHEStdSearchingViewController.xib */,
+				79070C171A36C44600C7F753 /* TeacherDetailViewControllers */,
 				795F888D1A245E42004D75BA /* EHEOrderViewControllers */,
 				7943D18C1A286C7900FA80B0 /* FilterViewControllers */,
 			);
@@ -1353,7 +1413,8 @@
 		79D931CE1A1B22C400B709A1 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				52AD258B1A288DB600CA150F /* AFNetworking */,
+				5286B3AC1A2701350080EC5F /* Reachability.h */,
+				5286B3AD1A2701350080EC5F /* Reachability.m */,
 				79D931CF1A1B22DF00B709A1 /* EHECommunicationManager.h */,
 				79D931D01A1B22DF00B709A1 /* EHECommunicationManager.m */,
 			);
@@ -1447,43 +1508,41 @@
 				7943D1A71A2B08EB00FA80B0 /* MFYueYuan_Noncommercial-Regular.otf in Resources */,
 				52905A321A21A80100DDC6FB /* ShareSDKiPadSimpleShareViewUI.bundle in Resources */,
 				79265E911A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.xib in Resources */,
+				79070BE31A35BFC900C7F753 /* PinWomen.png in Resources */,
 				795F889C1A24670D004D75BA /* EHEStdMemoViewController.xib in Resources */,
 				52905A251A21A80100DDC6FB /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
-				525E36D51A1C332B004F0475 /* femal.png in Resources */,
+				79CF68211A35B8BC00CD1CF0 /* Default-568h@2x.png in Resources */,
 				797C307E1A19D32900DB84E4 /* LaunchScreen.xib in Resources */,
 				79EA22CE1A2322C80016CBD1 /* EHEStdOrderTableViewCell.xib in Resources */,
 				798B1A4A1A1D86D900F0031F /* male_tablecell.png in Resources */,
 				525E36EB1A1C7563004F0475 /* png-0010.png in Resources */,
 				7943D1951A2873C000FA80B0 /* checkMark.png in Resources */,
 				52905A011A21A80100DDC6FB /* InstapaperResource.bundle in Resources */,
+				79070C351A36C73B00C7F753 /* EHETchDetailViewController.xib in Resources */,
 				7943D1911A286CC000FA80B0 /* EHEStdFilterByGenderViewController.xib in Resources */,
 				52905A1D1A21A80100DDC6FB /* Resource.bundle in Resources */,
 				52905A351A21A80100DDC6FB /* ShareSDKiPhoneDefaultShareViewUI.bundle in Resources */,
 				797C30CC1A19DA9900DB84E4 /* EHEStdMapSearchingViewController.xib in Resources */,
 				794756241A1F123200E39012 /* EHEStdRegisterViewController.xib in Resources */,
 				7943D19A1A28864100FA80B0 /* EHEStdFilterByDistanceViewController.xib in Resources */,
-				794756131A1D9FE600E39012 /* EHETeacherDetailViewController.xib in Resources */,
-				525E36E91A1C5008004F0475 /* png-0762.png in Resources */,
 				79ED56F81A2B2E6900CDEA07 /* EHEStdSearchingViewController.xib in Resources */,
 				7947562E1A20FB1700E39012 /* EHEStdSubjectTableTableViewController.xib in Resources */,
-				52D0FAF31A22DCB1001AAF6B /* authentificated.png in Resources */,
+				79070C481A36D52100C7F753 /* distanceIcon.png in Resources */,
 				795F88A11A246C41004D75BA /* EHEStdDatePickerTableViewCell.xib in Resources */,
 				52FDA7E91A2D76EC00221229 /* EHEStdCommentCell.xib in Resources */,
 				798B1A4C1A1D86DF00F0031F /* female_tablecell.png in Resources */,
 				52FDA7DE1A2D63BF00221229 /* 提交按钮2.png in Resources */,
 				798B1A481A1D866800F0031F /* EHETeacherTableViewCell.xib in Resources */,
-				5299AE3B1A20964C000A5960 /* settingTest.jpeg in Resources */,
 				52FDA7DD1A2D63BF00221229 /* 提交按钮.png in Resources */,
 				52AD25BD1A288DB700CA150F /* LICENSE in Resources */,
-				525E36E91A1C5008004F0475 /* png-0762.png in Resources */,
 				7943D1A41A2A21AB00FA80B0 /* EHEStdFilterBySubjectsViewController.xib in Resources */,
 				5286B3A81A26CF370080EC5F /* 订单-已完成 - 继续预约取消按钮2.png in Resources */,
-				525C208D1A1ED8D200C3119A /* female.png in Resources */,
+				79070BE41A35BFC900C7F753 /* PinMan.png in Resources */,
 				797C307B1A19D32900DB84E4 /* Images.xcassets in Resources */,
 				5286B3A31A26CF220080EC5F /* 订单-历史评论星星2.png in Resources */,
 				7943D19F1A288B8700FA80B0 /* EHEStdFilterByAgeViewController.xib in Resources */,
-				525C208C1A1ED8D200C3119A /* male.png in Resources */,
 				79D5E8DC1A25807A0047C704 /* EHEStdBookingDetailViewController.xib in Resources */,
+				79070C521A36D9D900C7F753 /* EHETchRegularCell.xib in Resources */,
 				52905A1C1A21A80100DDC6FB /* ShareSDKLocalizable.strings in Resources */,
 				5286B3AA1A26CF370080EC5F /* 订单-已完成 - 继续预约取消按钮.png in Resources */,
 				5286B3A91A26CF370080EC5F /* 订单-已完成 - 继续预约预约按钮2.png in Resources */,
@@ -1502,12 +1561,14 @@
 				5286B3AB1A26CF370080EC5F /* 订单-已完成 - 继续预约预约按钮.png in Resources */,
 				52905A2E1A21A80100DDC6FB /* ShareSDKFlatShareViewUI.bundle in Resources */,
 				525C20991A1F256B00C3119A /* EHEStdBookingTableViewCell.xib in Resources */,
+				79070C411A36CDF300C7F753 /* lightgreen.png in Resources */,
+				79070C461A36CEA100C7F753 /* EHETchImageCell.xib in Resources */,
 				52905A261A21A80100DDC6FB /* RennSDK.bundle in Resources */,
 				52D397F31A1B38B7008B08FE /* mapapi.bundle in Resources */,
 				5299AE401A209AC6000A5960 /* EHEStdSettingDetailCell.xib in Resources */,
 				52905A201A21A80100DDC6FB /* GooglePlus.bundle in Resources */,
 				5286B39F1A26B62B0080EC5F /* EHEStdSettingPersonalInformation.xib in Resources */,
-				525E36D31A1C3052004F0475 /* png-0099.png in Resources */,
+				79070C0F1A36B24400C7F753 /* MJRefresh.bundle in Resources */,
 				797C30E11A19DC0D00DB84E4 /* EHEStdSettingViewController.xib in Resources */,
 				52D398011A1B422E008B08FE /* pin.png in Resources */,
 				525E36CF1A1C2B4E004F0475 /* iconmarka.png in Resources */,
@@ -1536,12 +1597,14 @@
 				7943D1901A286CC000FA80B0 /* EHEStdFilterByGenderViewController.m in Sources */,
 				5286B39E1A26B62B0080EC5F /* EHEStdSettingPersonalInformation.m in Sources */,
 				52AD25B41A288DB600CA150F /* AFHTTPRequestOperation.m in Sources */,
+				79070C161A36B24400C7F753 /* UIView+MJExtension.m in Sources */,
 				5299AE3F1A209AC6000A5960 /* EHEStdSettingDetailCell.m in Sources */,
 				797C30701A19D32900DB84E4 /* AppDelegate.m in Sources */,
 				5286B3C11A273A620080EC5F /* LXActionSheet.m in Sources */,
 				7943D1891A281F1300FA80B0 /* FPPopoverController.m in Sources */,
 				52AD25C01A288DB700CA150F /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				797C30D61A19DB5000DB84E4 /* EHEStdLoginViewController.m in Sources */,
+				79070C141A36B24400C7F753 /* UIScrollView+MJExtension.m in Sources */,
 				7943D18B1A281F1300FA80B0 /* FPTouchView.m in Sources */,
 				7947562D1A20FB1700E39012 /* EHEStdSubjectTableTableViewController.m in Sources */,
 				52AD25C21A288DB700CA150F /* UIButton+AFNetworking.m in Sources */,
@@ -1568,27 +1631,33 @@
 				52AD25B61A288DB700CA150F /* AFHTTPSessionManager.m in Sources */,
 				525C209F1A1F481600C3119A /* EHEStdSettingTableViewCell.m in Sources */,
 				7943D18A1A281F1300FA80B0 /* FPPopoverView.m in Sources */,
+				79070C341A36C73B00C7F753 /* EHETchDetailViewController.m in Sources */,
 				79265E901A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.m in Sources */,
+				79070C451A36CEA100C7F753 /* EHETchImageCell.m in Sources */,
 				52AD25BB1A288DB700CA150F /* AFURLResponseSerialization.m in Sources */,
 				797C30CB1A19DA9900DB84E4 /* EHEStdMapSearchingViewController.m in Sources */,
 				7943D1A31A2A21AB00FA80B0 /* EHEStdFilterBySubjectsViewController.m in Sources */,
-				5286B3B91A2713BA0080EC5F /* EHEAccount.m in Sources */,
 				5286B3BC1A2713FE0080EC5F /* EHETeacher.m in Sources */,
 				79ED56F71A2B2E6900CDEA07 /* EHEStdSearchingViewController.m in Sources */,
 				7943D1991A28864100FA80B0 /* EHEStdFilterByDistanceViewController.m in Sources */,
 				7943D19E1A288B8700FA80B0 /* EHEStdFilterByAgeViewController.m in Sources */,
-				794756121A1D9FE600E39012 /* EHETeacherDetailViewController.m in Sources */,
+				79070C121A36B24400C7F753 /* MJRefreshFooterView.m in Sources */,
+				79070C101A36B24400C7F753 /* MJRefreshBaseView.m in Sources */,
+				79070C111A36B24400C7F753 /* MJRefreshConst.m in Sources */,
 				52AD25BA1A288DB700CA150F /* AFURLRequestSerialization.m in Sources */,
 				52AD25B71A288DB700CA150F /* AFNetworkReachabilityManager.m in Sources */,
 				79D931D11A1B22DF00B709A1 /* EHECommunicationManager.m in Sources */,
+				79070C151A36B24400C7F753 /* UIScrollView+MJRefresh.m in Sources */,
 				795F88A01A246C41004D75BA /* EHEStdDatePickerTableViewCell.m in Sources */,
 				52AD25BE1A288DB700CA150F /* README.md in Sources */,
 				5299AE441A209F2C000A5960 /* EHEStdSettingDetailViewController.m in Sources */,
+				79070C131A36B24400C7F753 /* MJRefreshHeaderView.m in Sources */,
 				52AD25C11A288DB700CA150F /* UIAlertView+AFNetworking.m in Sources */,
 				52AD25BF1A288DB700CA150F /* AFNetworkActivityIndicatorManager.m in Sources */,
 				794756281A1F388A00E39012 /* EHEStdOrderViewController.m in Sources */,
 				525E36CD1A1C29B1004F0475 /* TeacherAnnotations.m in Sources */,
 				5286B3B61A2713BA0080EC5F /* EHEOrder.m in Sources */,
+				79070C511A36D9D900C7F753 /* EHETchRegularCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

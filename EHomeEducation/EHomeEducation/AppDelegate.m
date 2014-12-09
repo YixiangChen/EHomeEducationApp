@@ -57,7 +57,6 @@
         [alertView show];
     }
     
-    [[EHECoreDataManager getInstance] removeAllTeachersFromCoreData];
     
     NSUserDefaults * userDefaults=[NSUserDefaults standardUserDefaults];
     NSString * customerID=[userDefaults objectForKey:@"myCustomerid"];
@@ -65,9 +64,9 @@
 
     [[EHECoreDataManager getInstance] fetchOrderInfosWithCustomerID:customerID.intValue andOrderStatus:-1];
     
-    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationController class], nil]
-     setTintColor:[UIColor greenColor]];
-    [[UITabBar appearanceWhenContainedIn:[UITabBarController class], nil] setTintColor:[UIColor greenColor]];
+//    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationController class], nil]
+//     setTintColor:[UIColor greenColor]];
+//    [[UITabBar appearanceWhenContainedIn:[UITabBarController class], nil] setTintColor:[UIColor greenColor]];
  
     
     

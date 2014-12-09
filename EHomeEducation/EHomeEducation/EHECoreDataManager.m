@@ -35,51 +35,37 @@
     return self;
 }
 
--(void)updateBasicInfosOfTeachers:(NSDictionary *) dict{
-    
-    NSArray *dictsForTeacherInfo = dict[@"teachersinfo"];
-    
-    for (NSDictionary *dictionary in dictsForTeacherInfo) {
-        EHETeacher * teacher = [NSEntityDescription insertNewObjectForEntityForName:@"EHETeacher" inManagedObjectContext:self.context];
-        teacher.teacherId = dictionary[@"teacherid"];
-        teacher.teacherIcon = [[NSData alloc] initWithBase64EncodedString:dictionary[@"teachericon"] options:NSDataBase64DecodingIgnoreUnknownCharacters];
-        teacher.subjectInfo = dictionary[@"subjectinfo"];
-        teacher.rank = dictionary[@"rank"];
-        teacher.name = dictionary[@"name"];
-        teacher.majorAdress = dictionary[@"majorAdress"];
-        teacher.longitude = dictionary[@"longitude"];
-        teacher.latitude = dictionary[@"latitude"];
-        [self.context save:nil];
-        
-    }
-}
 
--(void)updateDetailInfos:(NSDictionary *) dict withTeacherId:(int) teacherId {
+-(BOOL)saveTeacherInfo:(NSDictionary *) dict withTeacherId:(int) teacherId {
     
-    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"EHETeacher"];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"teacherId = %d", teacherId];
-    fetchRequest.predicate = predicate;
-    NSArray *teachers = [self.context executeFetchRequest:fetchRequest error:nil];
-    
-    if (teachers.count > 0) {
-        EHETeacher *teacher = [teachers objectAtIndex:0];
-        teacher.teacherId = [NSNumber numberWithInt:teacherId];
-        teacher.birthday = dict[@"birthday"];
-        teacher.degree = dict[@"degree"];
-        teacher.gender = dict[@"gender"];
-        teacher.identity = dict[@"identity"];
-        teacher.memo = dict[@"memo"];
-        teacher.objectInfo = dict[@"objectinfo"];
-        teacher.qq = dict[@"qq"];
-        teacher.sinaweibo = dict[@"sinaweibo"];
-        teacher.telephone = dict[@"telephone"];
-        teacher.timePeriod = dict[@"timeperiod"];
-        [self.context save:nil];
+    EHETeacher *teacher = [NSEntityDescription insertNewObjectForEntityForName:@"EHETeacher" inManagedObjectContext:self.context];
+    teacher.teacherId = dict[@"teacherid"];
+    teacher.teacherIcon = [[NSData alloc] initWithBase64EncodedString:dict[@"teachericon"] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    teacher.subjectInfo = dict[@"subjectinfo"];
+    teacher.rank = dict[@"rank"];
+    teacher.name = dict[@"name"];
+    teacher.majorAdress = dict[@"majorAdress"];
+    teacher.longitude = dict[@"longitude"];
+    teacher.latitude = dict[@"latitude"];
+    teacher.teacherId = [NSNumber numberWithInt:teacherId];
+    teacher.birthday = dict[@"birthday"];
+    teacher.degree = dict[@"degree"];
+    teacher.gender = dict[@"gender"];
+    teacher.identity = dict[@"identity"];
+    teacher.memo = dict[@"memo"];
+    teacher.objectInfo = dict[@"objectinfo"];
+    teacher.qq = dict[@"qq"];
+    teacher.sinaweibo = dict[@"sinaweibo"];
+    teacher.telephone = dict[@"telephone"];
+    teacher.timePeriod = dict[@"timeperiod"];
+    NSError *error = nil;
+    [self.context save:nil];
+    if (error == nil) {
         NSLog(@"将一个Teacher对象写入CoreData %@",teacher);
-    } else {
-        NSLog(@"core data中没有找到 ID 为 %d 的教师对象",teacherId);
+        return YES;
+    }else {
+        return NO;
     }
-    
     
 }
 
@@ -168,6 +154,7 @@
     }
     else if (teachers.count > 0)
     {
+        NSLog(@"拿到老师具体信息成功 %@",teachers[0]);
         return teachers[0];
     }
     return nil;
@@ -260,46 +247,23 @@
         }
     }
 }
--(void)savePersonalData:(NSDictionary *)dictOtherInfo {
-    EHEAccount *account = [NSEntityDescription insertNewObjectForEntityForName:@"EHEAccount" inManagedObjectContext:self.context];
-    
-    account.customerid = [dictOtherInfo objectForKey:@"customerid"];
-    account.name = [dictOtherInfo objectForKey:@"name"];
-    account.gender = [dictOtherInfo objectForKey:@"gender"];
-    account.telephone = [dictOtherInfo objectForKey:@"telephone"];
-    account.latitude = [dictOtherInfo objectForKey:@"latitude"];
-    account.longitude = [dictOtherInfo objectForKey:@"longitude"];
-    account.majoraddress = [dictOtherInfo objectForKey:@"majoraddress"];
-    account.memo = [dictOtherInfo objectForKey:@"memo"];
-    
-    [self.context save:nil];
-}
 
--(EHEAccount *)fetchPersonalDataWithCustomerId:(int)customerId {
-    
-    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"EHEAccount"];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"customerid = %d", customerId];
-    fetchRequest.predicate = predicate;
-    
-    NSSortDescriptor *sortByName = [NSSortDescriptor sortDescriptorWithKey:@"customerid" ascending:NO];
-    NSArray *sorts = [[NSArray alloc] initWithObjects:sortByName, nil];
-    fetchRequest.sortDescriptors = sorts;
-    
-    NSError *error;
-    NSArray *users = [self.context executeFetchRequest:fetchRequest error:&error];
-    
-    if (error)
-    {
-        NSLog(@"从CoreData获取EHEAccount出错");
-        return nil;
+
+
+-(BOOL)removeTeacherWithTeacherId:(int)teacherId {
+    EHETeacher *teacher = [self fetchDetailInfosWithTeacherId:teacherId];
+    if (teacher != nil) {
+        [self.context deleteObject:teacher];
+        NSError * error;
+        [self.context save:&error];
+        if (error == nil) {
+            NSLog(@"成功删除ID为%d的教师",teacherId);
+            return YES;
+        }else {
+            return NO;
+        }
     }
-    else if (users.count > 0)
-    {
-        return users[0];
-    }
-    NSLog(@"CoreData中找不到CustomerID为 %d 的用户",customerId);
-    return nil;
-    
+    return NO;
 }
 
 @end
