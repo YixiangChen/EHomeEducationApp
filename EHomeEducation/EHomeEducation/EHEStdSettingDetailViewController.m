@@ -57,13 +57,11 @@
         [self.view addSubview:self.tableView];
     }
     
-    NSLog(@"studentName=%@",self.name);
     // Do any additional setup after loading the view from its nib.
 }
 -(void)viewWillDisappear:(BOOL)animated
 {
     UITextField * nameText=(UITextField *)[self.tableView viewWithTag:1];
-    NSLog(@"personInfo=%@",self.personInfomation);
     if([self.type isEqualToString:@"1"])
     {
         self.personInfomation.name=nameText.text;
@@ -93,7 +91,7 @@
 {
     if([self.type isEqualToString:@"2"])
     {
-        NSLog(@"%@",[self.sexArray objectAtIndex:self.currentIndexPath]);
+       
     }
 }
 #pragma mark- TableView DataSource Method
@@ -249,7 +247,7 @@
 #pragma mark -ImagePickerView Delegate Method
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    NSLog(@"finish selected");
+
     //如果是来源为照片库
     if(picker.sourceType == UIImagePickerControllerSourceTypePhotoLibrary){
         //做将选择的图片显示到imageView组件上。
@@ -286,7 +284,6 @@
 }
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
-    NSLog(@"cancel");
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 @end

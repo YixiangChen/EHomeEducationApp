@@ -40,7 +40,7 @@
     
     EHETeacher *teacher = [NSEntityDescription insertNewObjectForEntityForName:@"EHETeacher" inManagedObjectContext:self.context];
     teacher.teacherId = dict[@"teacherid"];
-    teacher.teacherIcon = [[NSData alloc] initWithBase64EncodedString:dict[@"teachericon"] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    teacher.teacherIcon = dict[@"teachericon"];
     teacher.subjectInfo = dict[@"subjectinfo"];
     teacher.rank = dict[@"rank"];
     teacher.name = dict[@"name"];
@@ -257,7 +257,6 @@
         NSError * error;
         [self.context save:&error];
         if (error == nil) {
-            NSLog(@"成功删除ID为%d的教师",teacherId);
             return YES;
         }else {
             return NO;

@@ -38,7 +38,6 @@
 
     NSString * customerid=[userDefault objectForKey:@"myCustomerid"];
     NSString * keyString=[self getKey:@"name" andPara:customerid];
-    NSLog(@"keyString=%@",keyString);
     self.name=[userDefault objectForKey:@"name"];
     self.gender=[userDefault objectForKey:@"gender"];
     self.telephoneNumber=[userDefault objectForKey:@"telephone"];
@@ -68,13 +67,13 @@
     {
         case NotReachable:
             self.check  = NO;
-            NSLog(@"没有网络");
+
             break;
         case ReachableViaWiFi:
-            NSLog(@"有网络");
+
             break;
         case ReachableViaWWAN:
-            NSLog(@"有网络");
+
             break;
     }
     return self.check;
@@ -86,7 +85,6 @@
     NSDictionary * locationDic=[userDefault objectForKey:@"latitudeAndLongitude"];
     NSString * latitude=[locationDic objectForKey:@"latitude"];
     NSString * longitude=[locationDic objectForKey:@"longitude"];
-    NSLog(@"latutide=%@,longitude=%@",latitude,longitude);
     
     CLLocation *c = [[CLLocation alloc] initWithLatitude:latitude.floatValue longitude:longitude.floatValue];
     //创建位置
@@ -100,7 +98,6 @@
                          NSString * location=[[dict objectForKey:@"FormattedAddressLines"] objectAtIndex:0];
                          location=[location substringFromIndex:2];
                          self.address=location;
-                         NSLog(@"self.address=%@",self.address);
                          [self.tableView reloadData];
                          
                      }
@@ -120,7 +117,6 @@
     NSString * latitude=[latitudeAndLongitude objectForKey:@"latitude"];
     NSString * longitude=[latitudeAndLongitude objectForKey:@"longitude"];
     EHECommunicationManager * communicationManager=[EHECommunicationManager getInstance];
-    NSLog(@"name=%@",self.telephoneNumber);
     
     NSDictionary * informationDictionary=@{@"customerid":[userDefaults objectForKey:@"myCustomerid"],@"name":self.name,@"gender":self.gender,@"telephone":self.telephoneNumber,@"latitude":latitude,@"longitude":longitude,@"majoraddress":self.address,@"memo":self.brithday};
 
@@ -146,7 +142,6 @@
     if(self.image==nil)
     {
         NSUserDefaults * userDefaults=[NSUserDefaults standardUserDefaults];
-        NSLog(@"customerid=%@",[userDefaults objectForKey:@"myCustomerid"]);
         NSData * imageData =[userDefaults objectForKey:[self getKey:@"image" andPara:[userDefaults objectForKey:@"myCustomerid"]]];
             UIImage * myImage=[UIImage imageWithData:imageData];
         self.image=myImage;
@@ -161,7 +156,6 @@
     
     
     NSString * path = @"http://developer.bjbkws.com:8080/ehomeedu/api/customer/usericonupload.action";
-    NSLog(@"%@",path);
     AFHTTPRequestSerializer * serializer = [[AFHTTPRequestSerializer alloc]init];
     NSMutableURLRequest * request = [serializer multipartFormRequestWithMethod:@"POST" URLString:path parameters:@{@"customerid":@(customerId)} constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         [formData appendPartWithFileData:UIImagePNGRepresentation(self.image) name:@"usericon" fileName:@"png-0001.jpg" mimeType:@"image/png"];
@@ -170,7 +164,7 @@
     AFHTTPRequestOperation * operation = [[AFHTTPRequestOperation alloc]initWithRequest:request];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         //上传成功，
-        NSLog(@"%@",[[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding]);
+
         self.imageData=nil;;
         if (UIImagePNGRepresentation(self.image) == nil) {
             

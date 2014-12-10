@@ -53,7 +53,7 @@
 }
 -(void)handleSingleTap:(UIGestureRecognizer *)sender
 {
-    NSLog(@"123");
+    
 }
 
 @end

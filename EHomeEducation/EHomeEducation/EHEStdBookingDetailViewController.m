@@ -157,7 +157,6 @@
             
             EHECommunicationManager * communicationManager=[EHECommunicationManager getInstance];
             NSString * reasonString=[NSString stringWithFormat:@"取消订单原因是：%@",alertController.textFields.firstObject];
-            NSLog(@"取消订单原因:%@",reasonString);
             [communicationManager cancelOrderWithOrderId:self.order.orderid.intValue withReason:reasonString];
             [_buttonSure setBackgroundImage:[UIImage imageNamed:@"订单-已完成 - 继续预约取消按钮"] forState:UIControlStateNormal];
             self.buttonSure.enabled=NO;

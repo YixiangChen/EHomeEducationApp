@@ -51,12 +51,10 @@
 }
 -(void)viewDidAppear:(BOOL)animated
 {
-    NSLog(@"xianshile");
     //通过NSUserDefaults来对用户名进行拿取
     NSUserDefaults * userDefaults=[NSUserDefaults standardUserDefaults];
     NSString * userName=[userDefaults objectForKey:@"userName"];
     NSString * password=[userDefaults objectForKey:@"passWord"];
-    NSLog(@"userName=%@,password=%@",userName,password);
     
     EHEStdLoginViewController *loginViewController = [[EHEStdLoginViewController alloc] initWithNibName:nil bundle:nil];
     if (userName == nil || password== nil) {
@@ -82,7 +80,7 @@
 -(void)changeLanguage:(NSNotification *)noti
 {
    NSString * userIcon= [noti.userInfo objectForKey:@"userIcon"];
-    NSLog(@"userIcon=%@",userIcon);
+
     EHECommunicationManager * commucationManager=[EHECommunicationManager getInstance];
     [commucationManager loadCustomerIconForCustomer:userIcon completionBlock:^(NSString * completion ) {
         if([completion isEqualToString:kConnectionSuccess])
@@ -105,13 +103,10 @@
     {
         case NotReachable:
             self.check  = NO;
-            NSLog(@"没有网络");
             break;
         case ReachableViaWiFi:
-            NSLog(@"有网络");
             break;
         case ReachableViaWWAN:
-            NSLog(@"有网络");
             break;
     }
     return self.check;
@@ -221,7 +216,6 @@
         if([indexPath row]==0)
         {
         EHEStdSettingPersonalInformation * personInfomation=[[EHEStdSettingPersonalInformation alloc]init];
-            NSLog(@"self.userImage=%@",self.userImage);
             personInfomation.image=self.userImage;
         [self.navigationController pushViewController:personInfomation animated:YES];
         }
@@ -302,6 +296,10 @@
        NSUserDefaults * userDefaults=[NSUserDefaults standardUserDefaults];
        [userDefaults removeObjectForKey:@"userName"];
        [userDefaults removeObjectForKey:@"passWord"];
+       [userDefaults removeObjectForKey:@"myCustomerid"];
+       [userDefaults removeObjectForKey:@"latitude"];
+       [userDefaults removeObjectForKey:@"longitude"];
+       
        [userDefaults synchronize];
        
        EHEStdLoginViewController * loginViewController=[[EHEStdLoginViewController alloc]initWithNibName:nil bundle:nil];

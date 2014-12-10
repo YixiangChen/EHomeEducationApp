@@ -494,4 +494,47 @@
      }];
     
 }
+
+-(void)loadTeacherIconForTeacher:(EHETeacher *)teacher completionBlock:(void (^)(NSString *))completionBlock {
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://218.249.130.194:8080/ehomeedu%@",teacher.teacherIcon]];
+    
+    if (url == nil)
+    {
+        NSLog(@"图片URL 为空");
+        return;
+    }
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+    [request setHTTPMethod:@"POST"];
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+     {
+         if (error)
+         {
+             NSLog(@"发送请求发生错误 %@",error);
+         }
+         else
+         {
+             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+             if (httpResponse.statusCode == 200)
+             {
+                 UIImage *image = [[UIImage alloc] initWithData:data];
+                 NSData * image_data = UIImagePNGRepresentation(image);
+                 
+                 // save image to cache directory
+                 [[NSUserDefaults standardUserDefaults] setObject:image_data forKey:[NSString stringWithFormat:@"image_for_teacher_%@",teacher.teacherId]];
+                 [[NSUserDefaults standardUserDefaults] synchronize];
+                 
+                 completionBlock(kConnectionSuccess);
+             }
+             else
+             {
+                 NSLog(@"Communication status code not 200 --> %ld", (long)httpResponse.statusCode);
+                 completionBlock(kConnectionFailure);
+             }
+         }
+     }];
+    
+}
 @end

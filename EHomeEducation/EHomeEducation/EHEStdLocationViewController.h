@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "EHEStdOrderViewController.h"
 
-@interface EHEStdLocationViewController : UIViewController
-@property (strong, nonatomic) IBOutlet UITextView *txtViewLocation;
+@interface EHEStdLocationViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
+
 @property (strong, nonatomic) EHEStdOrderViewController *orderTable;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSString *location;
 
 @end

@@ -25,7 +25,6 @@
 		5286B3AE1A2701350080EC5F /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 5286B3AD1A2701350080EC5F /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		5286B3B01A27134D0080EC5F /* EHomeEducation.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 5286B3AF1A27134D0080EC5F /* EHomeEducation.xcdatamodel */; };
 		5286B3B61A2713BA0080EC5F /* EHEOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5286B3B51A2713BA0080EC5F /* EHEOrder.m */; };
-		5286B3BC1A2713FE0080EC5F /* EHETeacher.m in Sources */ = {isa = PBXBuildFile; fileRef = 5286B3BB1A2713FE0080EC5F /* EHETeacher.m */; };
 		5286B3C11A273A620080EC5F /* LXActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5286B3C01A273A620080EC5F /* LXActionSheet.m */; };
 		529059F81A21A80100DDC6FB /* CopyConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 529059A21A21A80100DDC6FB /* CopyConnection.framework */; };
 		529059F91A21A80100DDC6FB /* DouBanConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 529059A31A21A80100DDC6FB /* DouBanConnection.framework */; };
@@ -161,6 +160,9 @@
 		79070C481A36D52100C7F753 /* distanceIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 79070C471A36D52100C7F753 /* distanceIcon.png */; };
 		79070C511A36D9D900C7F753 /* EHETchRegularCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79070C4F1A36D9D900C7F753 /* EHETchRegularCell.m */; };
 		79070C521A36D9D900C7F753 /* EHETchRegularCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79070C501A36D9D900C7F753 /* EHETchRegularCell.xib */; };
+		79070C591A37E78600C7F753 /* checkMark2.png in Resources */ = {isa = PBXBuildFile; fileRef = 79070C581A37E78600C7F753 /* checkMark2.png */; };
+		79070C5F1A37FAAE00C7F753 /* LocationIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 79070C5E1A37FAAE00C7F753 /* LocationIcon.png */; };
+		79070C621A383E1900C7F753 /* EHETeacher.m in Sources */ = {isa = PBXBuildFile; fileRef = 79070C611A383E1900C7F753 /* EHETeacher.m */; };
 		79265E901A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79265E8E1A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.m */; };
 		79265E911A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79265E8F1A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.xib */; };
 		7943D1891A281F1300FA80B0 /* FPPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7943D1841A281F1300FA80B0 /* FPPopoverController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -255,8 +257,6 @@
 		5286B3AF1A27134D0080EC5F /* EHomeEducation.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EHomeEducation.xcdatamodel; sourceTree = "<group>"; };
 		5286B3B41A2713BA0080EC5F /* EHEOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EHEOrder.h; path = ../EHEOrder.h; sourceTree = "<group>"; };
 		5286B3B51A2713BA0080EC5F /* EHEOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EHEOrder.m; path = ../EHEOrder.m; sourceTree = "<group>"; };
-		5286B3BA1A2713FE0080EC5F /* EHETeacher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHETeacher.h; sourceTree = "<group>"; };
-		5286B3BB1A2713FE0080EC5F /* EHETeacher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHETeacher.m; sourceTree = "<group>"; };
 		5286B3BD1A27145D0080EC5F /* Defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
 		5286B3BF1A273A620080EC5F /* LXActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXActionSheet.h; sourceTree = "<group>"; };
 		5286B3C01A273A620080EC5F /* LXActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXActionSheet.m; sourceTree = "<group>"; };
@@ -497,6 +497,10 @@
 		79070C4E1A36D9D900C7F753 /* EHETchRegularCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHETchRegularCell.h; sourceTree = "<group>"; };
 		79070C4F1A36D9D900C7F753 /* EHETchRegularCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHETchRegularCell.m; sourceTree = "<group>"; };
 		79070C501A36D9D900C7F753 /* EHETchRegularCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHETchRegularCell.xib; sourceTree = "<group>"; };
+		79070C581A37E78600C7F753 /* checkMark2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkMark2.png; sourceTree = "<group>"; };
+		79070C5E1A37FAAE00C7F753 /* LocationIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LocationIcon.png; sourceTree = "<group>"; };
+		79070C601A383E1900C7F753 /* EHETeacher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHETeacher.h; sourceTree = "<group>"; };
+		79070C611A383E1900C7F753 /* EHETeacher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHETeacher.m; sourceTree = "<group>"; };
 		79265E8D1A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHEStdTimePickerTableViewCell.h; sourceTree = "<group>"; };
 		79265E8E1A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHEStdTimePickerTableViewCell.m; sourceTree = "<group>"; };
 		79265E8F1A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHEStdTimePickerTableViewCell.xib; sourceTree = "<group>"; };
@@ -677,16 +681,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		525C209A1A1F26AE00C3119A /* 预约教师表格 */ = {
-			isa = PBXGroup;
-			children = (
-				525C20951A1F256B00C3119A /* EHEStdBookingTableViewCell.h */,
-				525C20961A1F256B00C3119A /* EHEStdBookingTableViewCell.m */,
-				525C20971A1F256B00C3119A /* EHEStdBookingTableViewCell.xib */,
-			);
-			name = "预约教师表格";
-			sourceTree = "<group>";
-		};
 		525C209B1A1F47CF00C3119A /* 设置表单元格 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1105,6 +1099,8 @@
 		52D398021A1B4248008B08FE /* Pictures */ = {
 			isa = PBXGroup;
 			children = (
+				79070C5E1A37FAAE00C7F753 /* LocationIcon.png */,
+				79070C581A37E78600C7F753 /* checkMark2.png */,
 				79070C471A36D52100C7F753 /* distanceIcon.png */,
 				79070C401A36CDF300C7F753 /* lightgreen.png */,
 				79070BE11A35BFC900C7F753 /* PinWomen.png */,
@@ -1174,6 +1170,41 @@
 				79070C501A36D9D900C7F753 /* EHETchRegularCell.xib */,
 			);
 			name = TeacherDetailViewControllers;
+			sourceTree = "<group>";
+		};
+		79070C5A1A37EE5200C7F753 /* BookingManager */ = {
+			isa = PBXGroup;
+			children = (
+				79D5E8D51A2580790047C704 /* EHEStdBookingDetailViewController.h */,
+				79D5E8D61A2580790047C704 /* EHEStdBookingDetailViewController.m */,
+				79D5E8D71A25807A0047C704 /* EHEStdBookingDetailViewController.xib */,
+				79D5E8D81A25807A0047C704 /* EHEStdBookingManagerViewController.h */,
+				79D5E8D91A25807A0047C704 /* EHEStdBookingManagerViewController.m */,
+				79D5E8DA1A25807A0047C704 /* EHEStdBookingManagerViewController.xib */,
+				525C20951A1F256B00C3119A /* EHEStdBookingTableViewCell.h */,
+				525C20961A1F256B00C3119A /* EHEStdBookingTableViewCell.m */,
+				525C20971A1F256B00C3119A /* EHEStdBookingTableViewCell.xib */,
+			);
+			name = BookingManager;
+			sourceTree = "<group>";
+		};
+		79070C5B1A37EE8E00C7F753 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				5286B39B1A26B62B0080EC5F /* EHEStdSettingPersonalInformation.h */,
+				5286B39C1A26B62B0080EC5F /* EHEStdSettingPersonalInformation.m */,
+				5286B39D1A26B62B0080EC5F /* EHEStdSettingPersonalInformation.xib */,
+				52FDA7DF1A2D744000221229 /* EHEStdEveluationViewController.h */,
+				52FDA7E01A2D744000221229 /* EHEStdEveluationViewController.m */,
+				52FDA7E11A2D744000221229 /* EHEStdEveluationViewController.xib */,
+				5299AE411A209F2C000A5960 /* EHEStdSettingDetailViewController.h */,
+				5299AE421A209F2C000A5960 /* EHEStdSettingDetailViewController.m */,
+				5299AE431A209F2C000A5960 /* EHEStdSettingDetailViewController.xib */,
+				797C30DD1A19DC0D00DB84E4 /* EHEStdSettingViewController.h */,
+				797C30DE1A19DC0D00DB84E4 /* EHEStdSettingViewController.m */,
+				797C30DF1A19DC0D00DB84E4 /* EHEStdSettingViewController.xib */,
+			);
+			name = Setting;
 			sourceTree = "<group>";
 		};
 		7943D1821A281EF500FA80B0 /* FPPopover */ = {
@@ -1335,8 +1366,8 @@
 				5286B3B41A2713BA0080EC5F /* EHEOrder.h */,
 				5286B3B51A2713BA0080EC5F /* EHEOrder.m */,
 				5286B3AF1A27134D0080EC5F /* EHomeEducation.xcdatamodel */,
-				5286B3BA1A2713FE0080EC5F /* EHETeacher.h */,
-				5286B3BB1A2713FE0080EC5F /* EHETeacher.m */,
+				79070C601A383E1900C7F753 /* EHETeacher.h */,
+				79070C611A383E1900C7F753 /* EHETeacher.m */,
 				794756321A21E76E00E39012 /* EHECoreDataManager.h */,
 				794756331A21E76E00E39012 /* EHECoreDataManager.m */,
 			);
@@ -1355,38 +1386,21 @@
 		797C30AE1A19D92E00DB84E4 /* Student */ = {
 			isa = PBXGroup;
 			children = (
+				79070C5B1A37EE8E00C7F753 /* Setting */,
+				79070C5A1A37EE5200C7F753 /* BookingManager */,
 				79CF681F1A35B09400CD1CF0 /* TeacherList&Map */,
 				52FDA7E41A2D76C100221229 /* 评价表单元格 */,
 				5286B3BE1A273A620080EC5F /* LXActionSheet */,
 				529059051A21A77100DDC6FB /* 分享类库 */,
 				5299AE2F1A208F63000A5960 /* 设置 */,
-				525C209A1A1F26AE00C3119A /* 预约教师表格 */,
 				52974AD11A1D8E4500C05FFC /* 百度地图类 */,
 				52974AD21A1D8E5500C05FFC /* 地图显示 */,
-				79D5E8D51A2580790047C704 /* EHEStdBookingDetailViewController.h */,
-				79D5E8D61A2580790047C704 /* EHEStdBookingDetailViewController.m */,
-				79D5E8D71A25807A0047C704 /* EHEStdBookingDetailViewController.xib */,
-				79D5E8D81A25807A0047C704 /* EHEStdBookingManagerViewController.h */,
-				79D5E8D91A25807A0047C704 /* EHEStdBookingManagerViewController.m */,
-				79D5E8DA1A25807A0047C704 /* EHEStdBookingManagerViewController.xib */,
-				5299AE411A209F2C000A5960 /* EHEStdSettingDetailViewController.h */,
-				5299AE421A209F2C000A5960 /* EHEStdSettingDetailViewController.m */,
-				5299AE431A209F2C000A5960 /* EHEStdSettingDetailViewController.xib */,
-				797C30DD1A19DC0D00DB84E4 /* EHEStdSettingViewController.h */,
-				797C30DE1A19DC0D00DB84E4 /* EHEStdSettingViewController.m */,
-				797C30DF1A19DC0D00DB84E4 /* EHEStdSettingViewController.xib */,
 				794756201A1F123200E39012 /* EHEStdRegisterViewController.h */,
 				794756211A1F123200E39012 /* EHEStdRegisterViewController.m */,
 				794756221A1F123200E39012 /* EHEStdRegisterViewController.xib */,
 				797C30D31A19DB5000DB84E4 /* EHEStdLoginViewController.h */,
 				797C30D41A19DB5000DB84E4 /* EHEStdLoginViewController.m */,
 				797C30D51A19DB5000DB84E4 /* EHEStdLoginViewController.xib */,
-				5286B39B1A26B62B0080EC5F /* EHEStdSettingPersonalInformation.h */,
-				5286B39C1A26B62B0080EC5F /* EHEStdSettingPersonalInformation.m */,
-				5286B39D1A26B62B0080EC5F /* EHEStdSettingPersonalInformation.xib */,
-				52FDA7DF1A2D744000221229 /* EHEStdEveluationViewController.h */,
-				52FDA7E01A2D744000221229 /* EHEStdEveluationViewController.m */,
-				52FDA7E11A2D744000221229 /* EHEStdEveluationViewController.xib */,
 			);
 			name = Student;
 			sourceTree = "<group>";
@@ -1549,11 +1563,13 @@
 				79D5E8DE1A25807A0047C704 /* EHEStdBookingManagerViewController.xib in Resources */,
 				52905A371A21A80100DDC6FB /* ShareSDKiPhoneSimpleShareViewUI.bundle in Resources */,
 				525C20A01A1F481600C3119A /* EHEStdSettingTableViewCell.xib in Resources */,
+				79070C591A37E78600C7F753 /* checkMark2.png in Resources */,
 				52905A301A21A80100DDC6FB /* ShareSDKiPadDefaultShareViewUI.bundle in Resources */,
 				5299AE451A209F2C000A5960 /* EHEStdSettingDetailViewController.xib in Resources */,
 				797C30D71A19DB5000DB84E4 /* EHEStdLoginViewController.xib in Resources */,
 				5286B3A21A26CF220080EC5F /* 订单-历史评论星星.png in Resources */,
 				52905A231A21A80100DDC6FB /* PinterestSDKResources.bundle in Resources */,
+				79070C5F1A37FAAE00C7F753 /* LocationIcon.png in Resources */,
 				794756291A1F388A00E39012 /* EHEStdOrderViewController.xib in Resources */,
 				52FDA7E31A2D744000221229 /* EHEStdEveluationViewController.xib in Resources */,
 				795F88971A24639B004D75BA /* EHEStdLocationViewController.xib in Resources */,
@@ -1590,6 +1606,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				79D5E8DD1A25807A0047C704 /* EHEStdBookingManagerViewController.m in Sources */,
+				79070C621A383E1900C7F753 /* EHETeacher.m in Sources */,
 				52AD25B51A288DB700CA150F /* AFHTTPRequestOperationManager.m in Sources */,
 				52AD25B81A288DB700CA150F /* AFSecurityPolicy.m in Sources */,
 				795F889B1A24670D004D75BA /* EHEStdMemoViewController.m in Sources */,
@@ -1637,7 +1654,6 @@
 				52AD25BB1A288DB700CA150F /* AFURLResponseSerialization.m in Sources */,
 				797C30CB1A19DA9900DB84E4 /* EHEStdMapSearchingViewController.m in Sources */,
 				7943D1A31A2A21AB00FA80B0 /* EHEStdFilterBySubjectsViewController.m in Sources */,
-				5286B3BC1A2713FE0080EC5F /* EHETeacher.m in Sources */,
 				79ED56F71A2B2E6900CDEA07 /* EHEStdSearchingViewController.m in Sources */,
 				7943D1991A28864100FA80B0 /* EHEStdFilterByDistanceViewController.m in Sources */,
 				7943D19E1A288B8700FA80B0 /* EHEStdFilterByAgeViewController.m in Sources */,

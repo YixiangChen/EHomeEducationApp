@@ -14,7 +14,6 @@
 @property (strong, nonatomic) NSMutableArray *dataArray;
 @property (strong, nonatomic) UIButton *leftBarButton;
 @property (strong, nonatomic) UILabel *titleLabel;
-@property (strong, nonatomic) UIImageView *imageViewCheckMark;
 
 @end
 
@@ -37,10 +36,6 @@
     
     self.navigationItem.hidesBackButton = YES;
     self.navigationItem.leftBarButtonItem = nil;
-    
-    UIImage * image = [UIImage imageNamed:@"checkMark"];
-    self.imageViewCheckMark = [[UIImageView alloc] initWithFrame:CGRectMake(220, 10, 25, 25)];
-    self.imageViewCheckMark.image = image;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -104,6 +99,11 @@
     textLabel.font =[UIFont fontWithName:kYueYuanFont size:18];
     textLabel.tag = 3;
     
+    UIImage * image = [UIImage imageNamed:@"checkMark2"];
+    UIImageView * imageViewCheckMark = [[UIImageView alloc] initWithFrame:CGRectMake(280, 10, 25, 25)];
+    imageViewCheckMark.image = image;
+    imageViewCheckMark.tag = 444;
+    
     static NSString *cellId = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
 
@@ -112,6 +112,13 @@
     }
     // Configure the cell...
     textLabel.text = [self.subjectsArray objectAtIndex:indexPath.row];
+    
+    UIImageView * imageView = (UIImageView *)[cell viewWithTag:444];
+    [imageView removeFromSuperview];
+    
+    if ([[self.dataArray[indexPath.row] objectForKey:@"isSelected"] boolValue]) {
+        [cell.contentView addSubview:imageViewCheckMark];
+    }
     
     UILabel * label = (UILabel *)[cell viewWithTag:3];
     [label removeFromSuperview];
@@ -161,17 +168,12 @@
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     BOOL isSelected = [[self.dataArray[indexPath.row] objectForKey:@"isSelected"] boolValue];
-    if (isSelected) {
-        cell.accessoryType = UITableViewCellAccessoryNone;
-    } else {
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    }
     NSDictionary *newDict = @{@"isSelected":@(!isSelected)};
     [self.dataArray replaceObjectAtIndex:indexPath.row withObject:newDict];
+    [self.tableView reloadData];
     
-    [cell.contentView addSubview:self.imageViewCheckMark];
+   
 }
 
 

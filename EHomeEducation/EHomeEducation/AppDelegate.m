@@ -39,8 +39,8 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     
-    if([self checkIfNetWorking])
-    {
+//    if([self checkIfNetWorking])
+//    {
         [[EHECoreDataManager getInstance]removeAllOrdersFromCoreData];
         
         
@@ -50,19 +50,14 @@
         self.locationManager.delegate = self;
         
         [self.locationManager startUpdatingLocation];
-    }
-    else
-    {
-        UIAlertView * alertView=[[UIAlertView alloc]initWithTitle:@"友情提示" message:@"没有检测到网络！" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-        [alertView show];
-    }
+//    }
+//    else
+//    {
+//        UIAlertView * alertView=[[UIAlertView alloc]initWithTitle:@"友情提示" message:@"没有检测到网络！" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+//        [alertView show];
+//    }
     
-    
-    NSUserDefaults * userDefaults=[NSUserDefaults standardUserDefaults];
-    NSString * customerID=[userDefaults objectForKey:@"myCustomerid"];
-    [[EHECommunicationManager getInstance] loadOrderInfosWithCustomerID:customerID.intValue andOrderStatus:-1];
 
-    [[EHECoreDataManager getInstance] fetchOrderInfosWithCustomerID:customerID.intValue andOrderStatus:-1];
     
     [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationController class], nil]
      setTintColor:[UIColor greenColor]];
@@ -72,8 +67,6 @@
     
     [ShareSDK registerApp:@"45c7af441ad8"]; //注册分享信息
     
-
-
     EHEStdSearchingViewController *searchingViewController = [[EHEStdSearchingViewController alloc] initWithNibName:nil bundle:nil];
     
     UINavigationController *navi_searching = [[UINavigationController alloc] initWithRootViewController:searchingViewController];
@@ -153,7 +146,6 @@
     }
     
     if(launchOptions != nil){
-        NSLog(@"这是一个从远程推送得到的信息");
         application.applicationIconBadgeNumber = 0;
     }
     
@@ -169,18 +161,14 @@
 -(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
     //这里需要判断是否登录，必须使用登录后的id，如果第一次使用，那么id没有那就传一个0过去，那么ownerid就是0，然后下次有了用户了，则将对应的deviceToken更新成该用户的。
-    //NSLog(@"%@",deviceToken);
     NSString * deviceTokenStr = deviceToken.description;
     deviceTokenStr = [deviceTokenStr stringByReplacingOccurrencesOfString:@"<" withString:@""];
     deviceTokenStr = [deviceTokenStr stringByReplacingOccurrencesOfString:@">" withString:@""];
     //将deviceToken弄成一个没有<>和空格的连续64位字符串。
     deviceTokenStr = [deviceTokenStr stringByReplacingOccurrencesOfString:@" " withString:@""];
     
-    NSLog(@"deviceTokenStr=%@",deviceTokenStr);
-    
     //拿到token之后，发送请求，然后存入服务器。
     NSString * urlString=[NSString stringWithFormat:@"%@api/common/devicetokenregister.action",@"http://218.249.130.194:8080/ehomeedu/"];
-    NSLog(@"urlstring=%@",urlString);
     NSURL * url = [NSURL URLWithString:urlString];
     NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod:@"POST"];
@@ -189,15 +177,12 @@
     NSError * error = nil;
     
     NSData * data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
-    NSLog(@"error:%@",error);
-    NSLog(@"data:%@",[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding]);
-    NSLog(@"%@",postData);
+
     
 }
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
     //收到推送通知的方法
-    NSLog(@"2222:%@",userInfo);
     application.applicationIconBadgeNumber = 0;
 }
 
@@ -210,13 +195,10 @@
     {
         case NotReachable:
            self.check  = NO;
-            NSLog(@"没有网络");
             break;
         case ReachableViaWiFi:
-            NSLog(@"有网络");
             break;
         case ReachableViaWWAN:
-            NSLog(@"有网络");
             break;
     }
     return self.check;
@@ -227,13 +209,20 @@
         CLLocation * location = [locations firstObject];
         NSString * latitude = [NSString stringWithFormat:@"纬度：%f",location.coordinate.latitude];
         NSString * longtitude = [NSString stringWithFormat:@"经度：%f",location.coordinate.longitude];
-        NSLog(@"维度:%@，精度:%@",latitude,longtitude);
         [self.locationManager stopUpdatingLocation];//停止更新
         NSUserDefaults * userDefaults=[NSUserDefaults standardUserDefaults];
         NSMutableDictionary * mutableDic=[[NSMutableDictionary alloc]initWithCapacity:10];
         [mutableDic setObject:@(location.coordinate.latitude) forKey:@"latitude"];
         [mutableDic setObject:@(location.coordinate.longitude) forKey:@"longitude"];
         [userDefaults setObject:mutableDic forKey:@"latitudeAndLongitude"];
+        
+        NSString * customerID=[userDefaults objectForKey:@"myCustomerid"];
+        [[EHECommunicationManager getInstance] loadOrderInfosWithCustomerID:customerID.intValue andOrderStatus:-1];
+        [[EHECommunicationManager getInstance] loadTeachersInfo];
+        
+        EHEStdSearchingViewController *searching = [[[self.tab.viewControllers objectAtIndex:0] viewControllers] objectAtIndex:0];
+        searching.allTeachersNearby = [[NSMutableArray alloc] initWithArray:[[EHECoreDataManager getInstance] fetchBasicInfosOfTeachers]] ;
+        [searching.tableView reloadData];
     }
     [self.locationManager stopUpdatingLocation];
     

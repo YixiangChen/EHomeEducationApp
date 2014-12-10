@@ -53,7 +53,6 @@
         
         NSData * responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     
-    NSLog(@"%@",[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding]);
         if(responseData != nil){
             NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:nil];
             if([dict[@"code"] intValue] == 0){

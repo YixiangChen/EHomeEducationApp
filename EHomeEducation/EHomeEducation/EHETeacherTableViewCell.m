@@ -15,6 +15,11 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    
+    self.teacherImage.clipsToBounds=YES;
+    self.teacherImage.layer.cornerRadius = 38.0f;
+    self.teacherImage.layer.masksToBounds = YES;
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -34,20 +39,6 @@
     self.lblTeacherSubject.text = teacher.subjectInfo;
     [self.lblTeacherSubject setFont:[UIFont fontWithName:@"MYoungHKS" size:14]];
     
-    UIImage *femaleImage = [UIImage imageNamed:@"female_tablecell.png"];
-    UIImage *maleImage = [UIImage imageNamed:@"male_tablecell.png"];
-    
-    self.teacherImage.clipsToBounds=YES;
-    self.teacherImage.layer.cornerRadius = 38.0f;
-    self.teacherImage.layer.masksToBounds = YES;
-//    [self.teacherImage.layer setBorderWidth:5];
-//    [self.teacherImage.layer setBorderColor:kLightGreenForMainColor.CGColor];
-    
-    if ([teacher.gender isEqualToString:@"男"]) {
-        self.teacherImage.image = maleImage;
-    }else {
-        self.teacherImage.image = femaleImage;
-    }
 }
 
 @end

@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "EHEStdOrderViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
-@interface EHEStdMemoViewController : UIViewController
+@interface EHEStdMemoViewController : UIViewController<UITextViewDelegate>
 @property (strong, nonatomic) IBOutlet UITextView *txtViewMemo;
 @property (strong, nonatomic) EHEStdOrderViewController *orderTable;
 

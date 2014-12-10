@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "EHETeacher.h"
 
 @interface EHECommunicationManager : NSObject
 
@@ -55,6 +56,11 @@
 -(NSArray *)loadCommentsWithCustomerId:(int)customerId;
 
 -(BOOL) loadCustomerDetailWithCustomerI:(int) customerId;
+
 //通过用户登陆后传回来的userIcon异步请求得到头像Data
 -(void)loadCustomerIconForCustomer:(NSString *)userIcon completionBlock:(void (^)(NSString *))completionBlock;
+
+//获取教师头像
+-(void)loadTeacherIconForTeacher:(EHETeacher *)teacher completionBlock:(void (^)(NSString *))completionBlock;
+
 @end

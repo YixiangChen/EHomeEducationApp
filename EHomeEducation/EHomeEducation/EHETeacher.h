@@ -1,9 +1,9 @@
 //
 //  EHETeacher.h
-//  EHomeEducation
+//  EHomeEduCustomer
 //
-//  Created by MacBook Pro on 14-11-27.
-//  Copyright (c) 2014年 AppChen. All rights reserved.
+//  Created by Yixiang Chen on 12/10/14.
+//  Copyright (c) 2014 AppChen. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -26,7 +26,7 @@
 @property (nonatomic, retain) NSNumber * rank;
 @property (nonatomic, retain) NSString * sinaweibo;
 @property (nonatomic, retain) NSString * subjectInfo;
-@property (nonatomic, retain) NSData * teacherIcon;
+@property (nonatomic, retain) NSString * teacherIcon;
 @property (nonatomic, retain) NSNumber * teacherId;
 @property (nonatomic, retain) NSString * telephone;
 @property (nonatomic, retain) NSString * timePeriod;

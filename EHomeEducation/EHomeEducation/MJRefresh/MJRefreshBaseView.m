@@ -93,7 +93,6 @@
     // 2.指示器
     
     CGPoint center = CGPointMake(100, 18);
-    NSLog(@"x=%f, y=%f",center.x, center.y);
     
     self.activityView.center = center;
 }

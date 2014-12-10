@@ -69,7 +69,6 @@
     //设置大头针的本地经纬度
     coor.latitude = userLocation.location.coordinate.latitude;
     coor.longitude = userLocation.location.coordinate.longitude;
-        NSLog(@"latitude=%lf,longtitude=%lf",coor.latitude,coor.longitude);
     annotation.coordinate = coor;
     annotation.title = @"当前位置";
     [_mapView addAnnotation:annotation];
@@ -79,7 +78,7 @@
     }
     else
     {
-        NSLog(@"。。。。");
+
     }
     //循环这个教师信息数组，以便添加教师大头针(标注)
     for(EHETeacher * teacher in self.teacherInfoArray)
@@ -110,7 +109,7 @@
 }
 -(void)mapPopTouchUp:(UITapGestureRecognizer *)sender
 {
-    NSLog(@"Jump to another view!");
+   
 }
 -(BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id<BMKAnnotation>)annotation
 {
@@ -159,7 +158,6 @@
 -(void)mapView:(BMKMapView *)mapView annotationViewForBubble:(BMKAnnotationView *)view
 {
     EHEBaiduMapView * mapViewBubble= [self.bubbleDictionary objectForKey:@(view.paopaoView.tag)];
-    NSLog(@"teacherid=%@,teacherName=%@",mapViewBubble.teacherID,mapViewBubble.labelTeacherName.text);
     EHECoreDataManager * coreDataManager=[EHECoreDataManager getInstance];
     EHETeacher * teacherInfo= [coreDataManager fetchDetailInfosWithTeacherId:mapViewBubble.teacherID.intValue];
     EHETchDetailViewController * teacherDetailViewController=[[EHETchDetailViewController alloc]initWithNibName:nil bundle:nil];

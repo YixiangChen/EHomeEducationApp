@@ -38,7 +38,7 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    [[EHECommunicationManager getInstance]loadTeachersInfo];
+    //[[EHECommunicationManager getInstance]loadTeachersInfo];
     
     self.mapSearching = [[EHEStdMapSearchingViewController alloc] initWithNibName:nil bundle:nil];
     
@@ -65,7 +65,7 @@
 
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self.tableView headerBeginRefreshing];
+    //[self.tableView headerBeginRefreshing];
 }
 -(void) headerRefreshing {
     bool refreshSuccess;
@@ -241,6 +241,38 @@
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     EHETeacher * teacher = [self.allTeachersNearby objectAtIndex:indexPath.row];
     [cell setContent:teacher];
+    
+    cell.teacherImage.image = nil;
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *imageName = [NSString stringWithFormat:@"image_for_teacher_%d",[teacher.teacherId intValue]];
+    NSData *data = [defaults objectForKey:imageName];
+    UIImage * imageForTeacher = [[UIImage alloc] initWithData:data];
+    
+    if (imageForTeacher == nil)
+    {
+        
+        if ([teacher.gender isEqualToString:@"男"]) {
+            imageForTeacher = [UIImage imageNamed:@"male_tablecell"];
+        }else {
+            imageForTeacher = [UIImage imageNamed:@"female_tablecell"];
+        }
+        
+        
+        cell.teacherImage.image = imageForTeacher;
+        [[EHECommunicationManager getInstance] loadTeacherIconForTeacher:teacher completionBlock:^(NSString * status)  {
+            if ([status isEqualToString:kConnectionSuccess])
+            {
+                NSData * image_data = [[NSUserDefaults standardUserDefaults] objectForKey:[NSString stringWithFormat:@"image_for_teacher_%d",teacher.teacherId.intValue]];
+                UIImage *image = [[UIImage alloc] initWithData:image_data];
+                cell.teacherImage.image = image;
+            }
+        }];
+        
+    }
+    else {
+        cell.teacherImage.image = imageForTeacher;
+    }
     
     return cell;
 }

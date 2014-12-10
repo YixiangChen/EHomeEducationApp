@@ -97,7 +97,7 @@
     
     NSUserDefaults * userDefaults=[NSUserDefaults standardUserDefaults];
     NSString * customerid=[userDefaults objectForKey:@"myCustomerid"];
-    NSLog(@"customerid=%@",customerid);
+
     if([customerid isEqualToString:@""])
     {
         UIAlertView * alertView=[[UIAlertView alloc]initWithTitle:@"提示" message:@"没有登录" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
@@ -111,6 +111,19 @@
     NSString * latitude=[latitudeAndLongitude objectForKey:@"latitude"];
     NSString * longitude=[latitudeAndLongitude objectForKey:@"longitude"];
     
+    if(customerid == nil) {
+        [self presentSendingStatusWithText:@"请先登录"];
+        return;
+    }
+    if(latitude == nil || longitude == nil) {
+        [self presentSendingStatusWithText:@"请允许获取地理位置"];
+        return;
+    }
+    if(self.selectedObject == nil||self.selectedSubjects == nil || self.selectedLocation == nil || self.selectedDate == nil || self.selectedStartTime == nil || self.selectedEndTime == nil || self.selectedMemo == nil) {
+        [self presentSendingStatusWithText:@"请完善订单"];
+        return;
+    }
+   
     [self.dictOrder setObject:customerid forKey:@"customerid"];
     [self.dictOrder setObject:latitude forKey:@"latitude"];
     [self.dictOrder setObject:longitude forKey:@"longitude"];
@@ -124,7 +137,10 @@
     
     bool sendSuccess = [[EHECommunicationManager getInstance] sendOrder:self.dictOrder];
     if (sendSuccess) {
-        [self presentSendingStatus];
+        [self presentSendingStatusWithText:@"发送成功"];
+    }else {
+        [self presentSendingStatusWithText:@"发送失败"];
+        return;
     }
     
 }
@@ -170,7 +186,7 @@
     textLabel.font =[UIFont fontWithName:kYueYuanFont size:18];
     textLabel.tag = 1;
     
-    UILabel *detailTextLabel  = [[UILabel alloc] initWithFrame:CGRectMake(160, 8, 120, 30)];
+    UILabel *detailTextLabel  = [[UILabel alloc] initWithFrame:CGRectMake(100, 8, 180, 30)];
     detailTextLabel.font =[UIFont fontWithName:kYueYuanFont size:15];
     detailTextLabel.textColor = [UIColor lightGrayColor];
     detailTextLabel.textAlignment = NSTextAlignmentRight;
@@ -512,7 +528,7 @@
         if ([[self.dataArrayForSection2[indexPath.row] objectForKey:@"isAttached"] boolValue]) {
             // 关闭附加cell
             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-            [formatter setDateFormat:@"yyyyy-MM-dd"];
+            [formatter setDateFormat:@"yyyy-MM-dd"];
             self.selectedDate = [formatter stringFromDate:self.cellForDatePicker.datePicker.date] ;
 
             NSDateFormatter *formatter_time = [[NSDateFormatter alloc] init];
@@ -574,7 +590,7 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
--(void) presentSendingStatus {
+-(void) presentSendingStatusWithText:(NSString *)text {
     UIView * blackView=[[UIView alloc]init];
     blackView.center=self.view.center;
     blackView.backgroundColor=[UIColor blackColor];
@@ -586,7 +602,7 @@
     UILabel * label1=[[UILabel alloc]initWithFrame:CGRectMake(11, 25, 130, 30)];
     label1.textColor=[UIColor whiteColor];
     label1.backgroundColor=[UIColor clearColor];
-    label1.text=@"发送成功";
+    label1.text= text;
     label1.font=[UIFont fontWithName:kFangZhengKaTongFont size:15.0f];
     [blackView addSubview:label1];
     
