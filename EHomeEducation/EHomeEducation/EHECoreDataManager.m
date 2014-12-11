@@ -36,7 +36,7 @@
 }
 
 
--(BOOL)saveTeacherInfo:(NSDictionary *) dict withTeacherId:(int) teacherId {
+-(BOOL)saveTeacherInfo:(NSDictionary *) dict {
     
     EHETeacher *teacher = [NSEntityDescription insertNewObjectForEntityForName:@"EHETeacher" inManagedObjectContext:self.context];
     teacher.teacherId = dict[@"teacherid"];
@@ -47,7 +47,7 @@
     teacher.majorAdress = dict[@"majorAdress"];
     teacher.longitude = dict[@"longitude"];
     teacher.latitude = dict[@"latitude"];
-    teacher.teacherId = [NSNumber numberWithInt:teacherId];
+    teacher.teacherId = [NSNumber numberWithInt:[[dict objectForKey:@"teacherid"] intValue]];
     teacher.birthday = dict[@"birthday"];
     teacher.degree = dict[@"degree"];
     teacher.gender = dict[@"gender"];
@@ -59,7 +59,7 @@
     teacher.telephone = dict[@"telephone"];
     teacher.timePeriod = dict[@"timeperiod"];
     NSError *error = nil;
-    [self.context save:nil];
+    [self.context save:&error];
     if (error == nil) {
         NSLog(@"将一个Teacher对象写入CoreData %@",teacher);
         return YES;
@@ -69,47 +69,38 @@
     
 }
 
--(void)saveOrderInfos:(NSArray *)arrayOrders {
+-(BOOL)saveOrderInfo:(NSDictionary *) dictOrder {
     
-    for (NSDictionary *dict in arrayOrders) {
-        EHEOrder *order = [NSEntityDescription insertNewObjectForEntityForName:@"EHEOrder" inManagedObjectContext:self.context];
-        order.customername = [NSString stringWithFormat:@"%@",[dict objectForKey:@"customername"]];
-        order.finishDate = [NSString stringWithFormat:@"%@",[dict objectForKey:@"finishDate"]];
-        order.orderid = [dict objectForKey:@"orderid"];
-        order.latitude = [NSString stringWithFormat:@"%@",[dict objectForKey:@"latitude"]];
-        order.longitude = [NSString stringWithFormat:@"%@",[dict objectForKey:@"longitude"]];
-        order.orderstatus = [NSString stringWithFormat:@"%@",[dict objectForKey:@"orderstatus"]];
-        order.serviceaddress = [dict objectForKey:@"serviceaddress"];
-        order.orderdate = [dict objectForKey:@"orderdate"];
-        order.teachername = [dict objectForKey:@"teachername"];
-        [self.context save:nil];
+    EHEOrder *order = [NSEntityDescription insertNewObjectForEntityForName:@"EHEOrder" inManagedObjectContext:self.context];
+    order.customername = [NSString stringWithFormat:@"%@",[dictOrder objectForKey:@"customername"]];
+    order.finishDate = [NSString stringWithFormat:@"%@",[dictOrder objectForKey:@"finishDate"]];
+    order.orderid = [dictOrder objectForKey:@"orderid"];
+    order.latitude = [NSString stringWithFormat:@"%@",[dictOrder objectForKey:@"latitude"]];
+    order.longitude = [NSString stringWithFormat:@"%@",[dictOrder objectForKey:@"longitude"]];
+    order.orderstatus = [NSString stringWithFormat:@"%@",[dictOrder objectForKey:@"orderstatus"]];
+    order.serviceaddress = [dictOrder objectForKey:@"serviceaddress"];
+    order.orderdate = [dictOrder objectForKey:@"orderdate"];
+    order.teachername = [dictOrder objectForKey:@"teachername"];
+    
+    order.customername = [dictOrder objectForKey:@"customername"];
+    order.memo = [dictOrder objectForKey:@"memo"];
+    order.objectinfo = [dictOrder objectForKey:@"objectinfo"];
+    order.orderdate = [dictOrder objectForKey:@"orderdate"];
+    order.subjectinfo = [dictOrder objectForKey:@"subjectinfo"];
+    order.teacherid = [NSString stringWithFormat:@"%@",[dictOrder objectForKey:@"teacherid"]];
+    order.timeperiod = [dictOrder objectForKey:@"timeperiod"];
+    
+    
+    NSError *error = nil;
+    [self.context save:&error];
+    if (error == nil) {
+        NSLog(@"将一个order对象写入CoreData %@",order);
+        return YES;
+    }else {
+        return NO;
     }
     
 }
-
--(void)upDateOrderDetail:(NSDictionary *)dict withOrderId:(int)orderId {
-    
-    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"EHEOrder"];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"orderid = %d", orderId];
-    fetchRequest.predicate = predicate;
-    NSArray *orders = [self.context executeFetchRequest:fetchRequest error:nil];
-    
-    if(orders.count > 0) {
-        EHEOrder *order = [orders objectAtIndex:0];
-        order.customername = [dict objectForKey:@"customername"];
-        order.memo = [dict objectForKey:@"memo"];
-        order.objectinfo = [dict objectForKey:@"objectinfo"];
-        order.orderdate = [dict objectForKey:@"orderdate"];
-        order.subjectinfo = [dict objectForKey:@"subjectinfo"];
-        order.teacherid = [NSString stringWithFormat:@"%@",[dict objectForKey:@"teacherid"]];
-        order.timeperiod = [dict objectForKey:@"timeperiod"];
-        [self.context save:nil];
-    } else {
-        NSLog(@"core data中没有找到 ID 为 %d 的订单对象",orderId);
-    }
-    
-}
-
 
 
 -(NSArray *)fetchBasicInfosOfTeachers {
@@ -160,9 +151,9 @@
     return nil;
 }
 
--(NSArray *)fetchOrderInfosWithCustomerID:(int)customerID andOrderStatus:(int)status {
+-(NSArray *)fetchOrderInfosWithStatus:(int)status {
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"EHEOrder"];
-    NSPredicate * predicate = nil;
+    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"orderstatus = %d", status];
     fetchRequest.predicate = predicate;
     NSSortDescriptor *sortByName = [NSSortDescriptor sortDescriptorWithKey:@"orderstatus" ascending:NO];
     NSArray *sorts = [[NSArray alloc] initWithObjects:sortByName, nil];

@@ -16,6 +16,7 @@
 #import "EHEStdEveluationViewController.h"
 #import "Reachability.h"
 #import "Defines.h"
+#import "EHECoreDataManager.h"
 
 @interface EHEStdSettingViewController ()
 
@@ -299,6 +300,7 @@
        [userDefaults removeObjectForKey:@"myCustomerid"];
        [userDefaults removeObjectForKey:@"latitude"];
        [userDefaults removeObjectForKey:@"longitude"];
+       [[EHECoreDataManager getInstance] removeAllOrdersFromCoreData];
        
        [userDefaults synchronize];
        

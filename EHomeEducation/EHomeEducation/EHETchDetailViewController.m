@@ -85,38 +85,6 @@
     static NSString *imageCellId = @"imageCell";
     static NSString *regularCellId = @"regular";
     
-        
-//        cell.imageViewCustomerIcon.image = nil;
-//        
-//        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//        NSString *imageName = [NSString stringWithFormat:@"image_for_customer_%d",[self.customer.customerid intValue]];
-//        NSData *data = [defaults objectForKey:imageName];
-//        UIImage * imageForCustomer = [[UIImage alloc] initWithData:data];
-//        
-//        if (imageForCustomer == nil)
-//        {
-//            if ([self.customer.gender isEqualToString:@"男"]) {
-//                imageForCustomer = [UIImage imageNamed:@"male_tablecell"];
-//            }else {
-//                imageForCustomer = [UIImage imageNamed:@"female_tablecell"];
-//            }
-//            cell.imageViewCustomerIcon.image = imageForCustomer;
-//            
-//            [[EHETchCommunicationManager getInstance] loadCustomerIconForCustomer:self.customer completionBlock:^(NSString * status)
-//             {
-//                 if ([status isEqualToString:kConnectionSuccess])
-//                 {
-//                     NSData * image_data = [[NSUserDefaults standardUserDefaults] objectForKey:[NSString stringWithFormat:@"image_for_customer_%@",self.customer.customerid]];
-//                     UIImage *image = [[UIImage alloc] initWithData:image_data];
-//                     cell.imageViewCustomerIcon.image = image;
-//                 }
-//             }];
-//        }
-//        else
-//        {
-//            cell.imageViewCustomerIcon.image = imageForCustomer;
-//        }
-//
 
     if (indexPath.row == 0) {
         EHETchImageCell *imageCell = [tableView dequeueReusableCellWithIdentifier:imageCellId];
@@ -126,6 +94,39 @@
         imageCell.lblName.text = self.teacher.name;
         imageCell.lblEvaluation.text = [NSString stringWithFormat:@"评价：%@",self.teacher.rank];
         imageCell.lblDistance.text = self.distance;
+        
+        imageCell.imageViewTch.image = nil;
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSString *imageName = [NSString stringWithFormat:@"image_for_teacher_%d",[self.teacher.teacherId intValue]];
+        NSData *data = [defaults objectForKey:imageName];
+        UIImage * imageForTeacher = [[UIImage alloc] initWithData:data];
+        
+        if (imageForTeacher == nil)
+        {
+            
+            if ([self.teacher.gender isEqualToString:@"男"]) {
+                imageForTeacher = [UIImage imageNamed:@"male_tablecell"];
+            }else {
+                imageForTeacher = [UIImage imageNamed:@"female_tablecell"];
+            }
+            
+            
+            imageCell.imageViewTch.image = imageForTeacher;
+            [[EHECommunicationManager getInstance] loadTeacherIconForTeacher:self.teacher completionBlock:^(NSString * status)  {
+                if ([status isEqualToString:kConnectionSuccess])
+                {
+                    NSData * image_data = [[NSUserDefaults standardUserDefaults] objectForKey:[NSString stringWithFormat:@"image_for_teacher_%d",self.teacher.teacherId.intValue]];
+                    UIImage *image = [[UIImage alloc] initWithData:image_data];
+                    imageCell.imageViewTch.image = image;
+                }
+            }];
+            
+        }
+        else {
+            imageCell.imageViewTch.image = imageForTeacher;
+        }
+
         return imageCell;
     }else {
         EHETchRegularCell *regularCell = [tableView dequeueReusableCellWithIdentifier:regularCellId];
@@ -137,33 +138,7 @@
         [regularCell setContent:self.teacher withRowIndex:indexPath.row];
         return regularCell;
     }
-//
-//    if (indexPath.row == 2 || indexPath.row == 3 || indexPath.row == 4 || indexPath.row == 5) {
-//        
-//        EHETchOrderRegularCell *cell = [tableView dequeueReusableCellWithIdentifier:regularCell];
-//        if (cell == nil) {
-//            cell = (EHETchOrderRegularCell *) [[NSBundle mainBundle ] loadNibNamed:@"EHETchOrderRegularCell" owner:self options:nil][0];
-//        }
-//        
-//        [cell setContent:self.order withRowIndex:indexPath.row];
-//        
-//        return cell;
-//    }
-//    
-//    
-//    
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
-//    if (cell == nil) {
-//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
-//    }
-//    cell.textLabel.text = @" ";
-    
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:bgCell];
-//    if (cell == nil) {
-//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:bgCell];
-//    }
-//    cell.textLabel.text = @"hey";
-//    return cell;
+
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

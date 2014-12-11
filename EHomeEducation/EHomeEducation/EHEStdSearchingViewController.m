@@ -32,14 +32,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    //[[EHECommunicationManager getInstance]loadTeachersInfo];
-    
     self.mapSearching = [[EHEStdMapSearchingViewController alloc] initWithNibName:nil bundle:nil];
     
     self.segmentedControl = [[UISegmentedControl alloc]initWithItems:[[NSArray alloc]initWithObjects:@"列表",@"地图",nil]];
@@ -330,11 +322,7 @@
     // Pass the selected object to the new view controller.
     
     // Push the view controller.
-//    UIBarButtonItem *leftBarButtonItem = [[UIBarButtonItem alloc] init];
-//    [leftBarButtonItem setTitle:@"返回列表"];
-//    [leftBarButtonItem setStyle:UIBarButtonItemStyleDone];
-//    [leftBarButtonItem setTitleTextAttributes: @{NSForegroundColorAttributeName: [UIColor greenColor]}  forState:UIControlStateNormal];
-//    self.navigationItem.backBarButtonItem = leftBarButtonItem;
+
 
     [self.navigationController pushViewController:detailViewController animated:YES];
 }

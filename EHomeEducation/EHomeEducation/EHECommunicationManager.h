@@ -23,10 +23,10 @@
 -(BOOL)sendOrder:(NSDictionary *) dictOrder;
 
 //获取订单初步信息
--(void)loadOrderInfosWithCustomerID:(int) customerID andOrderStatus:(int)status ;
+-(BOOL)loadAllOrderWithCustomerID:(int) customerID;
 
 //通过订单ID获取订单详细信息
--(void)loadOrderDetailWithOrderID:(int)orderID;
+-(BOOL)loadOrderDetailWithOrderID:(int)orderID;
 
 //发送用户其他信息
 -(void) sendOtherInfo:(NSDictionary *) dictOtherInfo;

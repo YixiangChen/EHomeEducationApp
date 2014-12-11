@@ -95,7 +95,7 @@
         if([dict[@"code"] intValue] == 0 && dict != nil && error == nil){
             NSLog(@"获取教师具体信息成功");
             [[EHECoreDataManager getInstance] removeTeacherWithTeacherId:teacherId];
-            [[EHECoreDataManager getInstance] saveTeacherInfo:dictTeacherInfo withTeacherId:teacherId];
+            [[EHECoreDataManager getInstance] saveTeacherInfo:dictTeacherInfo];
 
         }else{
             NSLog(@"%@",dict[@"message"]);
@@ -104,7 +104,7 @@
     
 }
 
--(void)loadOrderInfosWithCustomerID:(int)customerID andOrderStatus:(int)status {
+-(BOOL)loadAllOrderWithCustomerID:(int) customerID {
     
     /*  status含义：
      -1: 所有状态订单
@@ -117,7 +117,7 @@
      6：双方确认完成
      */
     
-    NSString * postData = [NSString stringWithFormat:@"{\"customerid\":\"%d\",\"orderstatus\":\"%d\",\"page\":\"1\",\"count\":\"10\"}",customerID,status];
+    NSString * postData = [NSString stringWithFormat:@"{\"customerid\":\"%d\",\"orderstatus\":\"-1\",\"page\":\"1\",\"count\":\"10\"}",customerID];
     
     NSString *stringForURL = [NSString stringWithFormat:@"%@%@",kURLDomain,kURLFindOrderList];
     NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:stringForURL]];
@@ -132,17 +132,24 @@
     if(responseData != nil && error == nil){
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
         NSArray *arrayOrders = dict[@"ordersinfo"];
-        if([dict[@"code"] intValue] == 0){
-            NSLog(@"获取订单信息成功");
-            NSLog(@"orderinfo=%@",arrayOrders);
-            [[EHECoreDataManager getInstance] saveOrderInfos:arrayOrders];
+        if([dict[@"code"] intValue] == 0 && dict != nil && error == nil){
+            NSLog(@"获取订单基本信息成功");
+            [[EHECoreDataManager getInstance] removeAllOrdersFromCoreData];
+
+            for (NSDictionary *dictOrder in arrayOrders) {
+                [self loadOrderDetailWithOrderID:[[dictOrder objectForKey:@"orderid"] intValue]];
+            }
+            return YES;
+
         }else{
             NSLog(@"%@",dict[@"message"]);
+            return NO;
         }
     }
+    return NO;
 }
 
--(void)loadOrderDetailWithOrderID:(int)orderID {
+-(BOOL)loadOrderDetailWithOrderID:(int)orderID {
     
     NSString * postData = [NSString stringWithFormat:@"{\"orderid\":\"%d\"}",orderID];
     
@@ -161,11 +168,13 @@
         NSDictionary *dictOrderInfo = dict[@"orderinfo"];
         if([dict[@"code"] intValue] == 0){
             NSLog(@"-----------------获取订单详情成功----------------");
-            [[EHECoreDataManager getInstance] upDateOrderDetail:dictOrderInfo withOrderId:orderID];
+            return [[EHECoreDataManager getInstance] saveOrderInfo:dictOrderInfo];
         }else{
             NSLog(@"%@",dict[@"message"]);
+            return NO;
         }
     }
+    return NO;
 }
 
 

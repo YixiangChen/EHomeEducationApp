@@ -38,24 +38,12 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
-    
-//    if([self checkIfNetWorking])
-//    {
-        [[EHECoreDataManager getInstance]removeAllOrdersFromCoreData];
-        
-        
-        //实例化
-        self.locationManager = [[CLLocationManager alloc]init];
-        [self.locationManager requestWhenInUseAuthorization];
-        self.locationManager.delegate = self;
-        
-        [self.locationManager startUpdatingLocation];
-//    }
-//    else
-//    {
-//        UIAlertView * alertView=[[UIAlertView alloc]initWithTitle:@"友情提示" message:@"没有检测到网络！" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-//        [alertView show];
-//    }
+
+    self.locationManager = [[CLLocationManager alloc]init];
+    [self.locationManager requestWhenInUseAuthorization];
+    self.locationManager.delegate = self;
+    [self.locationManager startUpdatingLocation];
+
     
 
     
@@ -207,8 +195,7 @@
 {
     if(locations != nil){
         CLLocation * location = [locations firstObject];
-        NSString * latitude = [NSString stringWithFormat:@"纬度：%f",location.coordinate.latitude];
-        NSString * longtitude = [NSString stringWithFormat:@"经度：%f",location.coordinate.longitude];
+
         [self.locationManager stopUpdatingLocation];//停止更新
         NSUserDefaults * userDefaults=[NSUserDefaults standardUserDefaults];
         NSMutableDictionary * mutableDic=[[NSMutableDictionary alloc]initWithCapacity:10];
@@ -217,7 +204,10 @@
         [userDefaults setObject:mutableDic forKey:@"latitudeAndLongitude"];
         
         NSString * customerID=[userDefaults objectForKey:@"myCustomerid"];
-        [[EHECommunicationManager getInstance] loadOrderInfosWithCustomerID:customerID.intValue andOrderStatus:-1];
+        if (![customerID isEqualToString:@""]) {
+            [[EHECommunicationManager getInstance] loadOrderDetailWithOrderID:customerID.intValue];
+        }
+
         [[EHECommunicationManager getInstance] loadTeachersInfo];
         
         EHEStdSearchingViewController *searching = [[[self.tab.viewControllers objectAtIndex:0] viewControllers] objectAtIndex:0];

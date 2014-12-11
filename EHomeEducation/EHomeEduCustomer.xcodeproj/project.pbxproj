@@ -163,6 +163,9 @@
 		79070C591A37E78600C7F753 /* checkMark2.png in Resources */ = {isa = PBXBuildFile; fileRef = 79070C581A37E78600C7F753 /* checkMark2.png */; };
 		79070C5F1A37FAAE00C7F753 /* LocationIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 79070C5E1A37FAAE00C7F753 /* LocationIcon.png */; };
 		79070C621A383E1900C7F753 /* EHETeacher.m in Sources */ = {isa = PBXBuildFile; fileRef = 79070C611A383E1900C7F753 /* EHETeacher.m */; };
+		79070C661A39A24800C7F753 /* 320x480.png in Resources */ = {isa = PBXBuildFile; fileRef = 79070C631A39A24800C7F753 /* 320x480.png */; };
+		79070C671A39A24800C7F753 /* 640x960.png in Resources */ = {isa = PBXBuildFile; fileRef = 79070C641A39A24800C7F753 /* 640x960.png */; };
+		79070C681A39A24800C7F753 /* 640x1136.png in Resources */ = {isa = PBXBuildFile; fileRef = 79070C651A39A24800C7F753 /* 640x1136.png */; };
 		79265E901A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79265E8E1A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.m */; };
 		79265E911A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79265E8F1A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.xib */; };
 		7943D1891A281F1300FA80B0 /* FPPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7943D1841A281F1300FA80B0 /* FPPopoverController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -501,6 +504,9 @@
 		79070C5E1A37FAAE00C7F753 /* LocationIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LocationIcon.png; sourceTree = "<group>"; };
 		79070C601A383E1900C7F753 /* EHETeacher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHETeacher.h; sourceTree = "<group>"; };
 		79070C611A383E1900C7F753 /* EHETeacher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHETeacher.m; sourceTree = "<group>"; };
+		79070C631A39A24800C7F753 /* 320x480.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 320x480.png; sourceTree = "<group>"; };
+		79070C641A39A24800C7F753 /* 640x960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 640x960.png; sourceTree = "<group>"; };
+		79070C651A39A24800C7F753 /* 640x1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 640x1136.png; sourceTree = "<group>"; };
 		79265E8D1A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHEStdTimePickerTableViewCell.h; sourceTree = "<group>"; };
 		79265E8E1A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHEStdTimePickerTableViewCell.m; sourceTree = "<group>"; };
 		79265E8F1A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHEStdTimePickerTableViewCell.xib; sourceTree = "<group>"; };
@@ -1099,6 +1105,9 @@
 		52D398021A1B4248008B08FE /* Pictures */ = {
 			isa = PBXGroup;
 			children = (
+				79070C631A39A24800C7F753 /* 320x480.png */,
+				79070C641A39A24800C7F753 /* 640x960.png */,
+				79070C651A39A24800C7F753 /* 640x1136.png */,
 				79070C5E1A37FAAE00C7F753 /* LocationIcon.png */,
 				79070C581A37E78600C7F753 /* checkMark2.png */,
 				79070C471A36D52100C7F753 /* distanceIcon.png */,
@@ -1520,10 +1529,12 @@
 				79ED56F31A2B186200CDEA07 /* FZCATOONJ.ttf in Resources */,
 				79ED56F11A2B173C00CDEA07 /* MYoungHKS-Xbold.otf in Resources */,
 				7943D1A71A2B08EB00FA80B0 /* MFYueYuan_Noncommercial-Regular.otf in Resources */,
+				79070C661A39A24800C7F753 /* 320x480.png in Resources */,
 				52905A321A21A80100DDC6FB /* ShareSDKiPadSimpleShareViewUI.bundle in Resources */,
 				79265E911A24E7E800F7BAC3 /* EHEStdTimePickerTableViewCell.xib in Resources */,
 				79070BE31A35BFC900C7F753 /* PinWomen.png in Resources */,
 				795F889C1A24670D004D75BA /* EHEStdMemoViewController.xib in Resources */,
+				79070C681A39A24800C7F753 /* 640x1136.png in Resources */,
 				52905A251A21A80100DDC6FB /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				79CF68211A35B8BC00CD1CF0 /* Default-568h@2x.png in Resources */,
 				797C307E1A19D32900DB84E4 /* LaunchScreen.xib in Resources */,
@@ -1546,6 +1557,7 @@
 				52FDA7E91A2D76EC00221229 /* EHEStdCommentCell.xib in Resources */,
 				798B1A4C1A1D86DF00F0031F /* female_tablecell.png in Resources */,
 				52FDA7DE1A2D63BF00221229 /* 提交按钮2.png in Resources */,
+				79070C671A39A24800C7F753 /* 640x960.png in Resources */,
 				798B1A481A1D866800F0031F /* EHETeacherTableViewCell.xib in Resources */,
 				52FDA7DD1A2D63BF00221229 /* 提交按钮.png in Resources */,
 				52AD25BD1A288DB700CA150F /* LICENSE in Resources */,
