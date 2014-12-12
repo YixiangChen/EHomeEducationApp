@@ -31,7 +31,26 @@
         self.settingImageView.layer.cornerRadius=20;
         [self addSubview:self.settingImageView];
         
-        self.contentLabel=[[UILabel alloc]initWithFrame:CGRectMake(130, 8, 150, 30)];
+        
+        CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
+        CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
+        if(screenWidth==320&&screenHeight==480)
+        {
+            self.contentLabel=[[UILabel alloc]initWithFrame:CGRectMake(130, 8, 150, 30)];
+        }
+        else if(screenWidth==320&&screenHeight==568)
+        {
+            self.contentLabel=[[UILabel alloc]initWithFrame:CGRectMake(130, 8, 150, 30)];
+        }
+        else if(screenWidth==375&&screenHeight==667)
+        {
+            self.contentLabel=[[UILabel alloc]initWithFrame:CGRectMake(170, 8, 150, 30)];
+        }
+        else if(screenWidth==414&&screenHeight==736)
+        {
+            self.contentLabel=[[UILabel alloc]initWithFrame:CGRectMake(210, 8, 150, 30)];
+        }
+        
         self.contentLabel.textAlignment=UITextAlignmentRight;
         self.contentLabel.textColor=[UIColor grayColor];
         self.contentLabel.backgroundColor=[UIColor clearColor];

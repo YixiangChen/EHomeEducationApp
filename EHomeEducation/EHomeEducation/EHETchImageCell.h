@@ -12,6 +12,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *lblName;
 @property (strong, nonatomic) IBOutlet UIImageView *imageViewTch;
 @property (strong, nonatomic) IBOutlet UIImageView *imageViewBG;
+@property(strong,nonatomic) UIImageView * imageDistance;
 @property (strong, nonatomic) IBOutlet UILabel *lblEvaluation;
 @property (strong, nonatomic) IBOutlet UILabel *lblDistance;
 

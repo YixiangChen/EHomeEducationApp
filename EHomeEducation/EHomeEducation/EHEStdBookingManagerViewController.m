@@ -34,12 +34,27 @@
     self.unfinishedOrders=[[NSMutableArray alloc]initWithCapacity:10];
     self.finishedOrders=[[NSMutableArray alloc]initWithCapacity:10];
     
-//    //创建tableView并且给之放置样式
-//    self.homeTeacherTableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-120) style:UITableViewStyleGrouped];
-//    self.homeTeacherTableView.dataSource=self;
-//    self.homeTeacherTableView.delegate=self;
-    
+    CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
+    CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
+    if(screenWidth==320&&screenHeight==480)
+    {
+        self.homeTeacherTableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, 480) style:UITableViewStyleGrouped];
+    }
+    else if(screenWidth==320&&screenHeight==568)
+    {
+       self.homeTeacherTableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, 568) style:UITableViewStyleGrouped];
+    }
+    else if(screenWidth==375&&screenHeight==667)
+    {
+       self.homeTeacherTableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, 375, 667) style:UITableViewStyleGrouped];
+    }
+    else if(screenWidth==414&&screenHeight==736)
+    {
+        self.homeTeacherTableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, 414, 736) style:UITableViewStyleGrouped];
+    }
     //分割线为单线分割
+    self.homeTeacherTableView.dataSource=self;
+    self.homeTeacherTableView.delegate=self;
     self.homeTeacherTableView.separatorStyle=UITableViewCellSeparatorStyleSingleLine;
     [self.view addSubview:self.homeTeacherTableView];
     

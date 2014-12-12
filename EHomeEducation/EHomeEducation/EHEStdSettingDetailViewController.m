@@ -39,9 +39,31 @@
     if([self.type isEqualToString:@"0"])
     {
         self.view.backgroundColor=[UIColor colorWithRed:239/255.0f green:239/255.0f blue:244/255.0f alpha:1.0f];
-        self.studentImageView=[[UIImageView alloc]initWithFrame:CGRectMake(85,90, 150, 150)];
-        self.studentImageView.image=self.image;
         
+        CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
+        CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
+        if(screenWidth==320&&screenHeight==480)
+        {
+            self.studentImageView=[[UIImageView alloc]initWithFrame:CGRectMake(85,90, 150, 150)];
+            self.tableView=[[UITableView alloc]initWithFrame:CGRectMake(0,300, self.view.frame.size.width, 88)];
+        }
+        else if(screenWidth==320&&screenHeight==568)
+        {
+            self.studentImageView=[[UIImageView alloc]initWithFrame:CGRectMake(85,90, 150, 150)];
+            self.tableView=[[UITableView alloc]initWithFrame:CGRectMake(0,300, self.view.frame.size.width, 88)];
+        }
+        else if(screenWidth==375&&screenHeight==667)
+        {
+            self.studentImageView=[[UIImageView alloc]initWithFrame:CGRectMake(112.5,90, 150, 150)];
+            self.tableView=[[UITableView alloc]initWithFrame:CGRectMake(0,300, 375, 88)];
+        }
+        else if(screenWidth==414&&screenHeight==736)
+        {
+            self.studentImageView=[[UIImageView alloc]initWithFrame:CGRectMake(132,90, 150, 150)];
+            self.tableView=[[UITableView alloc]initWithFrame:CGRectMake(0,300, 414, 88)];
+        }
+
+        self.studentImageView.image=self.image;
         [self.studentImageView.layer setBorderColor: [[UIColor grayColor] CGColor]];//边框灰色
         [self.studentImageView.layer setBorderWidth: 1.0];//宽度为1
         [self.studentImageView.layer setCornerRadius:8.0f];//圆角
@@ -49,7 +71,7 @@
         
         [self.view addSubview:self.studentImageView];
         
-        self.tableView=[[UITableView alloc]initWithFrame:CGRectMake(0,300, self.view.frame.size.width, 88)];
+        
         self.tableView.dataSource=self;
         self.tableView.delegate=self;
         self.tableView.separatorStyle=UITableViewCellSeparatorStyleSingleLine;

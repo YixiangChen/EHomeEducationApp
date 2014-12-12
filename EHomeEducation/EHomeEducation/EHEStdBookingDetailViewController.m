@@ -21,39 +21,120 @@
     self.title=self.order.teachername;
     
     //传之后显示TextView的各种label控件 信息
-    _teacherInfoLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 70, 150, 30)];
+    CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
+    CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
+    _buttonSure=[UIButton buttonWithType:UIButtonTypeSystem];
+    self.rankButton1=[UIButton buttonWithType:UIButtonTypeSystem];
+    self.rankButton2=[UIButton buttonWithType:UIButtonTypeSystem];
+    self.rankButton3=[UIButton buttonWithType:UIButtonTypeSystem];
+    self.rankButton4=[UIButton buttonWithType:UIButtonTypeSystem];
+    self.rankButton5=[UIButton buttonWithType:UIButtonTypeSystem];
+    if(screenWidth==320&&screenHeight==480)
+    {
+        _teacherInfoLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 70, 150, 30)];
+         _orderLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 100, 250, 30)];
+        _otherInfomationLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 130, 150, 30)];
+         _beginAndEndLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 160, 200, 30)];
+        _objectLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 190, 200, 30)];
+        _descriptionInfomationLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 220, 200, 30)];
+        _descriptionTextView=[[UITextView alloc]initWithFrame:CGRectMake(10, 250, 300, 80)];
+        _rankLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 330, 150, 30)];
+        
+        _buttonSure.frame=CGRectMake(115, 390, 100, 37);
+        self.rankButton1.frame=CGRectMake(10, 360, 20, 20);
+        self.rankButton2.frame=CGRectMake(80, 360, 20, 20);
+        self.rankButton3.frame=CGRectMake(150, 360, 20, 20);
+        self.rankButton4.frame=CGRectMake(220, 360, 20, 20);
+        self.rankButton5.frame=CGRectMake(290, 360, 20, 20);
+    }
+    else if(screenWidth==320&&screenHeight==568)
+    {
+        _teacherInfoLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 70, 150, 30)];
+        _orderLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 100, 250, 30)];
+        _otherInfomationLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 130, 150, 30)];
+        _beginAndEndLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 160, 200, 30)];
+        _objectLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 190, 200, 30)];
+        _descriptionInfomationLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 220, 200, 30)];
+        _descriptionTextView=[[UITextView alloc]initWithFrame:CGRectMake(10, 250, 300, 80)];
+        _rankLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 330, 150, 30)];
+        
+        _buttonSure.frame=CGRectMake(115, 430, 100, 37);
+        self.rankButton1.frame=CGRectMake(10, 360, 20, 20);
+        self.rankButton2.frame=CGRectMake(80, 360, 20, 20);
+        self.rankButton3.frame=CGRectMake(150, 360, 20, 20);
+        self.rankButton4.frame=CGRectMake(220, 360, 20, 20);
+        self.rankButton5.frame=CGRectMake(290, 360, 20, 20);
+    }
+    else if(screenWidth==375&&screenHeight==667)
+    {
+        _teacherInfoLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 70, 150, 30)];
+        _orderLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 100, 250, 30)];
+        _otherInfomationLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 130, 150, 30)];
+        _beginAndEndLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 160, 200, 30)];
+        _objectLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 190, 200, 30)];
+        _descriptionInfomationLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 220, 200, 30)];
+        _descriptionTextView=[[UITextView alloc]initWithFrame:CGRectMake(10, 250, 355, 80)];
+        _rankLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 330, 150, 30)];
+        
+        _buttonSure.frame=CGRectMake(142, 530, 100, 37);
+        self.rankButton1.frame=CGRectMake(10, 360, 20, 20);
+        self.rankButton2.frame=CGRectMake(80, 360, 20, 20);
+        self.rankButton3.frame=CGRectMake(150, 360, 20, 20);
+        self.rankButton4.frame=CGRectMake(220, 360, 20, 20);
+        self.rankButton5.frame=CGRectMake(290, 360, 20, 20);
+    }
+    else if(screenWidth==414&&screenHeight==736)
+    {
+        _teacherInfoLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 70, 150, 30)];
+        _orderLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 100, 250, 30)];
+        _otherInfomationLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 130, 150, 30)];
+        _beginAndEndLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 160, 200, 30)];
+        _objectLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 190, 200, 30)];
+        _descriptionInfomationLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 220, 200, 30)];
+        _descriptionTextView=[[UITextView alloc]initWithFrame:CGRectMake(10, 250, 394, 80)];
+        _rankLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 330, 150, 30)];
+        
+        _buttonSure.frame=CGRectMake(152, 530, 100, 37);
+        self.rankButton1.frame=CGRectMake(10, 360, 20, 20);
+        self.rankButton2.frame=CGRectMake(80, 360, 20, 20);
+        self.rankButton3.frame=CGRectMake(150, 360, 20, 20);
+        self.rankButton4.frame=CGRectMake(220, 360, 20, 20);
+        self.rankButton5.frame=CGRectMake(290, 360, 20, 20);
+    }
+    
+    
     [self getLableAttribute:_teacherInfoLabel withText:self.order.teachername];
     _teacherInfoLabel.font=[UIFont fontWithName:@"Helvetica-Bold" size:17.0f];
     [self.view addSubview:_teacherInfoLabel];
     
-    _orderLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 100, 250, 30)];
+   
     NSString * orderDateString=[NSString stringWithFormat:@"预约时间：%@",self.order.orderdate];
     [self getLableAttribute:_orderLabel withText:orderDateString];
     _orderLabel.font=[UIFont systemFontOfSize:15.0f];
     [self.view addSubview:_orderLabel];
     
-    _otherInfomationLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 130, 150, 30)];
+    
     [self getLableAttribute:_otherInfomationLabel withText:@"相关信息"];
     _otherInfomationLabel.font=[UIFont fontWithName:@"Helvetica-Bold" size:17.0f];
     [self.view addSubview:_otherInfomationLabel];
     
-    _beginAndEndLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 160, 200, 30)];
+   
     [self getLableAttribute:_beginAndEndLabel withText:[NSString stringWithFormat:@"授课起止时间：%@",self.order.timeperiod]];
     _beginAndEndLabel.font=[UIFont systemFontOfSize:15.0f];
     [self.view addSubview:_beginAndEndLabel];
     
-    _objectLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 190, 200, 30)];
+    
     [self getLableAttribute:_objectLabel withText:[NSString stringWithFormat:@"所授科目：%@",self.order.subjectinfo]];
     _objectLabel.font=[UIFont systemFontOfSize:15.0f];
     [self.view addSubview:_objectLabel];
     
-    _descriptionInfomationLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 220, 200, 30)];
+    
     [self getLableAttribute:_descriptionInfomationLabel withText:@"相关评价信息"];
     _descriptionInfomationLabel.font=[UIFont fontWithName:@"Helvetica-Bold" size:17.0f];
     [self.view addSubview:_descriptionInfomationLabel];
     
     //初始化textView并且给TextView指定样式
-    _descriptionTextView=[[UITextView alloc]initWithFrame:CGRectMake(10, 250, 300, 80)];
+    
     //让textView的光标在起始位置
     _descriptionTextView.selectedRange=NSMakeRange(0, 0);
     _descriptionTextView.delegate=self;//绑定textView的代理方法
@@ -70,49 +151,46 @@
     _check=NO;//一开始加载页面的时候用户没有点击编辑textView故而check为NO
     
     
-    _rankLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 330, 150, 30)];
+    
     [self getLableAttribute:_rankLabel withText:@"服务等级"];
     _rankLabel.font=[UIFont fontWithName:@"Helvetica-Bold" size:17.0f];
     [self.view addSubview:_rankLabel];
     
     //初始化5颗星星
-    self.rankButton1=[UIButton buttonWithType:UIButtonTypeSystem];
+    
     [self.rankButton1 setBackgroundImage:[UIImage imageNamed:@"订单-历史评论星星2"] forState:UIControlStateNormal];
-    self.rankButton1.frame=CGRectMake(10, 360, 20, 20);
     [self.rankButton1 addTarget:self action:@selector(rankButton1Clicked:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.rankButton1];
     
-    self.rankButton2=[UIButton buttonWithType:UIButtonTypeSystem];
+    
     [self initButtonAttribute:self.rankButton2];
     [self.rankButton2 setBackgroundImage:[UIImage imageNamed:@"订单-历史评论星星2"] forState:UIControlStateNormal];
     [self.rankButton2 addTarget:self action:@selector(rankButton2Clicked:) forControlEvents:UIControlEventTouchUpInside];
-    self.rankButton2.frame=CGRectMake(80, 360, 20, 20);
+    
     [self.view addSubview:self.rankButton2];
     
-    self.rankButton3=[UIButton buttonWithType:UIButtonTypeSystem];
+    
     [self initButtonAttribute:self.rankButton3];
     [self.rankButton3 setBackgroundImage:[UIImage imageNamed:@"订单-历史评论星星2"] forState:UIControlStateNormal];
     [self.rankButton3 addTarget:self action:@selector(rankButton3Clicked:) forControlEvents:UIControlEventTouchUpInside];
-    self.rankButton3.frame=CGRectMake(150, 360, 20, 20);
+    
     [self.view addSubview:self.rankButton3];
     
-    self.rankButton4=[UIButton buttonWithType:UIButtonTypeSystem];
     [self initButtonAttribute:self.rankButton4];
     [self.rankButton4 setBackgroundImage:[UIImage imageNamed:@"订单-历史评论星星2"] forState:UIControlStateNormal];
     [self.rankButton4 addTarget:self action:@selector(rankButton4Clicked:) forControlEvents:UIControlEventTouchUpInside];
-    self.rankButton4.frame=CGRectMake(220, 360, 20, 20);
+    
     [self.view addSubview:self.rankButton4];
     
-    self.rankButton5=[UIButton buttonWithType:UIButtonTypeSystem];
     [self initButtonAttribute:self.rankButton5];
     [self.rankButton5 setBackgroundImage:[UIImage imageNamed:@"订单-历史评论星星2"] forState:UIControlStateNormal];
     [self.rankButton5 addTarget:self action:@selector(rankButton5Clicked:) forControlEvents:UIControlEventTouchUpInside];
-    self.rankButton5.frame=CGRectMake(290, 360, 20, 20);
+    
     [self.view addSubview:self.rankButton5];
     
     //初始化取消按钮
-    _buttonSure=[UIButton buttonWithType:UIButtonTypeSystem];
-    _buttonSure.frame=CGRectMake(115, 390, 100, 37);
+    
+    
     [_buttonSure addTarget: self action:@selector(sureButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     
     NSLog(@"self.order.orderStatus=%d",self.order.orderstatus.intValue);
@@ -411,24 +489,30 @@
             _descriptionTextView.textColor=[UIColor grayColor];
         }
     }
+    [_descriptionTextView resignFirstResponder];
 }
 -(void)textViewDidBeginEditing:(UITextView *)textView
 {
-    //textView刚开始编辑的方法
-    textView.text=@"";
-    //如果check为NO
-    if(_check==NO)
+    CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
+    CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
+    if((screenWidth==320&&screenHeight==480)||(screenWidth==320&&screenHeight==568))
     {
-        //光标在首
-        textView.selectedRange=NSMakeRange(0, 0);
-        //上提所有label控件
-        [self pullAllLabels];
-        CGRect textFrame=textView.frame;
-        textFrame.origin.y-=150;
-        //加大textView的height值
-        textFrame.size.height+=20;
-        textView.frame=textFrame;
-        _check=YES;
+        //textView刚开始编辑的方法
+        textView.text=@"";
+        //如果check为NO
+        if(_check==NO)
+        {
+            //光标在首
+            textView.selectedRange=NSMakeRange(0, 0);
+            //上提所有label控件
+            [self pullAllLabels];
+            CGRect textFrame=textView.frame;
+            textFrame.origin.y-=150;
+            //加大textView的height值
+            textFrame.size.height+=20;
+            textView.frame=textFrame;
+            _check=YES;
+        }
     }
 }
 //上啦所有label的方法

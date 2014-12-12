@@ -10,7 +10,7 @@
 #import "EHETeacher.h"
 
 @interface EHETchDetailViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
-@property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) EHETeacher *teacher;
 @property (strong, nonatomic) NSString *distance;
 

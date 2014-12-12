@@ -16,8 +16,8 @@
 #import "EHEStdFilterBySubjectsViewController.h"
 
 @interface EHEStdSearchingViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
-@property (strong, nonatomic) IBOutlet UIView *filterView;
-@property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) UIView *filterView;
+@property (strong, nonatomic) UITableView *tableView;
 
 @property(strong,nonatomic)UISegmentedControl * segmentedControl;
 @property(strong, nonatomic) EHEStdMapSearchingViewController *mapSearching;

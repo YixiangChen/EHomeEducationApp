@@ -18,7 +18,6 @@
 #import "WeiboSDK.h"
 #import <QQConnection/QQConnection.h>
 #import "WXApi.h"
-#import <RennSDK/RennSDK.h>
 #import <TencentOpenAPI/QQApiInterface.h>
 #import <TencentOpenAPI/TencentOAuth.h>
 
@@ -272,13 +271,6 @@
                             appSecret:@"e32896161e72be91"
                           redirectUri:@"http://dev.kumoway.com/braininference/infos.php"];
     
-    //添加人人网应用 注册网址  http://dev.renren.com
-    [ShareSDK connectRenRenWithAppId:@"226427"
-                              appKey:@"fc5b8aed373c4c27a05b712acba0f8c3"
-                           appSecret:@"f29df781abdd4f49beca5a2194676ca4"
-                   renrenClientClass:[RennClient class]];
-    
-    [ShareSDK importRenRenClass:[RennClient class]];
     
     //添加开心网应用  注册网址 http://open.kaixin001.com
     [ShareSDK connectKaiXinWithAppKey:@"358443394194887cee81ff5890870c7c"

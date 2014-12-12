@@ -19,33 +19,47 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    if([UIScreen mainScreen].bounds.size.width==320&&[UIScreen mainScreen].bounds.size.height==480)
+    
+    CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
+    CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
+    //实例化一个教师信息的数组，因为是从coreData中获取的，所以是不可变的数组
+    self.teacherInfoArray=[[NSArray alloc]init];
+    self.teacherInfoArray=[[EHECoreDataManager getInstance] fetchBasicInfosOfTeachers];
+    //实例化一个百度地图的类
+    if(screenWidth==320&&screenHeight==480)
     {
-        //实例化一个教师信息的数组，因为是从coreData中获取的，所以是不可变的数组
-        self.teacherInfoArray=[[NSArray alloc]init];
-         self.teacherInfoArray=[[EHECoreDataManager getInstance] fetchBasicInfosOfTeachers];
-        
-        //实例化一个百度地图的类
-        self.mapView=[[BMKMapView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-50)];
-        self.mapView.delegate=self;
-        
-        //利用locationManager方法添加百度地图定位功能
-        self.locationManager=[[CLLocationManager alloc]init];
-        [self.locationManager requestWhenInUseAuthorization];
-        self.mapView.showsUserLocation=YES;
-        
-        //定位服务locationService
-        _locationService = [[BMKLocationService alloc]init];
-        _locationService.delegate = self;
-        
-        //启动LocationService
-        [_locationService startUserLocationService];
-        [self.view addSubview:self.mapView];
-        
-        self.count=1;
-        
-        self.bubbleDictionary =[[NSMutableDictionary alloc]initWithCapacity:[self.teacherInfoArray count]];
+     self.mapView=[[BMKMapView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-50)];
     }
+    else if(screenWidth==320&&screenHeight==568)
+    {
+       self.mapView=[[BMKMapView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 520)];
+    }
+    else if(screenWidth==375&&screenHeight==667)
+    {
+        self.mapView=[[BMKMapView alloc]initWithFrame:CGRectMake(0, 0, 375, 619)];
+    }
+    else if(screenWidth==414&&screenHeight==736)
+    {
+        self.mapView=[[BMKMapView alloc]initWithFrame:CGRectMake(0, 0,414,688)];
+    }
+    self.mapView.delegate=self;
+    
+    //利用locationManager方法添加百度地图定位功能
+    self.locationManager=[[CLLocationManager alloc]init];
+    [self.locationManager requestWhenInUseAuthorization];
+    self.mapView.showsUserLocation=YES;
+    
+    //定位服务locationService
+    _locationService = [[BMKLocationService alloc]init];
+    _locationService.delegate = self;
+    
+    //启动LocationService
+    [_locationService startUserLocationService];
+    [self.view addSubview:self.mapView];
+    
+    self.count=1;
+    
+    self.bubbleDictionary =[[NSMutableDictionary alloc]initWithCapacity:[self.teacherInfoArray count]];
 }
 
 - (void)didReceiveMemoryWarning {

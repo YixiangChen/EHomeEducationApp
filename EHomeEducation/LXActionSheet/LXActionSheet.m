@@ -225,7 +225,27 @@
 
 - (UILabel *)creatTitleLabelWith:(NSString *)title
 {
-    UILabel *titlelabel = [[UILabel alloc] initWithFrame:CGRectMake(TITLE_INTERVAL_WIDTH, TITLE_INTERVAL_HEIGHT, TITLE_WIDTH, TITLE_HEIGHT)];
+    
+    UILabel *titlelabel;
+    CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
+    CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
+    if(screenWidth==320&&screenHeight==480)
+    {
+        titlelabel = [[UILabel alloc] initWithFrame:CGRectMake(TITLE_INTERVAL_WIDTH, TITLE_INTERVAL_HEIGHT, TITLE_WIDTH, TITLE_HEIGHT)];
+    }
+    else if(screenWidth==320&&screenHeight==568)
+    {
+        titlelabel = [[UILabel alloc] initWithFrame:CGRectMake(TITLE_INTERVAL_WIDTH, TITLE_INTERVAL_HEIGHT, TITLE_WIDTH, TITLE_HEIGHT)];
+    }
+    else if(screenWidth==375&&screenHeight==667)
+    {
+        titlelabel = [[UILabel alloc] initWithFrame:CGRectMake(55, TITLE_INTERVAL_HEIGHT, TITLE_WIDTH, TITLE_HEIGHT)];
+    }
+    else if(screenWidth==414&&screenHeight==736)
+    {
+        titlelabel = [[UILabel alloc] initWithFrame:CGRectMake(75, 5, TITLE_WIDTH, TITLE_HEIGHT)];
+    }
+    
     titlelabel.backgroundColor = [UIColor clearColor];
     titlelabel.textAlignment = NSTextAlignmentCenter;
     titlelabel.shadowColor = [UIColor blackColor];
@@ -239,7 +259,26 @@
 
 - (UIButton *)creatDestructiveButtonWith:(NSString *)destructiveButtonTitle
 {
-    UIButton *destructiveButton = [[UIButton alloc] initWithFrame:CGRectMake(BUTTON_INTERVAL_WIDTH, BUTTON_INTERVAL_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT)];
+    CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
+    CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
+    UIButton *destructiveButton;
+    if(screenWidth==320&&screenHeight==480)
+    {
+        destructiveButton= [[UIButton alloc] initWithFrame:CGRectMake(BUTTON_INTERVAL_WIDTH, BUTTON_INTERVAL_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT)];
+    }
+    else if(screenWidth==320&&screenHeight==568)
+    {
+        destructiveButton = [[UIButton alloc] initWithFrame:CGRectMake(BUTTON_INTERVAL_WIDTH, BUTTON_INTERVAL_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT)];
+    }
+    else if(screenWidth==375&&screenHeight==667)
+    {
+        destructiveButton = [[UIButton alloc] initWithFrame:CGRectMake(30,100, 315, 40)];
+    }
+    else if(screenWidth==414&&screenHeight==736)
+    {
+        destructiveButton = [[UIButton alloc] initWithFrame:CGRectMake(30,0, 354, 40)];
+    }
+    
     destructiveButton.layer.masksToBounds = YES;
     destructiveButton.layer.cornerRadius = CORNER_RADIUS;
     
@@ -257,7 +296,27 @@
 
 - (UIButton *)creatOtherButtonWith:(NSString *)otherButtonTitle withPostion:(NSInteger )postionIndex
 {
-    UIButton *otherButton = [[UIButton alloc] initWithFrame:CGRectMake(BUTTON_INTERVAL_WIDTH, BUTTON_INTERVAL_HEIGHT + (postionIndex*(BUTTON_HEIGHT+(BUTTON_INTERVAL_HEIGHT/2))), BUTTON_WIDTH, BUTTON_HEIGHT)];
+    
+    CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
+    CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
+    UIButton *otherButton;
+    if(screenWidth==320&&screenHeight==480)
+    {
+        otherButton = [[UIButton alloc] initWithFrame:CGRectMake(BUTTON_INTERVAL_WIDTH, BUTTON_INTERVAL_HEIGHT + (postionIndex*(BUTTON_HEIGHT+(BUTTON_INTERVAL_HEIGHT/2))), BUTTON_WIDTH, BUTTON_HEIGHT)];
+    }
+    else if(screenWidth==320&&screenHeight==568)
+    {
+        otherButton = [[UIButton alloc] initWithFrame:CGRectMake(BUTTON_INTERVAL_WIDTH, BUTTON_INTERVAL_HEIGHT + (postionIndex*(BUTTON_HEIGHT+(BUTTON_INTERVAL_HEIGHT/2))), BUTTON_WIDTH, BUTTON_HEIGHT)];
+    }
+    else if(screenWidth==375&&screenHeight==667)
+    {
+        otherButton = [[UIButton alloc] initWithFrame:CGRectMake(30,150, 315, 40)];
+    }
+    else
+    {
+        
+    }
+    
     otherButton.layer.masksToBounds = YES;
     otherButton.layer.cornerRadius = CORNER_RADIUS;
     
@@ -274,7 +333,26 @@
 
 - (UIButton *)creatCancelButtonWith:(NSString *)cancelButtonTitle
 {
-    UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(BUTTON_INTERVAL_WIDTH, BUTTON_INTERVAL_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT)];
+    UIButton *cancelButton;
+    CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
+    CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
+    if(screenWidth==320&&screenHeight==480)
+    {
+        cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(BUTTON_INTERVAL_WIDTH, BUTTON_INTERVAL_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT)];
+    }
+    else if(screenWidth==320&&screenHeight==568)
+    {
+        cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(BUTTON_INTERVAL_WIDTH, BUTTON_INTERVAL_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT)];
+    }
+    else if(screenWidth==375&&screenHeight==667)
+    {
+        cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(BUTTON_INTERVAL_WIDTH, BUTTON_INTERVAL_HEIGHT, 315, BUTTON_HEIGHT)];
+    }
+    else
+    {
+        cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(BUTTON_INTERVAL_WIDTH, BUTTON_INTERVAL_HEIGHT, 354, BUTTON_HEIGHT)];
+    }
+    
     cancelButton.layer.masksToBounds = YES;
     cancelButton.layer.cornerRadius = CORNER_RADIUS;
     

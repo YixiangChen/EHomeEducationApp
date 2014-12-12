@@ -27,7 +27,5 @@
 //已经完成的订单
 @property(strong,nonatomic)NSMutableArray * finishedOrders;
 @property(strong,nonatomic)NSMutableData * orderDatas;
-@property (strong, nonatomic) IBOutlet UITableView *homeTeacherTableView;
-
-
+@property (strong, nonatomic) UITableView *homeTeacherTableView;
 @end

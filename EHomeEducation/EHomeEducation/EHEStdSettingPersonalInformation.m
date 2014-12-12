@@ -27,7 +27,27 @@
     
     NSUserDefaults * userDefault=[NSUserDefaults standardUserDefaults];
     
-    self.tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320,self.view.frame.size.height) style:UITableViewStyleGrouped];
+    
+    
+    CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
+    CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
+    if(screenWidth==320&&screenHeight==480)
+    {
+        self.tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320,self.view.frame.size.height) style:UITableViewStyleGrouped];
+    }
+    else if(screenWidth==320&&screenHeight==568)
+    {
+        self.tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320,self.view.frame.size.height) style:UITableViewStyleGrouped];
+    }
+    else if(screenWidth==375&&screenHeight==667)
+    {
+        self.tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, 375,667) style:UITableViewStyleGrouped];
+    }
+    else if(screenWidth==414&&screenHeight==736)
+    {
+       self.tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, 414,736) style:UITableViewStyleGrouped];
+    }
+    
     self.tableView.dataSource=self;
     self.tableView.delegate=self;
     self.tableView.bounces=NO;
