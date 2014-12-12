@@ -29,7 +29,7 @@
 -(BOOL)loadOrderDetailWithOrderID:(int)orderID;
 
 //发送用户其他信息
--(void) sendOtherInfo:(NSDictionary *) dictOtherInfo;
+-(BOOL) sendOtherInfo:(NSDictionary *) dictOtherInfo;
 
 //取消订单 订单状态改为3
 -(void) cancelOrderWithOrderId:(int) orderId withReason:(NSString *) memo;

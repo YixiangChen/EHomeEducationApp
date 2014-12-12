@@ -65,24 +65,24 @@
     }
     
 }
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    NSUserDefaults * userDefaults=[NSUserDefaults standardUserDefaults];
-    NSString * userName=[userDefaults objectForKey:@"userName"];
-    NSString * password=[userDefaults objectForKey:@"passWord"];
-    NSLog(@"userName=%@,password=%@",userName,password);
-    EHEStdLoginViewController *loginViewController = [[EHEStdLoginViewController alloc] initWithNibName:nil bundle:nil];
-    if (userName == nil || password== nil) {
-        //如果没有登录的话要显示登录界面，并且隐藏导航栏
-        [[self navigationController] setNavigationBarHidden:YES animated:YES];//隐藏导航栏
-        [self.navigationController pushViewController:loginViewController animated:NO];
-    }
-    else
-    {
-        [[self navigationController] setNavigationBarHidden:NO animated:YES];
-    }
-}
+//-(void)viewWillAppear:(BOOL)animated
+//{
+//    [super viewWillAppear:animated];
+//    NSUserDefaults * userDefaults=[NSUserDefaults standardUserDefaults];
+//    NSString * userName=[userDefaults objectForKey:@"userName"];
+//    NSString * password=[userDefaults objectForKey:@"passWord"];
+//    NSLog(@"userName=%@,password=%@",userName,password);
+//    EHEStdLoginViewController *loginViewController = [[EHEStdLoginViewController alloc] initWithNibName:nil bundle:nil];
+//    if (userName == nil || password== nil) {
+//        //如果没有登录的话要显示登录界面，并且隐藏导航栏
+//        [[self navigationController] setNavigationBarHidden:YES animated:YES];//隐藏导航栏
+//        [self.navigationController pushViewController:loginViewController animated:NO];
+//    }
+//    else
+//    {
+//        [[self navigationController] setNavigationBarHidden:NO animated:YES];
+//    }
+//}
 //在界面刚显示出来的时候就要对数据进行更新
 -(void)viewDidAppear:(BOOL)animated
 {

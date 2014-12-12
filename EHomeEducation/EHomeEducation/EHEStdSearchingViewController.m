@@ -59,6 +59,20 @@
     [super viewDidAppear:animated];
     //[self.tableView headerBeginRefreshing];
 }
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    NSUserDefaults * userDefaults=[NSUserDefaults standardUserDefaults];
+    NSString * userName=[userDefaults objectForKey:@"userName"];
+    NSString * password=[userDefaults objectForKey:@"passWord"];
+    if(userName==nil||password==nil)
+    {
+        EHEStdLoginViewController * loginViewController=[[EHEStdLoginViewController alloc]initWithNibName:nil bundle:nil];
+        [self presentViewController:loginViewController animated:NO completion:nil];
+    }else {
+        
+    }
+}
 -(void) headerRefreshing {
     bool refreshSuccess;
     refreshSuccess = [[EHECommunicationManager getInstance] loadTeachersInfo];
@@ -182,14 +196,14 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void) viewWillAppear:(BOOL)animated {
+//-(void) viewWillAppear:(BOOL)animated {
     //    [super viewWillAppear:animated];
     //    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     //    if ([defaults objectForKey:@"userName"] == nil || [defaults objectForKey:@"passWord"] == nil) {
     //    EHEStdLoginViewController *loginViewController = [[EHEStdLoginViewController alloc] initWithNibName:nil bundle:nil];
     //    [self presentViewController:loginViewController animated:NO completion:nil];
     //    }
-}
+//}
 
 
 -(void) selectedSegmentChanged:(UISegmentedControl *) seg {

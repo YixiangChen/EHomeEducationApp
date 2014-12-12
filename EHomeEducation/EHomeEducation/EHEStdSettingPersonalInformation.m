@@ -15,6 +15,7 @@
 #import "AFHTTPRequestOperation.h"
 #import "EHEStdSettingViewController.h"
 #import "Reachability.h"
+#import "Defines.h"
 @interface EHEStdSettingPersonalInformation ()
 
 @end
@@ -121,16 +122,23 @@
     NSDictionary * informationDictionary=@{@"customerid":[userDefaults objectForKey:@"myCustomerid"],@"name":self.name,@"gender":self.gender,@"telephone":self.telephoneNumber,@"latitude":latitude,@"longitude":longitude,@"majoraddress":self.address,@"memo":self.brithday};
 
     NSString * customerid=[userDefaults objectForKey:@"myCustomerid"];
-    [communicationManager sendOtherInfo:informationDictionary];
+    
+    BOOL sentSuccessfully = [communicationManager sendOtherInfo:informationDictionary];
+    
+    if (sentSuccessfully) {
+        [self presentSendingStatusWithText:@"上传成功"];
+        [userDefaults setObject:self.name forKey:[self getKey:@"name" andPara:customerid]];
+        [userDefaults setObject:self.telephoneNumber forKey:[self getKey:@"telephone" andPara:customerid]];
+        [userDefaults setObject:self.gender forKey:[self getKey:@"gender" andPara:customerid]];
+        [userDefaults setObject:@"北京石景山" forKey:[self getKey:@"majoraddress" andPara:customerid]];
+        [userDefaults setObject:self.brithday forKey:[self getKey:@"memo" andPara:customerid]];
+        [userDefaults synchronize];
+    }else {
+        [self presentSendingStatusWithText:@"上传失败"];
+    }
     
     [self uploadUserIconWithCustomerId:customerid.intValue andImage:self.image];
     
-    [userDefaults setObject:self.name forKey:[self getKey:@"name" andPara:customerid]];
-    [userDefaults setObject:self.telephoneNumber forKey:[self getKey:@"telephone" andPara:customerid]];
-    [userDefaults setObject:self.gender forKey:[self getKey:@"gender" andPara:customerid]];
-    [userDefaults setObject:@"北京石景山" forKey:[self getKey:@"majoraddress" andPara:customerid]];
-    [userDefaults setObject:self.brithday forKey:[self getKey:@"memo" andPara:customerid]];
-    [userDefaults synchronize];
 }
 
 -(NSString*)getKey:(NSString *)para1 andPara:(NSString *)para2
@@ -307,5 +315,29 @@
         settingDetail.currentIndexPath=1;
     }
     [self.navigationController pushViewController:settingDetail animated:YES];
+}
+
+-(void) presentSendingStatusWithText:(NSString *)text {
+    UIView * blackView=[[UIView alloc]init];
+    blackView.center=self.view.center;
+    blackView.backgroundColor=[UIColor blackColor];
+    blackView.alpha=0.0f;
+    blackView.frame=CGRectMake(120,180, 80, 80);
+    blackView.layer.cornerRadius=20.0f;
+    [self.view addSubview:blackView];
+    
+    UILabel * label1=[[UILabel alloc]initWithFrame:CGRectMake(11, 25, 130, 30)];
+    label1.textColor=[UIColor whiteColor];
+    label1.backgroundColor=[UIColor clearColor];
+    label1.text= text;
+    label1.font=[UIFont fontWithName:kFangZhengKaTongFont size:15.0f];
+    [blackView addSubview:label1];
+    
+    [UIView animateWithDuration:1.0 animations:^{
+        blackView.alpha=0.8f;
+    }];
+    [UIView animateWithDuration:2.5 animations:^{
+        blackView.alpha=0.0f;
+    }];
 }
 @end

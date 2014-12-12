@@ -54,19 +54,19 @@
 {
     //通过NSUserDefaults来对用户名进行拿取
     NSUserDefaults * userDefaults=[NSUserDefaults standardUserDefaults];
-    NSString * userName=[userDefaults objectForKey:@"userName"];
-    NSString * password=[userDefaults objectForKey:@"passWord"];
-    
-    EHEStdLoginViewController *loginViewController = [[EHEStdLoginViewController alloc] initWithNibName:nil bundle:nil];
-    if (userName == nil || password== nil) {
-        //如果没有登录的话要显示登录界面，并且隐藏导航栏
-        [[self navigationController] setNavigationBarHidden:YES animated:YES];//隐藏导航栏
-        [self.navigationController pushViewController:loginViewController animated:NO];
-    }
-    else
-    {
-        [[self navigationController] setNavigationBarHidden:NO animated:YES];
-    }
+//    NSString * userName=[userDefaults objectForKey:@"userName"];
+//    NSString * password=[userDefaults objectForKey:@"passWord"];
+//    
+//    EHEStdLoginViewController *loginViewController = [[EHEStdLoginViewController alloc] initWithNibName:nil bundle:nil];
+//    if (userName == nil || password== nil) {
+//        //如果没有登录的话要显示登录界面，并且隐藏导航栏
+//        [[self navigationController] setNavigationBarHidden:YES animated:YES];//隐藏导航栏
+//        [self.navigationController pushViewController:loginViewController animated:NO];
+//    }
+//    else
+//    {
+//        [[self navigationController] setNavigationBarHidden:NO animated:YES];
+//    }
     
     NSUserDefaults * userdefaults=[NSUserDefaults standardUserDefaults];
     NSString * customerid=[userdefaults objectForKey:@"myCustomerid"];
@@ -305,8 +305,7 @@
        [userDefaults synchronize];
        
        EHEStdLoginViewController * loginViewController=[[EHEStdLoginViewController alloc]initWithNibName:nil bundle:nil];
-       [[self navigationController] setNavigationBarHidden:YES animated:YES];//隐藏导航栏
-       [self.navigationController pushViewController:loginViewController animated:NO];
+       [self presentViewController:loginViewController animated:YES completion:nil];
    }
 }
 @end

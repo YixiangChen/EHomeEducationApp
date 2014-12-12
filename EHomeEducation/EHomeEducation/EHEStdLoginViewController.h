@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface EHEStdLoginViewController : UIViewController<UITextFieldDelegate>
-@property (strong, nonatomic) IBOutlet UITextField *txtUserName;
-@property (strong, nonatomic) IBOutlet UITextField *txtPassWord;
-- (IBAction)loginButtonPressed:(id)sender;
-- (IBAction)cancelButtonPressed:(id)sender;
-- (IBAction)forgetPasswordButtonPressed:(id)sender;
-- (IBAction)goToRegisterButtonPressed:(id)sender;
+@property(strong,nonatomic)UILabel * userNameLabel;
+@property(strong,nonatomic)UILabel * passwordLabel;
+@property(strong,nonatomic)UITextField * userNameTextField;
+@property(strong,nonatomic)UITextField * passwordTextField;
+@property(strong,nonatomic)UIButton * loginButton;
+@property(strong,nonatomic)UIButton * registerButton;
+@property(strong,nonatomic)UIButton * forgetPasswordButton;
+-(IBAction)backgrounCliked:(id) sender;
 
 @end

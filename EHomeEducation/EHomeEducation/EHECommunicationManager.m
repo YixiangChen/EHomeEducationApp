@@ -211,7 +211,7 @@
     }
     return NO;
 }
--(void)sendOtherInfo:(NSDictionary *)dictOtherInfo {
+-(BOOL)sendOtherInfo:(NSDictionary *)dictOtherInfo {
     
     NSString * postData = [NSString stringWithFormat:@"{\"customerid\":\"%@\",\"name\":\"%@\",\"gender\":\"%@\",\"telephone\":\"%@\",\"latitude\":\"%@\",\"longitude\":\"%@\",\"majoraddress\":\"%@\",\"memo\":\"%@\"}",[dictOtherInfo objectForKey:@"customerid"],[dictOtherInfo objectForKey:@"name"],[dictOtherInfo objectForKey:@"gender"],[dictOtherInfo objectForKey:@"telephone"],[dictOtherInfo objectForKey:@"latitude"],[dictOtherInfo objectForKey:@"longitude"],[dictOtherInfo objectForKey:@"majoraddress"],[dictOtherInfo objectForKey:@"memo"]];
     
@@ -225,14 +225,17 @@
     NSData * responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
     if(responseData != nil && error == nil){
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:&error];
-        if([dict[@"code"] intValue] == 0){
+        if([dict[@"code"] intValue] == 0 && error == nil && dict != nil){
             NSLog(@"dict=%@",dict);
             NSLog(@"发送补充个人信息成功");
             //[[EHECoreDataManager getInstance] savePersonalData:dictOtherInfo];
+            return YES;
         }else{
             NSLog(@"%@",dict[@"message"]);
+            return NO;
         }
     }
+    return NO;
 }
 
 -(void)cancelOrderWithOrderId:(int)orderId withReason:(NSString *)memo {
